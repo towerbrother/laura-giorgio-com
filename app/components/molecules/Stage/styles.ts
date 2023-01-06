@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { colors } from "~/common/constants";
-import { devices } from "./../../../common/constants";
+import { colors, devices } from "~/common/constants";
 
 export const Stage = styled.div`
   position: relative;
@@ -18,7 +17,7 @@ export const Wrapper = styled.div`
   height: 90%;
   padding: 0px 10px;
   position: absolute;
-  top: 5%;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   color: ${colors.offWhite};
@@ -29,7 +28,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Name = styled.span`
+export const Title = styled.h2`
   font-size: 36px;
   font-style: italic;
   word-spacing: -5px;
@@ -39,7 +38,7 @@ export const Name = styled.span`
   }
 `;
 
-export const Text = styled.span`
+export const SubTitle = styled.h4`
   font-size: 12px;
   text-transform: uppercase;
 

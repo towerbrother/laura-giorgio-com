@@ -3,21 +3,30 @@ import { format } from "date-fns";
 import * as S from "./styles";
 
 export type StageProps = {
-  image: string;
-  name: string;
-  text: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  title: string;
+  subtitle: string;
   date: Date;
   link: { slug: string; text: string };
 };
 
-const Stage = ({ image, name, text, date, link }: StageProps) => (
+const Stage = ({
+  image,
+  title,
+  subtitle,
+  date,
+  link: { slug, text },
+}: StageProps) => (
   <S.Stage>
-    <S.Image src={image} />
+    <S.Image {...image} />
     <S.Wrapper>
-      <S.Name>{name}</S.Name>
-      <S.Text>{text}</S.Text>
+      <S.Title>{title}</S.Title>
+      <S.SubTitle>{subtitle}</S.SubTitle>
       <S.Date>{format(date, "do LLLL yyyy ｜ p")}</S.Date>
-      <S.Link to={link.slug}>{link.text}</S.Link>
+      <S.Link to={slug}>{text}</S.Link>
     </S.Wrapper>
   </S.Stage>
 );

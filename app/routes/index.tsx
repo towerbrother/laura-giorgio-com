@@ -1,10 +1,13 @@
 import Stage from "~/components/molecules/Stage";
-import { stage } from "~/common/mocks";
+import Tile from "~/components/molecules/Tile";
+
+import { stage, homeTile } from "~/common/mocks";
 
 export default function Index() {
   return (
     <>
       <Stage {...stage} />
+      <Tile {...homeTile} />
     </>
   );
 }
