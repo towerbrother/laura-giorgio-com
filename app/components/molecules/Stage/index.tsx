@@ -16,7 +16,7 @@ const Stage = ({ image, name, text, date, link }: StageProps) => (
     <S.Wrapper>
       <S.Name>{name}</S.Name>
       <S.Text>{text}</S.Text>
-      <S.Date>{format(date, "eeee do LLLL, yyyy ｜ p")}</S.Date>
+      <S.Date>{format(date, "do LLLL yyyy ｜ p")}</S.Date>
       <S.Link to={link.slug}>{link.text}</S.Link>
     </S.Wrapper>
   </S.Stage>

@@ -11,7 +11,11 @@ export const Wrapper = styled.div`
   max-width: 1200px;
   padding: 0 24px;
   z-index: 1;
-  height: 100px;
+  height: 80px;
+
+  @media ${devices.tablet} {
+    height: 100px;
+  }
 `;
 
 export const Navbar = styled.nav`

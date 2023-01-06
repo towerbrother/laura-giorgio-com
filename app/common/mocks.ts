@@ -11,7 +11,7 @@ export const header: HeaderProps = {
 };
 
 export const stage: StageProps = {
-  image: "couple-vertical.jpg",
+  image: "stage.png",
   name: "Laura & Giorgio",
   text: "are getting married",
   date: new Date(2023, 6, 29, 13),
