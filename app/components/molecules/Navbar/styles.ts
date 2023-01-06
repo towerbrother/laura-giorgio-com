@@ -7,11 +7,11 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
   width: 100%;
   max-width: 1200px;
   padding: 0 24px;
   z-index: 1;
+  height: 100px;
 `;
 
 export const Navbar = styled.nav`

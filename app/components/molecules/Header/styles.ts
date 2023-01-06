@@ -6,6 +6,10 @@ export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
   background: transparent;
+  height: 80px;
+
+  @media ${devices.tablet} {
+    height: 100px;
+  }
 `;

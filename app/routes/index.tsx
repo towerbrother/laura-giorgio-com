@@ -1,7 +1,10 @@
+import Stage from "~/components/molecules/Stage";
+import { stage } from "~/common/mocks";
+
 export default function Index() {
   return (
-    <h1 style={{ textAlign: "center", padding: "200px 0px", fontSize: "58px" }}>
-      HOME PAGE
-    </h1>
+    <>
+      <Stage {...stage} />
+    </>
   );
 }

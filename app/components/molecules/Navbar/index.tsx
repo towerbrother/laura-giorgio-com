@@ -25,7 +25,7 @@ const Navbar = ({ links, toggle }: NavbarProps) => (
       <S.NavbarButtonWrapper>
         <S.NavbarButtonLink to="/rsvp">RSVP</S.NavbarButtonLink>
       </S.NavbarButtonWrapper>
-    </S.Navbar>{" "}
+    </S.Navbar>
   </S.Wrapper>
 );
 

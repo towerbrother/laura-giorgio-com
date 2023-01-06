@@ -3,10 +3,11 @@ import { devices } from "~/common/constants";
 
 export const Text = styled.span`
   font-style: italic;
-  word-spacing: -5px;
-  font-size: 32px;
+  font-size: 20px;
+  word-spacing: -2px;
 
   @media ${devices.tablet} {
     font-size: 36px;
+    word-spacing: -5px;
   }
 `;
