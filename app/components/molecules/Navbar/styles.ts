@@ -57,6 +57,7 @@ export const NavbarButtonWrapper = styled.div`
 export const NavbarButtonLink = styled(RemixNavLink)`
   transition: all 0.2s ease-in-out;
   padding: 8px 10px;
+  margin: 0 10px;
   border-radius: 8px;
   background: ${colors.primaryBackground};
   color: ${colors.offWhite};

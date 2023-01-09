@@ -22,16 +22,11 @@ export const Sidebar = styled.aside<SidebarProps>`
   background: ${colors.offBlack};
 `;
 
-export const SidebarWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 75%;
-`;
-
 export const SidebarMenu = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   height: 70%;
 `;
 
@@ -44,17 +39,13 @@ export const Link = styled(NavLink)`
   color: ${colors.offWhite};
 `;
 
-export const SidebarButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 export const SidebarButtonLink = styled(NavLink)`
   transition: all 0.2s ease-in-out;
   padding: 16px 42px;
   border-radius: 50px;
   background: ${colors.primaryBackground};
   color: ${colors.offWhite};
+  margin: 18px 0;
 
   &:hover {
     transition: all 0.2s ease-in-out;

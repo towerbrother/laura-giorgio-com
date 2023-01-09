@@ -5,10 +5,12 @@ import type { TileProps } from "~/components/molecules/Tile";
 
 export const header: HeaderProps = {
   links: [
-    { text: "Info", slug: "info" },
-    { text: "Reservation", slug: "reservation" },
-    { text: "Contact", slug: "contact" },
-    { text: "Good to know", slug: "goodtoknow" },
+    { text: "Info", slug: "info", type: "link" },
+    { text: "Reservation", slug: "reservation", type: "link" },
+    { text: "Contact", slug: "contact", type: "link" },
+    { text: "Good to know", slug: "goodtoknow", type: "link" },
+    { text: "RSVP", slug: "rsvp", type: "button" },
+    { text: "CONTRIBUTE", slug: "contribute", type: "button" },
   ],
 };
 

@@ -14,18 +14,19 @@ const Sidebar = ({ links, isOpen, toggle }: SidebarProps) => {
   return (
     <S.Sidebar isOpen={isOpen} onClick={toggle}>
       <MenuIcon iconType="cross" toggle={toggle} />
-      <S.SidebarWrapper>
-        <S.SidebarMenu>
-          {links?.map((link) => (
-            <S.Link key={uuidv4()} to={link.slug}>
-              {link.text}
+      <S.SidebarMenu>
+        {links?.map(({ type, slug, text }) =>
+          type === "link" ? (
+            <S.Link key={uuidv4()} to={slug}>
+              {text}
             </S.Link>
-          ))}
-        </S.SidebarMenu>
-        <S.SidebarButtonWrapper>
-          <S.SidebarButtonLink to="/rsvp">RSVP</S.SidebarButtonLink>
-        </S.SidebarButtonWrapper>
-      </S.SidebarWrapper>
+          ) : (
+            <S.SidebarButtonLink key={uuidv4()} to={slug}>
+              {text}
+            </S.SidebarButtonLink>
+          )
+        )}
+      </S.SidebarMenu>
     </S.Sidebar>
   );
 };

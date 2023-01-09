@@ -16,15 +16,18 @@ const Navbar = ({ links, toggle }: NavbarProps) => (
     <S.Navbar>
       <MenuIcon iconType="bars" toggle={toggle} />
       <S.NavbarMenu>
-        {links.map((link) => (
-          <S.Link key={uuidv4()} to={link.slug}>
-            {link.text}
-          </S.Link>
-        ))}
+        {links?.map(({ type, slug, text }) =>
+          type === "link" ? (
+            <S.Link key={uuidv4()} to={slug}>
+              {text}
+            </S.Link>
+          ) : (
+            <S.NavbarButtonLink key={uuidv4()} to={slug}>
+              {text}
+            </S.NavbarButtonLink>
+          )
+        )}
       </S.NavbarMenu>
-      <S.NavbarButtonWrapper>
-        <S.NavbarButtonLink to="/rsvp">RSVP</S.NavbarButtonLink>
-      </S.NavbarButtonWrapper>
     </S.Navbar>
   </S.Wrapper>
 );
