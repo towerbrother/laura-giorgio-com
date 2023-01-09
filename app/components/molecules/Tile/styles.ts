@@ -59,7 +59,9 @@ export const SubTitle = styled.h4`
   font-weight: 400;
 `;
 
-export const Text = styled.p``;
+export const Text = styled.p`
+  max-width: 400px;
+`;
 
 export const Link = styled(NavLink)`
   transition: all 0.2s ease-in-out;

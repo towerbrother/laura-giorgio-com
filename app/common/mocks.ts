@@ -1,13 +1,14 @@
+import type { BannerProps } from "~/components/molecules/Banner";
 import type { HeaderProps } from "~/components/molecules/Header";
 import type { StageProps } from "~/components/molecules/Stage";
 import type { TileProps } from "~/components/molecules/Tile";
 
 export const header: HeaderProps = {
   links: [
-    { text: "Home", slug: "" },
     { text: "Info", slug: "info" },
     { text: "Reservation", slug: "reservation" },
     { text: "Contact", slug: "contact" },
+    { text: "Good to know", slug: "goodtoknow" },
   ],
 };
 
@@ -49,4 +50,18 @@ export const accomodationTile: TileProps = {
     text: "There are several accommodation options in the resort. Breakfast is included. Do not hesitate to book a room to get the best accommodation offer.",
   },
   link: { slug: "/accomodation", text: "BOOK" },
+};
+
+export const contributionBanner: BannerProps = {
+  paragraph:
+    "Your presence at our wedding day is the most important gift you could ever give us. However, if you would like to contribute to our honeymoon, any amount is appreciated - click the button below.",
+  link: { slug: "/contribute", text: "CONTRIBUTE" },
+};
+
+export const contactBanner: BannerProps = {
+  headline: "We look forward to celebrating with you!",
+  icon: false,
+  paragraph:
+    "Please, click on RSVP and write an email to given email address - let us know how many of you are going to join us on our special day.",
+  link: { slug: "/rsvp", text: "RSVP" },
 };

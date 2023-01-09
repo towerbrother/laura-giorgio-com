@@ -1,4 +1,9 @@
-import { accomodationTile, transportationTile } from "~/common/mocks";
+import {
+  accomodationTile,
+  contributionBanner,
+  transportationTile,
+} from "~/common/mocks";
+import Banner from "~/components/molecules/Banner";
 import Tile from "~/components/molecules/Tile";
 
 export default function Index() {
@@ -6,6 +11,7 @@ export default function Index() {
     <>
       <Tile {...transportationTile} />
       <Tile {...accomodationTile} />
+      <Banner {...contributionBanner} />
     </>
   );
 }
