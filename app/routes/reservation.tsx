@@ -1,7 +1,11 @@
+import { accomodationTile, transportationTile } from "~/common/mocks";
+import Tile from "~/components/molecules/Tile";
+
 export default function Index() {
   return (
-    <h1 style={{ textAlign: "center", padding: "200px 0px", fontSize: "58px" }}>
-      RESERVATION PAGE
-    </h1>
+    <>
+      <Tile {...transportationTile} />
+      <Tile {...accomodationTile} />
+    </>
   );
 }

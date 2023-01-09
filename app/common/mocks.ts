@@ -20,10 +20,33 @@ export const stage: StageProps = {
 };
 
 export const homeTile: TileProps = {
+  direction: "front",
   image: { src: "tile.jpg", alt: "Hands" },
   tile: {
     title: "Our story",
     subtitle: "For those who did not know",
     text: "We met 9 years ago in London for the first time. Dave was in a supermarket, in the frozen aisle trying to figure out what vegan ice cream is and a girl walks up and says: ‘Hey, do you know where to find vegan ice cream?’. As a couple we've been are together for 8 years now & we’re getting married next year.",
   },
+};
+
+export const transportationTile: TileProps = {
+  direction: "front",
+  image: { src: "tile.jpg", alt: "Hands" },
+  tile: {
+    title: "Transportation",
+    subtitle: "Don't worry about anything",
+    text: "We have arranged transportation for guests from the hotel to the church and later to the reception venue. To reserve a seat, please let us know with your RSVP.",
+  },
+  link: { slug: "/rsvp", text: "RSVP" },
+};
+
+export const accomodationTile: TileProps = {
+  direction: "back",
+  image: { src: "tile.jpg", alt: "Hands" },
+  tile: {
+    title: "Accommodation",
+    subtitle: "Cozy rooms for your stay",
+    text: "There are several accommodation options in the resort. Breakfast is included. Do not hesitate to book a room to get the best accommodation offer.",
+  },
+  link: { slug: "/accomodation", text: "BOOK" },
 };

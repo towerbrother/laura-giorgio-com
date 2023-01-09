@@ -1,7 +1,13 @@
+import { NavLink } from "@remix-run/react";
 import styled from "styled-components";
+
 import { colors, devices } from "~/common/constants";
 
-export const Wrapper = styled.div`
+type DirectionProps = {
+  direction: "front" | "back";
+};
+
+export const Wrapper = styled.div<DirectionProps>`
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
@@ -10,8 +16,9 @@ export const Wrapper = styled.div`
   background-color: ${colors.offWhite};
 
   @media ${devices.tablet} {
-    flex-direction: row;
-    padding: 80px;
+    flex-direction: ${({ direction }) =>
+      direction === "front" ? "row" : "row-reverse"};
+    padding: 80px 140px;
   }
 `;
 
@@ -25,7 +32,7 @@ export const Image = styled.img`
   }
 `;
 
-export const Tile = styled.div`
+export const Tile = styled.div<DirectionProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -33,13 +40,14 @@ export const Tile = styled.div`
   color: ${colors.offBlack};
 
   @media ${devices.tablet} {
-    padding: 30px 10px 30px 60px;
+    padding: ${({ direction }) =>
+      direction === "front" ? "30px 10px 30px 50px" : "30px 50px 30px 10px"};
   }
 `;
 
 export const Title = styled.h2`
   font-size: 24px;
-  margin: 20px 0px;
+  margin: 15px 0px;
 
   @media ${devices.tablet} {
     font-size: 32px;
@@ -52,3 +60,25 @@ export const SubTitle = styled.h4`
 `;
 
 export const Text = styled.p``;
+
+export const Link = styled(NavLink)`
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+  background: ${colors.offBlack};
+  color: ${colors.offWhite};
+  width: max-content;
+  font-size: 16px;
+  padding: 8px 16px;
+  margin: 30px 0px 0px;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: ${colors.offWhite};
+    color: ${colors.offBlack};
+  }
+
+  @media ${devices.tablet} {
+    font-size: 20px;
+    padding: 8px 24px;
+  }
+`;
