@@ -77,7 +77,7 @@ export const info: InfoProps = {
       icon: 'calendar',
       title: 'Our wedding day',
       dateTime: new Date('2023-07-29'),
-      text: 'The 29th of the month is a recurring theme for us',
+      text: 'It would be absolutely great to have you there! Join us!',
     },
     {
       icon: 'church',
