@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { devices } from "~/common/constants";
+import { colors, devices } from '~/common/constants';
 
 export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;
+  background: ${colors.offWhite};
   height: 80px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     height: 100px;
   }
 `;

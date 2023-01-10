@@ -1,8 +1,8 @@
-import { NavLink } from "@remix-run/react";
-import { FaGift } from "react-icons/fa";
-import styled from "styled-components";
+import { NavLink } from '@remix-run/react';
+import { FaGift } from 'react-icons/fa';
+import styled from 'styled-components';
 
-import { colors, devices } from "~/common/constants";
+import { colors, devices } from '~/common/constants';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   padding: 45px;
   background-color: ${colors.offGray};
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     padding: 80px;
   }
 `;
@@ -23,7 +23,7 @@ export const Headline = styled.h2`
   font-size: 28px;
   margin: 15px 0px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     font-size: 36px;
     margin: 20px 0px;
   }
@@ -56,7 +56,7 @@ export const Link = styled(NavLink)`
     color: ${colors.offBlack};
   }
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     font-size: 20px;
     padding: 8px 24px;
   }

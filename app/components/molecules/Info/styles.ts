@@ -8,9 +8,9 @@ export const Wrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   padding: 45px;
-  background-color: ${colors.offWhite};
+  background-color: ${colors.offGray};
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     padding: 80px;
   }
 `;

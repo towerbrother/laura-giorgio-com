@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-import { colors } from "~/common/constants";
+import { colors } from '~/common/constants';
 
 type SidebarProps = {
   isOpen: boolean;
@@ -13,8 +13,8 @@ export const Sidebar = styled.aside<SidebarProps>`
   align-items: center;
   position: fixed;
   left: 0;
-  top: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  top: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
+  opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
   width: 100%;
   height: 100%;
   transition: 0.3s ease-in-out;
@@ -34,18 +34,19 @@ export const Link = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  margin: 5px 0px;
+  padding: 16px 0px;
   font-size: 20px;
   color: ${colors.offWhite};
 `;
 
 export const SidebarButtonLink = styled(NavLink)`
   transition: all 0.2s ease-in-out;
-  padding: 16px 42px;
   border-radius: 50px;
   background: ${colors.primaryBackground};
   color: ${colors.offWhite};
-  margin: 18px 0;
+  margin: 20px 0;
+  padding: 12px 30px;
 
   &:hover {
     transition: all 0.2s ease-in-out;

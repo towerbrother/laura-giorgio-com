@@ -9,7 +9,7 @@ export const Input = styled.input`
 export const Label = styled.label`
   font-size: 11px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     font-size: 16px;
   }
 `;

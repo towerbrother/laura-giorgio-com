@@ -1,14 +1,14 @@
 const sizes = {
-  mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktop: "2560px",
+  mobileS: '320px',
+  mobileM: '375px',
+  mobileL: '425px',
+  tablet: '768px',
+  laptop: '1024px',
+  laptopL: '1440px',
+  desktop: '2560px',
 };
 
-const onlyScreen = "only screen and";
+const onlyScreen = 'only screen and';
 
 export const devices = {
   mobileS: `${onlyScreen} (min-width: ${sizes.mobileS})`,
@@ -21,9 +21,9 @@ export const devices = {
 };
 
 export const colors = {
-  offBlack: "#0f0f0f",
-  offWhite: "#f4f4f4",
-  offGray: "#e5e5e5",
-  primaryBackground: "#256ce1",
-  secondaryBackground: "#819dc9",
+  offBlack: '#0f0f0f',
+  offWhite: '#f4f4f4',
+  offGray: '#e5e5e5',
+  primaryBackground: '#256ce1',
+  secondaryBackground: '#819dc9',
 };

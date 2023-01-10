@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import Navbar from "../Navbar";
-import Sidebar from "../Sidebar";
+import Navbar from '../Navbar';
+import Sidebar from '../Sidebar';
 
-import * as S from "./styles";
+import * as S from './styles';
 
-type LinkType = { text: string; slug: string; type: "link" | "button" };
+type LinkType = { text: string; slug: string; type: 'link' | 'button' };
 
 export type HeaderProps = {
   links: Array<LinkType>;

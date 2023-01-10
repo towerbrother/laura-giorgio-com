@@ -11,7 +11,7 @@ export const MenuIcon = styled(Button)`
   right: 24px;
   font-size: 28px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     display: none;
   }
 `;

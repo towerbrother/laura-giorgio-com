@@ -1,5 +1,5 @@
-import { NavLink } from "@remix-run/react";
-import * as S from "./styles";
+import { NavLink } from '@remix-run/react';
+import * as S from './styles';
 
 type NameProps = {
   text: string;

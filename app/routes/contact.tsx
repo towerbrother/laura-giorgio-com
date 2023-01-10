@@ -1,6 +1,5 @@
-import { colors } from "~/common/constants";
-import { contactBanner } from "~/common/mocks";
-import Banner from "~/components/molecules/Banner";
+import { contactBanner, contributionBanner } from '~/common/mocks';
+import Banner from '~/components/molecules/Banner';
 
 export default function Index() {
   return (
@@ -8,17 +7,16 @@ export default function Index() {
       <Banner {...contactBanner} />
       <div
         style={{
-          height: "800px",
-          width: "100%",
-          backgroundColor: `${colors.offWhite}`,
-          textAlign: "center",
-          verticalAlign: "center",
-          fontSize: "36px",
-          fontWeight: "700",
+          backgroundColor: 'red',
+          color: 'white',
+          textAlign: 'center',
+          fontSize: '32px',
+          padding: '30px 0px',
         }}
       >
-        MIX OF PICTURES AND TEXT
+        PHOTOS
       </div>
+      <Banner {...contributionBanner} />
     </>
   );
 }

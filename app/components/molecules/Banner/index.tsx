@@ -1,5 +1,5 @@
-import ConditionalWrapper from "~/components/atoms/ConditionalWrapper";
-import * as S from "./styles";
+import ConditionalWrapper from '~/components/atoms/ConditionalWrapper';
+import * as S from './styles';
 
 export type BannerProps = {
   headline?: string;

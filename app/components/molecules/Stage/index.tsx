@@ -1,6 +1,6 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export type StageProps = {
   image: {
@@ -25,7 +25,7 @@ const Stage = ({
     <S.Wrapper>
       <S.Title>{title}</S.Title>
       <S.SubTitle>{subtitle}</S.SubTitle>
-      <S.Date>{format(date, "do LLLL yyyy ｜ p")}</S.Date>
+      <S.Date>{format(date, 'do LLLL yyyy ｜ p')}</S.Date>
       <S.Link to={slug}>{text}</S.Link>
     </S.Wrapper>
   </S.Stage>

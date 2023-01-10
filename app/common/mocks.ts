@@ -1,3 +1,4 @@
+import type { BankDetailsProps } from '~/components/molecules/BankDetails';
 import type { BannerProps } from '~/components/molecules/Banner';
 import type { HeaderProps } from '~/components/molecules/Header';
 import type { InfoProps } from '~/components/molecules/Info';
@@ -90,5 +91,15 @@ export const info: InfoProps = {
       dateTime: new Date('2023-07-29T16:30:00'),
       text: 'Schloß Wolfsberg - Schloßstraße, 9400 Wolfsberg, Austria',
     },
+  ],
+};
+
+export const bankDetails: BankDetailsProps = {
+  headline: 'Here our bank details',
+  details: [
+    { type: 'iban', value: 'DE63500105175437979305' },
+    { type: 'bic', value: 'INGDDEFFXXX' },
+    { type: 'name', value: 'Giorgio Torre Laura Purnell' },
+    { type: 'reference', value: 'Wedding contribution from [...]' },
   ],
 };

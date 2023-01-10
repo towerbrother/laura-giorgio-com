@@ -1,4 +1,3 @@
-import { colors } from '~/common/constants';
 import { info } from '~/common/mocks';
 import Info from '~/components/molecules/Info';
 
@@ -8,16 +7,14 @@ export default function Index() {
       <Info {...info} />
       <div
         style={{
-          height: '800px',
-          width: '100%',
-          backgroundColor: `${colors.offWhite}`,
+          backgroundColor: 'red',
+          color: 'white',
           textAlign: 'center',
-          verticalAlign: 'center',
-          fontSize: '36px',
-          fontWeight: '700',
+          fontSize: '32px',
+          padding: '30px 0px',
         }}
       >
-        MIX OF PICTURES AND TEXT
+        PHOTOS
       </div>
     </>
   );

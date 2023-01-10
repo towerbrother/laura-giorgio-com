@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { NavLink as RemixNavLink } from "@remix-run/react";
+import styled from 'styled-components';
+import { NavLink as RemixNavLink } from '@remix-run/react';
 
-import { devices, colors } from "~/common/constants";
+import { devices, colors } from '~/common/constants';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   z-index: 1;
   height: 80px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     height: 100px;
   }
 `;
@@ -27,7 +27,7 @@ export const NavbarMenu = styled.div`
   display: none;
   padding: 0px 10px 0px 0px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     display: flex;
     align-items: center;
   }
@@ -48,7 +48,7 @@ export const Link = styled(RemixNavLink)`
 export const NavbarButtonWrapper = styled.div`
   display: none;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     display: flex;
     align-items: center;
   }

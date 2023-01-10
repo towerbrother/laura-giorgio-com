@@ -1,10 +1,10 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 
-import type { HeaderProps } from "../Header";
-import MenuIcon from "../../atoms/MenuIcon";
-import Name from "~/components/atoms/Name";
+import type { HeaderProps } from '../Header';
+import MenuIcon from '../../atoms/MenuIcon';
+import Name from '~/components/atoms/Name';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 type NavbarProps = HeaderProps & {
   toggle: () => void;
@@ -17,7 +17,7 @@ const Navbar = ({ links, toggle }: NavbarProps) => (
       <MenuIcon iconType="bars" toggle={toggle} />
       <S.NavbarMenu>
         {links?.map(({ type, slug, text }) =>
-          type === "link" ? (
+          type === 'link' ? (
             <S.Link key={uuidv4()} to={slug}>
               {text}
             </S.Link>

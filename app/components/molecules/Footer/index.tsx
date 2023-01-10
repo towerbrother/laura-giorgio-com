@@ -1,9 +1,9 @@
-import * as S from "./styles";
+import * as S from './styles';
 
-import Name from "~/components/atoms/Name";
+import Name from '~/components/atoms/Name';
 
 type Item = {
-  type: "text" | "link";
+  type: 'text' | 'link';
   text: string;
   link?: string;
 };
