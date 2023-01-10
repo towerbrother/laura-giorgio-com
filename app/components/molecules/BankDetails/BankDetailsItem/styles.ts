@@ -12,11 +12,17 @@ export const ClipboardCopy = styled.div`
   border-radius: 8px;
 `;
 
-export const ButtonText = styled.span`
+type ButtonTextProps = {
+  $isCopied: boolean;
+  $isError: boolean;
+};
+
+export const ButtonText = styled.span<ButtonTextProps>`
   font-size: 16px;
   font-weight: 700;
   margin-left: 10px;
-  background-color: ${colors.offBlack};
+  background-color: ${({ $isCopied, $isError }) =>
+    $isCopied ? colors.offGreen : $isError ? colors.offRed : colors.offBlack};
   color: ${colors.offWhite};
   padding: 4px 10px;
   border: 1px solid black;

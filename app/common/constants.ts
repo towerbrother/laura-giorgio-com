@@ -24,6 +24,8 @@ export const colors = {
   offBlack: '#0f0f0f',
   offWhite: '#f4f4f4',
   offGray: '#e5e5e5',
+  offGreen: '#186e0d',
+  offRed: '#6e1a0d',
   primaryBackground: '#256ce1',
   secondaryBackground: '#819dc9',
 };

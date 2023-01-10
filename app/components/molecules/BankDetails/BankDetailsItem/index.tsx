@@ -45,7 +45,9 @@ const BankDetailsItemm = ({ value }: BankDetailsItemProps) => {
         <S.Text type="text" value={value} readOnly />
       </ConditionalWrapper>
       <Button onClick={handleCopyClick}>
-        <S.ButtonText>{isCopied ? 'Done' : 'Copy'}</S.ButtonText>
+        <S.ButtonText $isCopied={isCopied} $isError={isError}>
+          {isCopied ? 'Done' : isError ? 'Ops!' : 'Copy'}
+        </S.ButtonText>
       </Button>
     </S.ClipboardCopy>
   );
