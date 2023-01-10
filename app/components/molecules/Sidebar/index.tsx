@@ -12,7 +12,7 @@ type SidebarProps = Partial<HeaderProps> & {
 
 const Sidebar = ({ links, isOpen, toggle }: SidebarProps) => {
   return (
-    <S.Sidebar isOpen={isOpen} onClick={toggle}>
+    <S.Sidebar $isOpen={isOpen} onClick={toggle}>
       <MenuIcon iconType="cross" toggle={toggle} />
       <S.SidebarMenu>
         {links?.map(({ type, slug, text }) =>
@@ -21,7 +21,7 @@ const Sidebar = ({ links, isOpen, toggle }: SidebarProps) => {
               {text}
             </S.Link>
           ) : (
-            <S.SidebarButtonLink key={uuidv4()} to={slug}>
+            <S.SidebarButtonLink key={uuidv4()} to={slug} $text={text}>
               {text}
             </S.SidebarButtonLink>
           )

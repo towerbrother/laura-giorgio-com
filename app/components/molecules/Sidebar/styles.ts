@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { colors } from '~/common/constants';
 
 type SidebarProps = {
-  isOpen: boolean;
+  $isOpen: boolean;
 };
 
 export const Sidebar = styled.aside<SidebarProps>`
@@ -13,8 +13,8 @@ export const Sidebar = styled.aside<SidebarProps>`
   align-items: center;
   position: fixed;
   left: 0;
-  top: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
-  opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
+  top: ${({ $isOpen }) => ($isOpen ? '0' : '-100%')};
+  opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
   width: 100%;
   height: 100%;
   transition: 0.3s ease-in-out;
@@ -40,10 +40,17 @@ export const Link = styled(NavLink)`
   color: ${colors.offWhite};
 `;
 
-export const SidebarButtonLink = styled(NavLink)`
+type SidebarButtonLinkProps = {
+  $text: string;
+};
+
+export const SidebarButtonLink = styled(NavLink)<SidebarButtonLinkProps>`
   transition: all 0.2s ease-in-out;
   border-radius: 50px;
-  background: ${colors.primaryBackground};
+  background: ${({ $text }) =>
+    $text.toLowerCase() === 'contribute'
+      ? colors.offGreen
+      : colors.primaryBackground};
   color: ${colors.offWhite};
   margin: 20px 0;
   padding: 12px 30px;
