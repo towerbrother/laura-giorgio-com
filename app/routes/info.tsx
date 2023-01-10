@@ -1,7 +1,24 @@
+import { colors } from '~/common/constants';
+import { info } from '~/common/mocks';
+import Info from '~/components/molecules/Info';
+
 export default function Index() {
   return (
-    <h1 style={{ textAlign: "center", padding: "200px 0px", fontSize: "58px" }}>
-      INFO PAGE
-    </h1>
+    <>
+      <Info {...info} />
+      <div
+        style={{
+          height: '800px',
+          width: '100%',
+          backgroundColor: `${colors.offWhite}`,
+          textAlign: 'center',
+          verticalAlign: 'center',
+          fontSize: '36px',
+          fontWeight: '700',
+        }}
+      >
+        MIX OF PICTURES AND TEXT
+      </div>
+    </>
   );
 }
