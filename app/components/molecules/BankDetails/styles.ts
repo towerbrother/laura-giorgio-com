@@ -21,14 +21,15 @@ export const Wrapper = styled.div`
 export const Headline = styled.h2`
   text-align: center;
   font-size: 32px;
-  margin: 0px 0px 55px 0px;
+  margin: 0px 0px 30px 0px;
 
   @media ${devices.tablet} {
     font-size: 46px;
-    margin: 0px 0px 30px 0px;
+    margin: 0px 0px 55px 0px;
   }
 
   @media ${devices.laptop} {
     font-size: 56px;
+    margin: 0px 0px 65px 0px;
   }
 `;
