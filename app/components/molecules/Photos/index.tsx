@@ -35,18 +35,18 @@ const Photos = ({ photos }: PhotosProps) => {
       <S.Left>
         <S.LeftInnerWrapper>
           {left1.map(({ src }) => (
-            <S.SmallImg key={uuidv4()} src={src} />
+            <S.SmallImg key={uuidv4()} src={src} alt={src} />
           ))}
         </S.LeftInnerWrapper>
         <S.LeftInnerWrapper>
           {left2.map(({ src }) => (
-            <S.SmallImg key={uuidv4()} src={src} />
+            <S.SmallImg key={uuidv4()} src={src} alt={src} />
           ))}
         </S.LeftInnerWrapper>
       </S.Left>
       <S.Right>
         {right.map(({ src }) => (
-          <S.BigImg key={uuidv4()} src={src} />
+          <S.BigImg key={uuidv4()} src={src} alt={src} />
         ))}
       </S.Right>
     </S.Wrapper>
