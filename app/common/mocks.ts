@@ -118,7 +118,6 @@ export const photos: PhotosProps = {
     { src: 'squared-9.JPG' },
     { src: 'squared-10.JPG' },
     { src: 'squared-11.JPG' },
-    { src: 'squared-12.JPG' },
     { src: 'squared-13.JPG' },
   ],
 };
