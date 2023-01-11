@@ -27,7 +27,7 @@ export const SidebarMenu = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 70%;
+  height: 75%;
 `;
 
 export const Link = styled(NavLink)`

@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 0px;
+  padding: 40px 0px 20px 0px;
   background-color: ${colors.offWhite};
 
   @media ${devices.tablet} {

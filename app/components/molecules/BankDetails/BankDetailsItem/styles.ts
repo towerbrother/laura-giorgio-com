@@ -6,10 +6,14 @@ export const ClipboardCopy = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 12px;
+  padding: 10px;
   margin-bottom: 15px;
   border: 1px solid black;
   border-radius: 8px;
+
+  @media ${devices.tablet} {
+    padding: 12px;
+  }
 `;
 
 type ButtonTextProps = {
@@ -27,6 +31,10 @@ export const ButtonText = styled.span<ButtonTextProps>`
   padding: 4px 10px;
   border: 1px solid black;
   border-radius: 8px;
+
+  @media ${devices.tablet} {
+    margin-left: 20px;
+  }
 `;
 
 export const Text = styled.input`
@@ -34,9 +42,9 @@ export const Text = styled.input`
   font-size: 16px;
   border: none;
   background-color: inherit;
-  width: 250px;
+  width: 220px;
 
-  @media ${devices.laptop} {
+  @media ${devices.tablet} {
     font-size: 22px;
     width: 350px;
   }

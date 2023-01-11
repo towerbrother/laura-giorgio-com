@@ -3,7 +3,7 @@ import { devices } from '~/common/constants';
 
 export const Text = styled.span`
   font-style: italic;
-  font-size: 20px;
+  font-size: 25px;
   word-spacing: -2px;
 
   @media ${devices.laptop} {

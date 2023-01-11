@@ -8,6 +8,7 @@ import type { TileProps } from '~/components/molecules/Tile';
 
 export const header: HeaderProps = {
   links: [
+    { text: 'Home', slug: 'home', type: 'link' },
     { text: 'Info', slug: 'info', type: 'link' },
     { text: 'Reservation', slug: 'reservation', type: 'link' },
     { text: 'Contact', slug: 'contact', type: 'link' },
@@ -59,7 +60,7 @@ export const accomodationTile: TileProps = {
 
 export const contributionBanner: BannerProps = {
   paragraph:
-    'Your presence at our wedding day is the most important gift you could ever give us. However, if you would like to contribute to our honeymoon, any amount is appreciated - click the button below.',
+    'Your presence at our wedding is the best gift you could ever give us. However, if you would like to send us a contribution, any amount would be appreciated - click the button below',
   link: { slug: '/contribute', text: 'CONTRIBUTE' },
 };
 
