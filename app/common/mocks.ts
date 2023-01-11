@@ -2,6 +2,7 @@ import type { BankDetailsProps } from '~/components/molecules/BankDetails';
 import type { BannerProps } from '~/components/molecules/Banner';
 import type { HeaderProps } from '~/components/molecules/Header';
 import type { InfoProps } from '~/components/molecules/Info';
+import type { PhotosProps } from '~/components/molecules/Photos';
 import type { StageProps } from '~/components/molecules/Stage';
 import type { TileProps } from '~/components/molecules/Tile';
 
@@ -17,7 +18,7 @@ export const header: HeaderProps = {
 };
 
 export const stage: StageProps = {
-  image: { src: 'stage.png', alt: 'Laura & Giorgio hugging' },
+  image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
   title: 'Laura & Giorgio',
   subtitle: 'are getting married',
   date: new Date(2023, 6, 29, 13),
@@ -26,7 +27,7 @@ export const stage: StageProps = {
 
 export const homeTile: TileProps = {
   direction: 'front',
-  image: { src: 'tile.jpg', alt: 'Hands' },
+  image: { src: 'main-tile.JPG', alt: 'Hands' },
   tile: {
     title: 'Our story',
     subtitle: 'For those who did not know',
@@ -36,7 +37,7 @@ export const homeTile: TileProps = {
 
 export const transportationTile: TileProps = {
   direction: 'front',
-  image: { src: 'tile.jpg', alt: 'Hands' },
+  image: { src: 'transportation.jpg', alt: 'Toy car' },
   tile: {
     title: 'Transportation',
     subtitle: "Don't worry about anything",
@@ -47,7 +48,7 @@ export const transportationTile: TileProps = {
 
 export const accomodationTile: TileProps = {
   direction: 'back',
-  image: { src: 'tile.jpg', alt: 'Hands' },
+  image: { src: 'hotel.jpg', alt: 'Hotel Room' },
   tile: {
     title: 'Accommodation',
     subtitle: 'Cozy rooms for your stay',
@@ -101,5 +102,23 @@ export const bankDetails: BankDetailsProps = {
     { type: 'bic', value: 'INGDDEFFXXX' },
     { type: 'name', value: 'Giorgio Torre Laura Purnell' },
     { type: 'reference', value: 'Wedding contribution from [...]' },
+  ],
+};
+
+export const photos: PhotosProps = {
+  photos: [
+    { src: 'squared-1.JPG' },
+    { src: 'squared-2.JPG' },
+    { src: 'squared-3.JPG' },
+    { src: 'squared-4.JPG' },
+    { src: 'squared-5.JPG' },
+    { src: 'squared-6.JPG' },
+    { src: 'squared-7.JPG' },
+    { src: 'squared-8.JPG' },
+    { src: 'squared-9.JPG' },
+    { src: 'squared-10.JPG' },
+    { src: 'squared-11.JPG' },
+    { src: 'squared-12.JPG' },
+    { src: 'squared-13.JPG' },
   ],
 };
