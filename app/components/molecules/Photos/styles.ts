@@ -1,15 +1,22 @@
 import styled from 'styled-components';
 
-import { devices } from '~/common/constants';
+import { colors, devices } from '~/common/constants';
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 40px 0px;
+  background-color: ${colors.offWhite};
 
   @media ${devices.tablet} {
+    padding: 40px;
+  }
+
+  @media ${devices.laptop} {
     flex-direction: row;
-    margin: 60px 80px;
+    padding: 60px;
   }
 `;
 
@@ -24,7 +31,7 @@ export const LeftInnerWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     flex-direction: row;
   }
 `;
@@ -35,22 +42,38 @@ export const Right = styled.div`
 
 export const SmallImg = styled.img`
   height: auto;
-  width: 400px;
+  width: 320px;
+  margin: 10px;
+  border-radius: 3px;
+
+  @media ${devices.tablet} {
+    width: 550px;
+  }
 
   @media ${devices.laptop} {
-    height: auto;
+    width: 200px;
+  }
+
+  @media ${devices.laptopL} {
     width: 250px;
-    margin: 10px;
   }
 `;
 
 export const BigImg = styled.img`
   height: auto;
-  width: 400px;
+  width: 320px;
+  margin: 10px;
+  border-radius: 3px;
+
+  @media ${devices.tablet} {
+    width: 550px;
+  }
 
   @media ${devices.laptop} {
-    height: 550px;
-    width: 550px;
-    margin: 10px;
+    width: 420px;
+  }
+
+  @media ${devices.laptopL} {
+    width: 520px;
   }
 `;
