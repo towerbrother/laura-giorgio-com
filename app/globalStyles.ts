@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     height: 100%;
   }
-
+  
   body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.5;
@@ -28,10 +28,15 @@ export const GlobalStyle = createGlobalStyle`
     overflow-y: scroll; 
     -ms-overflow-style: none;
     scrollbar-width: none;
-
+    
     ::-webkit-scrollbar {
       display: none;
     }
+    
+    // to keep footer bottom of the page
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
   img,

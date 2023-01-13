@@ -8,7 +8,7 @@ import type { TileProps } from '~/components/molecules/Tile';
 
 export const header: HeaderProps = {
   links: [
-    { text: 'Home', slug: 'home', type: 'link' },
+    { text: 'Home', slug: '', type: 'link' },
     { text: 'Info', slug: 'info', type: 'link' },
     { text: 'Reservation', slug: 'reservation', type: 'link' },
     { text: 'Contact', slug: 'contact', type: 'link' },
