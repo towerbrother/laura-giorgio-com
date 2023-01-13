@@ -10,9 +10,9 @@ type NavbarProps = HeaderProps & {
   toggle: () => void;
 };
 
-const Navbar = ({ links, toggle }: NavbarProps) => (
+const Navbar = ({ name, links, toggle }: NavbarProps) => (
   <S.Wrapper>
-    <Name text="Laura & Giorgio" />
+    <Name text={name} />
     <S.Navbar>
       <MenuIcon iconType="bars" toggle={toggle} />
       <S.NavbarMenu>

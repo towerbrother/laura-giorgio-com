@@ -13,7 +13,7 @@ import Footer from './components/molecules/Footer';
 import Header from './components/molecules/Header';
 import { GlobalStyle } from './globalStyles';
 
-import { header } from './common/mocks';
+import { footer, header } from './common/mocks';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -48,7 +48,7 @@ export default function App() {
         <main>
           <Outlet />
         </main>
-        <Footer />
+        <Footer {...footer} />
         <GlobalStyle />
         <ScrollRestoration />
         <Scripts />

@@ -8,6 +8,7 @@ import * as S from './styles';
 type LinkType = { text: string; slug: string; type: 'link' | 'button' };
 
 export type HeaderProps = {
+  name: string;
   links: Array<LinkType>;
 };
 

@@ -9,18 +9,22 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 45px;
+  padding: 80px 40px;
   background-color: ${colors.offGray};
 
+  @media ${devices.tablet} {
+    padding: 100px 40px;
+  }
+
   @media ${devices.laptop} {
-    padding: 80px;
+    padding: 140px 40px;
   }
 `;
 
 export const Headline = styled.h2`
   text-transform: uppercase;
   text-align: center;
-  font-size: 28px;
+  font-size: 26px;
   margin: 15px 0px;
 
   @media ${devices.laptop} {
@@ -38,6 +42,10 @@ export const Icon = styled(FaGift)`
 export const Paragraph = styled.p`
   text-align: center;
   max-width: 400px;
+
+  @media ${devices.laptop} {
+    max-width: 550px;
+  }
 `;
 
 export const Link = styled(NavLink)`

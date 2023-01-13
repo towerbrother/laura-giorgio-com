@@ -2,21 +2,13 @@ import * as S from './styles';
 
 import Name from '~/components/atoms/Name';
 
-type Item = {
-  type: 'text' | 'link';
-  text: string;
-  link?: string;
-};
-
-type Area = Array<Item>;
-
 export type FooterProps = {
-  areas: Array<Area>;
+  name: string;
 };
 
-const Footer = () => (
+const Footer = ({ name }: FooterProps) => (
   <S.Footer>
-    <Name text="Laura & Giorgio" />
+    <Name text={name} />
   </S.Footer>
 );
 

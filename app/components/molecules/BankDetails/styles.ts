@@ -10,26 +10,42 @@ export const Wrapper = styled.div`
   background-color: ${colors.offGray};
 
   @media ${devices.tablet} {
-    padding: 100px 30px;
+    padding: 120px 30px;
   }
 
   @media ${devices.laptop} {
-    padding: 150px;
+    padding: 80px 30px;
   }
 `;
 
 export const Headline = styled.h2`
   text-align: center;
-  font-size: 32px;
-  margin: 0px 0px 30px 0px;
+  font-size: 36px;
+  margin-bottom: 20px;
 
   @media ${devices.tablet} {
     font-size: 46px;
-    margin: 0px 0px 55px 0px;
   }
 
   @media ${devices.laptop} {
     font-size: 56px;
-    margin: 0px 0px 65px 0px;
+  }
+`;
+
+export const Paragraph = styled.p`
+  text-align: center;
+  max-width: 320px;
+  font-size: 14px;
+  margin-bottom: 40px;
+
+  @media ${devices.tablet} {
+    font-size: 20px;
+    max-width: 450px;
+  }
+
+  @media ${devices.laptop} {
+    font-size: 28px;
+    max-width: 650px;
+    margin-bottom: 60px;
   }
 `;

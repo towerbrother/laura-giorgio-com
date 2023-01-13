@@ -1,5 +1,6 @@
 import type { BankDetailsProps } from '~/components/molecules/BankDetails';
 import type { BannerProps } from '~/components/molecules/Banner';
+import type { FooterProps } from '~/components/molecules/Footer';
 import type { HeaderProps } from '~/components/molecules/Header';
 import type { InfoProps } from '~/components/molecules/Info';
 import type { PhotosProps } from '~/components/molecules/Photos';
@@ -7,6 +8,7 @@ import type { StageProps } from '~/components/molecules/Stage';
 import type { TileProps } from '~/components/molecules/Tile';
 
 export const header: HeaderProps = {
+  name: 'Laura & Giorgio',
   links: [
     { text: 'Home', slug: '', type: 'link' },
     { text: 'Info', slug: 'info', type: 'link' },
@@ -16,6 +18,10 @@ export const header: HeaderProps = {
     { text: 'RSVP', slug: 'rsvp', type: 'button' },
     { text: 'CONTRIBUTE', slug: 'contribute', type: 'button' },
   ],
+};
+
+export const footer: FooterProps = {
+  name: 'Laura & Giorgio',
 };
 
 export const stage: StageProps = {
@@ -32,7 +38,7 @@ export const homeTile: TileProps = {
   tile: {
     title: 'Our story',
     subtitle: 'For those who did not know',
-    text: "We met 9 years ago in London for the first time. Dave was in a supermarket, in the frozen aisle trying to figure out what vegan ice cream is and a girl walks up and says: ‘Hey, do you know where to find vegan ice cream?’. As a couple we've been are together for 8 years now & we’re getting married next year.",
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
   },
 };
 
@@ -53,7 +59,7 @@ export const accomodationTile: TileProps = {
   tile: {
     title: 'Accommodation',
     subtitle: 'Cozy rooms for your stay',
-    text: 'There are several accommodation options in the resort. Breakfast is included. Do not hesitate to book a room to get the best accommodation offer.',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio.',
   },
   link: { slug: '/accomodation', text: 'BOOK' },
 };
@@ -63,8 +69,8 @@ export const hotelTile: TileProps = {
   image: { src: 'hecher-logo.jpg', alt: 'Hotel Hecher Logo' },
   tile: {
     title: 'Hotel Hecher',
-    subtitle: 'reccomended for those staying 2 nights',
-    text: 'There are several accommodation options in the resort. Breakfast is included. Do not hesitate to book a room to get the best accommodation offer.',
+    subtitle: 'Reccomended for those staying 2 nights',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
   },
   externalLink: {
     href: 'https://www.hecher.at/',
@@ -77,8 +83,8 @@ export const pensionTile: TileProps = {
   image: { src: 'oelberger-logo.png', alt: 'Gasthof Oelberger Logo' },
   tile: {
     title: 'Pension Ölberger',
-    subtitle: 'reccomended for those staying 1 night',
-    text: 'There are several accommodation options in the resort. Breakfast is included. Do not hesitate to book a room to get the best accommodation offer.',
+    subtitle: 'Reccomended for those staying 1 night only',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
   },
   externalLink: {
     href: 'https://www.gasthof-oelberger.at/',
@@ -88,7 +94,7 @@ export const pensionTile: TileProps = {
 
 export const contributionBanner: BannerProps = {
   paragraph:
-    'Your presence at our wedding is the best gift you could ever give us. However, if you would like to send us a contribution, any amount would be appreciated - click the button below',
+    'Your presence at our wedding is the best gift you could ever give us. However, if you would like to send us a contribution, we would be very grateful.',
   link: { slug: '/contribute', text: 'CONTRIBUTE' },
 };
 
@@ -96,7 +102,7 @@ export const contactBanner: BannerProps = {
   headline: 'We look forward to celebrating with you!',
   icon: false,
   paragraph:
-    'Please, click on RSVP and write an email to given email address - let us know how many of you are going to join us on our special day.',
+    'Please, click on RSVP and follow the steps. Let us know how many of you are going to join us. Should you have any special requirements, you will be able to add any further comment at the end of the form. Thanks a lot!',
   link: { slug: '/rsvp', text: 'RSVP' },
 };
 
@@ -125,7 +131,9 @@ export const info: InfoProps = {
 };
 
 export const bankDetails: BankDetailsProps = {
-  headline: 'Here our bank details',
+  headline: 'Contribute',
+  paragraph:
+    'Your presence at our wedding is the best gift you could ever give us. However, if you would like to send us a contribution, we would be very grateful. Any amount is appreciated.',
   details: [
     { type: 'iban', value: 'DE63500105175437979305' },
     { type: 'bic', value: 'INGDDEFFXXX' },

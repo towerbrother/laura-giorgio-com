@@ -5,12 +5,14 @@ import BankDetailsItem from './BankDetailsItem';
 
 export type BankDetailsProps = {
   headline: string;
+  paragraph: string;
   details: Array<BankDetailsItemProps>;
 };
 
-const BankDetails = ({ headline, details }: BankDetailsProps) => (
+const BankDetails = ({ headline, paragraph, details }: BankDetailsProps) => (
   <S.Wrapper>
     <S.Headline>{headline}</S.Headline>
+    <S.Paragraph>{paragraph}</S.Paragraph>
     {details.map((detail) => (
       <BankDetailsItem key={uuidv4()} {...detail} />
     ))}
