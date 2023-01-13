@@ -58,6 +58,34 @@ export const accomodationTile: TileProps = {
   link: { slug: '/accomodation', text: 'BOOK' },
 };
 
+export const hotelTile: TileProps = {
+  direction: 'front',
+  image: { src: 'hecher-logo.jpg', alt: 'Hotel Hecher Logo' },
+  tile: {
+    title: 'Hotel Hecher',
+    subtitle: 'reccomended for those staying 2 nights',
+    text: 'There are several accommodation options in the resort. Breakfast is included. Do not hesitate to book a room to get the best accommodation offer.',
+  },
+  externalLink: {
+    href: 'https://www.hecher.at/',
+    text: 'VISIT SITE',
+  },
+};
+
+export const pensionTile: TileProps = {
+  direction: 'back',
+  image: { src: 'oelberger-logo.png', alt: 'Gasthof Oelberger Logo' },
+  tile: {
+    title: 'Pension Ölberger',
+    subtitle: 'reccomended for those staying 1 night',
+    text: 'There are several accommodation options in the resort. Breakfast is included. Do not hesitate to book a room to get the best accommodation offer.',
+  },
+  externalLink: {
+    href: 'https://www.gasthof-oelberger.at/',
+    text: 'VISIT SITE',
+  },
+};
+
 export const contributionBanner: BannerProps = {
   paragraph:
     'Your presence at our wedding is the best gift you could ever give us. However, if you would like to send us a contribution, any amount would be appreciated - click the button below',

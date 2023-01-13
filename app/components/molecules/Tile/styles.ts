@@ -18,7 +18,7 @@ export const Wrapper = styled.div<DirectionProps>`
   @media ${devices.laptop} {
     flex-direction: ${({ direction }) =>
       direction === 'front' ? 'row' : 'row-reverse'};
-    padding: 80px 140px;
+    padding: 60px 140px;
   }
 `;
 
@@ -27,7 +27,6 @@ export const Image = styled.img`
   width: 400px;
 
   @media ${devices.laptop} {
-    height: 350px;
     width: 350px;
   }
 `;
@@ -64,6 +63,28 @@ export const Text = styled.p`
 `;
 
 export const Link = styled(NavLink)`
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+  background: ${colors.offBlack};
+  color: ${colors.offWhite};
+  width: max-content;
+  font-size: 16px;
+  padding: 8px 16px;
+  margin: 30px 0px 0px;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: ${colors.offWhite};
+    color: ${colors.offBlack};
+  }
+
+  @media ${devices.laptop} {
+    font-size: 20px;
+    padding: 8px 24px;
+  }
+`;
+
+export const ExternalLink = styled.a`
   transition: all 0.2s ease-in-out;
   border-radius: 8px;
   background: ${colors.offBlack};

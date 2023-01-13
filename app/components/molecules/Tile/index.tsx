@@ -13,6 +13,7 @@ export type TileProps = {
     text: string;
   };
   link?: { slug: string; text: string };
+  externalLink?: { href: string; text: string };
 };
 
 const Tile = ({
@@ -20,6 +21,7 @@ const Tile = ({
   image,
   tile: { title, subtitle, text },
   link,
+  externalLink,
 }: TileProps) => (
   <S.Wrapper direction={direction}>
     <S.Image {...image} />
@@ -29,6 +31,11 @@ const Tile = ({
       <S.Text>{text}</S.Text>
       <ConditionalWrapper condition={Boolean(link)}>
         <S.Link to={link?.slug ?? ''}>{link?.text}</S.Link>
+      </ConditionalWrapper>
+      <ConditionalWrapper condition={Boolean(externalLink)}>
+        <S.ExternalLink href={externalLink?.href ?? ''} target="_blank">
+          {externalLink?.text}
+        </S.ExternalLink>
       </ConditionalWrapper>
     </S.Tile>
   </S.Wrapper>
