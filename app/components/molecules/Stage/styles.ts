@@ -25,6 +25,11 @@ export const Wrapper = styled.div`
   @media ${devices.tablet} {
     top: 20px;
   }
+
+  @media ${devices.laptopL} {
+    top: -200px;
+    left: -200px;
+  }
 `;
 
 export const Title = styled.h2`

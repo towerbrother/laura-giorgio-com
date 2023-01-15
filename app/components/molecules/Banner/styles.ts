@@ -22,7 +22,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Headline = styled.h2`
-  text-transform: uppercase;
   text-align: center;
   font-size: 26px;
   margin: 15px 0px;

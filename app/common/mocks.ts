@@ -93,7 +93,7 @@ export const pensionTile: TileProps = {
 
 export const contributionBanner: BannerProps = {
   paragraph:
-    'Your presence at our wedding is the best gift you could ever give us. However, if you would like to send us a contribution, we would be very grateful.',
+    'Your presence is present enough! However, if you wish to honour us with a gift, we would be very grateful for a financial contribution.',
   link: { slug: '/contribute', text: 'CONTRIBUTE' },
 };
 
@@ -101,7 +101,7 @@ export const contactBanner: BannerProps = {
   headline: 'We look forward to celebrating with you!',
   icon: false,
   paragraph:
-    'Please, click on RSVP and follow the steps. Let us know how many of you are going to join us. Should you have any special requirements, you will be able to add any further comment at the end of the form. Thanks a lot!',
+    'Please, click on RSVP and follow the steps. Let us know how many of you are going to join us. Should you have any special requirements or further comments, you will be able to add them at the end of the form. Thank you!',
   link: { slug: '/rsvp', text: 'RSVP' },
 };
 
@@ -130,11 +130,12 @@ export const info: InfoProps = {
 };
 
 export const contribution: ContributionProps = {
-  headline: 'Contribute!',
+  headline: 'To those considering a gift!',
   paragraphs: [
-    'Your presence at our wedding is the best gift you could ever give us. However, if you would like to send us a contribution, we would be very grateful.',
-    'We do not need any material things. We are lucky enough to have already everything we could possibly have asked for.',
-    'If you would like to contribute, a financial donation would be most welcomed. You can find our bank details in your wedding invitation. Any amount is appreciated.',
+    'Your presence is present enough!',
+    'However, if you wish to honour us with a gift, we would be very grateful for a financial contribution.',
+    'You can find our bank details in your wedding invite. Any amount is appreciated.',
+    'THANK YOU! 🥰',
   ],
 };
 
