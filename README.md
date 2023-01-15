@@ -14,4 +14,6 @@ Simple website for our wedding to share information with our guests and manage R
 - authentication to manage guest list
 - set up a newsletter
 - set up a payment gateway to manage wedding contribution
+- 100% test coverage
+- add some form of tracking
 - ... TBC
