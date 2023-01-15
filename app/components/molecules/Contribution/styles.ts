@@ -14,14 +14,14 @@ export const Wrapper = styled.div`
   }
 
   @media ${devices.laptop} {
-    padding: 80px 30px;
+    padding: 60px 30px;
   }
 `;
 
 export const Headline = styled.h2`
   text-align: center;
   font-size: 36px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
   @media ${devices.tablet} {
     font-size: 46px;
@@ -36,7 +36,7 @@ export const Paragraph = styled.p`
   text-align: center;
   max-width: 320px;
   font-size: 14px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 
   @media ${devices.tablet} {
     font-size: 20px;
@@ -46,6 +46,6 @@ export const Paragraph = styled.p`
   @media ${devices.laptop} {
     font-size: 28px;
     max-width: 650px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
 `;

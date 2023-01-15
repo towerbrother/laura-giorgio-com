@@ -1,4 +1,4 @@
-import type { BankDetailsProps } from '~/components/molecules/BankDetails';
+import type { ContributionProps } from '~/components/molecules/Contribution';
 import type { BannerProps } from '~/components/molecules/Banner';
 import type { FooterProps } from '~/components/molecules/Footer';
 import type { HeaderProps } from '~/components/molecules/Header';
@@ -130,15 +130,12 @@ export const info: InfoProps = {
   ],
 };
 
-export const bankDetails: BankDetailsProps = {
-  headline: 'Contribute',
-  paragraph:
-    'Your presence at our wedding is the best gift you could ever give us. However, if you would like to send us a contribution, we would be very grateful. Any amount is appreciated.',
-  details: [
-    { type: 'iban', value: 'DE63500105175437979305' },
-    { type: 'bic', value: 'INGDDEFFXXX' },
-    { type: 'name', value: 'Giorgio Torre Laura Purnell' },
-    { type: 'reference', value: 'Wedding contribution from [...]' },
+export const contribution: ContributionProps = {
+  headline: 'Contribute!',
+  paragraphs: [
+    'Your presence at our wedding is the best gift you could ever give us. However, if you would like to send us a contribution, we would be very grateful.',
+    'We do not need any material things. We are lucky enough to have already everything we could possibly have asked for.',
+    'If you would like to contribute, a financial donation would be most welcomed. You can find our bank details in your wedding invitation. Any amount is appreciated.',
   ],
 };
 

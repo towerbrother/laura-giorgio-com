@@ -27,7 +27,8 @@ export const SidebarMenu = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 75%;
+  overflow-y: scroll;
+  height: 80%;
 `;
 
 export const Link = styled(NavLink)`
@@ -40,17 +41,10 @@ export const Link = styled(NavLink)`
   color: ${colors.offWhite};
 `;
 
-type SidebarButtonLinkProps = {
-  $text: string;
-};
-
-export const SidebarButtonLink = styled(NavLink)<SidebarButtonLinkProps>`
+export const SidebarButtonLink = styled(NavLink)`
   transition: all 0.2s ease-in-out;
   border-radius: 50px;
-  background: ${({ $text }) =>
-    $text.toLowerCase() === 'contribute'
-      ? colors.offGreen
-      : colors.primaryBackground};
+  background: ${colors.primaryBackground};
   color: ${colors.offWhite};
   margin: 20px 0;
   padding: 12px 30px;

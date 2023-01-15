@@ -21,7 +21,7 @@ const Sidebar = ({ links, isOpen, toggle }: SidebarProps) => {
               {text}
             </S.Link>
           ) : (
-            <S.SidebarButtonLink key={uuidv4()} to={slug} $text={text}>
+            <S.SidebarButtonLink key={uuidv4()} to={slug}>
               {text}
             </S.SidebarButtonLink>
           )

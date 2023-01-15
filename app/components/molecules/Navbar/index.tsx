@@ -22,7 +22,7 @@ const Navbar = ({ name, links, toggle }: NavbarProps) => (
               {text}
             </S.Link>
           ) : (
-            <S.NavbarButtonLink key={uuidv4()} to={slug} $text={text}>
+            <S.NavbarButtonLink key={uuidv4()} to={slug}>
               {text}
             </S.NavbarButtonLink>
           )

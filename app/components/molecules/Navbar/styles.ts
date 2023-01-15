@@ -54,27 +54,17 @@ export const NavbarButtonWrapper = styled.div`
   }
 `;
 
-type NavbarButtonLinkProps = {
-  $text: string;
-};
-
-export const NavbarButtonLink = styled(RemixNavLink)<NavbarButtonLinkProps>`
+export const NavbarButtonLink = styled(RemixNavLink)`
   transition: all 0.2s ease-in-out;
   padding: 8px 10px;
   margin: 0 10px;
   border-radius: 8px;
-  background: ${({ $text }) =>
-    $text.toLowerCase() === 'contribute'
-      ? colors.offGreen
-      : colors.primaryBackground};
+  background: ${colors.primaryBackground};
   color: ${colors.offWhite};
 
   &:hover {
     transition: all 0.2s ease-in-out;
     background: ${colors.offWhite};
-    color: ${({ $text }) =>
-      $text.toLowerCase() === 'contribute'
-        ? colors.offGreen
-        : colors.primaryBackground};
+    color: ${colors.primaryBackground};
   }
 `;
