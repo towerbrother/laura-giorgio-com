@@ -6,6 +6,11 @@ import type { InfoProps } from '~/components/molecules/Info';
 import type { PhotosProps } from '~/components/molecules/Photos';
 import type { StageProps } from '~/components/molecules/Stage';
 import type { TileProps } from '~/components/molecules/Tile';
+import type { LanguageProps } from '~/components/molecules/Language';
+
+export const languageOptions: LanguageProps = {
+  options: ['en', 'de', 'it'],
+};
 
 export const header: HeaderProps = {
   name: 'Laura & Giorgio',

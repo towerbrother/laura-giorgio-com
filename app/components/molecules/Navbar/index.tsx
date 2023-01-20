@@ -5,6 +5,8 @@ import MenuIcon from '../../atoms/MenuIcon';
 import Name from '~/components/atoms/Name';
 
 import * as S from './styles';
+import Language from '../Language';
+import { languageOptions } from '~/common/mocks';
 
 type NavbarProps = HeaderProps & {
   toggle: () => void;
@@ -28,6 +30,7 @@ const Navbar = ({ name, links, toggle }: NavbarProps) => (
           )
         )}
       </S.NavbarMenu>
+      <Language {...languageOptions} />
     </S.Navbar>
   </S.Wrapper>
 );

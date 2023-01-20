@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 
 export const Navbar = styled.nav`
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
 `;
 
 export const NavbarMenu = styled.div`
