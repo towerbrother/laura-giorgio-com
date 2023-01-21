@@ -1,5 +1,5 @@
 import { useFetcher, useLocation } from '@remix-run/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Overlay from '~/components/atoms/Overlay';
 import * as S from './styles';
@@ -14,12 +14,20 @@ const Language = ({ options }: LanguageProps) => {
 
   const [show, setShow] = useState(false);
 
+  const formWrapperRef = useRef(null);
+
+  const handleDelayedCloseFormWrapper = () => {
+    setTimeout(() => {
+      setShow(false);
+    }, 200);
+  };
+
   return (
     <S.Container>
       <S.ButtonIcon onClick={() => setShow((prev) => !prev)}>
         <S.Icon />
       </S.ButtonIcon>
-      <S.FormWrapper className={show ? 'active' : ''}>
+      <S.FormWrapper ref={formWrapperRef} className={show ? 'active' : ''}>
         {options.map((option) => (
           <fetcher.Form
             key={uuidv4()}
@@ -32,7 +40,7 @@ const Language = ({ options }: LanguageProps) => {
               value={pathname + search}
               readOnly
             />
-            <S.Option type="submit">
+            <S.Option type="submit" onClick={handleDelayedCloseFormWrapper}>
               <>
                 <input type="hidden" name="language" value={option} readOnly />
                 {option}
