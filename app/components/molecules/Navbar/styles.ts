@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink as RemixNavLink } from '@remix-run/react';
 
-import { devices, colors } from '~/common/constants';
+import { devices, colors } from '~/utils/constants';
 
 export const Wrapper = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { colors, devices } from '~/common/constants';
+import { colors, devices } from '~/utils/constants';
 
 export const Stage = styled.div`
   position: relative;

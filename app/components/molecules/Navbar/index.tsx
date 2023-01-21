@@ -6,13 +6,12 @@ import Name from '~/components/atoms/Name';
 
 import * as S from './styles';
 import Language from '../Language';
-import { languageOptions } from '~/common/mocks';
 
 type NavbarProps = HeaderProps & {
   toggle: () => void;
 };
 
-const Navbar = ({ name, links, toggle }: NavbarProps) => (
+const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => (
   <S.Wrapper>
     <Name text={name} />
     <S.Navbar>
@@ -30,7 +29,7 @@ const Navbar = ({ name, links, toggle }: NavbarProps) => (
           )
         )}
       </S.NavbarMenu>
-      <Language {...languageOptions} />
+      <Language options={languageOptions} />
     </S.Navbar>
   </S.Wrapper>
 );

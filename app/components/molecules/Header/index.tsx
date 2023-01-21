@@ -10,6 +10,7 @@ type LinkType = { text: string; slug: string; type: 'link' | 'button' };
 export type HeaderProps = {
   name: string;
   links: Array<LinkType>;
+  languageOptions: Array<string>;
 };
 
 const Header = (props: HeaderProps) => {

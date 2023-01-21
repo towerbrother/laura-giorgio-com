@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { devices } from '~/common/constants';
+import { devices } from '~/utils/constants';
 
 export const Text = styled.span`
   font-style: italic;

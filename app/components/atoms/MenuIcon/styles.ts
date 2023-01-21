@@ -3,7 +3,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 
 import Button from '../Button';
 
-import { colors, devices } from '~/common/constants';
+import { colors, devices } from '~/utils/constants';
 
 export const MenuIcon = styled(Button)`
   position: absolute;

@@ -1,7 +1,7 @@
 import { NavLink } from '@remix-run/react';
 import styled from 'styled-components';
 
-import { colors, devices } from '~/common/constants';
+import { colors, devices } from '~/utils/constants';
 
 type DirectionProps = {
   direction: 'front' | 'back';

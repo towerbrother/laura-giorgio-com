@@ -1,7 +1,7 @@
 import { FaCalendar, FaChurch, FaMusic } from 'react-icons/fa';
 import styled from 'styled-components';
 
-import { colors } from '~/common/constants';
+import { colors } from '~/utils/constants';
 
 export const Wrapper = styled.div`
   display: flex;

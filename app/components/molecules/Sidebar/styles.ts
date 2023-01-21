@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-import { colors } from '~/common/constants';
+import { colors } from '~/utils/constants';
 
 type SidebarProps = {
   $isOpen: boolean;

@@ -17,7 +17,7 @@ import { GlobalStyle } from './globalStyles';
 
 import { userLangPrefs } from '~/utils/cookie.server';
 
-import { footer, header } from './common/mocks';
+import { footer, getIndex, header } from './utils/mockedDB';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -35,6 +35,7 @@ export const links: LinksFunction = () => {
     {
       rel: 'stylesheet',
       href: 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap',
+      as: 'style',
     },
   ];
 };
@@ -46,18 +47,27 @@ export const loader = async ({ request }: LoaderArgs) => {
   const defaultCookie = { language: 'en' };
 
   if (cookie) {
-    return json({ language: cookie.language });
+    return json({
+      language: cookie.language,
+      header: header[getIndex(cookie.language)],
+    });
   }
 
-  return json(defaultCookie, {
-    headers: {
-      'Set-Cookie': await userLangPrefs.serialize(defaultCookie),
+  return json(
+    {
+      language: defaultCookie.language,
+      header: header[getIndex(defaultCookie.language)],
     },
-  });
+    {
+      headers: {
+        'Set-Cookie': await userLangPrefs.serialize(defaultCookie),
+      },
+    }
+  );
 };
 
 export default function App() {
-  const { language } = useLoaderData<typeof loader>();
+  const { language, header } = useLoaderData<typeof loader>();
 
   return (
     <html lang={language}>
@@ -76,7 +86,7 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
-        <Analytics />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   );

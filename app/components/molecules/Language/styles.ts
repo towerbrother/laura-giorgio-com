@@ -1,6 +1,6 @@
 import { FaLanguage } from 'react-icons/fa';
 import styled from 'styled-components';
-import { colors, devices } from '~/common/constants';
+import { colors, devices } from '~/utils/constants';
 import Button from '~/components/atoms/Button';
 
 export const Container = styled.div`
