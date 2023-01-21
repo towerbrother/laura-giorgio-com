@@ -70,7 +70,7 @@ export default function App() {
   const { language, header } = useLoaderData<typeof loader>();
 
   return (
-    <html lang={language}>
+    <html lang={language ?? 'en'}>
       <head>
         <Meta />
         <Links />
