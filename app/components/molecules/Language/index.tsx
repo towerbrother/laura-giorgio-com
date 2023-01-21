@@ -1,6 +1,6 @@
+import { useFetcher, useLocation } from '@remix-run/react';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import Button from '~/components/atoms/Button';
 import Overlay from '~/components/atoms/Overlay';
 import * as S from './styles';
 
@@ -9,20 +9,38 @@ export type LanguageProps = {
 };
 
 const Language = ({ options }: LanguageProps) => {
+  const fetcher = useFetcher();
+  const { pathname, search } = useLocation();
+
   const [show, setShow] = useState(false);
 
   return (
     <S.Container>
-      <Button onClick={() => setShow((prev) => !prev)}>
+      <S.ButtonIcon onClick={() => setShow((prev) => !prev)}>
         <S.Icon />
-      </Button>
-      <S.Form className={show ? 'active' : ''}>
+      </S.ButtonIcon>
+      <S.FormWrapper className={show ? 'active' : ''}>
         {options.map((option) => (
-          <S.Option key={uuidv4()} type="submit" onClick={() => setShow(false)}>
-            {option}
-          </S.Option>
+          <fetcher.Form
+            key={uuidv4()}
+            method="post"
+            action="/set-user-language"
+          >
+            <input
+              type="hidden"
+              name="redirectUrl"
+              value={pathname + search}
+              readOnly
+            />
+            <S.Option type="submit">
+              <>
+                <input type="hidden" name="language" value={option} readOnly />
+                {option}
+              </>
+            </S.Option>
+          </fetcher.Form>
         ))}
-      </S.Form>
+      </S.FormWrapper>
       <Overlay onClick={() => setShow(false)} showOverlay={show} />
     </S.Container>
   );

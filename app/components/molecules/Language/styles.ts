@@ -1,4 +1,3 @@
-import { Form as RemixForm } from '@remix-run/react';
 import { FaLanguage } from 'react-icons/fa';
 import styled from 'styled-components';
 import { colors, devices } from '~/common/constants';
@@ -6,7 +5,6 @@ import Button from '~/components/atoms/Button';
 
 export const Container = styled.div`
   position: relative;
-  z-index: 32;
   top: 4px;
   right: 50px;
 
@@ -15,11 +13,16 @@ export const Container = styled.div`
   }
 `;
 
+export const ButtonIcon = styled(Button)`
+  position: relative;
+  z-index: 32;
+`;
+
 export const Icon = styled(FaLanguage)`
   font-size: 48px;
 `;
 
-export const Form = styled(RemixForm)`
+export const FormWrapper = styled.div`
   opacity: 0;
   height: 0;
   overflow: hidden;
@@ -36,6 +39,7 @@ export const Form = styled(RemixForm)`
   &.active {
     display: flex;
     flex-direction: column;
+    align-items: center;
     opacity: 1;
     height: auto;
   }
@@ -43,7 +47,6 @@ export const Form = styled(RemixForm)`
 
 export const Option = styled(Button)`
   text-transform: uppercase;
-  text-align: center;
   font-weight: 700;
   font-size: 24px;
 `;
