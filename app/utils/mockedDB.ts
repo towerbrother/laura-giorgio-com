@@ -118,7 +118,7 @@ export const homeTile: Array<TileProps> = [
     tile: {
       title: 'Our story',
       subtitle: 'For those who did not know',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
+      text: 'We met at Uni, in the UK. Zaira, a mutual friend, told Giorgio about Laura suggesting to meet. She thought they would be perfect for each other. So, when Laura walked past Giorgio in the campus library, he seized the moment and approached her in proper stalker-mode: “Hi, you are Laura, aren’t you?”. Fast forward 8 years, 1 (wonderful) baby girl, 2 countries, countless yoga sessions, occasional arguments and hundreds of books read and discussed, we are now getting married! Join us to celebrate our big day together!',
     },
   },
   {
@@ -127,7 +127,7 @@ export const homeTile: Array<TileProps> = [
     tile: {
       title: 'Unsere Geschichte',
       subtitle: 'Für diejenigen, die es nicht wussten',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
+      text: 'Wir trafen uns an der Uni in Großbritannien. Zaira, eine gemeinsame Freundin, erzählte Giorgio von Lauras Vorschlag, sich zu treffen. Sie dachte, sie würden perfekt zueinander passen. Als Laura also in der Campus-Bibliothek an Giorgio vorbeilief, nutzte er den Moment und kam im richtigen Stalker-Modus auf sie zu: „Hi, du bist Laura, nicht wahr?“. Fast forward 8 Jahre, 1 (wunderbares) kleines Mädchen, 2 Länder, unzählige Yoga-Sitzungen, gelegentliche Streitereien und Hunderte von gelesenen und diskutierten Büchern, wir heiraten jetzt! Feiern Sie mit uns gemeinsam unseren großen Tag!',
     },
   },
   {
@@ -136,7 +136,7 @@ export const homeTile: Array<TileProps> = [
     tile: {
       title: 'La nostra storia',
       subtitle: 'Per chi non lo sapesse',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
+      text: `Ci siamo incontrati all'Università, in UK. Zaira, un'amica comune, nomina Laura a Giorgio e gli suggerisce di incontrarla. Era convinta che sarebbero stati perfetti l'uno per l'altra. Così, quando Laura è passata accanto a Giorgio nella biblioteca del campus, lui ha colto l'attimo e le si è avvicinato, con un atteggiamento da stalker, dicendo: "Ciao, tu sei Laura, vero?". Adesso, dopo 8 anni, 1 (meravigliosa) bambina, 2 paesi, innumerevoli sessioni di yoga, qualche litigata e centinaia di libri letti e discussi, ci sposiamo! Unisciti a noi per festeggiare insieme il nostro grande giorno!`,
     },
   },
 ];
