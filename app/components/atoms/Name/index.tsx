@@ -1,5 +1,4 @@
 import { NavLink } from '@remix-run/react';
-import * as S from './styles';
 
 type NameProps = {
   text: string;
@@ -7,8 +6,21 @@ type NameProps = {
 
 const Name = ({ text }: NameProps) => (
   <NavLink to="/">
-    <S.Text>{text}</S.Text>
+    <span>{text}</span>
   </NavLink>
 );
 
 export default Name;
+
+/*
+ export const Text = styled.span`
+  font-style: italic;
+  font-size: 25px;
+  word-spacing: -2px;
+
+  @media ${devices.laptop} {
+    font-size: 36px;
+    word-spacing: -5px;
+  }
+`;
+ */

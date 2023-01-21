@@ -1,6 +1,7 @@
-import ConditionalWrapper from '../ConditionalWrapper';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
-import * as S from './styles';
+import Button from '~/components/atoms/Button';
+import ConditionalWrapper from '~/components/atoms/ConditionalWrapper';
 
 type MenuIconProps = {
   iconType: 'bars' | 'cross';
@@ -8,14 +9,35 @@ type MenuIconProps = {
 };
 
 const MenuIcon = ({ iconType, toggle }: MenuIconProps) => (
-  <S.MenuIcon onClick={toggle}>
+  <Button onClick={toggle}>
     <ConditionalWrapper condition={iconType === 'bars'}>
-      <S.Bars />
+      <FaBars />
     </ConditionalWrapper>
     <ConditionalWrapper condition={iconType === 'cross'}>
-      <S.Cross />
+      <FaTimes />
     </ConditionalWrapper>
-  </S.MenuIcon>
+  </Button>
 );
 
 export default MenuIcon;
+
+/*
+export const MenuIcon = styled(Button)`
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 28px;
+
+  @media ${devices.laptop} {
+    display: none;
+  }
+`;
+
+export const Bars = styled(FaBars)`
+  color: ${colors.offBlack};
+`;
+
+export const Cross = styled(FaTimes)`
+  color: ${colors.offWhite};
+`;
+ */

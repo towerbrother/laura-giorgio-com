@@ -1,7 +1,5 @@
 import type { AriaAttributes, InputHTMLAttributes } from 'react';
 
-import * as S from './styles';
-
 type InputProps = {
   name: string;
   label?: string;
@@ -10,9 +8,24 @@ type InputProps = {
 
 const Input = ({ name, label, ...rest }: InputProps) => (
   <>
-    {label && <S.Label htmlFor={name}>{label}</S.Label>}
-    <S.Input id={name} {...rest}></S.Input>
+    {label && <label htmlFor={name}>{label}</label>}
+    <input id={name} {...rest}></input>
   </>
 );
 
 export default Input;
+
+/*
+export const Input = styled.input`
+  border: none;
+  background: transparent;
+`;
+
+export const Label = styled.label`
+  font-size: 12px;
+
+  @media ${devices.laptop} {
+    font-size: 16px;
+  }
+`;
+*/

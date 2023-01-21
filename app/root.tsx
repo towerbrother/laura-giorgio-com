@@ -1,6 +1,5 @@
 import type { LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { Analytics } from '@vercel/analytics/react';
 import {
   Links,
   LiveReload,
@@ -13,7 +12,6 @@ import {
 
 import Footer from './components/molecules/Footer';
 import Header from './components/molecules/Header';
-import { GlobalStyle } from './globalStyles';
 
 import { userLangPrefs } from '~/utils/cookie.server';
 
@@ -74,7 +72,6 @@ export default function App() {
       <head>
         <Meta />
         <Links />
-        {typeof document === 'undefined' ? '__STYLES__' : null}
       </head>
       <body>
         <Header {...header} />
@@ -82,18 +79,15 @@ export default function App() {
           <Outlet />
         </main>
         <Footer {...footer} />
-        <GlobalStyle />
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   );
 }
 
 export function ErrorBoundary({ error }: { error: Error }) {
-  console.error(error);
   return (
     <html>
       <head>

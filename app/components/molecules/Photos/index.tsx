@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import * as S from './styles';
 
 type PhotoProps = { src: string };
 
@@ -31,26 +30,105 @@ const Photos = ({ photos }: PhotosProps) => {
   const right = [selectedPhotos[4]];
 
   return (
-    <S.Wrapper>
-      <S.Left>
-        <S.LeftInnerWrapper>
+    <div>
+      <div>
+        <div>
           {left1.map(({ src }) => (
-            <S.SmallImg key={uuidv4()} src={src} alt={src} />
+            <img key={uuidv4()} src={src} alt={src} />
           ))}
-        </S.LeftInnerWrapper>
-        <S.LeftInnerWrapper>
+        </div>
+        <div>
           {left2.map(({ src }) => (
-            <S.SmallImg key={uuidv4()} src={src} alt={src} />
+            <img key={uuidv4()} src={src} alt={src} />
           ))}
-        </S.LeftInnerWrapper>
-      </S.Left>
-      <S.Right>
+        </div>
+      </div>
+      <div>
         {right.map(({ src }) => (
-          <S.BigImg key={uuidv4()} src={src} alt={src} />
+          <img key={uuidv4()} src={src} alt={src} />
         ))}
-      </S.Right>
-    </S.Wrapper>
+      </div>
+    </div>
   );
 };
 
 export default Photos;
+
+/*
+ * export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0px 20px 0px;
+  background-color: ${colors.offWhite};
+
+  @media ${devices.tablet} {
+    padding: 40px;
+  }
+
+  @media ${devices.laptop} {
+    flex-direction: row;
+    padding: 60px;
+  }
+`;
+
+export const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+export const LeftInnerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @media ${devices.laptop} {
+    flex-direction: row;
+  }
+`;
+
+export const Right = styled.div`
+  display: flex;
+`;
+
+export const SmallImg = styled.img`
+  height: auto;
+  width: 320px;
+  margin: 10px;
+  border-radius: 3px;
+
+  @media ${devices.tablet} {
+    width: 550px;
+  }
+
+  @media ${devices.laptop} {
+    width: 200px;
+  }
+
+  @media ${devices.laptopL} {
+    width: 250px;
+  }
+`;
+
+export const BigImg = styled.img`
+  height: auto;
+  width: 320px;
+  margin: 10px;
+  border-radius: 3px;
+
+  @media ${devices.tablet} {
+    width: 550px;
+  }
+
+  @media ${devices.laptop} {
+    width: 420px;
+  }
+
+  @media ${devices.laptopL} {
+    width: 520px;
+  }
+`;
+
+ */

@@ -1,8 +1,10 @@
 import { useFetcher, useLocation } from '@remix-run/react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { FaLanguage } from 'react-icons/fa';
+
 import Overlay from '~/components/atoms/Overlay';
-import * as S from './styles';
+import Button from '~/components/atoms/Button';
 
 export type LanguageProps = {
   options: Array<string>;
@@ -14,8 +16,6 @@ const Language = ({ options }: LanguageProps) => {
 
   const [show, setShow] = useState(false);
 
-  const formWrapperRef = useRef(null);
-
   const handleDelayedCloseFormWrapper = () => {
     setTimeout(() => {
       setShow(false);
@@ -23,11 +23,11 @@ const Language = ({ options }: LanguageProps) => {
   };
 
   return (
-    <S.Container>
-      <S.ButtonIcon onClick={() => setShow((prev) => !prev)}>
-        <S.Icon />
-      </S.ButtonIcon>
-      <S.FormWrapper ref={formWrapperRef} className={show ? 'active' : ''}>
+    <div>
+      <Button onClick={() => setShow((prev) => !prev)}>
+        <FaLanguage />
+      </Button>
+      <div className={show ? 'active' : ''}>
         {options.map((option) => (
           <fetcher.Form
             key={uuidv4()}
@@ -40,18 +40,68 @@ const Language = ({ options }: LanguageProps) => {
               value={pathname + search}
               readOnly
             />
-            <S.Option type="submit" onClick={handleDelayedCloseFormWrapper}>
+            <Button type="submit" onClick={handleDelayedCloseFormWrapper}>
               <>
                 <input type="hidden" name="language" value={option} readOnly />
                 {option}
               </>
-            </S.Option>
+            </Button>
           </fetcher.Form>
         ))}
-      </S.FormWrapper>
+      </div>
       <Overlay onClick={() => setShow(false)} showOverlay={show} />
-    </S.Container>
+    </div>
   );
 };
 
 export default Language;
+
+/*
+ * export const Container = styled.div`
+  position: relative;
+  top: 4px;
+  right: 50px;
+
+  @media ${devices.laptop} {
+    right: 0px;
+  }
+`;
+
+export const ButtonIcon = styled(Button)`
+  position: relative;
+  z-index: 32;
+`;
+
+export const Icon = styled(FaLanguage)`
+  font-size: 48px;
+`;
+
+export const FormWrapper = styled.div`
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 32;
+  right: -8px;
+  padding: 10px 15px;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  background-color: ${colors.offWhite};
+  transition: opacity 0.3s ease-in;
+
+  &.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    height: auto;
+  }
+`;
+
+export const Option = styled(Button)`
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 24px;
+`;
+ */

@@ -1,9 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
+import { NavLink } from '@remix-run/react';
 
-import type { HeaderProps } from '../Header';
-import MenuIcon from '../../atoms/MenuIcon';
-
-import * as S from './styles';
+import MenuIcon from '~/components/atoms/MenuIcon';
+import type { HeaderProps } from '~/components/molecules/Header';
 
 type SidebarProps = Partial<HeaderProps> & {
   isOpen: boolean;
@@ -11,24 +10,82 @@ type SidebarProps = Partial<HeaderProps> & {
 };
 
 const Sidebar = ({ links, isOpen, toggle }: SidebarProps) => {
+  /* aside has the $isOpen={isOpen} prop */
   return (
-    <S.Sidebar $isOpen={isOpen} onClick={toggle}>
+    <aside onClick={toggle}>
       <MenuIcon iconType="cross" toggle={toggle} />
-      <S.SidebarMenu>
+      <div>
+        {/* here we can put ternary operator in the className with Tailwind */}
         {links?.map(({ type, slug, text }) =>
           type === 'link' ? (
-            <S.Link key={uuidv4()} to={slug}>
+            <NavLink key={uuidv4()} to={slug}>
               {text}
-            </S.Link>
+            </NavLink>
           ) : (
-            <S.SidebarButtonLink key={uuidv4()} to={slug}>
+            <NavLink key={uuidv4()} to={slug}>
               {text}
-            </S.SidebarButtonLink>
+            </NavLink>
           )
         )}
-      </S.SidebarMenu>
-    </S.Sidebar>
+      </div>
+    </aside>
   );
 };
 
 export default Sidebar;
+
+/**
+ * type SidebarProps = {
+  $isOpen: boolean;
+};
+
+export const Sidebar = styled.aside<SidebarProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: ${({ $isOpen }) => ($isOpen ? '0' : '-100%')};
+  opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
+  width: 100%;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+  z-index: 10;
+  background: ${colors.offBlack};
+`;
+
+export const SidebarMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow-y: scroll;
+  height: 80%;
+`;
+
+export const Link = styled(NavLink)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0px;
+  padding: 16px 0px;
+  font-size: 20px;
+  color: ${colors.offWhite};
+`;
+
+export const SidebarButtonLink = styled(NavLink)`
+  transition: all 0.2s ease-in-out;
+  border-radius: 50px;
+  background: ${colors.primaryBackground};
+  color: ${colors.offWhite};
+  margin: 20px 0;
+  padding: 12px 30px;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: ${colors.offWhite};
+    color: ${colors.primaryBackground};
+  }
+`;
+
+ */

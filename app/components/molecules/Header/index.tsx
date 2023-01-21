@@ -1,9 +1,7 @@
 import { useState } from 'react';
 
-import Navbar from '../Navbar';
-import Sidebar from '../Sidebar';
-
-import * as S from './styles';
+import Navbar from '~/components/molecules/Navbar';
+import Sidebar from '~/components/molecules/Sidebar';
 
 type LinkType = { text: string; slug: string; type: 'link' | 'button' };
 
@@ -18,11 +16,25 @@ const Header = (props: HeaderProps) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <S.Header>
+    <header>
       <Navbar {...props} toggle={toggle} />
       <Sidebar {...props} isOpen={isOpen} toggle={toggle} />
-    </S.Header>
+    </header>
   );
 };
 
 export default Header;
+
+/*
+ * export const Header = styled.header`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${colors.offWhite};
+  height: 80px;
+
+  @media ${devices.laptop} {
+    height: 100px;
+  }
+`;
+ */
