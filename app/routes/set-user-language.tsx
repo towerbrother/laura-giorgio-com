@@ -8,12 +8,14 @@ export async function loader() {
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
-  const values = Object.fromEntries(formData);
-  const { language, redirectUrl } = values;
+  const redirectUrl = formData.get('redirectUrl');
+  const language = formData.get('language');
 
   return redirect(typeof redirectUrl === 'string' ? redirectUrl : '/', {
     headers: {
-      'Set-Cookie': await userLanguageCookie.serialize({ language: language }),
+      'Set-Cookie': await userLanguageCookie.serialize({
+        language: typeof language === 'string' ? language : 'en',
+      }),
     },
   });
 }

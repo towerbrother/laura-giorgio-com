@@ -12,11 +12,17 @@ export const meta: MetaFunction = () => ({
 
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
-  const { language } = await userLanguageCookie.parse(cookieHeader);
+  const cookie = await userLanguageCookie.parse(cookieHeader);
 
   return json({
-    hotelTile: hotelTile[getIndex(language)],
-    pensionTile: pensionTile[getIndex(language)],
+    hotelTile:
+      hotelTile[
+        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+      ],
+    pensionTile:
+      pensionTile[
+        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+      ],
   });
 }
 

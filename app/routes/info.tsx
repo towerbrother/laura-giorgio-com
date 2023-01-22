@@ -13,10 +13,12 @@ export const meta: MetaFunction = () => ({
 
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
-  const { language } = await userLanguageCookie.parse(cookieHeader);
+  const cookie = await userLanguageCookie.parse(cookieHeader);
 
   return json({
-    info: info[getIndex(language)],
+    info: info[
+      getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+    ],
     photos: photos,
   });
 }

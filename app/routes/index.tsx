@@ -14,11 +14,17 @@ export const meta: MetaFunction = () => ({
 
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
-  const { language } = await userLanguageCookie.parse(cookieHeader);
+  const cookie = (await userLanguageCookie.parse(cookieHeader)) || {};
 
   return json({
-    stage: stage[getIndex(language)],
-    homeTile: homeTile[getIndex(language)],
+    stage:
+      stage[
+        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+      ],
+    homeTile:
+      homeTile[
+        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+      ],
   });
 }
 

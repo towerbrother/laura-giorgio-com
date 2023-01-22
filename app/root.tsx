@@ -42,12 +42,13 @@ export const links: LinksFunction = () => {
 
 export const loader = async ({ request }: LoaderArgs) => {
   const cookieHeader = request.headers.get('Cookie');
-  const cookie = await userLanguageCookie.parse(cookieHeader);
+  const cookie = (await userLanguageCookie.parse(cookieHeader)) || {};
 
   if (cookie) {
     return json({
       language: cookie.language,
       header: header[getIndex(cookie.language)],
+      footer: footer,
     });
   }
 
@@ -55,6 +56,7 @@ export const loader = async ({ request }: LoaderArgs) => {
     {
       language: 'en',
       header: header[getIndex('en')],
+      footer: footer,
     },
     {
       headers: {
@@ -65,16 +67,16 @@ export const loader = async ({ request }: LoaderArgs) => {
 };
 
 export default function App() {
-  const data = useLoaderData<typeof loader>();
+  const { language, header, footer } = useLoaderData<typeof loader>();
 
   return (
-    <html lang={data?.language ?? 'en'}>
+    <html lang={language || 'en'}>
       <head>
         <Meta />
         <Links />
       </head>
-      <body className="font-josephin">
-        <Header {...data?.header} />
+      <body className="font-josephin min-h-screen flex flex-col">
+        <Header {...header} />
         <main>
           <Outlet />
         </main>
@@ -87,21 +89,21 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
-  return (
-    <html>
-      <head>
-        <title>Oh no!</title>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <div>Oh no! Something went wrong...</div>
-        <div>
-          <p>{error.message}</p>
-        </div>
-        <Scripts />
-      </body>
-    </html>
-  );
-}
+// export function ErrorBoundary({ error }: { error: Error }) {
+//   return (
+//     <html>
+//       <head>
+//         <title>Oh no!</title>
+//         <Meta />
+//         <Links />
+//       </head>
+//       <body>
+//         <div>Oh no! Something went wrong...</div>
+//         <div>
+//           <p>{error.message}</p>
+//         </div>
+//         <Scripts />
+//       </body>
+//     </html>
+//   );
+// }

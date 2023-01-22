@@ -18,11 +18,17 @@ export const meta: MetaFunction = () => ({
 
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
-  const { language } = await userLanguageCookie.parse(cookieHeader);
+  const cookie = await userLanguageCookie.parse(cookieHeader);
 
   return json({
-    contactBanner: contactBanner[getIndex(language)],
-    contributionBanner: contributionBanner[getIndex(language)],
+    contactBanner:
+      contactBanner[
+        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+      ],
+    contributionBanner:
+      contributionBanner[
+        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+      ],
     photos: photos,
   });
 }

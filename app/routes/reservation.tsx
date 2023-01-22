@@ -18,12 +18,21 @@ export const meta: MetaFunction = () => ({
 
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
-  const { language } = await userLanguageCookie.parse(cookieHeader);
+  const cookie = await userLanguageCookie.parse(cookieHeader);
 
   return json({
-    transportationTile: transportationTile[getIndex(language)],
-    accomodationTile: accomodationTile[getIndex(language)],
-    contributionBanner: contributionBanner[getIndex(language)],
+    transportationTile:
+      transportationTile[
+        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+      ],
+    accomodationTile:
+      accomodationTile[
+        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+      ],
+    contributionBanner:
+      contributionBanner[
+        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
+      ],
   });
 }
 
