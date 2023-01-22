@@ -17,10 +17,10 @@ const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => {
   return (
     <div className="flex justify-between items-center w-full max-w-7xl px-6 h-20 lg:h-28">
       <Name text={name} />
-      <nav className="flex flex-row items-center lg:flex-row-reverse">
+      <nav className="flex flex-row items-center xl:flex-row-reverse">
         <Language options={languageOptions} />
         <MenuIcon iconType="bars" toggle={toggle} />
-        <div className="hidden pr-2 lg:flex lg:items-center">
+        <div className="hidden pr-2 xl:flex xl:items-center">
           {links?.map(({ type, slug, text }) =>
             type === 'link' ? (
               <NavLink

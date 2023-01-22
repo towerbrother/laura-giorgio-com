@@ -17,7 +17,7 @@ const MenuIcon = ({
   <div
     className={`${position} ${
       position === 'relative' ? 'top-1' : 'top-12 right-12'
-    } ml-2 lg:hidden`}
+    } ml-2 xl:hidden`}
   >
     <Button className="relative z-40" onClick={toggle}>
       <ConditionalWrapper condition={iconType === 'bars'}>

@@ -6,7 +6,7 @@ type NameProps = {
 
 const Name = ({ text }: NameProps) => (
   <NavLink to="/">
-    <span className="z-40 italic text-3xl text-neutral-800 font-bold -tracking-[3px] lg:text-4xl lg:tracking-tight">
+    <span className="z-40 italic text-2xl text-neutral-800 font-bold -tracking-[3px] md:text-3xl lg:text-4xl lg:tracking-tight">
       {text}
     </span>
   </NavLink>

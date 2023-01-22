@@ -17,10 +17,10 @@ const Banner = ({
   link: { slug, text },
 }: BannerProps) => (
   <div
-    className={`flex flex-col justify-around items-center py-5 px-3 bg-neutral-300 md:py-6 lg:py-20`}
+    className={`flex flex-col justify-around items-center py-8 px-5 bg-neutral-300 md:py-12 lg:py-20`}
   >
     <ConditionalWrapper condition={Boolean(headline)}>
-      <h2 className="text-center font-bold text-2xl my-1 mx-0 lg:text-4xl lg:my-2">
+      <h2 className="text-center font-bold text-2xl my-3 mx-0 lg:text-4xl lg:my-2">
         {headline}
       </h2>
     </ConditionalWrapper>

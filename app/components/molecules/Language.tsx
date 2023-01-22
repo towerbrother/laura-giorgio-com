@@ -23,7 +23,7 @@ const Language = ({ options }: LanguageProps) => {
   };
 
   return (
-    <div className="relative top-1 mx-1 lg:right-0">
+    <div className="relative top-1 lg:right-0">
       <Button
         className="relative z-40"
         onClick={() => setShow((prev) => !prev)}
