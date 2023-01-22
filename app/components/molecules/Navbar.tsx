@@ -12,8 +12,6 @@ type NavbarProps = HeaderProps & {
 };
 
 const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => {
-  const activeClassName = 'text-cyan-600';
-
   return (
     <div className="flex justify-between items-center w-full max-w-7xl px-6 h-20 lg:h-28">
       <Name text={name} />
@@ -25,9 +23,9 @@ const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => {
             type === 'link' ? (
               <NavLink
                 className={({ isActive }) =>
-                  isActive
-                    ? `${activeClassName} z-40 flex items-center h-full mx-2 font-bold text-xl hover:opacity-80`
-                    : 'z-40 flex items-center h-full mx-2 text-neutral-800 font-bold text-xl hover:opacity-80'
+                  `${
+                    isActive ? 'text-cyan-600 hover:' : 'text-neutral-800 '
+                  } z-40 flex items-center h-full mx-2 font-bold text-xl hover:opacity-80`
                 }
                 key={uuidv4()}
                 to={slug}
@@ -36,7 +34,11 @@ const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => {
               </NavLink>
             ) : (
               <NavLink
-                className="z-40 transition-all duration-200 ease-in-out rounded-md bg-neutral-800 text-neutral-100 font-bold text-xl py-2 px-4 mx-2 hover:bg-neutral-300 hover:text-neutral-800"
+                className={({ isActive }) =>
+                  `${
+                    isActive ? 'bg-cyan-600' : 'bg-neutral-800'
+                  } z-40 transition-all duration-200 ease-in-out rounded-md text-neutral-100 font-bold text-xl py-2 px-4 mx-2 hover:opacity-80`
+                }
                 key={uuidv4()}
                 to={slug}
               >

@@ -711,6 +711,10 @@ video {
   max-width: 80rem;
 }
 
+.max-w-sm {
+  max-width: 24rem;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -792,6 +796,11 @@ video {
 .bg-neutral-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
+}
+
+.bg-cyan-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(8 145 178 / var(--tw-bg-opacity));
 }
 
 .p-14 {
@@ -943,6 +952,10 @@ video {
   letter-spacing: -3px;
 }
 
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
 .text-neutral-800 {
   --tw-text-opacity: 1;
   color: rgb(38 38 38 / var(--tw-text-opacity));
@@ -961,6 +974,11 @@ video {
 .text-cyan-600 {
   --tw-text-opacity: 1;
   color: rgb(8 145 178 / var(--tw-text-opacity));
+}
+
+.text-cyan-800 {
+  --tw-text-opacity: 1;
+  color: rgb(21 94 117 / var(--tw-text-opacity));
 }
 
 .opacity-100 {
@@ -1016,6 +1034,11 @@ video {
   color: rgb(38 38 38 / var(--tw-text-opacity));
 }
 
+.hover\:text-cyan-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(8 145 178 / var(--tw-text-opacity));
+}
+
 .hover\:opacity-80:hover {
   opacity: 0.8;
 }
@@ -1028,6 +1051,10 @@ video {
   .md\:my-5 {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
+  }
+
+  .md\:w-80 {
+    width: 20rem;
   }
 
   .md\:max-w-md {
@@ -1056,6 +1083,32 @@ video {
   .md\:py-10 {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+  }
+
+  .md\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .md\:py-7 {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .md\:pl-12 {
+    padding-left: 3rem;
+  }
+
+  .md\:pr-2 {
+    padding-right: 0.5rem;
+  }
+
+  .md\:pr-12 {
+    padding-right: 3rem;
+  }
+
+  .md\:pl-2 {
+    padding-left: 0.5rem;
   }
 
   .md\:text-3xl {
@@ -1098,6 +1151,14 @@ video {
     right: 2px;
   }
 
+  .lg\:-top-20 {
+    top: -5rem;
+  }
+
+  .lg\:-left-20 {
+    left: -5rem;
+  }
+
   .lg\:my-2 {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -1133,6 +1194,10 @@ video {
 
   .lg\:flex-row {
     flex-direction: row;
+  }
+
+  .lg\:flex-row-reverse {
+    flex-direction: row-reverse;
   }
 
   .lg\:p-20 {
@@ -1203,6 +1268,11 @@ video {
   .lg\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .lg\:tracking-tight {
