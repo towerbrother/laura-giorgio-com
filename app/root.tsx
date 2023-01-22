@@ -17,7 +17,7 @@ import Header from './components/molecules/Header';
 import Footer from './components/molecules/Footer';
 import { footer, getIndex, header } from './utils/mockedDB';
 
-import { userLanguageCookie, userIsAuthCookie } from '~/utils/cookie.server';
+import { userCookie } from '~/utils/cookie.server';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -43,34 +43,15 @@ export const links: LinksFunction = () => {
 
 export const loader = async ({ request }: LoaderArgs) => {
   const cookieHeader = request.headers.get('Cookie');
-  const langCookie = (await userLanguageCookie.parse(cookieHeader)) || {};
-  const isAuthCookie = (await userIsAuthCookie.parse(cookieHeader)) || {};
+  const cookie = (await userCookie.parse(cookieHeader)) || {};
 
-  if (isAuthCookie) {
-    if (langCookie) {
-      return json({
-        language: langCookie.language,
-        isAuth: isAuthCookie.isAuth,
-        header: header[getIndex(langCookie.language)],
-        footer: footer,
-      });
-    }
-
-    return json(
-      {
-        language: 'en',
-        isAuth: isAuthCookie.isAuth,
-        header: header[getIndex('en')],
-        footer: footer,
-      },
-      {
-        headers: {
-          'Set-Cookie': await userLanguageCookie.serialize({
-            language: 'en',
-          }),
-        },
-      }
-    );
+  if (cookie) {
+    return json({
+      language: cookie.language,
+      isAuth: cookie.isAuth,
+      header: header[getIndex(cookie.language)],
+      footer: footer,
+    });
   }
 
   return json(
@@ -82,7 +63,8 @@ export const loader = async ({ request }: LoaderArgs) => {
     },
     {
       headers: {
-        'Set-Cookie': await userIsAuthCookie.serialize({
+        'Set-Cookie': await userCookie.serialize({
+          language: 'en',
           isAuth: false,
         }),
       },
