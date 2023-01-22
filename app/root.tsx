@@ -12,11 +12,12 @@ import {
 
 import styles from './tailwind.css';
 
-import Footer from './components/molecules/Footer';
+import Login from './components/molecules/Login';
 import Header from './components/molecules/Header';
+import Footer from './components/molecules/Footer';
 import { footer, getIndex, header } from './utils/mockedDB';
 
-import { userLanguageCookie } from '~/utils/cookie.server';
+import { userLanguageCookie, userIsAuthCookie } from '~/utils/cookie.server';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -42,32 +43,55 @@ export const links: LinksFunction = () => {
 
 export const loader = async ({ request }: LoaderArgs) => {
   const cookieHeader = request.headers.get('Cookie');
-  const cookie = (await userLanguageCookie.parse(cookieHeader)) || {};
+  const langCookie = (await userLanguageCookie.parse(cookieHeader)) || {};
+  const isAuthCookie = (await userIsAuthCookie.parse(cookieHeader)) || {};
 
-  if (cookie) {
-    return json({
-      language: cookie.language,
-      header: header[getIndex(cookie.language)],
-      footer: footer,
-    });
+  if (isAuthCookie) {
+    if (langCookie) {
+      return json({
+        language: langCookie.language,
+        isAuth: isAuthCookie.isAuth,
+        header: header[getIndex(langCookie.language)],
+        footer: footer,
+      });
+    }
+
+    return json(
+      {
+        language: 'en',
+        isAuth: isAuthCookie.isAuth,
+        header: header[getIndex('en')],
+        footer: footer,
+      },
+      {
+        headers: {
+          'Set-Cookie': await userLanguageCookie.serialize({
+            language: 'en',
+          }),
+        },
+      }
+    );
   }
 
   return json(
     {
       language: 'en',
+      isAuth: false,
       header: header[getIndex('en')],
       footer: footer,
     },
     {
       headers: {
-        'Set-Cookie': await userLanguageCookie.serialize({ language: 'en' }),
+        'Set-Cookie': await userIsAuthCookie.serialize({
+          isAuth: false,
+        }),
       },
     }
   );
 };
 
 export default function App() {
-  const { language, header, footer } = useLoaderData<typeof loader>();
+  const { language, isAuth, header, footer } = useLoaderData<typeof loader>();
 
   return (
     <html lang={language || 'en'}>
@@ -76,11 +100,17 @@ export default function App() {
         <Links />
       </head>
       <body className="font-josephin min-h-screen flex flex-col">
-        <Header {...header} />
-        <main>
-          <Outlet />
-        </main>
-        <Footer {...footer} />
+        {!isAuth ? (
+          <Login />
+        ) : (
+          <>
+            <Header {...header} />
+            <main>
+              <Outlet />
+            </main>
+            <Footer {...footer} />
+          </>
+        )}
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
