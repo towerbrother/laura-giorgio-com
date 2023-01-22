@@ -14,15 +14,11 @@ export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const cookie = await userLanguageCookie.parse(cookieHeader);
 
+  const condition = cookie !== null && cookie.hasOwnProperty('language');
+
   return json({
-    hotelTile:
-      hotelTile[
-        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
-      ],
-    pensionTile:
-      pensionTile[
-        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
-      ],
+    hotelTile: hotelTile[getIndex(condition ? cookie.language : 'en')],
+    pensionTile: pensionTile[getIndex(condition ? cookie.language : 'en')],
   });
 }
 

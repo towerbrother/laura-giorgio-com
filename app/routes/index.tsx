@@ -16,15 +16,11 @@ export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const cookie = (await userLanguageCookie.parse(cookieHeader)) || {};
 
+  const condition = cookie !== null && cookie.hasOwnProperty('language');
+
   return json({
-    stage:
-      stage[
-        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
-      ],
-    homeTile:
-      homeTile[
-        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
-      ],
+    stage: stage[getIndex(condition ? cookie.language : 'en')],
+    homeTile: homeTile[getIndex(condition ? cookie.language : 'en')],
   });
 }
 

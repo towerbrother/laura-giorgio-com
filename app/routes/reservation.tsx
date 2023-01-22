@@ -20,19 +20,15 @@ export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const cookie = await userLanguageCookie.parse(cookieHeader);
 
+  const condition = cookie !== null && cookie.hasOwnProperty('language');
+
   return json({
     transportationTile:
-      transportationTile[
-        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
-      ],
+      transportationTile[getIndex(condition ? cookie.language : 'en')],
     accomodationTile:
-      accomodationTile[
-        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
-      ],
+      accomodationTile[getIndex(condition ? cookie.language : 'en')],
     contributionBanner:
-      contributionBanner[
-        getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
-      ],
+      contributionBanner[getIndex(condition ? cookie.language : 'en')],
   });
 }
 

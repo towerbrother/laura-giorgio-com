@@ -15,10 +15,10 @@ export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const cookie = await userLanguageCookie.parse(cookieHeader);
 
+  const condition = cookie !== null && cookie.hasOwnProperty('language');
+
   return json({
-    info: info[
-      getIndex(cookie.hasOwnProperty('language') ? cookie.language : 'en')
-    ],
+    info: info[getIndex(condition ? cookie.language : 'en')],
     photos: photos,
   });
 }
