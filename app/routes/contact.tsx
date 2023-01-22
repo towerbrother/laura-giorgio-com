@@ -1,10 +1,10 @@
 import Banner from '~/components/molecules/Banner';
 import Photos from '~/components/molecules/Photos';
 
-import type { LoaderArgs } from '@remix-run/node';
+import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import { userLangPrefs } from '~/utils/cookie.server';
+import { userLanguageCookie } from '~/utils/cookie.server';
 import {
   contactBanner,
   getIndex,
@@ -12,9 +12,13 @@ import {
   photos,
 } from '~/utils/mockedDB';
 
+export const meta: MetaFunction = () => ({
+  title: 'Contact 👌',
+});
+
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
-  const { language } = await userLangPrefs.parse(cookieHeader);
+  const { language } = await userLanguageCookie.parse(cookieHeader);
 
   return json({
     contactBanner: contactBanner[getIndex(language)],

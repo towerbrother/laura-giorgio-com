@@ -16,7 +16,7 @@ const MenuIcon = ({
 }: MenuIconProps) => (
   <div
     className={`${position} ${
-      position === 'relative' ? 'top-1' : 'top-6 right-6'
+      position === 'relative' ? 'top-1' : 'top-12 right-12'
     } ml-2 lg:hidden`}
   >
     <Button className="relative z-40" onClick={toggle}>

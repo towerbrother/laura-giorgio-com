@@ -36,7 +36,7 @@ const Language = ({ options }: LanguageProps) => {
           show
             ? 'opacity-100 height-auto'
             : 'opacity-0 height-0 overflow-hidden'
-        } absolute z-40 -right-[1px] flex flex-col items-center py-2 px-3 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300`}
+        } absolute z-40 -right-[4px] flex flex-col items-center py-2 px-3 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300 lg:right-[2px]`}
       >
         {options.map((option) => (
           <fetcher.Form
@@ -44,20 +44,18 @@ const Language = ({ options }: LanguageProps) => {
             method="post"
             action="/set-user-language"
           >
-            <Input
-              type="hidden"
-              name="redirectUrl"
-              value={pathname + search}
-              readOnly
-            />
-            <Button
-              className="text-2xl font-bold uppercase"
-              type="submit"
-              onClick={handleDelayedCloseFormWrapper}
-            >
+            <Button type="submit" onClick={handleDelayedCloseFormWrapper}>
               <>
+                <Input
+                  type="hidden"
+                  name="redirectUrl"
+                  value={pathname + search}
+                  readOnly
+                />
                 <Input type="hidden" name="language" value={option} readOnly />
-                {option}
+                <span className="text-2xl font-bold text-neutral-800 uppercase">
+                  {option}
+                </span>
               </>
             </Button>
           </fetcher.Form>

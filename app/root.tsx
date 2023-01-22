@@ -14,14 +14,13 @@ import styles from './tailwind.css';
 
 import Footer from './components/molecules/Footer';
 import Header from './components/molecules/Header';
-
-import { userLangPrefs } from '~/utils/cookie.server';
-
 import { footer, getIndex, header } from './utils/mockedDB';
+
+import { userLanguageCookie } from '~/utils/cookie.server';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'laura-giorgio-com',
+  title: 'Laura & Giorgio',
   viewport: 'width=device-width,initial-scale=1',
 });
 
@@ -43,9 +42,7 @@ export const links: LinksFunction = () => {
 
 export const loader = async ({ request }: LoaderArgs) => {
   const cookieHeader = request.headers.get('Cookie');
-  const cookie = await userLangPrefs.parse(cookieHeader);
-
-  const defaultCookie = { language: 'en' };
+  const cookie = await userLanguageCookie.parse(cookieHeader);
 
   if (cookie) {
     return json({
@@ -56,28 +53,28 @@ export const loader = async ({ request }: LoaderArgs) => {
 
   return json(
     {
-      language: defaultCookie.language,
-      header: header[getIndex(defaultCookie.language)],
+      language: 'en',
+      header: header[getIndex('en')],
     },
     {
       headers: {
-        'Set-Cookie': await userLangPrefs.serialize(defaultCookie),
+        'Set-Cookie': await userLanguageCookie.serialize({ language: 'en' }),
       },
     }
   );
 };
 
 export default function App() {
-  const { language, header } = useLoaderData<typeof loader>();
+  const data = useLoaderData<typeof loader>();
 
   return (
-    <html lang={language ?? 'en'}>
+    <html lang={data?.language ?? 'en'}>
       <head>
         <Meta />
         <Links />
       </head>
       <body className="font-josephin">
-        <Header {...header} />
+        <Header {...data?.header} />
         <main>
           <Outlet />
         </main>

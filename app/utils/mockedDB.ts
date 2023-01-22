@@ -9,8 +9,8 @@ import type { BannerProps } from '~/components/molecules/Banner';
 import type { PhotosProps } from '~/components/molecules/Photos';
 
 // helper function
-export const getIndex = (lang: string): number => {
-  switch (lang) {
+export const getIndex = (language: string): number => {
+  switch (language) {
     case 'en':
       return 0;
     case 'de':
