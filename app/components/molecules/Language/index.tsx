@@ -5,6 +5,7 @@ import { FaLanguage } from 'react-icons/fa';
 
 import Overlay from '~/components/atoms/Overlay';
 import Button from '~/components/atoms/Button';
+import Input from '~/components/atoms/Input';
 
 export type LanguageProps = {
   options: Array<string>;
@@ -34,7 +35,7 @@ const Language = ({ options }: LanguageProps) => {
             method="post"
             action="/set-user-language"
           >
-            <input
+            <Input
               type="hidden"
               name="redirectUrl"
               value={pathname + search}
@@ -42,7 +43,7 @@ const Language = ({ options }: LanguageProps) => {
             />
             <Button type="submit" onClick={handleDelayedCloseFormWrapper}>
               <>
-                <input type="hidden" name="language" value={option} readOnly />
+                <Input type="hidden" name="language" value={option} readOnly />
                 {option}
               </>
             </Button>
