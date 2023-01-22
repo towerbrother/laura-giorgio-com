@@ -89,21 +89,21 @@ export default function App() {
   );
 }
 
-// export function ErrorBoundary({ error }: { error: Error }) {
-//   return (
-//     <html>
-//       <head>
-//         <title>Oh no!</title>
-//         <Meta />
-//         <Links />
-//       </head>
-//       <body>
-//         <div>Oh no! Something went wrong...</div>
-//         <div>
-//           <p>{error.message}</p>
-//         </div>
-//         <Scripts />
-//       </body>
-//     </html>
-//   );
-// }
+export function ErrorBoundary({ error }: { error: Error }) {
+  return (
+    <html>
+      <head>
+        <title>Oh no!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <div>
+          Oh no! Something went wrong... we apologise for any inconvenience
+          caused! 💖
+        </div>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
