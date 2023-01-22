@@ -16,7 +16,7 @@ const Header = (props: HeaderProps) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <header>
+    <header className="relative flex justify-center items-center bg-neutral-100 shadow-lg h-20 lg:h-28">
       <Navbar {...props} toggle={toggle} />
       <Sidebar {...props} isOpen={isOpen} toggle={toggle} />
     </header>
@@ -24,17 +24,3 @@ const Header = (props: HeaderProps) => {
 };
 
 export default Header;
-
-/*
- * export const Header = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${colors.offWhite};
-  height: 80px;
-
-  @media ${devices.laptop} {
-    height: 100px;
-  }
-`;
- */

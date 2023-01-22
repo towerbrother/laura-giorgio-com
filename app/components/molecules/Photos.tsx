@@ -29,23 +29,40 @@ const Photos = ({ photos }: PhotosProps) => {
   const left2 = [selectedPhotos[2], selectedPhotos[3]];
   const right = [selectedPhotos[4]];
 
+  const leftInnerClassName = 'flex flex-col justify-around lg:flex-row';
+
   return (
-    <div>
-      <div>
-        <div>
+    <div className="flex flex-col justify-center items-center bg-neutral-100 pt-8 px-0 pb-5 md:p-10 lg:flex-row lg:p-15">
+      <div className="flex flex-col justify-around">
+        <div className={leftInnerClassName}>
           {left1.map(({ src }) => (
-            <img key={uuidv4()} src={src} alt={src} />
+            <img
+              key={uuidv4()}
+              src={src}
+              alt={src}
+              className="h-auto w-80 m-2 rounded-sm md:w-136 lg:w-52 xl:w-64"
+            />
           ))}
         </div>
-        <div>
+        <div className={leftInnerClassName}>
           {left2.map(({ src }) => (
-            <img key={uuidv4()} src={src} alt={src} />
+            <img
+              key={uuidv4()}
+              src={src}
+              alt={src}
+              className="h-auto w-80 m-2 rounded-sm md:w-136 lg:w-52 xl:w-64"
+            />
           ))}
         </div>
       </div>
-      <div>
+      <div className="flex">
         {right.map(({ src }) => (
-          <img key={uuidv4()} src={src} alt={src} />
+          <img
+            key={uuidv4()}
+            src={src}
+            alt={src}
+            className="h-auto w-80 m-2 rounded-sm md:w-136 lg:w-[432px] xl:w-[527px]"
+          />
         ))}
       </div>
     </div>
@@ -53,82 +70,3 @@ const Photos = ({ photos }: PhotosProps) => {
 };
 
 export default Photos;
-
-/*
- * export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 0px 20px 0px;
-  background-color: ${colors.offWhite};
-
-  @media ${devices.tablet} {
-    padding: 40px;
-  }
-
-  @media ${devices.laptop} {
-    flex-direction: row;
-    padding: 60px;
-  }
-`;
-
-export const Left = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-
-export const LeftInnerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-  @media ${devices.laptop} {
-    flex-direction: row;
-  }
-`;
-
-export const Right = styled.div`
-  display: flex;
-`;
-
-export const SmallImg = styled.img`
-  height: auto;
-  width: 320px;
-  margin: 10px;
-  border-radius: 3px;
-
-  @media ${devices.tablet} {
-    width: 550px;
-  }
-
-  @media ${devices.laptop} {
-    width: 200px;
-  }
-
-  @media ${devices.laptopL} {
-    width: 250px;
-  }
-`;
-
-export const BigImg = styled.img`
-  height: auto;
-  width: 320px;
-  margin: 10px;
-  border-radius: 3px;
-
-  @media ${devices.tablet} {
-    width: 550px;
-  }
-
-  @media ${devices.laptop} {
-    width: 420px;
-  }
-
-  @media ${devices.laptopL} {
-    width: 520px;
-  }
-`;
-
- */

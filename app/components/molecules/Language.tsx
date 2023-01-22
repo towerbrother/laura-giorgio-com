@@ -24,11 +24,20 @@ const Language = ({ options }: LanguageProps) => {
   };
 
   return (
-    <div>
-      <Button onClick={() => setShow((prev) => !prev)}>
-        <FaLanguage />
+    <div className="relative top-1 mx-1 lg:right-0">
+      <Button
+        className="relative z-40"
+        onClick={() => setShow((prev) => !prev)}
+      >
+        <FaLanguage className="text-5xl text-neutral-800 hover:opacity-80 lg:text-6xl" />
       </Button>
-      <div className={show ? 'active' : ''}>
+      <div
+        className={`${
+          show
+            ? 'opacity-100 height-auto'
+            : 'opacity-0 height-0 overflow-hidden'
+        } absolute z-40 -right-[1px] flex flex-col items-center py-2 px-3 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300`}
+      >
         {options.map((option) => (
           <fetcher.Form
             key={uuidv4()}
@@ -41,7 +50,11 @@ const Language = ({ options }: LanguageProps) => {
               value={pathname + search}
               readOnly
             />
-            <Button type="submit" onClick={handleDelayedCloseFormWrapper}>
+            <Button
+              className="text-2xl font-bold uppercase"
+              type="submit"
+              onClick={handleDelayedCloseFormWrapper}
+            >
               <>
                 <Input type="hidden" name="language" value={option} readOnly />
                 {option}
@@ -50,59 +63,9 @@ const Language = ({ options }: LanguageProps) => {
           </fetcher.Form>
         ))}
       </div>
-      <Overlay onClick={() => setShow(false)} showOverlay={show} />
+      <Overlay onClick={() => setShow(false)} show={show} />
     </div>
   );
 };
 
 export default Language;
-
-/*
- * export const Container = styled.div`
-  position: relative;
-  top: 4px;
-  right: 50px;
-
-  @media ${devices.laptop} {
-    right: 0px;
-  }
-`;
-
-export const ButtonIcon = styled(Button)`
-  position: relative;
-  z-index: 32;
-`;
-
-export const Icon = styled(FaLanguage)`
-  font-size: 48px;
-`;
-
-export const FormWrapper = styled.div`
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: 32;
-  right: -8px;
-  padding: 10px 15px;
-  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-  background-color: ${colors.offWhite};
-  transition: opacity 0.3s ease-in;
-
-  &.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 1;
-    height: auto;
-  }
-`;
-
-export const Option = styled(Button)`
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 24px;
-`;
- */

@@ -8,9 +8,11 @@ export type InfoProps = {
 };
 
 const Info = ({ headline, items }: InfoProps) => (
-  <div>
-    <h2>{headline}</h2>
-    <div>
+  <div className="flex flex-col justify-around items-center p-14 bg-neutral-300 lg:p-20">
+    <h2 className="text-center font-bold text-3xl mb-6 md:text-5xl">
+      {headline}
+    </h2>
+    <div className="flex flex-col justify-around items-center lg:flex-row">
       {items?.map((item: InfoItemProps) => (
         <InfoItem key={uuidv4()} {...item} />
       ))}
@@ -19,40 +21,3 @@ const Info = ({ headline, items }: InfoProps) => (
 );
 
 export default Info;
-
-/*
- * export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 45px;
-  background-color: ${colors.offGray};
-
-  @media ${devices.laptop} {
-    padding: 80px;
-  }
-`;
-
-export const InfoItemsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
-  @media ${devices.laptop} {
-    flex-direction: row;
-  }
-`;
-
-export const Headline = styled.h2`
-text-align:center
-  font-size: 32px;
-  margin-bottom: 20px;
-
-  @media ${devices.tablet} {
-    font-size: 42px;
-  }
-`;
-
- */

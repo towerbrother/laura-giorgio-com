@@ -5,23 +5,9 @@ export type FooterProps = {
 };
 
 const Footer = ({ name }: FooterProps) => (
-  <footer>
+  <footer className="flex justify-center py-6 px-0 bg-neutral-100 mt-auto md:py-10">
     <Name text={name} />
   </footer>
 );
 
 export default Footer;
-
-/*
- * export const Footer = styled.footer`
-  display: flex;
-  justify-content: center;
-  padding: 25px 0px;
-  background-color: ${colors.offWhite};
-  margin-top: auto;
-
-  @media ${devices.tablet} {
-    padding: 40px 0px;
-  }
-`;
- */

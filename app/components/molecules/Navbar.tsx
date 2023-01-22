@@ -11,86 +11,43 @@ type NavbarProps = HeaderProps & {
   toggle: () => void;
 };
 
-const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => (
-  <div>
-    <Name text={name} />
-    <nav>
-      <MenuIcon iconType="bars" toggle={toggle} />
-      <div>
-        {links?.map(({ type, slug, text }) =>
-          type === 'link' ? (
-            <NavLink key={uuidv4()} to={slug}>
-              {text}
-            </NavLink>
-          ) : (
-            <NavLink key={uuidv4()} to={slug}>
-              {text}
-            </NavLink>
-          )
-        )}
-      </div>
-      <Language options={languageOptions} />
-    </nav>
-  </div>
-);
+const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => {
+  const activeClassName = 'text-cyan-600';
+
+  return (
+    <div className="flex justify-between items-center w-full max-w-7xl px-6 h-20 lg:h-28">
+      <Name text={name} />
+      <nav className="flex flex-row items-center lg:flex-row-reverse">
+        <Language options={languageOptions} />
+        <MenuIcon iconType="bars" toggle={toggle} />
+        <div className="hidden pr-2 lg:flex lg:items-center">
+          {links?.map(({ type, slug, text }) =>
+            type === 'link' ? (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? `${activeClassName} z-40 flex items-center h-full mx-2 font-bold hover:opacity-80`
+                    : 'z-40 flex items-center h-full mx-2 text-neutral-800 font-bold hover:opacity-80'
+                }
+                key={uuidv4()}
+                to={slug}
+              >
+                {text}
+              </NavLink>
+            ) : (
+              <NavLink
+                className="z-40 transition-all duration-200 ease-in-out rounded-md bg-neutral-800 text-neutral-100 font-bold py-2 px-4 mx-2 hover:bg-neutral-300 hover:text-neutral-800"
+                key={uuidv4()}
+                to={slug}
+              >
+                {text}
+              </NavLink>
+            )
+          )}
+        </div>
+      </nav>
+    </div>
+  );
+};
 
 export default Navbar;
-
-/*
- * export const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 24px;
-  z-index: 1;
-  height: 80px;
-
-  @media ${devices.laptop} {
-    height: 100px;
-  }
-`;
-
-export const Navbar = styled.nav`
-  display: flex;
-  align-items: center;
-`;
-
-export const NavbarMenu = styled.div`
-  display: none;
-  padding: 0px 10px 0px 0px;
-
-  @media ${devices.laptop} {
-    display: flex;
-    align-items: center;
-  }
-`;
-
-export const Link = styled(RemixNavLink)`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 10px;
-  color: ${colors.offBlack};
-
-  &.active {
-    color: ${colors.secondaryBackground};
-  }
-`;
-
-export const NavbarButtonLink = styled(RemixNavLink)`
-  transition: all 0.2s ease-in-out;
-  padding: 8px 10px;
-  margin: 0 10px;
-  border-radius: 8px;
-  background: ${colors.primaryBackground};
-  color: ${colors.offWhite};
-
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: ${colors.offWhite};
-    color: ${colors.primaryBackground};
-  }
-`;
- */

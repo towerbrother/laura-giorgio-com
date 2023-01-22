@@ -19,115 +19,22 @@ const Stage = ({
   date,
   link: { slug, text },
 }: StageProps) => (
-  <div>
-    <img src={src} alt={alt} />
-    <div>
-      <h2>{title}</h2>
-      <h4>{subtitle}</h4>
-      <span>{format(date, 'do LLLL yyyy ｜ p')}</span>
-      <NavLink to={slug}>{text}</NavLink>
+  <div className="relative">
+    <img className="w-full" src={src} alt={alt} />
+    <div className="flex flex-col justify-center items-center text-center w-full h-full absolute top-10 text-neutral-100 font-bold md:top-5 2xl:-top-50 2xl:-left-50">
+      <h2 className="italic text-2xl md:text-4xl lg:text-6xl">{title}</h2>
+      <h4 className="uppercase text-sm md:text-base lg:text-2xl">{subtitle}</h4>
+      <span className="my-2 mx-0 text-base md:my-5 md:text-2xl lg:text-4xl">
+        {format(date, 'do LLLL yyyy ｜ p')}
+      </span>
+      <NavLink
+        className="transition-all duration-300 ease-in-out rounded-md bg-neutral-100 text-xl text-neutral-800 font-bold my-1 mx-0 py-2 px-6 hover:opacity-80 lg:text-4xl"
+        to={slug}
+      >
+        {text}
+      </NavLink>
     </div>
   </div>
 );
 
 export default Stage;
-
-/*
- * export const Stage = styled.div`
-  position: relative;
-`;
-
-export const Image = styled.img`
-  width: 100%;
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 30px;
-  color: ${colors.offWhite};
-  font-weight: 700;
-
-  @media ${devices.tablet} {
-    top: 20px;
-  }
-
-  @media ${devices.laptopL} {
-    top: -200px;
-    left: -200px;
-  }
-`;
-
-export const Title = styled.h2`
-  font-style: italic;
-  word-spacing: -5px;
-  font-size: 28px;
-
-  @media ${devices.tablet} {
-    font-size: 44px;
-  }
-
-  @media ${devices.laptop} {
-    font-size: 62px;
-  }
-`;
-
-export const SubTitle = styled.h4`
-  text-transform: uppercase;
-  font-size: 12px;
-
-  @media ${devices.tablet} {
-    font-size: 16px;
-  }
-
-  @media ${devices.laptop} {
-    font-size: 20px;
-  }
-`;
-
-export const Date = styled.span`
-  margin: 10px 0px;
-  font-size: 16px;
-
-  @media ${devices.tablet} {
-    margin: 20px 0px;
-    font-size: 28px;
-  }
-
-  @media ${devices.laptop} {
-    font-size: 36px;
-  }
-`;
-
-export const Link = styled(NavLink)`
-  transition: all 0.2s ease-in-out;
-  border-radius: 8px;
-  background: ${colors.offWhite};
-  color: ${colors.offBlack};
-  width: max-content;
-  margin: 0 auto;
-  font-size: 16px;
-  padding: 6px 12px;
-
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: ${colors.offGray};
-  }
-
-  @media ${devices.tablet} {
-    font-size: 24px;
-    padding: 10px 22px;
-  }
-
-  @media ${devices.laptop} {
-    font-size: 32px;
-    padding: 12px 32px;
-  }
-`;
-
- */

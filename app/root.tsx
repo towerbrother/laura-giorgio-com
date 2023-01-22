@@ -10,6 +10,8 @@ import {
   useLoaderData,
 } from '@remix-run/react';
 
+import styles from './tailwind.css';
+
 import Footer from './components/molecules/Footer';
 import Header from './components/molecules/Header';
 
@@ -25,6 +27,7 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => {
   return [
+    { rel: 'stylesheet', href: styles },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     {
       rel: 'preconnect',
@@ -73,7 +76,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="font-josephin">
         <Header {...header} />
         <main>
           <Outlet />

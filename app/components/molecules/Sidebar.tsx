@@ -10,82 +10,32 @@ type SidebarProps = Partial<HeaderProps> & {
 };
 
 const Sidebar = ({ links, isOpen, toggle }: SidebarProps) => {
-  /* aside has the $isOpen={isOpen} prop */
+  const linkClassName =
+    'flex justify-center items-center my-1 mx-0 py-4 px-0 text-xl text-neutral-300 font-bold';
+  const buttonLinkClassName =
+    'transition-all duration-300 ease-in-out rounded-xl bg-neutral-300 text-neutral-800 my-1 mx-0 py-3 px-6 font-bold hover:opacity-80';
+
   return (
-    <aside onClick={toggle}>
-      <MenuIcon iconType="cross" toggle={toggle} />
-      <div>
-        {/* here we can put ternary operator in the className with Tailwind */}
-        {links?.map(({ type, slug, text }) =>
-          type === 'link' ? (
-            <NavLink key={uuidv4()} to={slug}>
-              {text}
-            </NavLink>
-          ) : (
-            <NavLink key={uuidv4()} to={slug}>
-              {text}
-            </NavLink>
-          )
-        )}
+    <aside
+      onClick={toggle}
+      className={`flex justify-center items-center fixed left-0 w-full h-full transition-all duration-300 ease-in-out z-10 bg-neutral-800 ${
+        isOpen ? 'top-0 opacity-100' : '-top-full opacity-0'
+      }`}
+    >
+      <MenuIcon iconType="cross" toggle={toggle} position="absolute" />
+      <div className="flex flex-col justify-between items-center overflow-y-scroll h-[80%]">
+        {links?.map(({ type, slug, text }) => (
+          <NavLink
+            className={type === 'link' ? linkClassName : buttonLinkClassName}
+            key={uuidv4()}
+            to={slug}
+          >
+            {text}
+          </NavLink>
+        ))}
       </div>
     </aside>
   );
 };
 
 export default Sidebar;
-
-/**
- * type SidebarProps = {
-  $isOpen: boolean;
-};
-
-export const Sidebar = styled.aside<SidebarProps>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  top: ${({ $isOpen }) => ($isOpen ? '0' : '-100%')};
-  opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
-  width: 100%;
-  height: 100%;
-  transition: 0.3s ease-in-out;
-  z-index: 10;
-  background: ${colors.offBlack};
-`;
-
-export const SidebarMenu = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  overflow-y: scroll;
-  height: 80%;
-`;
-
-export const Link = styled(NavLink)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px 0px;
-  padding: 16px 0px;
-  font-size: 20px;
-  color: ${colors.offWhite};
-`;
-
-export const SidebarButtonLink = styled(NavLink)`
-  transition: all 0.2s ease-in-out;
-  border-radius: 50px;
-  background: ${colors.primaryBackground};
-  color: ${colors.offWhite};
-  margin: 20px 0;
-  padding: 12px 30px;
-
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: ${colors.offWhite};
-    color: ${colors.primaryBackground};
-  }
-`;
-
- */

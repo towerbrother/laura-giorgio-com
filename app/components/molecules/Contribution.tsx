@@ -6,63 +6,19 @@ export type ContributionProps = {
 };
 
 const Contribution = ({ headline, paragraphs }: ContributionProps) => (
-  <div>
-    <h2>{headline}</h2>
+  <div className="flex flex-col items-center py-8 px-4 bg-neutral-300 md:py-6 md:px-6 lg:py-20">
+    <h2 className="text-center font-bold text-neutral-800 text-4xl mb-8 md:text-5xl lg:text-6xl">
+      {headline}
+    </h2>
     {paragraphs?.map((paragraph) => (
-      <p key={uuidv4()}>{paragraph}</p>
+      <p
+        key={uuidv4()}
+        className="text-center text-neutral-800 max-w-xs text-sm mb-4 md:text-lg md:max-w-md lg:text-2xl lg:max-w-2xl lg:mb-8"
+      >
+        {paragraph}
+      </p>
     ))}
   </div>
 );
 
 export default Contribution;
-
-/*
- * export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 15px;
-  background-color: ${colors.offGray};
-
-  @media ${devices.tablet} {
-    padding: 120px 30px;
-  }
-
-  @media ${devices.laptop} {
-    padding: 60px 30px;
-  }
-`;
-
-export const Headline = styled.h2`
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 30px;
-
-  @media ${devices.tablet} {
-    font-size: 46px;
-  }
-
-  @media ${devices.laptop} {
-    font-size: 56px;
-  }
-`;
-
-export const Paragraph = styled.p`
-  text-align: center;
-  max-width: 320px;
-  font-size: 14px;
-  margin-bottom: 30px;
-
-  @media ${devices.tablet} {
-    font-size: 20px;
-    max-width: 450px;
-  }
-
-  @media ${devices.laptop} {
-    font-size: 28px;
-    max-width: 650px;
-    margin-bottom: 40px;
-  }
-`;
-
- */

@@ -6,21 +6,10 @@ type NameProps = {
 
 const Name = ({ text }: NameProps) => (
   <NavLink to="/">
-    <span>{text}</span>
+    <span className="z-40 italic text-3xl text-neutral-800 font-bold -tracking-[3px] lg:text-4xl lg:tracking-tight">
+      {text}
+    </span>
   </NavLink>
 );
 
 export default Name;
-
-/*
- export const Text = styled.span`
-  font-style: italic;
-  font-size: 25px;
-  word-spacing: -2px;
-
-  @media ${devices.laptop} {
-    font-size: 36px;
-    word-spacing: -5px;
-  }
-`;
- */
