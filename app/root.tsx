@@ -1,6 +1,5 @@
 import type { LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { Analytics } from '@vercel/analytics/react';
 import {
   Links,
   LiveReload,
@@ -11,22 +10,23 @@ import {
   useLoaderData,
 } from '@remix-run/react';
 
+import styles from './tailwind.css';
+
 import Footer from './components/molecules/Footer';
 import Header from './components/molecules/Header';
-import { GlobalStyle } from './globalStyles';
-
-import { userLangPrefs } from '~/utils/cookie.server';
-
 import { footer, getIndex, header } from './utils/mockedDB';
+
+import { userLanguageCookie } from '~/utils/cookie.server';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'laura-giorgio-com',
+  title: 'Laura & Giorgio',
   viewport: 'width=device-width,initial-scale=1',
 });
 
 export const links: LinksFunction = () => {
   return [
+    { rel: 'stylesheet', href: styles },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     {
       rel: 'preconnect',
@@ -42,9 +42,7 @@ export const links: LinksFunction = () => {
 
 export const loader = async ({ request }: LoaderArgs) => {
   const cookieHeader = request.headers.get('Cookie');
-  const cookie = await userLangPrefs.parse(cookieHeader);
-
-  const defaultCookie = { language: 'en' };
+  const cookie = await userLanguageCookie.parse(cookieHeader);
 
   if (cookie) {
     return json({
@@ -55,45 +53,41 @@ export const loader = async ({ request }: LoaderArgs) => {
 
   return json(
     {
-      language: defaultCookie.language,
-      header: header[getIndex(defaultCookie.language)],
+      language: 'en',
+      header: header[getIndex('en')],
     },
     {
       headers: {
-        'Set-Cookie': await userLangPrefs.serialize(defaultCookie),
+        'Set-Cookie': await userLanguageCookie.serialize({ language: 'en' }),
       },
     }
   );
 };
 
 export default function App() {
-  const { language, header } = useLoaderData<typeof loader>();
+  const data = useLoaderData<typeof loader>();
 
   return (
-    <html lang={language ?? 'en'}>
+    <html lang={data?.language ?? 'en'}>
       <head>
         <Meta />
         <Links />
-        {typeof document === 'undefined' ? '__STYLES__' : null}
       </head>
-      <body>
-        <Header {...header} />
+      <body className="font-josephin">
+        <Header {...data?.header} />
         <main>
           <Outlet />
         </main>
         <Footer {...footer} />
-        <GlobalStyle />
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   );
 }
 
 export function ErrorBoundary({ error }: { error: Error }) {
-  console.error(error);
   return (
     <html>
       <head>

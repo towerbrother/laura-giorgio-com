@@ -1,6 +1,6 @@
 import type { ActionArgs } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
-import { userLangPrefs } from '~/utils/cookie.server';
+import { userLanguageCookie } from '~/utils/cookie.server';
 
 export async function loader() {
   return json('Not allowed', { status: 405 });
@@ -13,7 +13,7 @@ export async function action({ request }: ActionArgs) {
 
   return redirect(typeof redirectUrl === 'string' ? redirectUrl : '/', {
     headers: {
-      'Set-Cookie': await userLangPrefs.serialize({ language: language }),
+      'Set-Cookie': await userLanguageCookie.serialize({ language: language }),
     },
   });
 }
