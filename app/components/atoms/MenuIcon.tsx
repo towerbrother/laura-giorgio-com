@@ -16,10 +16,10 @@ const MenuIcon = ({
 }: MenuIconProps) => (
   <div
     className={`${position} ${
-      position === 'relative' ? 'top-1' : 'top-12 right-12'
+      position === 'relative' ? 'top-1' : 'top-8 right-8'
     } ml-2 xl:hidden`}
   >
-    <Button className="relative z-40" onClick={toggle}>
+    <Button onClick={toggle}>
       <ConditionalWrapper condition={iconType === 'bars'}>
         <FaBars className="text-3xl text-neutral-800 hover:opacity-80 lg:text-4xl" />
       </ConditionalWrapper>

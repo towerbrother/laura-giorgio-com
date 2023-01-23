@@ -25,7 +25,7 @@ const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => {
                 className={({ isActive }) =>
                   `${
                     isActive ? 'text-cyan-600 hover:' : 'text-neutral-800 '
-                  } z-40 flex items-center h-full mx-2 font-bold text-xl hover:opacity-80`
+                  } flex items-center h-full mx-2 font-bold text-xl hover:opacity-80`
                 }
                 key={uuidv4()}
                 to={slug}
