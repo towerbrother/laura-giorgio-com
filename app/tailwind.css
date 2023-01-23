@@ -544,12 +544,12 @@ video {
   top: 0.25rem;
 }
 
-.top-12 {
-  top: 3rem;
+.top-8 {
+  top: 2rem;
 }
 
-.right-12 {
-  right: 3rem;
+.right-8 {
+  right: 2rem;
 }
 
 .-right-\[4px\] {
@@ -572,14 +572,6 @@ video {
   top: 2.5rem;
 }
 
-.top-8 {
-  top: 2rem;
-}
-
-.right-8 {
-  right: 2rem;
-}
-
 .z-40 {
   z-index: 40;
 }
@@ -590,6 +582,10 @@ video {
 
 .z-10 {
   z-index: 10;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .m-2 {
@@ -918,11 +914,6 @@ video {
 
 .font-josephin {
   font-family: Josephin Sans, sans-serif;
-}
-
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
 }
 
 .text-3xl {
@@ -1254,11 +1245,6 @@ video {
 
   .lg\:pl-2 {
     padding-left: 0.5rem;
-  }
-
-  .lg\:text-base {
-    font-size: 1rem;
-    line-height: 1.5rem;
   }
 
   .lg\:text-4xl {

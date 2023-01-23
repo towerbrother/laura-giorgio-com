@@ -25,7 +25,7 @@ const Language = ({ options }: LanguageProps) => {
   return (
     <div className="relative top-1 lg:right-0">
       <Button
-        className="relative z-40"
+        className="relative z-50"
         onClick={() => setShow((prev) => !prev)}
       >
         <FaLanguage className="text-5xl text-neutral-800 hover:opacity-80 lg:text-6xl" />
@@ -35,7 +35,7 @@ const Language = ({ options }: LanguageProps) => {
           show
             ? 'opacity-100 height-auto'
             : 'opacity-0 height-0 overflow-hidden'
-        } absolute z-40 -right-[4px] flex flex-col items-center py-2 px-3 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300 lg:right-[2px]`}
+        } absolute z-50 -right-[4px] flex flex-col items-center py-2 px-3 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300 lg:right-[2px]`}
       >
         {options.map((option) => (
           <fetcher.Form

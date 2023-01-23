@@ -7,7 +7,7 @@ const Overlay = ({ onClick, show }: OverlayProps) => {
   return (
     <div
       onClick={onClick}
-      className={`${show ? 'fixed' : 'hidden'} bg-transparent inset-0 z-30`}
+      className={`${show ? 'fixed' : 'hidden'} bg-transparent inset-0 z-40`}
     />
   );
 };
