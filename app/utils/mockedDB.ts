@@ -23,7 +23,8 @@ export const getIndex = (language: string): number => {
 };
 
 // static
-const date: Date = new Date(Date.UTC(2023, 6, 29, 11, 0));
+const ceremonyDate: Date = new Date(Date.UTC(2023, 6, 29, 11, 0));
+const partyDate: Date = new Date(Date.UTC(2023, 6, 29, 14, 0));
 const languageOptions: LanguageProps = {
   options: ['en', 'de', 'it'],
 };
@@ -94,21 +95,21 @@ export const stage: Array<StageProps> = [
     image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'are getting married',
-    date: date,
+    date: ceremonyDate,
     link: { text: 'RSVP', slug: '/rsvp' },
   },
   {
     image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'werden heiraten',
-    date: date,
+    date: ceremonyDate,
     link: { text: 'RSVP', slug: '/rsvp' },
   },
   {
     image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'si sposano',
-    date: date,
+    date: ceremonyDate,
     link: { text: 'RSVP', slug: '/rsvp' },
   },
 ];
@@ -216,19 +217,19 @@ export const info: Array<InfoProps> = [
       {
         icon: 'calendar',
         title: 'Our wedding day',
-        dateTime: date,
+        dateTime: ceremonyDate,
         text: 'It would be absolutely great to have you there! Join us!',
       },
       {
         icon: 'church',
         title: 'Ceremony',
-        dateTime: date,
+        dateTime: ceremonyDate,
         text: 'St. Wolfgang church - Kienberg, 8742 St. Wolfgang, Austria',
       },
       {
         icon: 'party',
         title: 'Reception',
-        dateTime: date,
+        dateTime: partyDate,
         text: 'Wolfsberg Castle - Schloßstraße, 9400 Wolfsberg, Austria',
       },
     ],
@@ -239,19 +240,19 @@ export const info: Array<InfoProps> = [
       {
         icon: 'calendar',
         title: 'Unser Hochzeitstag',
-        dateTime: date,
+        dateTime: ceremonyDate,
         text: 'Es wäre absolut toll, dich dabei zu haben! Begleiten Sie uns!',
       },
       {
         icon: 'church',
         title: 'Zeremonie',
-        dateTime: date,
+        dateTime: ceremonyDate,
         text: 'St. Wolfgang Kirche - Kienberg, 8742 St. Wolfgang, Österreich',
       },
       {
         icon: 'party',
         title: 'Rezeption',
-        dateTime: date,
+        dateTime: partyDate,
         text: 'Schloß Wolfsberg - Schloßstraße, 9400 Wolfsberg, Österreich',
       },
     ],
@@ -262,19 +263,19 @@ export const info: Array<InfoProps> = [
       {
         icon: 'calendar',
         title: 'Il giorno del nostro matrimonio',
-        dateTime: date,
+        dateTime: ceremonyDate,
         text: 'Sarebbe assolutamente fantastico averti lì! Unisciti a noi!',
       },
       {
         icon: 'church',
         title: 'Cerimonia',
-        dateTime: date,
+        dateTime: ceremonyDate,
         text: 'Chiesa di St. Wolfgang - Kienberg, 8742 St. Wolfgang, Austria',
       },
       {
         icon: 'party',
         title: 'Ricevimento',
-        dateTime: date,
+        dateTime: partyDate,
         text: 'Castello Wolfsberg - Schloßstraße, 9400 Wolfsberg, Austria',
       },
     ],
