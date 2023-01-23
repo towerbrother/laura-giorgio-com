@@ -6,8 +6,10 @@ export const meta: MetaFunction = () => ({
 
 export default function Index() {
   return (
-    <h1 style={{ textAlign: 'center', padding: '200px 0px', fontSize: '58px' }}>
-      Coming soon...
-    </h1>
+    <div className="w-full h-full flex flex-col items-center">
+      <h1 className="font-bold text-5xl text-neutral-800 mt-20">
+        Coming soon...
+      </h1>
+    </div>
   );
 }
