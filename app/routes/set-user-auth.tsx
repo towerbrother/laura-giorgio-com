@@ -7,6 +7,8 @@ export async function loader() {
 }
 
 export async function action({ request }: ActionArgs) {
+  await new Promise((res) => setTimeout(res, 2000));
+
   const cookieHeader = request.headers.get('Cookie');
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
