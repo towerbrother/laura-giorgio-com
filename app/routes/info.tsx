@@ -1,6 +1,6 @@
 import { info, getIndex, photos } from '~/utils/mockedDB';
-import Info from '~/components/molecules/Info';
-import Photos from '~/components/molecules/Photos';
+import Info from '~/components/Info';
+import Photos from '~/components/Photos';
 
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';

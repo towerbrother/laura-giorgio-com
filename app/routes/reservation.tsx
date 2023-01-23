@@ -4,8 +4,8 @@ import {
   getIndex,
   transportationTile,
 } from '~/utils/mockedDB';
-import Banner from '~/components/molecules/Banner';
-import Tile from '~/components/molecules/Tile';
+import Banner from '~/components/Banner';
+import Tile from '~/components/Tile';
 
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';

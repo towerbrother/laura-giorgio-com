@@ -1,6 +1,6 @@
 import { NavLink } from '@remix-run/react';
 
-import ConditionalWrapper from '~/components/atoms/ConditionalWrapper';
+import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
 
 type DirectionType = 'front' | 'back';
 

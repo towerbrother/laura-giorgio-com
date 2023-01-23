@@ -12,9 +12,9 @@ import {
 
 import styles from './tailwind.css';
 
-import Login from './components/molecules/Login';
-import Header from './components/molecules/Header';
-import Footer from './components/molecules/Footer';
+import Login from './components/Login';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import { footer, getIndex, header } from './utils/mockedDB';
 
 import { userCookie } from '~/utils/cookie.server';

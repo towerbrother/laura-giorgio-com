@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import Navbar from '~/components/molecules/Navbar';
-import Sidebar from '~/components/molecules/Sidebar';
+import Navbar from '~/components/Navbar';
+import Sidebar from '~/components/Sidebar';
 
 type LinkType = { text: string; slug: string; type: 'link' | 'button' };
 

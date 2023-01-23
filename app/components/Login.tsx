@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Form, useTransition } from '@remix-run/react';
 import { FaEye, FaEyeSlash, FaSpinner } from 'react-icons/fa';
 
-import Button from '~/components/atoms/Button';
+import Button from '~/components/reusable/Button';
 
 const Login = () => {
   const { submission, state } = useTransition();
@@ -36,7 +36,7 @@ const Login = () => {
         </p>
         <Form
           method="post"
-          action="/set-user-auth"
+          action="/user/set-user-auth"
           name="login_action"
           className="flex flex-col justify-center items-center relative"
         >

@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { FaCalendar, FaChurch, FaMusic } from 'react-icons/fa';
 
-import ConditionalWrapper from '~/components/atoms/ConditionalWrapper';
+import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
 
 export type InfoItemProps = {
   icon: 'calendar' | 'church' | 'party';

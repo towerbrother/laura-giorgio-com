@@ -1,12 +1,12 @@
-import type { ContributionProps } from '~/components/molecules/Contribution';
-import type { FooterProps } from '~/components/molecules/Footer';
-import type { HeaderProps } from '~/components/molecules/Header';
-import type { InfoProps } from '~/components/molecules/Info';
-import type { StageProps } from '~/components/molecules/Stage';
-import type { TileProps } from '~/components/molecules/Tile';
-import type { LanguageProps } from '~/components/molecules/Language';
-import type { BannerProps } from '~/components/molecules/Banner';
-import type { PhotosProps } from '~/components/molecules/Photos';
+import type { ContributionProps } from '~/components/Contribution';
+import type { FooterProps } from '~/components/Footer';
+import type { HeaderProps } from '~/components/Header';
+import type { InfoProps } from '~/components/Info';
+import type { StageProps } from '~/components/Stage';
+import type { TileProps } from '~/components/Tile';
+import type { LanguageProps } from '~/components/Language';
+import type { BannerProps } from '~/components/Banner';
+import type { PhotosProps } from '~/components/Photos';
 
 // helper function
 export const getIndex = (language: string): number => {

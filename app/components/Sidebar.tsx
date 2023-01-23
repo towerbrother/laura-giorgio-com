@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import { NavLink } from '@remix-run/react';
 
-import MenuIcon from '~/components/atoms/MenuIcon';
-import type { HeaderProps } from '~/components/molecules/Header';
+import MenuIcon from '~/components/reusable/MenuIcon';
+import type { HeaderProps } from '~/components/Header';
 
 type SidebarProps = Partial<HeaderProps> & {
   isOpen: boolean;

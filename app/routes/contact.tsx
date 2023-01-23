@@ -1,5 +1,5 @@
-import Banner from '~/components/molecules/Banner';
-import Photos from '~/components/molecules/Photos';
+import Banner from '~/components/Banner';
+import Photos from '~/components/Photos';
 
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';

@@ -1,7 +1,7 @@
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-import Button from '~/components/atoms/Button';
-import ConditionalWrapper from '~/components/atoms/ConditionalWrapper';
+import Button from '~/components/reusable/Button';
+import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
 
 type MenuIconProps = {
   iconType: 'bars' | 'cross';

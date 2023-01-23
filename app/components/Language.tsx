@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FaLanguage } from 'react-icons/fa';
 
-import Overlay from '~/components/atoms/Overlay';
-import Button from '~/components/atoms/Button';
+import Overlay from '~/components/reusable/Overlay';
+import Button from '~/components/reusable/Button';
 
 export type LanguageProps = {
   options: Array<string>;
@@ -41,7 +41,7 @@ const Language = ({ options }: LanguageProps) => {
           <fetcher.Form
             key={uuidv4()}
             method="post"
-            action="/set-user-language"
+            action="/user/set-user-language"
           >
             <Button type="submit" onClick={handleDelayedCloseFormWrapper}>
               <>

@@ -1,4 +1,4 @@
-import Name from '~/components/atoms/Name';
+import Name from '~/components/reusable/Name';
 
 export type FooterProps = {
   name: string;

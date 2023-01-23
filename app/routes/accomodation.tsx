@@ -1,4 +1,4 @@
-import Tile from '~/components/molecules/Tile';
+import Tile from '~/components/Tile';
 
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';

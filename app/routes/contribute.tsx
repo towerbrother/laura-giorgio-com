@@ -1,6 +1,6 @@
 import { contribution, getIndex, photos } from '~/utils/mockedDB';
-import Contribution from '~/components/molecules/Contribution';
-import Photos from '~/components/molecules/Photos';
+import Contribution from '~/components/Contribution';
+import Photos from '~/components/Photos';
 
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';

@@ -1,5 +1,5 @@
-import Stage from '~/components/molecules/Stage';
-import Tile from '~/components/molecules/Tile';
+import Stage from '~/components/Stage';
+import Tile from '~/components/Tile';
 
 import { stage, homeTile, getIndex } from '~/utils/mockedDB';
 

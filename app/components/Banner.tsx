@@ -1,7 +1,7 @@
 import { NavLink } from '@remix-run/react';
 import { FaGift } from 'react-icons/fa';
 
-import ConditionalWrapper from '~/components/atoms/ConditionalWrapper';
+import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
 
 export type BannerProps = {
   headline?: string;
