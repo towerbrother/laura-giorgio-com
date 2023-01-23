@@ -8,7 +8,6 @@ const Login = () => {
   const { submission, state } = useTransition();
 
   const [showPassword, setShowPassword] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const mounted = useRef<boolean>(false);
 
@@ -19,10 +18,6 @@ const Login = () => {
   useEffect(() => {
     if (state === 'idle' && mounted.current) {
       inputRef.current?.select();
-    }
-
-    if (!isLogging) {
-      formRef.current?.reset();
     }
 
     mounted.current = true;
@@ -40,7 +35,6 @@ const Login = () => {
           Hint: Password in the wedding invite 😉
         </p>
         <Form
-          ref={formRef}
           method="post"
           action="/set-user-auth"
           name="login_action"
