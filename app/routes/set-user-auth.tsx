@@ -16,7 +16,9 @@ export async function action({ request }: ActionArgs) {
   return redirect('/', {
     headers: {
       'Set-Cookie': await userCookie.serialize({
-        isAuth: typeof password === 'string' && password === 'Wolfsberg2023&',
+        isAuth:
+          typeof password === 'string' &&
+          password === process.env.ENTRY_PASSWORD,
         language: cookie ? cookie.language : 'en',
       }),
     },
