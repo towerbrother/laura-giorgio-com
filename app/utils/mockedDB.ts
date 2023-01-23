@@ -366,11 +366,11 @@ export const pensionTile: Array<TileProps> = [
     },
   },
   {
-    direction: 'front',
-    image: { src: 'hecher-logo.jpg', alt: 'Hotel Hecher Logo' },
+    direction: 'back',
+    image: { src: 'oelberger-logo.png', alt: 'Gasthof Oelberger Logo' },
     tile: {
-      title: 'Hotel Hecher',
-      subtitle: 'Empfohlen für diejenigen, die 2 Nächte bleiben',
+      title: 'Pension Ölberger',
+      subtitle: 'Reccomended for those staying 1 night only',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
     },
     externalLink: {
@@ -379,11 +379,11 @@ export const pensionTile: Array<TileProps> = [
     },
   },
   {
-    direction: 'front',
-    image: { src: 'hecher-logo.jpg', alt: 'Hotel Hecher Logo' },
+    direction: 'back',
+    image: { src: 'oelberger-logo.png', alt: 'Gasthof Oelberger Logo' },
     tile: {
-      title: 'Hotel Hecher',
-      subtitle: 'Consigliato per chi soggiorna 2 notti',
+      title: 'Pension Ölberger',
+      subtitle: 'Reccomended for those staying 1 night only',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
     },
     externalLink: {
