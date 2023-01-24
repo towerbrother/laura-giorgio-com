@@ -1,8 +1,10 @@
+import FormHeader from '~/components/FormHeader';
 import Button from '~/components/reusable/Button';
 
 export default function Index() {
   return (
     <>
+      <FormHeader />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         Last step... hurra! 🙌
       </h1>
