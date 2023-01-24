@@ -129,24 +129,24 @@ export async function action({ request }: ActionArgs) {
 
 export default function App() {
   const actionData = useActionData<typeof action>();
-  const { language, isAuth, header, footer } = useLoaderData<typeof loader>();
+  const loaderData = useLoaderData<typeof loader>();
 
   return (
-    <html lang={language || 'en'}>
+    <html lang={loaderData?.language || 'en'}>
       <head>
         <Meta />
         <Links />
       </head>
       <body className="font-josephin min-h-screen flex flex-col">
-        {!isAuth ? (
+        {!loaderData?.isAuth ? (
           <Login fieldErrors={actionData?.fieldErrors} />
         ) : (
           <>
-            <Header {...header} />
+            <Header {...loaderData?.header} />
             <main>
               <Outlet />
             </main>
-            <Footer {...footer} />
+            <Footer {...loaderData?.footer} />
           </>
         )}
         <ScrollRestoration />
@@ -166,9 +166,14 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <Links />
       </head>
       <body>
-        <div>
-          Oh no! Something went wrong... we apologise for any inconvenience
-          caused! 💖
+        <div className="w-screen h-screen flex flex-col items-center p-4 pt-10">
+          <p className="text-sm md:text-xl">
+            Oh no! 🥵 Something went wrong... we apologise for any inconvenience
+            caused!
+          </p>
+          <p className="text-sm md:text-xl">
+            Please, let Giorgio know. He will do his best to fix the issue!
+          </p>
         </div>
         <Scripts />
       </body>
