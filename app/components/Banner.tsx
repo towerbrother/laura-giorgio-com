@@ -30,6 +30,7 @@ const Banner = ({
     <p className="text-center max-w-md lg:max-w-xl">{paragraph}</p>
     <NavLink
       to={slug}
+      prefetch="intent"
       className="transition-all duration-200 ease-in-out rounded-lg font-bold bg-neutral-800 text-neutral-100 text-base py-2 px-4 mt-8 hover:opacity-80 lg:text-xl lg:py-2 lg:px-6"
     >
       {text}

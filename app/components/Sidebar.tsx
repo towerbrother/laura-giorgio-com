@@ -29,6 +29,7 @@ const Sidebar = ({ links, isOpen, toggle }: SidebarProps) => {
             className={type === 'link' ? linkClassName : buttonLinkClassName}
             key={uuidv4()}
             to={slug}
+            prefetch="intent"
           >
             {text}
           </NavLink>

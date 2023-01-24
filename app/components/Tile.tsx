@@ -45,7 +45,11 @@ const Tile = ({
         <h2 className="text-2xl my-4 mx-0 font-bold lg:text-3xl">{title}</h2>
         <p className="max-w-sm">{text}</p>
         <ConditionalWrapper condition={Boolean(link)}>
-          <NavLink className={linkClassName} to={link?.slug ?? ''}>
+          <NavLink
+            className={linkClassName}
+            to={link?.slug ?? ''}
+            prefetch="intent"
+          >
             {link?.text}
           </NavLink>
         </ConditionalWrapper>

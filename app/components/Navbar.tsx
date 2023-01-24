@@ -29,6 +29,7 @@ const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => {
                 }
                 key={uuidv4()}
                 to={slug}
+                prefetch="intent"
               >
                 {text}
               </NavLink>
@@ -41,6 +42,7 @@ const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => {
                 }
                 key={uuidv4()}
                 to={slug}
+                prefetch="intent"
               >
                 {text}
               </NavLink>

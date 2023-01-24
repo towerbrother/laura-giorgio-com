@@ -5,7 +5,7 @@ type NameProps = {
 };
 
 const Name = ({ text }: NameProps) => (
-  <NavLink to="/">
+  <NavLink to="/" prefetch="intent">
     <span className="relative z-30 italic text-2xl text-neutral-800 font-bold tracking-tight md:text-3xl lg:text-4xl">
       {text}
     </span>

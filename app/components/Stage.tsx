@@ -34,6 +34,7 @@ const Stage = ({
       <NavLink
         className="rounded-md bg-neutral-800 text-sm text-neutral-100 font-bold my-1 mx-0 py-1 px-4 md:text-md md:py-2 md:px-6 hover:opacity-80 lg:text-4xl lg:py-4 lg:px-8"
         to={slug}
+        prefetch="intent"
       >
         {text}
       </NavLink>
