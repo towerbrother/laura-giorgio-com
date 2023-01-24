@@ -1,5 +1,10 @@
-import type { LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type {
+  ActionArgs,
+  LinksFunction,
+  LoaderArgs,
+  MetaFunction,
+} from '@remix-run/node';
+import { redirect, json } from '@remix-run/node';
 import {
   Links,
   LiveReload,
@@ -7,6 +12,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useActionData,
   useLoaderData,
 } from '@remix-run/react';
 
@@ -17,7 +23,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { footer, getIndex, header } from './utils/mockedDB';
 
-import { userCookie } from '~/utils/cookie.server';
+import { userCookie } from './utils/cookie.server';
+import { badRequest } from './utils/request.server';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -72,7 +79,56 @@ export const loader = async ({ request }: LoaderArgs) => {
   );
 };
 
+function validatePassword(password: string) {
+  if (password.length === 0) {
+    return 'The password field cannot be empty!';
+  }
+
+  if (password !== process.env.ENTRY_PASSWORD) {
+    return '¯_(ツ)_/¯ Wrong password, try again!';
+  }
+}
+
+export async function action({ request }: ActionArgs) {
+  await new Promise((res) => setTimeout(res, 2000));
+
+  const cookieHeader = request.headers.get('Cookie');
+  const cookie = (await userCookie.parse(cookieHeader)) || {};
+
+  const formData = await request.formData();
+  const password = formData.get('password');
+
+  if (typeof password !== 'string') {
+    return badRequest({
+      fieldErrors: null,
+      fields: null,
+      formError: 'Oh no, incorrect submission.',
+    });
+  }
+
+  const fields = { password };
+  const fieldErrors = { password: validatePassword(password) };
+
+  if (Object.values(fieldErrors).some(Boolean)) {
+    return badRequest({
+      fieldErrors,
+      fields,
+      formError: null,
+    });
+  }
+
+  return redirect('/', {
+    headers: {
+      'Set-Cookie': await userCookie.serialize({
+        isAuth: true,
+        language: cookie ? cookie.language : 'en',
+      }),
+    },
+  });
+}
+
 export default function App() {
+  const actionData = useActionData<typeof action>();
   const { language, isAuth, header, footer } = useLoaderData<typeof loader>();
 
   return (
@@ -83,7 +139,7 @@ export default function App() {
       </head>
       <body className="font-josephin min-h-screen flex flex-col">
         {!isAuth ? (
-          <Login />
+          <Login fieldErrors={actionData?.fieldErrors} />
         ) : (
           <>
             <Header {...header} />
