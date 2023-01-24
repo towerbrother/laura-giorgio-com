@@ -87,7 +87,7 @@ function validatePassword(password: string) {
   }
 
   if (password !== process.env.ENTRY_PASSWORD) {
-    return '¯_(ツ)_/¯ Wrong password, try again!';
+    return 'Oh no! Wrong password, try again!';
   }
 }
 

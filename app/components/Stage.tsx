@@ -21,7 +21,7 @@ const Stage = ({
 }: StageProps) => (
   <div className="relative">
     <img className="w-full" src={src} alt={alt} />
-    <div className="flex flex-col justify-center items-center text-center text-neutral-800 font-bold w-full h-full absolute top-2 -left-[55px] sm:-left-[100px] md:-left-[150px] lg:-left-[180px] xl:-left-[300px] xl:-top-16">
+    <div className="flex flex-col justify-center items-center text-center text-neutral-800 font-bold w-full h-full absolute top-2 -left-[55px] sm:-left-[100px] md:-left-[150px] lg:-left-[180px] xl:-left-[240px] xl:-top-10 2xl:-left-[300px] 2xl:-top-16">
       <h2 className="italic text-md sm:text-2xl md:text-3xl lg:text-5xl xl:text-7xl">
         {title}
       </h2>
