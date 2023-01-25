@@ -56,12 +56,12 @@ export const header: Array<HeaderProps> = [
     name: 'Laura & Giorgio',
     languageOptions: languageOptions.options,
     links: [
-      { text: 'Info', slug: 'info', type: 'link' },
-      { text: 'Reservation', slug: 'reservation', type: 'link' },
-      { text: 'Contact', slug: 'contact', type: 'link' },
-      { text: 'Good to know', slug: 'goodtoknow', type: 'link' },
-      { text: 'RSVP', slug: 'rsvp', type: 'button' },
-      { text: 'CONTRIBUTE', slug: 'contribute', type: 'button' },
+      { text: 'Info', slug: '/info', type: 'link' },
+      { text: 'Reservation', slug: '/reservation', type: 'link' },
+      { text: 'Contact', slug: '/contact', type: 'link' },
+      { text: 'Good to know', slug: '/goodtoknow', type: 'link' },
+      { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
+      { text: 'CONTRIBUTE', slug: '/contribute', type: 'button' },
     ],
   },
   {
@@ -96,21 +96,21 @@ export const stage: Array<StageProps> = [
     title: 'Laura & Giorgio',
     subtitle: 'are getting married',
     date: ceremonyDate,
-    link: { text: 'RSVP', slug: '/rsvp' },
+    link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
     image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'werden heiraten',
     date: ceremonyDate,
-    link: { text: 'RSVP', slug: '/rsvp' },
+    link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
     image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'si sposano',
     date: ceremonyDate,
-    link: { text: 'RSVP', slug: '/rsvp' },
+    link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
 ];
 
@@ -153,7 +153,7 @@ export const transportationTile: Array<TileProps> = [
       subtitle: "Don't worry about anything",
       text: 'We have arranged transportation for guests from the hotel to the church and later to the reception venue. To reserve a seat, please let us know how many of you are coming with your RSVP.',
     },
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     direction: 'front',
@@ -163,7 +163,7 @@ export const transportationTile: Array<TileProps> = [
       subtitle: 'Mach dir keine Sorgen',
       text: 'Wir haben den Transport für die Gäste vom Hotel zur Kirche und später zum Veranstaltungsort arrangiert. Um einen Sitzplatz zu reservieren, lassen Sie uns bitte wissen, dass Sie mit Ihrer RSVP kommen.',
     },
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     direction: 'front',
@@ -173,7 +173,7 @@ export const transportationTile: Array<TileProps> = [
       subtitle: 'Non preoccuparti di niente',
       text: `Organizzeremo il trasporto degli ospiti dall'hotel alla chiesa e successivamente al luogo del ricevimento, tramite pullman. Per prenotare il vostro posto, completa l'RSVP al più presto e facci sapere quanti sarete.`,
     },
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];
 
@@ -420,19 +420,19 @@ export const contactBanner: Array<BannerProps> = [
     icon: false,
     paragraph:
       'Please, click on RSVP and follow the steps. Let us know how many of you are going to join us. Should you have any special requirements or further comments, you will be able to add them at the end of the form. Thank you!',
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     headline: 'Wir freuen uns darauf, mit Ihnen zu feiern!',
     icon: false,
     paragraph:
       'Bitte klicken Sie auf RSVP und folgen Sie den Schritten. Teilen Sie uns mit, wie viele von Ihnen sich uns anschließen werden. Sollten Sie besondere Anforderungen oder weitere Anmerkungen haben, können Sie diese am Ende des Formulars hinzufügen. Danke dir!',
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     headline: `Non vediamo l'ora di festeggiare con te!`,
     icon: false,
     paragraph: `Per favore, clicca su RSVP e segui i passaggi. Facci sapere quanti sarete. Tu avessi esigenze particolari o ulteriori commenti, potrai aggiungerli alla fine dell'RSVP. Grazie!`,
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];

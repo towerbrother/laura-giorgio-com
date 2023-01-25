@@ -1,126 +1,71 @@
-import FormHeader from '~/components/FormHeader';
+import { v4 as uuidv4 } from 'uuid';
+import { json } from '@remix-run/node';
+import { useLoaderData, useTransition } from '@remix-run/react';
+
+import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
+import GuestDetails from '~/components/rsvpForm/GuestDetails';
+import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
+
+/* 
+loader with step 2 to be given to FormHeader
+
+actionData
+- name
+- surname
+- email 
+- guests-car
+- guests-number-more-12
+- guests-number-6-12
+- guests-number-6-12
+- guests-number-less-6
+
+- contact-details
+*/
+
+export async function loader() {
+  const currentStep: number = 2;
+  const totalSteps: number = 3;
+  return json({ currentStep, totalSteps });
+}
 
 export default function Index() {
+  const { currentStep, totalSteps } = useLoaderData<typeof loader>();
+  const transition = useTransition(); // improve using Login.tsx example
+
+  const adults: Array<string> = ['1', '2', '3'];
+  const kids: Array<string> = [];
+  const babies: Array<string> = ['1'];
+
   return (
     <>
-      <FormHeader />
+      <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         Guests Details
       </h1>
-      <div className="border border-neutral-300 rounded-md p-4 flex flex-col mb-3">
-        <label
-          htmlFor="name"
-          className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
-        >
-          Full Name{' '}
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          autoComplete="off"
-          className="border border-neutral-300 rounded-md p-2 mb-5"
-        />
-        <label
-          htmlFor="date"
-          className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
-        >
-          Date of arrival{' '}
-        </label>
-        <select
-          id="date"
-          name="date"
-          className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
-        >
-          <option value="">Choose an option</option>
-          <option value="friday">Friday, 28th July</option>
-          <option value="saturday">Saturday, 29th July</option>
-        </select>
-        <legend className="text-neutral-800 font-bold mt-1 lg:text-lg after:content-['*'] after:ml-px after:text-red-500">
-          I would like to eat...
-        </legend>
-        <label className="mt-2 w-max">
-          <input
-            type="radio"
-            name="food-preference"
-            value="meat"
-            className="accent-cyan-600 mr-2 cursor-pointer"
-          />
-          Meat 🍖
-        </label>
-        <label className="mt-2 w-max">
-          <input
-            type="radio"
-            name="food-preference"
-            value="fish"
-            className="accent-cyan-600 mr-2 cursor-pointer"
-          />
-          Fish 🐟
-        </label>
-        <label className="mt-2 w-max">
-          <input
-            type="radio"
-            name="food-preference"
-            value="vegetarian"
-            className="accent-cyan-600 mr-2 cursor-pointer"
-          />
-          Vegetarian 🥗
-        </label>
-        <legend className="text-neutral-800 font-bold mt-4 lg:text-lg">
-          I am allergic/intollerant to...
-        </legend>
-        <label className="mt-2 w-max">
-          <input
-            type="checkbox"
-            name="allergies"
-            value="gluten"
-            className="accent-cyan-600 mr-2 cursor-pointer"
-          />
-          Gluten 🥨
-        </label>
-        <label className="mt-2 w-max">
-          <input
-            type="checkbox"
-            name="allergies"
-            value="eggs"
-            className="accent-cyan-600 mr-2 cursor-pointer"
-          />
-          Eggs 🍳
-        </label>
-        <label className="mt-2 w-max">
-          <input
-            type="checkbox"
-            name="allergies"
-            value="shellfish"
-            className="accent-cyan-600 mr-2 cursor-pointer"
-          />
-          Shellfish 🦐
-        </label>
-        <label className="mt-2 w-max">
-          <input
-            type="checkbox"
-            name="allergies"
-            value="nuts"
-            className="accent-cyan-600 mr-2 cursor-pointer"
-          />
-          Nuts 🥜
-        </label>
-        <label className="mt-2 w-max">
-          <input
-            type="checkbox"
-            name="allergies"
-            value="milk"
-            className="accent-cyan-600 mr-2 cursor-pointer"
-          />
-          Milk 🥛
-        </label>
-      </div>
+      <ConditionalWrapper condition={adults.length > 0}>
+        {adults.map((x) => (
+          <GuestDetails key={uuidv4()} num={x} type="Adult" />
+        ))}
+      </ConditionalWrapper>
+      <ConditionalWrapper condition={kids.length > 0}>
+        {kids.map((x) => (
+          <GuestDetails key={uuidv4()} num={x} type="Kid" />
+        ))}
+      </ConditionalWrapper>
+      <ConditionalWrapper condition={babies.length > 0}>
+        {babies.map((x) => (
+          <GuestDetails key={uuidv4()} num={x} type="Baby" />
+        ))}
+      </ConditionalWrapper>
+      <input type="hidden" name="hidden-input" value="guests-details" />
       <Button
         type="submit"
+        name="_action"
+        value="guests-details"
         className="border-none bg-cyan-600 text-neutral-100 font-bold rounded-md p-2 mt-5 w-full md:w-max md:px-5 md:text-lg lg:text-xl"
       >
-        NEXT
+        {transition.submission ? 'PROCESSING...' : 'NEXT'}
       </Button>
     </>
   );

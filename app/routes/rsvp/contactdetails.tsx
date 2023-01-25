@@ -1,10 +1,36 @@
-import FormHeader from '~/components/FormHeader';
+import { json } from '@remix-run/node';
+import { useLoaderData, useTransition } from '@remix-run/react';
+
+import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
 
+/* 
+actionData
+- name
+- surname
+- email 
+- guests-car
+- guests-number-more-12
+- guests-number-6-12
+- guests-number-6-12
+- guests-number-less-6
+
+- contact-details
+*/
+
+export async function loader() {
+  const currentStep: number = 1;
+  const totalSteps: number = 3;
+  return json({ currentStep, totalSteps });
+}
+
 export default function Index() {
+  const { currentStep, totalSteps } = useLoaderData<typeof loader>();
+  const transition = useTransition(); // improve using Login.tsx example
+
   return (
     <>
-      <FormHeader />
+      <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         Contact Details
       </h1>
@@ -15,9 +41,9 @@ export default function Index() {
         Name{' '}
       </label>
       <input
-        type="text"
         id="name"
-        name="name"
+        type="text"
+        name="main-guest-name"
         autoComplete="off"
         className="border border-neutral-300 rounded-md p-2 mb-5"
       />
@@ -28,9 +54,9 @@ export default function Index() {
         Surname{' '}
       </label>
       <input
-        type="text"
         id="surname"
-        name="surname"
+        type="text"
+        name="main-guest-surname"
         autoComplete="off"
         className="border border-neutral-300 rounded-md p-2 mb-5"
       />
@@ -41,9 +67,9 @@ export default function Index() {
         Email{' '}
       </label>
       <input
-        type="email"
         id="email"
-        name="email"
+        type="email"
+        name="main-guest-email"
         autoComplete="off"
         className="border border-neutral-300 rounded-md p-2 mb-5"
       />
@@ -53,16 +79,17 @@ export default function Index() {
       <label className="mt-2 w-max">
         <input
           type="radio"
-          name="car"
+          name="guests-car"
           value="no"
           className="accent-cyan-600 mr-2 cursor-pointer"
+          defaultChecked
         />
         No
       </label>
       <label className="mt-2 w-max">
         <input
           type="radio"
-          name="car"
+          name="guests-car"
           value="yes"
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
@@ -75,14 +102,14 @@ export default function Index() {
         Attention: that should also include yourself
       </p>
       <label
-        htmlFor="group-number-more-12"
+        htmlFor="guests-number-more-12"
         className="text-neutral-800 font-bold lg:text-lg"
       >
         12+ years old{' '}
       </label>
       <select
-        id="group-number-more-12"
-        name="group-number-more-12"
+        id="guests-number-more-12"
+        name="guests-number-more-12"
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="1">1</option>
@@ -96,14 +123,14 @@ export default function Index() {
         <option value="9">9</option>
       </select>
       <label
-        htmlFor="group-number-6-12"
+        htmlFor="guests-number-6-12"
         className="text-neutral-800 font-bold lg:text-lg"
       >
         6-to-12 years old{' '}
       </label>
       <select
-        id="group-number-6-12"
-        name="group-number-6-12"
+        id="guests-number-6-12"
+        name="guests-number-6-12"
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="0">0</option>
@@ -118,14 +145,14 @@ export default function Index() {
         <option value="9">9</option>
       </select>
       <label
-        htmlFor="group-number-less-6"
+        htmlFor="guests-number-less-6"
         className="text-neutral-800 font-bold lg:text-lg"
       >
         0-to-6 years old{' '}
       </label>
       <select
-        id="group-number-less-6"
-        name="group-number-less-6"
+        id="guests-number-less-6"
+        name="guests-number-less-6"
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="0">0</option>
@@ -139,11 +166,14 @@ export default function Index() {
         <option value="8">8</option>
         <option value="9">9</option>
       </select>
+      <input type="hidden" name="hidden-input" value="contactdetails" />
       <Button
         type="submit"
+        name="_action"
+        value="contact-details"
         className="border-none bg-cyan-600 text-neutral-100 font-bold rounded-md p-2 mt-5 w-full md:w-max md:px-5 md:text-lg lg:text-xl"
       >
-        NEXT
+        {transition.submission ? 'PROCESSING...' : 'NEXT'}
       </Button>
     </>
   );
