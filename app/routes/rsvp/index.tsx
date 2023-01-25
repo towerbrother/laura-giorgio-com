@@ -8,8 +8,11 @@ export default function Index() {
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         Contact Details
       </h1>
-      <label htmlFor="name" className="text-neutral-800 font-bold lg:text-lg">
-        Name:{' '}
+      <label
+        htmlFor="name"
+        className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
+      >
+        Name{' '}
       </label>
       <input
         type="text"
@@ -20,9 +23,9 @@ export default function Index() {
       />
       <label
         htmlFor="surname"
-        className="text-neutral-800 font-bold lg:text-lg"
+        className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
       >
-        Surname:{' '}
+        Surname{' '}
       </label>
       <input
         type="text"
@@ -31,8 +34,11 @@ export default function Index() {
         autoComplete="off"
         className="border border-neutral-300 rounded-md p-2 mb-5"
       />
-      <label htmlFor="email" className="text-neutral-800 font-bold lg:text-lg">
-        Email:{' '}
+      <label
+        htmlFor="email"
+        className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
+      >
+        Email{' '}
       </label>
       <input
         type="email"

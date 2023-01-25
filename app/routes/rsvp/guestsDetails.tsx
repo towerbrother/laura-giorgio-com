@@ -9,8 +9,11 @@ export default function Index() {
         Guests Details
       </h1>
       <div className="border border-neutral-300 rounded-md p-4 flex flex-col mb-3">
-        <label htmlFor="name" className="text-neutral-800 font-bold lg:text-lg">
-          Full Name:{' '}
+        <label
+          htmlFor="name"
+          className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
+        >
+          Full Name{' '}
         </label>
         <input
           type="text"
@@ -19,8 +22,11 @@ export default function Index() {
           autoComplete="off"
           className="border border-neutral-300 rounded-md p-2 mb-5"
         />
-        <label htmlFor="date" className="text-neutral-800 font-bold lg:text-lg">
-          Date of arrival:{' '}
+        <label
+          htmlFor="date"
+          className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
+        >
+          Date of arrival{' '}
         </label>
         <select
           id="date"
@@ -31,8 +37,8 @@ export default function Index() {
           <option value="friday">Friday, 28th July</option>
           <option value="saturday">Saturday, 29th July</option>
         </select>
-        <legend className="text-neutral-800 font-bold mt-1 lg:text-lg">
-          I would like to eat:
+        <legend className="text-neutral-800 font-bold mt-1 lg:text-lg after:content-['*'] after:ml-px after:text-red-500">
+          I would like to eat...
         </legend>
         <label className="mt-2 w-max">
           <input
@@ -62,7 +68,7 @@ export default function Index() {
           Vegetarian 🥗
         </label>
         <legend className="text-neutral-800 font-bold mt-4 lg:text-lg">
-          I am allergic/intollerant to:
+          I am allergic/intollerant to...
         </legend>
         <label className="mt-2 w-max">
           <input
