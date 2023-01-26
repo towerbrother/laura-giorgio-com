@@ -1,5 +1,6 @@
-import { json } from '@remix-run/node';
-import { useLoaderData, useTransition } from '@remix-run/react';
+import type { ActionArgs } from '@remix-run/node';
+import { json, redirect } from '@remix-run/node';
+import { Form, useLoaderData, useTransition } from '@remix-run/react';
 import { FaSpinner } from 'react-icons/fa';
 
 import FormHeader from '~/components/rsvpForm/FormHeader';
@@ -8,19 +9,32 @@ import Button from '~/components/reusable/Button';
 export async function loader() {
   const currentStep: number = 3;
   const totalSteps: number = 3;
+  // get the already input data - if any
   return json({ currentStep, totalSteps });
+}
+
+export async function action({ request }: ActionArgs) {
+  await new Promise((res) => setTimeout(res, 1000));
+
+  let formData = await request.formData();
+  let { _action, ...values } = Object.fromEntries(formData);
+
+  console.log({ values });
+
+  // store data somewhere
+  return redirect('/rsvp/thanks');
 }
 
 export default function Index() {
   const { currentStep, totalSteps } = useLoaderData<typeof loader>();
-  const { submission, state } = useTransition(); // improve using Login.tsx example
+  const { submission, state } = useTransition();
 
   const isProcessing =
     state === 'submitting' &&
     submission.formData.get('_action') === 'other-details';
 
   return (
-    <>
+    <Form method="post" className="flex flex-col py-4 md:py-6">
       <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         Last step... hurra! 🙌
@@ -39,7 +53,6 @@ export default function Index() {
         className="border border-neutral-300 rounded-md p-4 mb-3 h-40 lg:h-52 xl:h-60"
         name="textarea"
       />
-      <input type="hidden" name="hidden-input" value="other-details" />
       <Button
         type="submit"
         name="_action"
@@ -55,6 +68,6 @@ export default function Index() {
           'SUBMIT'
         )}
       </Button>
-    </>
+    </Form>
   );
 }

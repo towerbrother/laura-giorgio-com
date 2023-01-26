@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
-import { json } from '@remix-run/node';
-import { useLoaderData, useTransition } from '@remix-run/react';
+import type { ActionArgs } from '@remix-run/node';
+import { json, redirect } from '@remix-run/node';
+import { Form, useLoaderData, useTransition } from '@remix-run/react';
 import { FaSpinner } from 'react-icons/fa';
 
 import FormHeader from '~/components/rsvpForm/FormHeader';
@@ -8,26 +9,24 @@ import Button from '~/components/reusable/Button';
 import GuestDetails from '~/components/rsvpForm/GuestDetails';
 import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
 
-/* 
-loader with step 2 to be given to FormHeader
-
-actionData
-- name
-- surname
-- email 
-- guests-car
-- guests-number-more-12
-- guests-number-6-12
-- guests-number-6-12
-- guests-number-less-6
-
-- contact-details
-*/
-
 export async function loader() {
   const currentStep: number = 2;
   const totalSteps: number = 3;
+  // get the already input data - if any
   return json({ currentStep, totalSteps });
+}
+
+export async function action({ request }: ActionArgs) {
+  await new Promise((res) => setTimeout(res, 1000));
+
+  let formData = await request.formData();
+  let { _action, ...values } = Object.fromEntries(formData);
+
+  console.log({ values });
+
+  // validation
+  // store data somewhere
+  return redirect('/rsvp/otherdetails');
 }
 
 export default function Index() {
@@ -43,7 +42,7 @@ export default function Index() {
   const babies: Array<string> = ['1'];
 
   return (
-    <>
+    <Form method="post" className="flex flex-col py-4 md:py-6">
       <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         Guests Details
@@ -63,7 +62,6 @@ export default function Index() {
           <GuestDetails key={uuidv4()} num={x} type="Baby" />
         ))}
       </ConditionalWrapper>
-      <input type="hidden" name="hidden-input" value="guests-details" />
       <Button
         type="submit"
         name="_action"
@@ -78,6 +76,6 @@ export default function Index() {
           'NEXT'
         )}
       </Button>
-    </>
+    </Form>
   );
 }

@@ -15,7 +15,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       <input
         type="text"
         id="name"
-        name="name"
+        name={`name${type}${num}`}
         autoComplete="off"
         placeholder={`${type} #${num} Full Name ...`}
         className="border border-neutral-300 rounded-md p-2 mb-5"
@@ -28,7 +28,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       </label>
       <select
         id="date"
-        name="date"
+        name={`date${type}${num}`}
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="">Choose an option</option>
@@ -41,7 +41,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="radio"
-          name="food-preference"
+          name={`foodPreference${type}${num}`}
           value="meat"
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
@@ -50,7 +50,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="radio"
-          name="food-preference"
+          name={`foodPreference${type}${num}`}
           value="fish"
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
@@ -59,7 +59,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="radio"
-          name="food-preference"
+          name={`foodPreference${type}${num}`}
           value="vegetarian"
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
@@ -71,7 +71,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name="allergies"
+          name={`allergies${type}${num}`}
           value="gluten"
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
@@ -80,7 +80,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name="allergies"
+          name={`allergies${type}${num}`}
           value="eggs"
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
@@ -89,7 +89,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name="allergies"
+          name={`allergies${type}${num}`}
           value="shellfish"
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
@@ -98,7 +98,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name="allergies"
+          name={`allergies${type}${num}`}
           value="nuts"
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
@@ -107,7 +107,7 @@ const GuestDetails = ({ num, type }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name="allergies"
+          name={`allergies${type}${num}`}
           value="milk"
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
