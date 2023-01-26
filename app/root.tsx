@@ -27,6 +27,7 @@ import { footer, getIndex, header } from './utils/mockedDB';
 
 import { userCookie } from './utils/cookie.server';
 import { badRequest } from './utils/request.server';
+import { validatePassword } from './utils/validation';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -80,16 +81,6 @@ export const loader = async ({ request }: LoaderArgs) => {
     }
   );
 };
-
-function validatePassword(password: string) {
-  if (password.length === 0) {
-    return 'The password field cannot be empty!';
-  }
-
-  if (password !== process.env.ENTRY_PASSWORD) {
-    return 'Oh no! Wrong password, try again!';
-  }
-}
 
 export async function action({ request }: ActionArgs) {
   await new Promise((res) => setTimeout(res, 2000));

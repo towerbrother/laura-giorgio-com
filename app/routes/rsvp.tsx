@@ -12,24 +12,25 @@ export async function loader() {
 }
 
 export async function action({ request }: ActionArgs) {
-  await new Promise((res) => setTimeout(res, 1000));
-
   let formData = await request.formData();
   let { _action, ...values } = Object.fromEntries(formData);
 
   console.log({ values });
 
   if (_action === 'contact-details') {
+    await new Promise((res) => setTimeout(res, 1000));
     // store data somewhere
     return redirect('/rsvp/guestsdetails');
   }
 
   if (_action === 'guests-details') {
+    await new Promise((res) => setTimeout(res, 1000));
     // store data somewhere
     return redirect('/rsvp/otherdetails');
   }
 
   if (_action === 'other-details') {
+    await new Promise((res) => setTimeout(res, 2000));
     // store data somewhere
     return redirect('/rsvp/thanks');
   }

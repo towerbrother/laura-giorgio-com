@@ -1,5 +1,6 @@
 import { json } from '@remix-run/node';
 import { useLoaderData, useTransition } from '@remix-run/react';
+import { FaSpinner } from 'react-icons/fa';
 
 import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
@@ -12,7 +13,11 @@ export async function loader() {
 
 export default function Index() {
   const { currentStep, totalSteps } = useLoaderData<typeof loader>();
-  const transition = useTransition(); // improve using Login.tsx example
+  const { submission, state } = useTransition(); // improve using Login.tsx example
+
+  const isProcessing =
+    state === 'submitting' &&
+    submission.formData.get('_action') === 'other-details';
 
   return (
     <>
@@ -41,7 +46,14 @@ export default function Index() {
         value="other-details"
         className="border-none bg-cyan-600 text-neutral-100 font-bold rounded-md p-2 mt-5 w-full md:w-max md:px-5 md:text-lg lg:text-xl"
       >
-        {transition.submission ? 'SUBMITTING...' : 'SUBMIT'}
+        {isProcessing ? (
+          <div className="flex items-center justify-center">
+            <FaSpinner className="animate-spin mx-2" />
+            <span>PROCESSING...</span>
+          </div>
+        ) : (
+          'SUBMIT'
+        )}
       </Button>
     </>
   );
