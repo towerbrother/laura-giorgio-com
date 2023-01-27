@@ -82,6 +82,7 @@ export default function Index() {
     state === 'submitting' &&
     submission.formData.get('_action') === 'contact-details';
 
+  console.log({ rsvp });
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
       <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
@@ -99,6 +100,7 @@ export default function Index() {
           id="name"
           type="text"
           name="mainGuestName"
+          defaultValue={rsvp?.mainGuestName ? rsvp?.mainGuestName : ''}
           autoComplete="off"
           className={`border ${
             actionData?.fieldErrors?.mainGuestName
@@ -125,6 +127,7 @@ export default function Index() {
           id="surname"
           type="text"
           name="mainGuestSurname"
+          defaultValue={rsvp?.mainGuestSurname ? rsvp?.mainGuestSurname : ''}
           autoComplete="off"
           className={`border ${
             actionData?.fieldErrors?.mainGuestName
@@ -151,6 +154,7 @@ export default function Index() {
           id="email"
           type="email"
           name="mainGuestEmail"
+          defaultValue={rsvp?.mainGuestEmail ? rsvp?.mainGuestEmail : ''}
           autoComplete="off"
           className={`border ${
             actionData?.fieldErrors?.mainGuestName
@@ -174,8 +178,8 @@ export default function Index() {
           type="radio"
           name="guestsCar"
           value="no"
+          defaultChecked={rsvp ? rsvp?.guestsCar === 'no' : true}
           className="accent-cyan-600 mr-2 cursor-pointer"
-          defaultChecked
         />
         No
       </label>
@@ -184,6 +188,7 @@ export default function Index() {
           type="radio"
           name="guestsCar"
           value="yes"
+          defaultChecked={rsvp ? rsvp?.guestsCar === 'yes' : false}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         Yes
@@ -203,6 +208,7 @@ export default function Index() {
       <select
         id="guestsNumberMore12"
         name="guestsNumberMore12"
+        defaultValue={rsvp?.guestsNumberMore12 ? rsvp?.guestsNumberMore12 : '1'}
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="1">1</option>
@@ -224,6 +230,7 @@ export default function Index() {
       <select
         id="guestsNumber612"
         name="guestsNumber612"
+        defaultValue={rsvp?.guestsNumber612 ? rsvp?.guestsNumber612 : '0'}
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="0">0</option>
@@ -246,6 +253,7 @@ export default function Index() {
       <select
         id="guestsNumberLess6"
         name="guestsNumberLess6"
+        defaultValue={rsvp?.guestsNumberLess6 ? rsvp?.guestsNumberLess6 : '0'}
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="0">0</option>
