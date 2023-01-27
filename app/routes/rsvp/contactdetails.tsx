@@ -82,7 +82,6 @@ export default function Index() {
     state === 'submitting' &&
     submission.formData.get('_action') === 'contact-details';
 
-  console.log({ rsvp });
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
       <FormHeader currentStep={currentStep} totalSteps={totalSteps} />

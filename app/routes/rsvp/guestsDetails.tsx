@@ -69,7 +69,7 @@ export async function action({ request }: ActionArgs) {
       return [k, validateFoodPreference(v.toString())];
     }
 
-    return v;
+    return [k, undefined];
   });
 
   const fieldErrors = Object.fromEntries(mapped as Array<string[]>);
@@ -86,7 +86,16 @@ export async function action({ request }: ActionArgs) {
     headers: {
       'Set-Cookie': await userCookie.serialize({
         ...cookie,
-        rsvp: cookie.rsvp ? { ...cookie.rsvp, ...fields } : { ...fields },
+        rsvp: cookie.rsvp
+          ? {
+              ...Object.fromEntries(
+                Object.entries(cookie.rsvp).filter(
+                  ([k, v]) => !k.includes('allergy')
+                )
+              ),
+              ...fields,
+            }
+          : { ...fields },
       }),
     },
   });
@@ -133,6 +142,7 @@ export default function Index() {
             num={x}
             type="Adult"
             fieldErrors={actionData?.fieldErrors}
+            rsvp={rsvp}
           />
         ))}
       </ConditionalWrapper>
@@ -143,6 +153,7 @@ export default function Index() {
             num={x}
             type="Kid"
             fieldErrors={actionData?.fieldErrors}
+            rsvp={rsvp}
           />
         ))}
       </ConditionalWrapper>
@@ -153,6 +164,7 @@ export default function Index() {
             num={x}
             type="Baby"
             fieldErrors={actionData?.fieldErrors}
+            rsvp={rsvp}
           />
         ))}
       </ConditionalWrapper>

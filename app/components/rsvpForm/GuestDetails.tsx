@@ -2,17 +2,31 @@ type GuestDetailsProps = {
   num: string;
   type: string;
   fieldErrors?: any;
+  rsvp?: any;
 };
 
-const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
+const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
   const name = `name${type}${num}`;
   const date = `date${type}${num}`;
-  const foodPreference = `foodPreference${type}${num}`;
+  const food = `food${type}${num}`;
+  const allergyGluten = `allergy${type}${num}Gluten`;
+  const allergyEggs = `allergy${type}${num}Eggs`;
+  const allergyShellfish = `allergy${type}${num}Shellfish`;
+  const allergyNuts = `allergy${type}${num}Nuts`;
+  const allergyMilk = `allergy${type}${num}Milk`;
 
   const fieldErrorName = fieldErrors !== undefined ? fieldErrors[name] : null;
   const fieldErrorDate = fieldErrors !== undefined ? fieldErrors[date] : null;
-  const fieldErrorFoodPreference =
-    fieldErrors !== undefined ? fieldErrors[foodPreference] : null;
+  const fieldErrorFood = fieldErrors !== undefined ? fieldErrors[food] : null;
+
+  const rsvpNameValue = rsvp ? rsvp[name] : '';
+  const rsvpDateValue = rsvp ? rsvp[date] : '';
+  const rsvpFoodValue = rsvp ? rsvp[food] : '';
+  const rsvpAllergyGlutenValue = rsvp ? rsvp[allergyGluten] : '';
+  const rsvpAllergyEggsValue = rsvp ? rsvp[allergyEggs] : '';
+  const rsvpAllergyShellfishValue = rsvp ? rsvp[allergyShellfish] : '';
+  const rsvpAllergyNutsValue = rsvp ? rsvp[allergyNuts] : '';
+  const rsvpAllergyMilkValue = rsvp ? rsvp[allergyMilk] : '';
 
   return (
     <div className="border border-neutral-300 rounded-md p-4 flex flex-col mb-3">
@@ -33,6 +47,7 @@ const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
         name={name}
         autoComplete="off"
         placeholder={`${type} #${num} Full Name ...`}
+        defaultValue={rsvpNameValue}
         className={`border ${
           fieldErrorName ? 'border-red-600' : 'border-neutral-300'
         } rounded-md p-2 mb-4 mt-1`}
@@ -51,6 +66,7 @@ const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
       <select
         id="date"
         name={date}
+        defaultValue={rsvpDateValue}
         className={`border ${
           fieldErrorDate ? 'border-red-600' : 'border-neutral-300'
         } rounded-md p-3 mb-4 mt-1 cursor-pointer`}
@@ -67,14 +83,15 @@ const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
           I would like to eat...{' '}
         </label>{' '}
         <p className="text-xs text-red-600 ml-4">
-          {fieldErrorFoodPreference ? fieldErrorFoodPreference : <>&nbsp;</>}
+          {fieldErrorFood ? fieldErrorFood : <>&nbsp;</>}
         </p>
       </div>
       <select
-        id="foodPreference"
-        name={foodPreference}
+        id="food"
+        name={food}
+        defaultValue={rsvpFoodValue}
         className={`border ${
-          fieldErrorFoodPreference ? 'border-red-600' : 'border-neutral-300'
+          fieldErrorFood ? 'border-red-600' : 'border-neutral-300'
         } rounded-md p-3 mb-4 mt-1 cursor-pointer`}
       >
         <option value="">Choose an option</option>
@@ -88,8 +105,8 @@ const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name={`allergies${type}${num}`}
-          value="gluten"
+          name={allergyGluten}
+          defaultChecked={rsvpAllergyGlutenValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         Gluten 🥨
@@ -97,8 +114,8 @@ const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name={`allergies${type}${num}`}
-          value="eggs"
+          name={allergyEggs}
+          defaultChecked={rsvpAllergyEggsValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         Eggs 🍳
@@ -106,8 +123,8 @@ const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name={`allergies${type}${num}`}
-          value="shellfish"
+          name={allergyShellfish}
+          defaultChecked={rsvpAllergyShellfishValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         Shellfish 🦐
@@ -115,8 +132,8 @@ const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name={`allergies${type}${num}`}
-          value="nuts"
+          name={allergyNuts}
+          defaultChecked={rsvpAllergyNutsValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         Nuts 🥜
@@ -124,8 +141,8 @@ const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
       <label className="mt-2 w-max">
         <input
           type="checkbox"
-          name={`allergies${type}${num}`}
-          value="milk"
+          name={allergyMilk}
+          defaultChecked={rsvpAllergyMilkValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         Milk 🥛
