@@ -1,4 +1,4 @@
-import type { ActionArgs } from '@remix-run/node';
+import type { ActionArgs, LoaderArgs } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import {
   Form,
@@ -10,6 +10,8 @@ import { FaSpinner } from 'react-icons/fa';
 
 import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
+
+import { userCookie } from '~/utils/cookie.server';
 import { badRequest } from '~/utils/request.server';
 import {
   validateName,
@@ -17,24 +19,36 @@ import {
   validateEmail,
 } from '~/utils/validation';
 
-export async function loader() {
-  const currentStep: number = 1;
-  const totalSteps: number = 3;
-  // get the already input data - if any
-  return json({ currentStep, totalSteps });
+export async function loader({ request }: LoaderArgs) {
+  const cookieHeader = request.headers.get('Cookie');
+  const cookie = (await userCookie.parse(cookieHeader)) || {};
+
+  const stepsInfo = {
+    currentStep: 1,
+    totalSteps: 3,
+  };
+
+  if (cookie) {
+    return json({ ...cookie, ...stepsInfo });
+  }
+
+  // missing the content text - language
+  return json({ rsvp: null, ...stepsInfo });
 }
 
 export async function action({ request }: ActionArgs) {
   await new Promise((res) => setTimeout(res, 1000));
 
+  const cookieHeader = request.headers.get('Cookie');
+  const cookie = (await userCookie.parse(cookieHeader)) || {};
+
   let formData = await request.formData();
-  let { _action, ...values } = Object.fromEntries(formData);
+  let { _action, ...fields } = Object.fromEntries(formData);
 
   if (_action === 'close-rsvp') {
     return redirect('/');
   }
 
-  const fields = { ...values };
   const fieldErrors = {
     mainGuestName: validateName(fields?.mainGuestName.toString()),
     mainGuestSurname: validateSurname(fields?.mainGuestSurname.toString()),
@@ -49,13 +63,19 @@ export async function action({ request }: ActionArgs) {
     });
   }
 
-  // store data somewhere
-  return redirect('/rsvp/guestsdetails');
+  return redirect('/rsvp/guestsdetails', {
+    headers: {
+      'Set-Cookie': await userCookie.serialize({
+        ...cookie,
+        rsvp: cookie.rsvp ? { ...cookie.rsvp, ...fields } : { ...fields },
+      }),
+    },
+  });
 }
 
 export default function Index() {
   const actionData = useActionData<typeof action>();
-  const { currentStep, totalSteps } = useLoaderData<typeof loader>();
+  const { currentStep, totalSteps, rsvp } = useLoaderData<typeof loader>();
   const { submission, state } = useTransition();
 
   const isProcessing =

@@ -57,8 +57,7 @@ export const loader = async ({ request }: LoaderArgs) => {
 
   if (cookie) {
     return json({
-      language: cookie.language,
-      isAuth: cookie.isAuth,
+      ...cookie,
       header: header[getIndex(cookie.language)],
       footer: footer,
     });
@@ -114,9 +113,8 @@ export async function action({ request }: ActionArgs) {
   return redirect('/', {
     headers: {
       'Set-Cookie': await userCookie.serialize({
+        ...cookie,
         isAuth: true,
-        language: cookie ? cookie.language : 'en',
-        rsvp: cookie ? cookie.rsvp : null,
       }),
     },
   });

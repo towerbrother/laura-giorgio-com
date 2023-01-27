@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import type { ActionArgs } from '@remix-run/node';
+import type { ActionArgs, LoaderArgs } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import {
   Form,
@@ -13,6 +13,8 @@ import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
 import GuestDetails from '~/components/rsvpForm/GuestDetails';
 import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
+
+import { userCookie } from '~/utils/cookie.server';
 import { badRequest } from '~/utils/request.server';
 import {
   validateDate,
@@ -20,18 +22,31 @@ import {
   validateName,
 } from '~/utils/validation';
 
-export async function loader() {
-  const currentStep: number = 2;
-  const totalSteps: number = 3;
-  // get the already input data - if any
-  return json({ currentStep, totalSteps });
+export async function loader({ request }: LoaderArgs) {
+  const cookieHeader = request.headers.get('Cookie');
+  const cookie = (await userCookie.parse(cookieHeader)) || {};
+
+  const stepsInfo = {
+    currentStep: 2,
+    totalSteps: 3,
+  };
+
+  if (cookie) {
+    return json({ ...cookie, ...stepsInfo });
+  }
+
+  // missing the content text - language
+  return json({ rsvp: null, ...stepsInfo });
 }
 
 export async function action({ request }: ActionArgs) {
   await new Promise((res) => setTimeout(res, 1000));
 
+  const cookieHeader = request.headers.get('Cookie');
+  const cookie = (await userCookie.parse(cookieHeader)) || {};
+
   let formData = await request.formData();
-  let { _action, ...values } = Object.fromEntries(formData);
+  let { _action, ...fields } = Object.fromEntries(formData);
 
   if (_action === 'close-rsvp') {
     return redirect('/');
@@ -40,8 +55,6 @@ export async function action({ request }: ActionArgs) {
   if (_action === 'go-back') {
     return redirect('/rsvp/contactdetails');
   }
-
-  const fields = { ...values };
 
   const mapped = Object.entries(fields).map(([k, v]) => {
     if (k.includes('name')) {
@@ -69,21 +82,43 @@ export async function action({ request }: ActionArgs) {
     });
   }
 
-  // store data somewhere
-  return redirect('/rsvp/otherdetails');
+  return redirect('/rsvp/otherdetails', {
+    headers: {
+      'Set-Cookie': await userCookie.serialize({
+        ...cookie,
+        rsvp: cookie.rsvp ? { ...cookie.rsvp, ...fields } : { ...fields },
+      }),
+    },
+  });
 }
 
 export default function Index() {
   const actionData = useActionData<typeof action>();
-  const { currentStep, totalSteps } = useLoaderData<typeof loader>();
+  const { currentStep, totalSteps, rsvp } = useLoaderData<typeof loader>();
   const { submission, state } = useTransition();
 
   const isProcessing =
     state === 'submitting' &&
     submission.formData.get('_action') === 'guests-details';
 
-  const adults: Array<string> = ['1', '2', '3'];
-  const kids: Array<string> = ['1'];
+  const adults: Array<string> =
+    Number(rsvp?.guestsNumberMore12) === 0
+      ? []
+      : Array.from(Array(Number(rsvp?.guestsNumberMore12)).keys()).map((x) =>
+          (x + 1).toString()
+        );
+  const kids: Array<string> =
+    Number(rsvp?.guestsNumber612) === 0
+      ? []
+      : Array.from(Array(Number(rsvp?.guestsNumber612)).keys()).map((x) =>
+          (x + 1).toString()
+        );
+  const babies: Array<string> =
+    Number(rsvp?.guestsNumberLess6) === 0
+      ? []
+      : Array.from(Array(Number(rsvp?.guestsNumberLess6)).keys()).map((x) =>
+          (x + 1).toString()
+        );
 
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
@@ -107,6 +142,16 @@ export default function Index() {
             key={uuidv4()}
             num={x}
             type="Kid"
+            fieldErrors={actionData?.fieldErrors}
+          />
+        ))}
+      </ConditionalWrapper>
+      <ConditionalWrapper condition={babies.length > 0}>
+        {babies.map((x) => (
+          <GuestDetails
+            key={uuidv4()}
+            num={x}
+            type="Baby"
             fieldErrors={actionData?.fieldErrors}
           />
         ))}
