@@ -32,7 +32,7 @@ const Stage = ({
         {format(date, 'do LLLL yyyy ｜ p')}
       </span>
       <NavLink
-        className="rounded-md bg-neutral-800 text-sm text-neutral-100 font-bold my-1 mx-0 py-1 px-2 md:text-md md:py-2 md:px-4 hover:opacity-80 lg:text-3xl lg:py-2 lg:px-5"
+        className="animate-pulse xl:animate-none rounded-md bg-neutral-800 text-md text-neutral-100 font-bold my-1 mx-0 py-1 px-3 md:text-lg md:py-2 md:px-4 hover:opacity-80 lg:text-2xl lg:py-2 lg:px-4"
         to={slug}
         prefetch="intent"
       >

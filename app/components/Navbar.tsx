@@ -36,9 +36,9 @@ const Navbar = ({ name, links, languageOptions, toggle }: NavbarProps) => {
             ) : (
               <NavLink
                 className={({ isActive }) =>
-                  `${
-                    isActive ? 'bg-cyan-600' : 'bg-neutral-800'
-                  } z-30 transition-all duration-200 ease-in-out rounded-md text-neutral-100 font-bold text-xl py-2 px-4 mx-2 hover:opacity-80`
+                  `${isActive ? 'bg-cyan-600' : 'bg-neutral-800'} z-30 ${
+                    text === 'RSVP' ? 'animate-bounce' : ''
+                  } transition-all duration-200 ease-in-out rounded-md text-neutral-100 font-bold text-xl py-2 px-4 mx-2 hover:opacity-80`
                 }
                 key={uuidv4()}
                 to={slug}
