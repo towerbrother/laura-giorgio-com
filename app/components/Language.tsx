@@ -41,7 +41,7 @@ const Language = ({ options }: LanguageProps) => {
           <fetcher.Form
             key={uuidv4()}
             method="post"
-            action="/user/set-user-language"
+            action="/utils/set-user-language"
           >
             <Button type="submit" onClick={handleDelayedCloseFormWrapper}>
               <>

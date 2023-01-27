@@ -76,6 +76,7 @@ export const loader = async ({ request }: LoaderArgs) => {
         'Set-Cookie': await userCookie.serialize({
           language: 'en',
           isAuth: false,
+          rsvp: null,
         }),
       },
     }
@@ -115,6 +116,7 @@ export async function action({ request }: ActionArgs) {
       'Set-Cookie': await userCookie.serialize({
         isAuth: true,
         language: cookie ? cookie.language : 'en',
+        rsvp: cookie ? cookie.rsvp : null,
       }),
     },
   });

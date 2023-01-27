@@ -18,6 +18,7 @@ export async function action({ request }: ActionArgs) {
     headers: {
       'Set-Cookie': await userCookie.serialize({
         isAuth: cookie ? cookie.isAuth : false,
+        rsvp: cookie ? cookie.rsvp : null,
         language: typeof language === 'string' ? language : 'en',
       }),
     },
