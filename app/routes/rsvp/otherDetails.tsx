@@ -79,6 +79,7 @@ export default function Index() {
       <textarea
         className="border border-neutral-300 rounded-md p-4 mb-3 h-40 lg:h-52 xl:h-60"
         name="textarea"
+        defaultValue={rsvp?.textarea ? rsvp?.textarea : ''}
       />
       <Button
         type="submit"
