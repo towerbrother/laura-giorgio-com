@@ -6,6 +6,7 @@ import type {
 } from '@remix-run/node';
 import { redirect, json } from '@remix-run/node';
 import {
+  Link,
   Links,
   LiveReload,
   Meta,
@@ -13,6 +14,7 @@ import {
   Scripts,
   ScrollRestoration,
   useActionData,
+  useCatch,
   useLoaderData,
 } from '@remix-run/react';
 
@@ -25,6 +27,7 @@ import { footer, getIndex, header } from './utils/mockedDB';
 
 import { userCookie } from './utils/cookie.server';
 import { badRequest } from './utils/request.server';
+import { validatePassword } from './utils/validation';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -34,7 +37,7 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => {
   return [
-    { rel: 'stylesheet', href: styles },
+    { rel: 'stylesheet', href: styles, as: 'style' },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     {
       rel: 'preconnect',
@@ -54,8 +57,7 @@ export const loader = async ({ request }: LoaderArgs) => {
 
   if (cookie) {
     return json({
-      language: cookie.language,
-      isAuth: cookie.isAuth,
+      ...cookie,
       header: header[getIndex(cookie.language)],
       footer: footer,
     });
@@ -73,21 +75,12 @@ export const loader = async ({ request }: LoaderArgs) => {
         'Set-Cookie': await userCookie.serialize({
           language: 'en',
           isAuth: false,
+          rsvp: null,
         }),
       },
     }
   );
 };
-
-function validatePassword(password: string) {
-  if (password.length === 0) {
-    return 'The password field cannot be empty!';
-  }
-
-  if (password !== process.env.ENTRY_PASSWORD) {
-    return '¯_(ツ)_/¯ Wrong password, try again!';
-  }
-}
 
 export async function action({ request }: ActionArgs) {
   await new Promise((res) => setTimeout(res, 2000));
@@ -120,8 +113,8 @@ export async function action({ request }: ActionArgs) {
   return redirect('/', {
     headers: {
       'Set-Cookie': await userCookie.serialize({
+        ...cookie,
         isAuth: true,
-        language: cookie ? cookie.language : 'en',
       }),
     },
   });
@@ -137,7 +130,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="font-josephin min-h-screen flex flex-col">
+      <body className="font-josephin min-h-screen flex flex-col before:box-border after:box-border">
         {!loaderData?.isAuth ? (
           <Login fieldErrors={actionData?.fieldErrors} />
         ) : (
@@ -165,7 +158,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="before:box-border after:box-border">
         <div className="w-screen h-screen flex flex-col items-center p-4 pt-10">
           <p className="text-sm md:text-xl">
             Oh no! 🥵 Something went wrong... we apologise for any inconvenience
@@ -174,6 +167,35 @@ export function ErrorBoundary({ error }: { error: Error }) {
           <p className="text-sm md:text-xl">
             Please, let Giorgio know. He will do his best to fix the issue!
           </p>
+        </div>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  return (
+    <html>
+      <head>
+        <title>Oops!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body className="before:box-border after:box-border">
+        <div className="w-screen h-screen flex flex-col items-center justify-center p-4">
+          <h1 className="text-5xl text-neutral-800 py-10">
+            {caught.status} {caught.statusText}
+          </h1>
+          <Link
+            to="/"
+            prefetch="intent"
+            className="bg-neutral-800 transition-all duration-200 ease-in-out rounded-md text-neutral-100 font-bold text-xl py-2 px-4 mx-2 hover:opacity-80"
+          >
+            HOME
+          </Link>
         </div>
         <Scripts />
       </body>

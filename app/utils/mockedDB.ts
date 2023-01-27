@@ -56,12 +56,12 @@ export const header: Array<HeaderProps> = [
     name: 'Laura & Giorgio',
     languageOptions: languageOptions.options,
     links: [
-      { text: 'Info', slug: 'info', type: 'link' },
-      { text: 'Reservation', slug: 'reservation', type: 'link' },
-      { text: 'Contact', slug: 'contact', type: 'link' },
-      { text: 'Good to know', slug: 'goodtoknow', type: 'link' },
-      { text: 'RSVP', slug: 'rsvp', type: 'button' },
-      { text: 'CONTRIBUTE', slug: 'contribute', type: 'button' },
+      { text: 'Info', slug: '/info', type: 'link' },
+      { text: 'Reservation', slug: '/reservation', type: 'link' },
+      { text: 'Contact', slug: '/contact', type: 'link' },
+      { text: 'Good to know', slug: '/goodtoknow', type: 'link' },
+      { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
+      { text: 'CONTRIBUTE', slug: '/contribute', type: 'button' },
     ],
   },
   {
@@ -96,21 +96,21 @@ export const stage: Array<StageProps> = [
     title: 'Laura & Giorgio',
     subtitle: 'are getting married',
     date: ceremonyDate,
-    link: { text: 'RSVP', slug: '/rsvp' },
+    link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
     image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'werden heiraten',
     date: ceremonyDate,
-    link: { text: 'RSVP', slug: '/rsvp' },
+    link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
     image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'si sposano',
     date: ceremonyDate,
-    link: { text: 'RSVP', slug: '/rsvp' },
+    link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
 ];
 
@@ -139,7 +139,7 @@ export const homeTile: Array<TileProps> = [
     tile: {
       title: 'La nostra storia',
       subtitle: 'Per chi non lo sapesse',
-      text: `Ci siamo incontrati all'Università, in UK. Zaira, un'amica comune, nomina Laura a Giorgio e gli suggerisce di incontrarla. Era convinta che sarebbero stati perfetti l'uno per l'altra. Così, quando Laura è passata accanto a Giorgio nella biblioteca del campus, lui ha colto l'attimo e le si è avvicinato, con un atteggiamento da stalker, dicendo: "Ciao, tu sei Laura, vero?". Adesso, dopo 8 anni, 1 (meravigliosa) bambina, 2 paesi, innumerevoli sessioni di yoga, qualche litigata e centinaia di libri letti e discussi, ci sposiamo! Unisciti a noi per festeggiare insieme il nostro grande giorno!`,
+      text: `Ci siamo incontrati alla Cranfield University in Inghilterra. Zaira, un'amica comune, suggerisce a Giorgio di chiedere a Laura di uscire con lui, era convinta che sarebbero stati perfetti l'uno per l'altra. Così, quando Laura è passata accanto a Giorgio nella biblioteca del campus, lui ha colto l'attimo e le si è avvicinato, con un atteggiamento da stalker, dicendo: "Ciao, tu sei Laura, vero?". Adesso, dopo 8 anni, 1 (meravigliosa) bambina, 2 paesi, innumerevoli sessioni di yoga, qualche litigata e centinaia di libri letti e discussi, ci sposiamo! Unisciti a noi per festeggiare insieme!`,
     },
   },
 ];
@@ -151,9 +151,9 @@ export const transportationTile: Array<TileProps> = [
     tile: {
       title: 'Transportation',
       subtitle: "Don't worry about anything",
-      text: 'We have arranged transportation for guests from the hotel to the church and later to the reception venue. To reserve a seat, please let us know with your RSVP.',
+      text: 'We have arranged transportation for guests from the hotel to the church and later to the reception venue. To reserve a seat, please let us know how many of you are coming with your RSVP.',
     },
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     direction: 'front',
@@ -161,9 +161,9 @@ export const transportationTile: Array<TileProps> = [
     tile: {
       title: 'Transport',
       subtitle: 'Mach dir keine Sorgen',
-      text: 'Wir haben den Transport für die Gäste vom Hotel zur Kirche und später zum Veranstaltungsort arrangiert. Um einen Sitzplatz zu reservieren, teilen Sie uns dies bitte mit Ihrer RSVP mit.',
+      text: 'Wir haben den Transport für die Gäste vom Hotel zur Kirche und später zum Veranstaltungsort arrangiert. Um einen Sitzplatz zu reservieren, lassen Sie uns bitte wissen, dass Sie mit Ihrer RSVP kommen.',
     },
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     direction: 'front',
@@ -171,9 +171,9 @@ export const transportationTile: Array<TileProps> = [
     tile: {
       title: 'Trasporto',
       subtitle: 'Non preoccuparti di niente',
-      text: `Abbiamo organizzato il trasporto degli ospiti dall'hotel alla chiesa e successivamente al luogo del ricevimento. Per prenotare un posto, fatecelo sapere con il vostro RSVP.`,
+      text: `Organizzeremo il trasporto degli ospiti dall'hotel alla chiesa e successivamente al luogo del ricevimento, tramite pullman. Per prenotare il vostro posto, completa l'RSVP al più presto e facci sapere quanti sarete.`,
     },
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];
 
@@ -204,7 +204,7 @@ export const accomodationTile: Array<TileProps> = [
     tile: {
       title: 'Alloggio',
       subtitle: 'Camere accoglienti per il vostro soggiorno',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio.',
+      text: 'Wolfsberg offre varie possibilità di pernottamento. Tuttavia, per i nostri ospiti, abbiamo individuato due opzioni che riteniamo essere opportune, l’hotel Hecher e la pensione Ölberger. Con l’hotel Hecher abbiamo anche discusso e concordato un prezzo speciale.',
     },
     link: { slug: '/accomodation', text: 'BOOK' },
   },
@@ -302,7 +302,7 @@ export const contribution: Array<ContributionProps> = [
     ],
   },
   {
-    headline: 'A chi sta pensando a un regalo!',
+    headline: 'Per chi sta pensando ad un regalo!',
     paragraphs: [
       'La tua presenza è già un dono!',
       'Tuttavia, se desideri onorarci con un regalo, ti saremmo molto grati per un contributo finanziario.',
@@ -319,7 +319,7 @@ export const hotelTile: Array<TileProps> = [
     tile: {
       title: 'Hotel Hecher',
       subtitle: 'Reccomended for those staying 2 nights',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
+      text: 'Centrally located with comfortable rooms. 10 min walk or 4 min drive from the reception venue. Within walking distance from the central station in Wolfsberg. Special price has been agreed for our guests. Please book via email and quote “Hochzeit Purnell” in your booking. Please book as soon as possible.',
     },
     externalLink: {
       href: 'https://www.hecher.at/',
@@ -332,7 +332,7 @@ export const hotelTile: Array<TileProps> = [
     tile: {
       title: 'Hotel Hecher',
       subtitle: 'Empfohlen für diejenigen, die 2 Nächte bleiben',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
+      text: 'Zentral gelegen mit komfortablen Zimmern. 10 Minuten zu Fuß oder 4 Minuten Fahrt von der Rezeption entfernt. Nur wenige Gehminuten vom Hauptbahnhof in Wolfsberg entfernt. Für unsere Gäste wurde ein Sonderpreis vereinbart. Bitte buchen Sie per E-Mail und geben Sie bei Ihrer Buchung „Hochzeit Purnell“ an. Bitte buchen Sie so bald wie möglich.',
     },
     externalLink: {
       href: 'https://www.hecher.at/',
@@ -345,7 +345,7 @@ export const hotelTile: Array<TileProps> = [
     tile: {
       title: 'Hotel Hecher',
       subtitle: 'Consigliato per chi soggiorna 2 notti',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
+      text: 'Situato in posizione centrale con camere confortevoli. 10 minuti a piedi o 4 minuti in auto dal luogo del ricevimento. A pochi passi dalla stazione centrale di Wolfsberg. Per i nostri ospiti è stato concordato un prezzo speciale. Si prega di prenotare via e-mail e citare "Hochzeit Purnell" nella prenotazione. Si prega di prenotare il prima possibile.',
     },
     externalLink: {
       href: 'https://www.hecher.at/',
@@ -361,7 +361,7 @@ export const pensionTile: Array<TileProps> = [
     tile: {
       title: 'Pension Ölberger',
       subtitle: 'Reccomended for those staying 1 night only',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
+      text: 'Simple, inexpensive rooms. Recommended for those staying one night. Car needed to reach.',
     },
     externalLink: {
       href: 'https://www.gasthof-oelberger.at/',
@@ -374,7 +374,7 @@ export const pensionTile: Array<TileProps> = [
     tile: {
       title: 'Pension Ölberger',
       subtitle: 'Reccomended for those staying 1 night only',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
+      text: 'Einfache, preiswerte Zimmer. Empfohlen für diejenigen, die eine Nacht bleiben. Auto benötigt, um zu erreichen.',
     },
     externalLink: {
       href: 'https://www.gasthof-oelberger.at/',
@@ -387,7 +387,7 @@ export const pensionTile: Array<TileProps> = [
     tile: {
       title: 'Pension Ölberger',
       subtitle: 'Reccomended for those staying 1 night only',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio. Integer nunc quam, maximus a justo in, sagittis rhoncus augue. Integer semper, lacus quis molestie mattis, dui leo gravida quam, vel elementum est ligula ac lectus.',
+      text: `Camere semplici ed economiche. Consigliato per chi soggiorna una notte soltanto. L'automobile è necessaria per raggiungere la pensione.`,
     },
     externalLink: {
       href: 'https://www.gasthof-oelberger.at/',
@@ -409,7 +409,7 @@ export const contributionBanner: Array<BannerProps> = [
   },
   {
     paragraph:
-      'La tua presenza è abbastanza presente! Tuttavia, se desideri onorarci con un regalo, ti saremmo molto grati per un contributo finanziario.',
+      'La tua presenza è già un dono! Tuttavia, se desideri onorarci con un regalo, ti saremmo molto grati per un contributo finanziario. GRAZIE!',
     link: { slug: '/contribute', text: 'CONTRIBUISCI' },
   },
 ];
@@ -420,20 +420,19 @@ export const contactBanner: Array<BannerProps> = [
     icon: false,
     paragraph:
       'Please, click on RSVP and follow the steps. Let us know how many of you are going to join us. Should you have any special requirements or further comments, you will be able to add them at the end of the form. Thank you!',
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     headline: 'Wir freuen uns darauf, mit Ihnen zu feiern!',
     icon: false,
     paragraph:
       'Bitte klicken Sie auf RSVP und folgen Sie den Schritten. Teilen Sie uns mit, wie viele von Ihnen sich uns anschließen werden. Sollten Sie besondere Anforderungen oder weitere Anmerkungen haben, können Sie diese am Ende des Formulars hinzufügen. Danke dir!',
-    link: { slug: '/rsvp', text: 'RSVP' },
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     headline: `Non vediamo l'ora di festeggiare con te!`,
     icon: false,
-    paragraph:
-      'Per favore, clicca su RSVP e segui i passaggi. Fateci sapere quanti di voi si uniranno a noi. Se hai esigenze particolari o ulteriori commenti, potrai aggiungerli alla fine del modulo. Grazie!',
-    link: { slug: '/rsvp', text: 'RSVP' },
+    paragraph: `Per favore, clicca su RSVP e segui i passaggi. Facci sapere quanti sarete. Tu avessi esigenze particolari o ulteriori commenti, potrai aggiungerli alla fine dell'RSVP. Grazie!`,
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];

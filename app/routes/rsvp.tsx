@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/node';
+import { Outlet } from '@remix-run/react';
 
 export const meta: MetaFunction = () => ({
   title: 'RSVP 🥳',
@@ -6,8 +7,8 @@ export const meta: MetaFunction = () => ({
 
 export default function Index() {
   return (
-    <div className="w-full h-full flex flex-col items-center">
-      <h1 className="font-bold text-5xl text-neutral-800 mt-20">RSVP PAGE</h1>
+    <div className="w-full max-w-5xl px-3 md:px-6 pt-3 pb-2 my-0 mx-auto md:py-6 lg:px-16">
+      <Outlet />
     </div>
   );
 }
