@@ -1,71 +1,88 @@
 type GuestDetailsProps = {
   num: string;
   type: string;
+  fieldErrors?: any;
 };
 
-const GuestDetails = ({ num, type }: GuestDetailsProps) => {
+const GuestDetails = ({ num, type, fieldErrors }: GuestDetailsProps) => {
+  const name = `name${type}${num}`;
+  const date = `date${type}${num}`;
+  const foodPreference = `foodPreference${type}${num}`;
+
+  const fieldErrorName = fieldErrors !== undefined ? fieldErrors[name] : null;
+  const fieldErrorDate = fieldErrors !== undefined ? fieldErrors[date] : null;
+  const fieldErrorFoodPreference =
+    fieldErrors !== undefined ? fieldErrors[foodPreference] : null;
+
   return (
     <div className="border border-neutral-300 rounded-md p-4 flex flex-col mb-3">
-      <label
-        htmlFor="name"
-        className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
-      >
-        {`${type} #${num} - Full Name`}{' '}
-      </label>
+      <div className="flex justify-start items-center">
+        <label
+          htmlFor="name"
+          className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
+        >
+          {`${type} #${num} - Full Name`}{' '}
+        </label>
+        <p className="text-xs text-red-600 ml-4">
+          {fieldErrorName ? fieldErrorName : <>&nbsp;</>}
+        </p>
+      </div>
       <input
         type="text"
         id="name"
-        name={`name${type}${num}`}
+        name={name}
         autoComplete="off"
         placeholder={`${type} #${num} Full Name ...`}
-        className="border border-neutral-300 rounded-md p-2 mb-5"
+        className={`border ${
+          fieldErrorName ? 'border-red-600' : 'border-neutral-300'
+        } rounded-md p-2 mb-4 mt-1`}
       />
-      <label
-        htmlFor="date"
-        className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
-      >
-        Date of arrival{' '}
-      </label>
+      <div className="flex justify-start items-center">
+        <label
+          htmlFor="date"
+          className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
+        >
+          Date of arrival{' '}
+        </label>
+        <p className="text-xs text-red-600 ml-4">
+          {fieldErrorDate ? fieldErrorDate : <>&nbsp;</>}
+        </p>
+      </div>
       <select
         id="date"
-        name={`date${type}${num}`}
-        className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
+        name={date}
+        className={`border ${
+          fieldErrorDate ? 'border-red-600' : 'border-neutral-300'
+        } rounded-md p-3 mb-4 mt-1 cursor-pointer`}
       >
         <option value="">Choose an option</option>
         <option value="friday">Friday, 28th July</option>
         <option value="saturday">Saturday, 29th July</option>
       </select>
-      <legend className="text-neutral-800 font-bold mt-1 lg:text-lg after:content-['*'] after:ml-px after:text-red-500">
-        I would like to eat...
-      </legend>
-      <label className="mt-2 w-max">
-        <input
-          type="radio"
-          name={`foodPreference${type}${num}`}
-          value="meat"
-          className="accent-cyan-600 mr-2 cursor-pointer"
-        />
-        Meat 🍖
-      </label>
-      <label className="mt-2 w-max">
-        <input
-          type="radio"
-          name={`foodPreference${type}${num}`}
-          value="fish"
-          className="accent-cyan-600 mr-2 cursor-pointer"
-        />
-        Fish 🐟
-      </label>
-      <label className="mt-2 w-max">
-        <input
-          type="radio"
-          name={`foodPreference${type}${num}`}
-          value="vegetarian"
-          className="accent-cyan-600 mr-2 cursor-pointer"
-        />
-        Vegetarian 🥗
-      </label>
-      <legend className="text-neutral-800 font-bold mt-4 lg:text-lg">
+      <div className="flex justify-start items-center">
+        <label
+          htmlFor="date"
+          className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
+        >
+          I would like to eat...{' '}
+        </label>{' '}
+        <p className="text-xs text-red-600 ml-4">
+          {fieldErrorFoodPreference ? fieldErrorFoodPreference : <>&nbsp;</>}
+        </p>
+      </div>
+      <select
+        id="foodPreference"
+        name={foodPreference}
+        className={`border ${
+          fieldErrorFoodPreference ? 'border-red-600' : 'border-neutral-300'
+        } rounded-md p-3 mb-4 mt-1 cursor-pointer`}
+      >
+        <option value="">Choose an option</option>
+        <option value="meat">Meat 🍖</option>
+        <option value="fish">Fish 🐟</option>
+        <option value="vegetarian">Vegetarian 🥗</option>
+      </select>
+      <legend className="text-neutral-800 font-bold lg:text-lg">
         I am allergic/intollerant to...
       </legend>
       <label className="mt-2 w-max">

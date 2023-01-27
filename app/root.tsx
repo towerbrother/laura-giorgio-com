@@ -37,7 +37,7 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => {
   return [
-    { rel: 'stylesheet', href: styles },
+    { rel: 'stylesheet', href: styles, as: 'style' },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     {
       rel: 'preconnect',

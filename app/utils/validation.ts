@@ -1,4 +1,3 @@
-// Login
 export function validatePassword(input: string) {
   if (input.length === 0) {
     return 'The password field cannot be empty!';
@@ -9,7 +8,6 @@ export function validatePassword(input: string) {
   }
 }
 
-// RSVP contact details
 export function validateName(input: string) {
   if (input.length === 0) {
     return 'The name field cannot be empty!';
@@ -34,4 +32,14 @@ export function validateEmail(input: string) {
   }
 }
 
-// RSVP guests details
+export function validateDate(input: string) {
+  if (input.length === 0) {
+    return 'The date field cannot be empty!';
+  }
+}
+
+export function validateFoodPreference(input: string) {
+  if (input.length === 0) {
+    return 'The food preference field cannot be empty!';
+  }
+}

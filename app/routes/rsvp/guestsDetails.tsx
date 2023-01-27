@@ -1,13 +1,24 @@
 import { v4 as uuidv4 } from 'uuid';
 import type { ActionArgs } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
-import { Form, useLoaderData, useTransition } from '@remix-run/react';
+import {
+  Form,
+  useActionData,
+  useLoaderData,
+  useTransition,
+} from '@remix-run/react';
 import { FaSpinner } from 'react-icons/fa';
 
 import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
 import GuestDetails from '~/components/rsvpForm/GuestDetails';
 import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
+import { badRequest } from '~/utils/request.server';
+import {
+  validateDate,
+  validateFoodPreference,
+  validateName,
+} from '~/utils/validation';
 
 export async function loader() {
   const currentStep: number = 2;
@@ -30,24 +41,49 @@ export async function action({ request }: ActionArgs) {
     return redirect('/rsvp/contactdetails');
   }
 
-  console.log({ values });
+  const fields = { ...values };
 
-  // validation
+  const mapped = Object.entries(fields).map(([k, v]) => {
+    if (k.includes('name')) {
+      return [k, validateName(v.toString())];
+    }
+
+    if (k.includes('date')) {
+      return [k, validateDate(v.toString())];
+    }
+
+    if (k.includes('foodPreference')) {
+      return [k, validateFoodPreference(v.toString())];
+    }
+
+    return v;
+  });
+
+  const fieldErrors = Object.fromEntries(mapped as Array<string[]>);
+
+  if (Object.values(fieldErrors).some(Boolean)) {
+    return badRequest({
+      fieldErrors,
+      fields,
+      formError: null,
+    });
+  }
+
   // store data somewhere
   return redirect('/rsvp/otherdetails');
 }
 
 export default function Index() {
+  const actionData = useActionData<typeof action>();
   const { currentStep, totalSteps } = useLoaderData<typeof loader>();
-  const { submission, state } = useTransition(); // improve using Login.tsx example
+  const { submission, state } = useTransition();
 
   const isProcessing =
     state === 'submitting' &&
     submission.formData.get('_action') === 'guests-details';
 
   const adults: Array<string> = ['1', '2', '3'];
-  const kids: Array<string> = [];
-  const babies: Array<string> = ['1'];
+  const kids: Array<string> = ['1'];
 
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
@@ -57,17 +93,22 @@ export default function Index() {
       </h1>
       <ConditionalWrapper condition={adults.length > 0}>
         {adults.map((x) => (
-          <GuestDetails key={uuidv4()} num={x} type="Adult" />
+          <GuestDetails
+            key={uuidv4()}
+            num={x}
+            type="Adult"
+            fieldErrors={actionData?.fieldErrors}
+          />
         ))}
       </ConditionalWrapper>
       <ConditionalWrapper condition={kids.length > 0}>
         {kids.map((x) => (
-          <GuestDetails key={uuidv4()} num={x} type="Kid" />
-        ))}
-      </ConditionalWrapper>
-      <ConditionalWrapper condition={babies.length > 0}>
-        {babies.map((x) => (
-          <GuestDetails key={uuidv4()} num={x} type="Baby" />
+          <GuestDetails
+            key={uuidv4()}
+            num={x}
+            type="Kid"
+            fieldErrors={actionData?.fieldErrors}
+          />
         ))}
       </ConditionalWrapper>
       <Button
