@@ -9,7 +9,8 @@ export default function Index() {
           Do you have any further questions or concerns?
         </p>
         <p className="text-neutral-800 my-2 text-xs sm:text-base md:text-md lg:text-xl">
-          Drop us an email at <strong>XXXXX@gmail.com</strong>
+          Drop us an email at{' '}
+          <strong>{`laura.giorgio.wedding@gmail.com`}</strong>
         </p>
       </div>
     </div>
