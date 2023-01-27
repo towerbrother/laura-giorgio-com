@@ -24,24 +24,15 @@ export async function loader() {
   return json({ currentStep, totalSteps });
 }
 
-/*
-  if (_action === 'close-rsvp') {
-    // destroy data?
-    return redirect('/');
-  }
-
-  if (_action === 'go-back') {
-    // switch case with different redirect
-    // loader of each route should load the previous values
-    return null;
-  }
- */
-
 export async function action({ request }: ActionArgs) {
   await new Promise((res) => setTimeout(res, 1000));
 
   let formData = await request.formData();
   let { _action, ...values } = Object.fromEntries(formData);
+
+  if (_action === 'close-rsvp') {
+    return redirect('/');
+  }
 
   const fields = { ...values };
   const fieldErrors = {
@@ -49,9 +40,6 @@ export async function action({ request }: ActionArgs) {
     mainGuestSurname: validateSurname(fields?.mainGuestSurname.toString()),
     mainGuestEmail: validateEmail(fields?.mainGuestEmail.toString()),
   };
-
-  console.log({ fields });
-  console.log({ fieldErrors });
 
   if (Object.values(fieldErrors).some(Boolean)) {
     return badRequest({

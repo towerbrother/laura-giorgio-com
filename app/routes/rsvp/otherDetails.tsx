@@ -19,6 +19,14 @@ export async function action({ request }: ActionArgs) {
   let formData = await request.formData();
   let { _action, ...values } = Object.fromEntries(formData);
 
+  if (_action === 'close-rsvp') {
+    return redirect('/');
+  }
+
+  if (_action === 'go-back') {
+    return redirect('/rsvp/guestsdetails');
+  }
+
   console.log({ values });
 
   // store data somewhere
