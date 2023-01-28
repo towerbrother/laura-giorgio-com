@@ -59,7 +59,7 @@ export const loader = async ({ request }: LoaderArgs) => {
     return json({
       ...cookie,
       header: header[getIndex(cookie.language)],
-      footer: footer,
+      footer: footer[getIndex(cookie.language)],
     });
   }
 
@@ -68,7 +68,7 @@ export const loader = async ({ request }: LoaderArgs) => {
       language: 'en',
       isAuth: false,
       header: header[getIndex('en')],
-      footer: footer,
+      footer: footer[getIndex('en')],
     },
     {
       headers: {

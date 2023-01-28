@@ -30,9 +30,17 @@ const languageOptions: LanguageProps = {
 };
 
 // data
-export const footer: FooterProps = {
-  name: 'Laura & Giorgio',
-};
+export const footer: Array<FooterProps> = [
+  {
+    name: 'Laura & Giorgio',
+  },
+  {
+    name: 'Laura & Giorgio',
+  },
+  {
+    name: 'Laura & Giorgio',
+  },
+];
 
 export const photos: PhotosProps = {
   photos: [
