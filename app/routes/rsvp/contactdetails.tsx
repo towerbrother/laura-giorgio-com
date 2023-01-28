@@ -18,6 +18,7 @@ import {
   validateSurname,
   validateEmail,
 } from '~/utils/validation';
+import { rsvpContactDetails, getIndex } from '~/utils/mockedDB';
 
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
@@ -29,11 +30,18 @@ export async function loader({ request }: LoaderArgs) {
   };
 
   if (cookie) {
-    return json({ ...cookie, ...stepsInfo });
+    return json({
+      ...cookie,
+      ...stepsInfo,
+      rsvpContactDetails: rsvpContactDetails[getIndex(cookie.language)],
+    });
   }
 
-  // missing the content text - language
-  return json({ rsvp: null, ...stepsInfo });
+  return json({
+    rsvp: null,
+    ...stepsInfo,
+    rsvpContactDetails: rsvpContactDetails[getIndex('en')],
+  });
 }
 
 export async function action({ request }: ActionArgs) {
@@ -75,8 +83,9 @@ export async function action({ request }: ActionArgs) {
 
 export default function Index() {
   const actionData = useActionData<typeof action>();
-  const { currentStep, totalSteps, rsvp } = useLoaderData<typeof loader>();
   const { submission, state } = useTransition();
+  const { currentStep, totalSteps, rsvp, rsvpContactDetails } =
+    useLoaderData<typeof loader>();
 
   const isProcessing =
     state === 'submitting' &&
@@ -86,14 +95,14 @@ export default function Index() {
     <Form method="post" className="flex flex-col py-4 md:py-6">
       <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
-        Contact Details
+        {rsvpContactDetails?.title}
       </h1>
       <div className="flex flex-col w-full mb-1">
         <label
           htmlFor="name"
           className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
         >
-          Name{' '}
+          {rsvpContactDetails?.form?.name}
         </label>
         <input
           id="name"
@@ -120,7 +129,7 @@ export default function Index() {
           htmlFor="surname"
           className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
         >
-          Surname{' '}
+          {rsvpContactDetails?.form?.surname}
         </label>
         <input
           id="surname"
@@ -147,13 +156,14 @@ export default function Index() {
           htmlFor="email"
           className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
         >
-          Email{' '}
+          {rsvpContactDetails?.form?.email?.label}
         </label>
         <input
           id="email"
           type="email"
           name="mainGuestEmail"
           defaultValue={rsvp?.mainGuestEmail ? rsvp?.mainGuestEmail : ''}
+          placeholder={rsvpContactDetails?.form?.email?.placeholder}
           autoComplete="off"
           className={`border ${
             actionData?.fieldErrors?.mainGuestName
@@ -170,7 +180,7 @@ export default function Index() {
         </p>
       </div>
       <legend className="text-neutral-800 font-bold mt-1 lg:text-lg">
-        Will you and your family/group have a car?
+        {rsvpContactDetails?.form?.car}
       </legend>
       <label className="mt-2 w-max">
         <input
@@ -193,16 +203,16 @@ export default function Index() {
         Yes
       </label>
       <legend className="text-neutral-800 font-bold mt-5 lg:text-lg">
-        How many people are you completing the RSVP for?
+        {rsvpContactDetails?.form?.peopleNumber?.text}
       </legend>
       <p className="text-sm text-neutral-600 mb-2">
-        Attention: that should also include yourself
+        {rsvpContactDetails?.form?.peopleNumber?.subtext}
       </p>
       <label
         htmlFor="guestsNumberMore12"
         className="text-neutral-800 font-bold lg:text-lg"
       >
-        12+ years old{' '}
+        {rsvpContactDetails?.form?.peopleNumber?.labelAdults}
       </label>
       <select
         id="guestsNumberMore12"
@@ -224,7 +234,7 @@ export default function Index() {
         htmlFor="guestsNumber612"
         className="text-neutral-800 font-bold lg:text-lg"
       >
-        6-to-12 years old{' '}
+        {rsvpContactDetails?.form?.peopleNumber?.labelKids}
       </label>
       <select
         id="guestsNumber612"
@@ -247,7 +257,7 @@ export default function Index() {
         htmlFor="guestsNumberLess6"
         className="text-neutral-800 font-bold lg:text-lg"
       >
-        0-to-6 years old{' '}
+        {rsvpContactDetails?.form?.peopleNumber?.labelBabies}
       </label>
       <select
         id="guestsNumberLess6"
@@ -277,7 +287,7 @@ export default function Index() {
             <FaSpinner className="animate-spin my-1 mx-4" />
           </div>
         ) : (
-          'NEXT'
+          <>{rsvpContactDetails?.button?.text}</>
         )}
       </Button>
     </Form>

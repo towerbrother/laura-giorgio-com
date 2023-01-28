@@ -21,6 +21,7 @@ import {
   validateFoodPreference,
   validateName,
 } from '~/utils/validation';
+import { rsvpGuestsDetails, getIndex } from '~/utils/mockedDB';
 
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
@@ -32,11 +33,18 @@ export async function loader({ request }: LoaderArgs) {
   };
 
   if (cookie) {
-    return json({ ...cookie, ...stepsInfo });
+    return json({
+      ...cookie,
+      ...stepsInfo,
+      rsvpGuestsDetails: rsvpGuestsDetails[getIndex(cookie.language)],
+    });
   }
 
-  // missing the content text - language
-  return json({ rsvp: null, ...stepsInfo });
+  return json({
+    rsvp: null,
+    ...stepsInfo,
+    rsvpGuestsDetails: rsvpGuestsDetails[getIndex('en')],
+  });
 }
 
 export async function action({ request }: ActionArgs) {
@@ -103,8 +111,9 @@ export async function action({ request }: ActionArgs) {
 
 export default function Index() {
   const actionData = useActionData<typeof action>();
-  const { currentStep, totalSteps, rsvp } = useLoaderData<typeof loader>();
   const { submission, state } = useTransition();
+  const { currentStep, totalSteps, rsvp, rsvpGuestsDetails } =
+    useLoaderData<typeof loader>();
 
   const isProcessing =
     state === 'submitting' &&
@@ -133,7 +142,7 @@ export default function Index() {
     <Form method="post" className="flex flex-col py-4 md:py-6">
       <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
-        Guests Details
+        {rsvpGuestsDetails?.title}
       </h1>
       <ConditionalWrapper condition={adults.length > 0}>
         {adults.map((x) => (
@@ -143,6 +152,7 @@ export default function Index() {
             type="Adult"
             fieldErrors={actionData?.fieldErrors}
             rsvp={rsvp}
+            rsvpGuestsDetails={rsvpGuestsDetails}
           />
         ))}
       </ConditionalWrapper>
@@ -154,6 +164,7 @@ export default function Index() {
             type="Kid"
             fieldErrors={actionData?.fieldErrors}
             rsvp={rsvp}
+            rsvpGuestsDetails={rsvpGuestsDetails}
           />
         ))}
       </ConditionalWrapper>
@@ -165,6 +176,7 @@ export default function Index() {
             type="Baby"
             fieldErrors={actionData?.fieldErrors}
             rsvp={rsvp}
+            rsvpGuestsDetails={rsvpGuestsDetails}
           />
         ))}
       </ConditionalWrapper>
@@ -179,7 +191,7 @@ export default function Index() {
             <FaSpinner className="animate-spin my-1 mx-4" />
           </div>
         ) : (
-          'NEXT'
+          <>{rsvpGuestsDetails?.button?.text}</>
         )}
       </Button>
     </Form>

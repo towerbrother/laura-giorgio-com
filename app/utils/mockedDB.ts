@@ -444,3 +444,192 @@ export const contactBanner: Array<BannerProps> = [
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];
+
+export const rsvpContactDetails: Array<any> = [
+  {
+    title: 'Contact Details',
+    form: {
+      name: 'Name',
+      surname: 'Surname',
+      email: { label: 'Email', placeholder: 'james@gmail.com' },
+      car: 'Will you and your family/group have a car?',
+      peopleNumber: {
+        text: 'How many people are you completing the RSVP for?',
+        subtext: 'Attention: that should also include yourself',
+        labelAdults: '12+ years old',
+        labelKids: '6-to-12 years old',
+        labelBabies: '0-to-6 years old',
+      },
+    },
+    button: { text: 'NEXT' },
+  },
+  {
+    title: 'Kontaktdetails',
+    form: {
+      name: 'Name',
+      surname: 'Nachname',
+      email: { label: 'Email', placeholder: 'james@gmail.com' },
+      car: 'Werdest du und deine Familie/Gruppe ein Auto haben?',
+      peopleNumber: {
+        text: 'Für wie viele Personen füllst du die RSVP aus?',
+        subtext: 'Achtung: das sollte auch du selbst einschließen',
+        labelAdults: '12+ Jahre alt',
+        labelKids: '6-to-12 Jahre alt',
+        labelBabies: '0-to-6 Jahre alt',
+      },
+    },
+    button: { text: 'NEXT' },
+  },
+  {
+    title: 'Contatti',
+    form: {
+      name: 'Nome',
+      surname: 'Cognome',
+      email: { label: 'Email', placeholder: 'james@gmail.com' },
+      car: 'Tu e la tua famiglia/gruppo avrete una macchina?',
+      peopleNumber: {
+        text: "Per quante persone stai completando l'RSVP?",
+        subtext: 'Attenzione: includi anche te stesso',
+        labelAdults: '12+ anni',
+        labelKids: '6-to-12 anni',
+        labelBabies: '0-to-6 anni',
+      },
+    },
+    button: { text: 'NEXT' },
+  },
+];
+
+export const rsvpGuestsDetails: Array<any> = [
+  {
+    title: 'Guests Details',
+    form: {
+      name: 'Full Name',
+      date: {
+        label: 'Date of arrival',
+        options: {
+          base: 'Choose an option',
+          friday: 'Friday, 28th July',
+          saturday: 'Saturday, 29th July',
+        },
+      },
+      food: {
+        label: 'I would like to eat...',
+        options: {
+          base: 'Choose an option',
+          meat: 'Meat 🍖',
+          fish: 'Fish 🐟',
+          vegan: 'Vegan 🥗',
+        },
+      },
+      allergy: {
+        label: 'I am allergic/intollerant to...',
+        options: {
+          gluten: 'Gluten 🥨',
+          eggs: 'Eggs 🍳',
+          shellfish: 'Shellfish 🦐',
+          nuts: 'Nuts 🥜',
+          milk: 'Milk 🥛',
+        },
+      },
+    },
+    button: { text: 'NEXT' },
+  },
+  {
+    title: 'Gästedetails',
+    form: {
+      name: 'Vollständiger Name',
+      date: {
+        label: 'Datum der Ankunft',
+        options: {
+          base: 'Wähle eine Option',
+          friday: 'Freitag, 28. Juli',
+          saturday: 'Samstag, 29. Juli',
+        },
+      },
+      food: {
+        label: 'Ich würde gerne essen...',
+        options: {
+          base: 'Wähle eine Option',
+          meat: 'Fleisch 🍖',
+          fish: 'Fisch 🐟',
+          vegan: 'Vegan 🥗',
+        },
+      },
+      allergy: {
+        label: 'Ich bin allergisch/unverträglich gegen ...',
+        options: {
+          gluten: 'Gluten 🥨',
+          eggs: 'Eier 🍳',
+          shellfish: 'Schaltier 🦐',
+          nuts: 'Nüsse 🥜',
+          milk: 'Milch 🥛',
+        },
+      },
+    },
+    button: { text: 'NEXT' },
+  },
+  {
+    title: 'Dettagli ospiti',
+    form: {
+      name: 'Nome completo',
+      date: {
+        label: 'Data di arrivo',
+        options: {
+          base: 'Scegli un opzione',
+          friday: 'Venerdì, 28 Luglio',
+          saturday: 'Sabato, 29 Luglio',
+        },
+      },
+      food: {
+        label: 'Vorrei mangiare...',
+        options: {
+          base: 'Scegli un opzione',
+          meat: 'Carne 🍖',
+          fish: 'Pesce 🐟',
+          vegan: 'Vegano 🥗',
+        },
+      },
+      allergy: {
+        label: 'Sono allergico/intollerante a...',
+        options: {
+          gluten: 'Glutine 🥨',
+          eggs: 'Uova 🍳',
+          shellfish: 'Crostacei 🦐',
+          nuts: 'Noccioline 🥜',
+          milk: 'Latte 🥛',
+        },
+      },
+    },
+    button: { text: 'NEXT' },
+  },
+];
+
+export const rsvpOtherDetails: Array<any> = [
+  {
+    title: 'Last step... hurra! 🙌',
+    thanks: 'Thanks for doing that!',
+    texts: [
+      'Did we forget something you feel is important? Or, do you just want to say "Hi"?',
+      'Use the textarea below. We will read it, promised!',
+    ],
+    button: { text: 'SUBMIT', pending: 'PROCESSING...' },
+  },
+  {
+    title: 'Letzter Schritt ... hurra! 🙌',
+    thanks: 'Danke dafür!',
+    texts: [
+      'Haben wir etwas vergessen, das du für wichtig haltest? Oder möchtest du einfach nur „Hallo“ sagen?',
+      'Verwenden Sie das Textfeld unten. Wir werden es lesen, versprochen!',
+    ],
+    button: { text: 'EINREICHEN', pending: 'WIRD BEARBEITET...' },
+  },
+  {
+    title: 'Ultimo step... evviva! 🙌',
+    thanks: "Grazie per aver completato l'RSVP!",
+    texts: [
+      'Abbiamo dimenticato qualcosa che ritieni importante? Oppure vuoi solo mandarci un saluto?',
+      "Usa l'area di testo qui sotto. La leggeremo, promesso!",
+    ],
+    button: { text: 'INVIA', pending: 'IN LAVORAZIONE...' },
+  },
+];

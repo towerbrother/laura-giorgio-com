@@ -2,11 +2,13 @@ import type { ActionArgs, LoaderArgs } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import { Form, useLoaderData, useTransition } from '@remix-run/react';
 import { FaSpinner } from 'react-icons/fa';
+import { v4 as uuidv4 } from 'uuid';
 
 import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
 
 import { userCookie } from '~/utils/cookie.server';
+import { getIndex, rsvpOtherDetails } from '~/utils/mockedDB';
 
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
@@ -18,11 +20,18 @@ export async function loader({ request }: LoaderArgs) {
   };
 
   if (cookie) {
-    return json({ ...cookie, ...stepsInfo });
+    return json({
+      ...cookie,
+      ...stepsInfo,
+      rsvpOtherDetails: rsvpOtherDetails[getIndex(cookie.language)],
+    });
   }
 
-  // missing the content text - language
-  return json({ rsvp: null, ...stepsInfo });
+  return json({
+    rsvp: null,
+    ...stepsInfo,
+    rsvpOtherDetails: rsvpOtherDetails[getIndex('en')],
+  });
 }
 
 export async function action({ request }: ActionArgs) {
@@ -53,8 +62,9 @@ export async function action({ request }: ActionArgs) {
 }
 
 export default function Index() {
-  const { currentStep, totalSteps, rsvp } = useLoaderData<typeof loader>();
   const { submission, state } = useTransition();
+  const { currentStep, totalSteps, rsvp, rsvpOtherDetails } =
+    useLoaderData<typeof loader>();
 
   const isProcessing =
     state === 'submitting' &&
@@ -64,18 +74,21 @@ export default function Index() {
     <Form method="post" className="flex flex-col py-4 md:py-6">
       <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
-        Last step... hurra! 🙌
+        {rsvpOtherDetails?.title}
       </h1>
       <h3 className="text-neutral-800 text-lg font-bold mb-3">
-        Thanks for doing that!
+        {rsvpOtherDetails?.thanks}
       </h3>
-      <p className="text-neutral-800 mb-5 text-sm md:text-base">
-        Did we forget something you feel is important? Or, do you just want to
-        say "Hi"?
-      </p>
-      <p className="text-neutral-800 mb-5 text-sm md:text-base">
-        Use the textarea below. We will read it, promised!
-      </p>
+      <>
+        {rsvpOtherDetails?.texts.map((text: string) => (
+          <p
+            key={uuidv4()}
+            className="text-neutral-800 mb-5 text-sm md:text-base"
+          >
+            {text}
+          </p>
+        ))}
+      </>
       <textarea
         className="border border-neutral-300 rounded-md p-4 mb-3 h-40 lg:h-52 xl:h-60"
         name="textarea"
@@ -90,10 +103,10 @@ export default function Index() {
         {isProcessing ? (
           <div className="flex items-center justify-center">
             <FaSpinner className="animate-spin mx-2" />
-            <span>PROCESSING...</span>
+            <span>{rsvpOtherDetails?.button?.pending}</span>
           </div>
         ) : (
-          'SUBMIT'
+          <>{rsvpOtherDetails?.button?.text}</>
         )}
       </Button>
     </Form>

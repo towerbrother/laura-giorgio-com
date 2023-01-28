@@ -3,9 +3,16 @@ type GuestDetailsProps = {
   type: string;
   fieldErrors?: any;
   rsvp?: any;
+  rsvpGuestsDetails?: any;
 };
 
-const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
+const GuestDetails = ({
+  num,
+  type,
+  fieldErrors,
+  rsvp,
+  rsvpGuestsDetails,
+}: GuestDetailsProps) => {
   const name = `name${type}${num}`;
   const date = `date${type}${num}`;
   const food = `food${type}${num}`;
@@ -28,6 +35,8 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
   const rsvpAllergyNutsValue = rsvp ? rsvp[allergyNuts] : '';
   const rsvpAllergyMilkValue = rsvp ? rsvp[allergyMilk] : '';
 
+  console.log({ rsvpGuestsDetails });
+
   return (
     <div className="border border-neutral-300 rounded-md p-4 flex flex-col mb-3">
       <div className="flex justify-start items-center">
@@ -35,7 +44,7 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
           htmlFor="name"
           className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
         >
-          {`${type} #${num} - Full Name`}{' '}
+          {`${type} #${num} - ${rsvpGuestsDetails?.form?.name}`}{' '}
         </label>
         <p className="text-xs text-red-600 ml-4">
           {fieldErrorName ? fieldErrorName : <>&nbsp;</>}
@@ -46,7 +55,7 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
         id="name"
         name={name}
         autoComplete="off"
-        placeholder={`${type} #${num} Full Name ...`}
+        placeholder={`${type} #${num} ${rsvpGuestsDetails?.form?.name} ...`}
         defaultValue={rsvpNameValue}
         className={`border ${
           fieldErrorName ? 'border-red-600' : 'border-neutral-300'
@@ -57,7 +66,7 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
           htmlFor="date"
           className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
         >
-          Date of arrival{' '}
+          {rsvpGuestsDetails?.form?.date?.label}
         </label>
         <p className="text-xs text-red-600 ml-4">
           {fieldErrorDate ? fieldErrorDate : <>&nbsp;</>}
@@ -71,16 +80,20 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
           fieldErrorDate ? 'border-red-600' : 'border-neutral-300'
         } rounded-md p-3 mb-4 mt-1 cursor-pointer`}
       >
-        <option value="">Choose an option</option>
-        <option value="friday">Friday, 28th July</option>
-        <option value="saturday">Saturday, 29th July</option>
+        <option value="">{rsvpGuestsDetails?.form?.date?.options?.base}</option>
+        <option value="friday">
+          {rsvpGuestsDetails?.form?.date?.options?.friday}
+        </option>
+        <option value="saturday">
+          {rsvpGuestsDetails?.form?.date?.options?.saturday}
+        </option>
       </select>
       <div className="flex justify-start items-center">
         <label
           htmlFor="date"
           className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
         >
-          I would like to eat...{' '}
+          {rsvpGuestsDetails?.form?.food?.label}
         </label>{' '}
         <p className="text-xs text-red-600 ml-4">
           {fieldErrorFood ? fieldErrorFood : <>&nbsp;</>}
@@ -94,13 +107,19 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
           fieldErrorFood ? 'border-red-600' : 'border-neutral-300'
         } rounded-md p-3 mb-4 mt-1 cursor-pointer`}
       >
-        <option value="">Choose an option</option>
-        <option value="meat">Meat 🍖</option>
-        <option value="fish">Fish 🐟</option>
-        <option value="vegetarian">Vegetarian 🥗</option>
+        <option value="">{rsvpGuestsDetails?.form?.food?.options?.base}</option>
+        <option value="meat">
+          {rsvpGuestsDetails?.form?.food?.options?.meat}
+        </option>
+        <option value="fish">
+          {rsvpGuestsDetails?.form?.food?.options?.fish}
+        </option>
+        <option value="vegetarian">
+          {rsvpGuestsDetails?.form?.food?.options?.vegan}
+        </option>
       </select>
       <legend className="text-neutral-800 font-bold lg:text-lg">
-        I am allergic/intollerant to...
+        {rsvpGuestsDetails?.form?.allergy?.label}
       </legend>
       <label className="mt-2 w-max">
         <input
@@ -109,7 +128,7 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
           defaultChecked={rsvpAllergyGlutenValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
-        Gluten 🥨
+        {rsvpGuestsDetails?.form?.allergy?.options?.gluten}
       </label>
       <label className="mt-2 w-max">
         <input
@@ -118,7 +137,7 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
           defaultChecked={rsvpAllergyEggsValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
-        Eggs 🍳
+        {rsvpGuestsDetails?.form?.allergy?.options?.eggs}
       </label>
       <label className="mt-2 w-max">
         <input
@@ -127,7 +146,7 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
           defaultChecked={rsvpAllergyShellfishValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
-        Shellfish 🦐
+        {rsvpGuestsDetails?.form?.allergy?.options?.shellfish}
       </label>
       <label className="mt-2 w-max">
         <input
@@ -136,7 +155,7 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
           defaultChecked={rsvpAllergyNutsValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
-        Nuts 🥜
+        {rsvpGuestsDetails?.form?.allergy?.options?.nuts}
       </label>
       <label className="mt-2 w-max">
         <input
@@ -145,7 +164,7 @@ const GuestDetails = ({ num, type, fieldErrors, rsvp }: GuestDetailsProps) => {
           defaultChecked={rsvpAllergyMilkValue}
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
-        Milk 🥛
+        {rsvpGuestsDetails?.form?.allergy?.options?.milk}
       </label>
     </div>
   );
