@@ -3,6 +3,7 @@ import { json, redirect } from '@remix-run/node';
 import { Form, useLoaderData, useTransition } from '@remix-run/react';
 import { FaSpinner } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
+import emailjs from '@emailjs/browser';
 
 import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
@@ -70,6 +71,28 @@ export default function Index() {
     state === 'submitting' &&
     submission.formData.get('_action') === 'other-details';
 
+  const templateParams = {
+    ...rsvp,
+  };
+
+  const handleClick = () => {
+    emailjs
+      .send(
+        'service_6ugz6tc',
+        'template_n8c1c6n',
+        templateParams,
+        'dlz34_-Y-x2AkkQ7f'
+      )
+      .then(
+        function (response) {
+          console.log('SUCCESS!', response.status, response.text);
+        },
+        function (error) {
+          console.log('FAILED...', error);
+        }
+      );
+  };
+
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
       <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
@@ -99,6 +122,7 @@ export default function Index() {
         name="_action"
         value="other-details"
         className="border-none bg-cyan-600 text-neutral-100 font-bold rounded-md p-2 mt-5 w-full md:w-max md:px-5 md:text-lg lg:text-xl"
+        onClick={handleClick}
       >
         {isProcessing ? (
           <div className="flex items-center justify-center">

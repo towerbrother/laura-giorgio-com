@@ -35,8 +35,6 @@ const GuestDetails = ({
   const rsvpAllergyNutsValue = rsvp ? rsvp[allergyNuts] : '';
   const rsvpAllergyMilkValue = rsvp ? rsvp[allergyMilk] : '';
 
-  console.log({ rsvpGuestsDetails });
-
   return (
     <div className="border border-neutral-300 rounded-md p-4 flex flex-col mb-3">
       <div className="flex justify-start items-center">

@@ -225,10 +225,6 @@ export default function Index() {
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
       </select>
       <label
         htmlFor="guestsNumber612"
@@ -248,10 +244,6 @@ export default function Index() {
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
       </select>
       <label
         htmlFor="guestsNumberLess6"
@@ -271,10 +263,6 @@ export default function Index() {
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
       </select>
       <Button
         type="submit"
