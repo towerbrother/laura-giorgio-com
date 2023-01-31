@@ -147,7 +147,7 @@ export const homeTile: Array<TileProps> = [
     tile: {
       title: 'La nostra storia',
       subtitle: 'Per chi non lo sapesse',
-      text: `Ci siamo incontrati alla Cranfield University in Inghilterra. Zaira, un'amica comune, suggerisce a Giorgio di chiedere a Laura di uscire con lui, era convinta che sarebbero stati perfetti l'uno per l'altra. Così, quando Laura è passata accanto a Giorgio nella biblioteca del campus, lui ha colto l'attimo e le si è avvicinato, con un atteggiamento da stalker, dicendo: "Ciao, tu sei Laura, vero?". Adesso, dopo 8 anni, 1 (meravigliosa) bambina, 2 paesi, innumerevoli sessioni di yoga, qualche litigata e centinaia di libri letti e discussi, ci sposiamo! Unisciti a noi per festeggiare insieme!`,
+      text: `Ci siamo incontrati all'università di Cranfield, in Inghilterra. Zaira, un'amica in comune, consigliò a Giorgio di chiedere a Laura di uscire con lui, era convinta che sarebbero stati perfetti l'uno per l'altra. Così, quando Laura è passata accanto a Giorgio nella biblioteca del campus, lui colse l'attimo e le si avvicinò, con atteggiamento da stalker, dicendo: "Ciao, tu sei Laura, vero?". Adesso, dopo 8 anni, 1 (meravigliosa) bambina, 2 paesi, innumerevoli sessioni di yoga, qualche litigata e centinaia di libri letti e discussi, ci sposiamo! Unisciti a noi per festeggiare insieme!`,
     },
   },
 ];
@@ -192,7 +192,7 @@ export const accomodationTile: Array<TileProps> = [
     tile: {
       title: 'Accommodation',
       subtitle: 'Cozy rooms for your stay',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio.',
+      text: 'Wolfsberg offers various accommodation options. However, for our guests, we have identified two options that we consider to be appropriate, Hotel Hecher and Pension Ölberger. We also discussed and agreed on a special price with Hotel Hecher.',
     },
     link: { slug: '/accomodation', text: 'BOOK' },
   },
@@ -212,7 +212,7 @@ export const accomodationTile: Array<TileProps> = [
     tile: {
       title: 'Alloggio',
       subtitle: 'Camere accoglienti per il vostro soggiorno',
-      text: 'Wolfsberg offre varie possibilità di pernottamento. Tuttavia, per i nostri ospiti, abbiamo individuato due opzioni che riteniamo essere opportune, l’hotel Hecher e la pensione Ölberger. Con l’hotel Hecher abbiamo anche discusso e concordato un prezzo speciale.',
+      text: `Wolfsberg offre varie possibilità di pernottamento. Tuttavia, per i nostri ospiti, abbiamo individuato due opzioni che riteniamo essere opportune, l'hotel Hecher e la pensione Ölberger. Con l'hotel Hecher abbiamo anche discusso e concordato un prezzo speciale.`,
     },
     link: { slug: '/accomodation', text: 'BOOK' },
   },
@@ -266,7 +266,7 @@ export const info: Array<InfoProps> = [
     ],
   },
   {
-    headline: 'Cerimonia e Celebrazione',
+    headline: 'Cerimonia & Ricevimento',
     items: [
       {
         icon: 'calendar',
