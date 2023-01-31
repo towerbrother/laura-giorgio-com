@@ -44,18 +44,12 @@ export const footer: Array<FooterProps> = [
 
 export const photos: PhotosProps = {
   photos: [
-    { src: 'squared-1.JPG' },
-    { src: 'squared-2.JPG' },
-    { src: 'squared-3.JPG' },
-    { src: 'squared-4.JPG' },
-    { src: 'squared-5.JPG' },
-    { src: 'squared-6.JPG' },
-    { src: 'squared-7.JPG' },
-    { src: 'squared-8.JPG' },
-    { src: 'squared-9.JPG' },
-    { src: 'squared-10.JPG' },
-    { src: 'squared-11.JPG' },
-    { src: 'squared-13.JPG' },
+    { src: 'photo-1.JPG' },
+    { src: 'photo-2.JPG' },
+    { src: 'photo-3.JPG' },
+    { src: 'photo-4.JPG' },
+    { src: 'photo-5.JPG' },
+    { src: 'photo-6.JPG' },
   ],
 };
 

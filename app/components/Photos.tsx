@@ -23,11 +23,10 @@ const shuffle = (array: Array<PhotoProps>) => {
 
 const Photos = ({ photos }: PhotosProps) => {
   const shuffledPhotos = shuffle(photos);
-  const selectedPhotos = shuffledPhotos.slice(0, 5);
 
-  const left1 = [selectedPhotos[0], selectedPhotos[1]];
-  const left2 = [selectedPhotos[2], selectedPhotos[3]];
-  const right = [selectedPhotos[4]];
+  const left1 = [shuffledPhotos[0], shuffledPhotos[1]];
+  const left2 = [shuffledPhotos[2], shuffledPhotos[3]];
+  const right = [shuffledPhotos[4]];
 
   const leftInnerClassName = 'flex flex-col justify-around lg:flex-row';
 
