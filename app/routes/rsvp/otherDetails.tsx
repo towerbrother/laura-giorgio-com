@@ -10,6 +10,8 @@ import Button from '~/components/reusable/Button';
 
 import { userCookie } from '~/utils/cookie.server';
 import { getIndex, rsvpOtherDetails } from '~/utils/mockedDB';
+import type { ChangeEvent } from 'react';
+import { useEffect, useState } from 'react';
 
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
@@ -67,15 +69,28 @@ export default function Index() {
   const { currentStep, totalSteps, rsvp, rsvpOtherDetails } =
     useLoaderData<typeof loader>();
 
+  const [textarea, setTextarea] = useState('');
+
+  useEffect(() => {
+    if (rsvp?.textarea) {
+      setTextarea(rsvp?.textarea);
+    }
+  }, [rsvp?.textarea]);
+
   const isProcessing =
     state === 'submitting' &&
     submission.formData.get('_action') === 'other-details';
 
-  const templateParams = {
-    ...rsvp,
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setTextarea(e.target.value);
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    const templateParams = {
+      ...rsvp,
+      textarea,
+    };
+
     emailjs
       .send(
         'service_6ugz6tc',
@@ -95,7 +110,11 @@ export default function Index() {
 
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
-      <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
+      <FormHeader
+        headerText={rsvpOtherDetails?.headerText}
+        currentStep={currentStep}
+        totalSteps={totalSteps}
+      />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         {rsvpOtherDetails?.title}
       </h1>
@@ -115,7 +134,8 @@ export default function Index() {
       <textarea
         className="border border-neutral-300 rounded-md p-4 mb-3 h-40 lg:h-52 xl:h-60"
         name="textarea"
-        defaultValue={rsvp?.textarea ? rsvp?.textarea : ''}
+        onChange={handleChange}
+        defaultValue={textarea}
       />
       <Button
         type="submit"

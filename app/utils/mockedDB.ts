@@ -448,51 +448,51 @@ export const contactBanner: Array<BannerProps> = [
 export const rsvpContactDetails: Array<any> = [
   {
     title: 'Contact Details',
+    headerText: 'of',
     form: {
       name: 'Name',
       surname: 'Surname',
       email: { label: 'Email', placeholder: 'james@gmail.com' },
-      car: 'Will you and your family/group have a car?',
       peopleNumber: {
         text: 'How many people are you completing the RSVP for?',
         subtext: 'Attention: that should also include yourself',
         labelAdults: '12+ years old',
-        labelKids: '6-to-12 years old',
-        labelBabies: '0-to-6 years old',
+        labelKids: '4-to-12 years old',
+        labelBabies: '0-to-3 years old',
       },
     },
     button: { text: 'NEXT' },
   },
   {
     title: 'Kontaktdetails',
+    headerText: 'von',
     form: {
       name: 'Name',
       surname: 'Nachname',
       email: { label: 'Email', placeholder: 'james@gmail.com' },
-      car: 'Werdest du und deine Familie/Gruppe ein Auto haben?',
       peopleNumber: {
         text: 'Für wie viele Personen füllst du die RSVP aus?',
         subtext: 'Achtung: das sollte auch du selbst einschließen',
         labelAdults: '12+ Jahre alt',
-        labelKids: '6-to-12 Jahre alt',
-        labelBabies: '0-to-6 Jahre alt',
+        labelKids: '4-to-12 Jahre alt',
+        labelBabies: '0-to-3 Jahre alt',
       },
     },
     button: { text: 'NEXT' },
   },
   {
     title: 'Contatti',
+    headerText: 'di',
     form: {
       name: 'Nome',
       surname: 'Cognome',
       email: { label: 'Email', placeholder: 'james@gmail.com' },
-      car: 'Tu e la tua famiglia/gruppo avrete una macchina?',
       peopleNumber: {
         text: "Per quante persone stai completando l'RSVP?",
         subtext: 'Attenzione: includi anche te stesso',
         labelAdults: '12+ anni',
-        labelKids: '6-to-12 anni',
-        labelBabies: '0-to-6 anni',
+        labelKids: '4-to-12 anni',
+        labelBabies: '0-to-3 anni',
       },
     },
     button: { text: 'NEXT' },
@@ -502,6 +502,12 @@ export const rsvpContactDetails: Array<any> = [
 export const rsvpGuestsDetails: Array<any> = [
   {
     title: 'Guests Details',
+    headerText: 'of',
+    guestType: {
+      adult: 'Adult',
+      kid: 'Kid',
+      baby: 'Baby',
+    },
     form: {
       name: 'Full Name',
       date: {
@@ -536,6 +542,12 @@ export const rsvpGuestsDetails: Array<any> = [
   },
   {
     title: 'Gästedetails',
+    headerText: 'von',
+    guestType: {
+      adult: 'Erwachsene',
+      kid: 'Kind',
+      baby: 'Baby',
+    },
     form: {
       name: 'Vollständiger Name',
       date: {
@@ -570,6 +582,12 @@ export const rsvpGuestsDetails: Array<any> = [
   },
   {
     title: 'Dettagli ospiti',
+    headerText: 'di',
+    guestType: {
+      adult: 'Adulto',
+      kid: 'Ragazzo/a',
+      baby: 'Bambino/a',
+    },
     form: {
       name: 'Nome completo',
       date: {
@@ -606,6 +624,7 @@ export const rsvpGuestsDetails: Array<any> = [
 
 export const rsvpOtherDetails: Array<any> = [
   {
+    headerText: 'of',
     title: 'Last step... hurra! 🙌',
     thanks: 'Thanks for doing that!',
     texts: [
@@ -615,6 +634,7 @@ export const rsvpOtherDetails: Array<any> = [
     button: { text: 'SUBMIT', pending: 'PROCESSING...' },
   },
   {
+    headerText: 'von',
     title: 'Letzter Schritt ... hurra! 🙌',
     thanks: 'Danke dafür!',
     texts: [
@@ -624,6 +644,7 @@ export const rsvpOtherDetails: Array<any> = [
     button: { text: 'EINREICHEN', pending: 'WIRD BEARBEITET...' },
   },
   {
+    headerText: 'di',
     title: 'Ultimo step... evviva! 🙌',
     thanks: "Grazie per aver completato l'RSVP!",
     texts: [

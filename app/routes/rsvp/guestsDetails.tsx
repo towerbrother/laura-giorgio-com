@@ -120,27 +120,25 @@ export default function Index() {
     submission.formData.get('_action') === 'guests-details';
 
   const adults: Array<string> =
-    Number(rsvp?.guestsNumberMore12) === 0
+    Number(rsvp?.guestsNumberAdult) === 0
       ? []
-      : Array.from(Array(Number(rsvp?.guestsNumberMore12)).keys()).map((x) =>
+      : Array.from(Array(Number(rsvp?.guestsNumberAdult)).keys()).map((x) =>
           (x + 1).toString()
         );
   const kids: Array<string> =
-    Number(rsvp?.guestsNumber612) === 0
+    Number(rsvp?.guestsNumberKid) === 0
       ? []
-      : Array.from(Array(Number(rsvp?.guestsNumber612)).keys()).map((x) =>
-          (x + 1).toString()
-        );
-  const babies: Array<string> =
-    Number(rsvp?.guestsNumberLess6) === 0
-      ? []
-      : Array.from(Array(Number(rsvp?.guestsNumberLess6)).keys()).map((x) =>
+      : Array.from(Array(Number(rsvp?.guestsNumberKid)).keys()).map((x) =>
           (x + 1).toString()
         );
 
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
-      <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
+      <FormHeader
+        headerText={rsvpGuestsDetails?.headerText}
+        currentStep={currentStep}
+        totalSteps={totalSteps}
+      />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         {rsvpGuestsDetails?.title}
       </h1>
@@ -150,6 +148,7 @@ export default function Index() {
             key={uuidv4()}
             num={x}
             type="Adult"
+            guestType={rsvpGuestsDetails?.guestType?.adult}
             fieldErrors={actionData?.fieldErrors}
             rsvp={rsvp}
             rsvpGuestsDetails={rsvpGuestsDetails}
@@ -162,18 +161,7 @@ export default function Index() {
             key={uuidv4()}
             num={x}
             type="Kid"
-            fieldErrors={actionData?.fieldErrors}
-            rsvp={rsvp}
-            rsvpGuestsDetails={rsvpGuestsDetails}
-          />
-        ))}
-      </ConditionalWrapper>
-      <ConditionalWrapper condition={babies.length > 0}>
-        {babies.map((x) => (
-          <GuestDetails
-            key={uuidv4()}
-            num={x}
-            type="Baby"
+            guestType={rsvpGuestsDetails?.guestType?.kid}
             fieldErrors={actionData?.fieldErrors}
             rsvp={rsvp}
             rsvpGuestsDetails={rsvpGuestsDetails}

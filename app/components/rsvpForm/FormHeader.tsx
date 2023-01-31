@@ -4,11 +4,16 @@ import Button from '~/components/reusable/Button';
 import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
 
 type FormHeaderProps = {
+  headerText: string;
   currentStep: number;
   totalSteps: number;
 };
 
-const FormHeader = ({ currentStep, totalSteps }: FormHeaderProps) => {
+const FormHeader = ({
+  headerText,
+  currentStep,
+  totalSteps,
+}: FormHeaderProps) => {
   const isCurrentStepTheFirst = currentStep === 1;
 
   return (
@@ -20,7 +25,7 @@ const FormHeader = ({ currentStep, totalSteps }: FormHeaderProps) => {
           </Button>
         </ConditionalWrapper>
         <h3 className={`flex-1 text-neutral-800 font-bold m-0`}>
-          Step {currentStep} of {totalSteps}
+          Step {currentStep} {headerText} {totalSteps}
         </h3>
         <Button
           type="submit"

@@ -1,6 +1,7 @@
 type GuestDetailsProps = {
   num: string;
   type: string;
+  guestType?: string;
   fieldErrors?: any;
   rsvp?: any;
   rsvpGuestsDetails?: any;
@@ -9,6 +10,7 @@ type GuestDetailsProps = {
 const GuestDetails = ({
   num,
   type,
+  guestType,
   fieldErrors,
   rsvp,
   rsvpGuestsDetails,
@@ -42,18 +44,18 @@ const GuestDetails = ({
           htmlFor="name"
           className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
         >
-          {`${type} #${num} - ${rsvpGuestsDetails?.form?.name}`}{' '}
+          {`${guestType} #${num} - ${rsvpGuestsDetails?.form?.name}`}{' '}
         </label>
         <p className="text-xs text-red-600 ml-4">
           {fieldErrorName ? fieldErrorName : <>&nbsp;</>}
         </p>
       </div>
       <input
-        type="text"
         id="name"
+        type="text"
         name={name}
         autoComplete="off"
-        placeholder={`${type} #${num} ${rsvpGuestsDetails?.form?.name} ...`}
+        placeholder={`${guestType} #${num} ${rsvpGuestsDetails?.form?.name} ...`}
         defaultValue={rsvpNameValue}
         className={`border ${
           fieldErrorName ? 'border-red-600' : 'border-neutral-300'
@@ -88,7 +90,7 @@ const GuestDetails = ({
       </select>
       <div className="flex justify-start items-center">
         <label
-          htmlFor="date"
+          htmlFor="food"
           className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
         >
           {rsvpGuestsDetails?.form?.food?.label}

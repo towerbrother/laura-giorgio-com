@@ -93,7 +93,11 @@ export default function Index() {
 
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
-      <FormHeader currentStep={currentStep} totalSteps={totalSteps} />
+      <FormHeader
+        headerText={rsvpContactDetails?.headerText}
+        currentStep={currentStep}
+        totalSteps={totalSteps}
+      />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         {rsvpContactDetails?.title}
       </h1>
@@ -179,29 +183,6 @@ export default function Index() {
           )}
         </p>
       </div>
-      <legend className="text-neutral-800 font-bold mt-1 lg:text-lg">
-        {rsvpContactDetails?.form?.car}
-      </legend>
-      <label className="mt-2 w-max">
-        <input
-          type="radio"
-          name="guestsCar"
-          value="no"
-          defaultChecked={rsvp ? rsvp?.guestsCar === 'no' : true}
-          className="accent-cyan-600 mr-2 cursor-pointer"
-        />
-        No
-      </label>
-      <label className="mt-2 w-max">
-        <input
-          type="radio"
-          name="guestsCar"
-          value="yes"
-          defaultChecked={rsvp ? rsvp?.guestsCar === 'yes' : false}
-          className="accent-cyan-600 mr-2 cursor-pointer"
-        />
-        Yes
-      </label>
       <legend className="text-neutral-800 font-bold mt-5 lg:text-lg">
         {rsvpContactDetails?.form?.peopleNumber?.text}
       </legend>
@@ -209,15 +190,15 @@ export default function Index() {
         {rsvpContactDetails?.form?.peopleNumber?.subtext}
       </p>
       <label
-        htmlFor="guestsNumberMore12"
+        htmlFor="guestsNumberAdult"
         className="text-neutral-800 font-bold lg:text-lg"
       >
         {rsvpContactDetails?.form?.peopleNumber?.labelAdults}
       </label>
       <select
-        id="guestsNumberMore12"
-        name="guestsNumberMore12"
-        defaultValue={rsvp?.guestsNumberMore12 ? rsvp?.guestsNumberMore12 : '1'}
+        id="guestsNumberAdult"
+        name="guestsNumberAdult"
+        defaultValue={rsvp?.guestsNumberAdult ? rsvp?.guestsNumberAdult : '1'}
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="1">1</option>
@@ -227,15 +208,15 @@ export default function Index() {
         <option value="5">5</option>
       </select>
       <label
-        htmlFor="guestsNumber612"
+        htmlFor="guestsNumberKid"
         className="text-neutral-800 font-bold lg:text-lg"
       >
         {rsvpContactDetails?.form?.peopleNumber?.labelKids}
       </label>
       <select
-        id="guestsNumber612"
-        name="guestsNumber612"
-        defaultValue={rsvp?.guestsNumber612 ? rsvp?.guestsNumber612 : '0'}
+        id="guestsNumberKid"
+        name="guestsNumberKid"
+        defaultValue={rsvp?.guestsNumberKid ? rsvp?.guestsNumberKid : '0'}
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="0">0</option>
@@ -246,15 +227,15 @@ export default function Index() {
         <option value="5">5</option>
       </select>
       <label
-        htmlFor="guestsNumberLess6"
+        htmlFor="guestsNumberBaby"
         className="text-neutral-800 font-bold lg:text-lg"
       >
         {rsvpContactDetails?.form?.peopleNumber?.labelBabies}
       </label>
       <select
-        id="guestsNumberLess6"
-        name="guestsNumberLess6"
-        defaultValue={rsvp?.guestsNumberLess6 ? rsvp?.guestsNumberLess6 : '0'}
+        id="guestsNumberBaby"
+        name="guestsNumberBaby"
+        defaultValue={rsvp?.guestsNumberBaby ? rsvp?.guestsNumberBaby : '0'}
         className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
       >
         <option value="0">0</option>
