@@ -129,7 +129,9 @@ export const homeTile: Array<TileProps> = [
     tile: {
       title: 'Our story',
       subtitle: 'For those who did not know',
-      text: 'We met at Uni, in the UK. Zaira, a mutual friend, told Giorgio about Laura suggesting to meet. She thought they would be perfect for each other. So, when Laura walked past Giorgio in the campus library, he seized the moment and approached her in proper stalker-mode: “Hi, you are Laura, aren’t you?”. Fast forward 8 years, 1 (wonderful) baby girl, 2 countries, countless yoga sessions, occasional arguments and hundreds of books read and discussed, we are now getting married! Join us to celebrate our big day together!',
+      texts: [
+        `We met at Uni, in the UK. Zaira, a mutual friend, told Giorgio about Laura suggesting to meet. She thought they would be perfect for each other. So, when Laura walked past Giorgio in the campus library, he seized the moment and approached her in proper stalker-mode: “Hi, you are Laura, aren't you?”. Fast forward to 8 years, 1 (wonderful) baby girl, 2 countries, countless yoga sessions, occasional arguments and hundreds of books read and discussed together, we are now getting married! Join us to celebrate our big day together!`,
+      ],
     },
   },
   {
@@ -138,7 +140,9 @@ export const homeTile: Array<TileProps> = [
     tile: {
       title: 'Unsere Geschichte',
       subtitle: 'Für diejenigen, die es nicht wussten',
-      text: 'Wir trafen uns an der Uni in Großbritannien. Zaira, eine gemeinsame Freundin, erzählte Giorgio von Lauras Vorschlag, sich zu treffen. Sie dachte, sie würden perfekt zueinander passen. Als Laura also in der Campus-Bibliothek an Giorgio vorbeilief, nutzte er den Moment und kam im richtigen Stalker-Modus auf sie zu: „Hi, du bist Laura, nicht wahr?“. Fast forward 8 Jahre, 1 (wunderbares) kleines Mädchen, 2 Länder, unzählige Yoga-Sitzungen, gelegentliche Streitereien und Hunderte von gelesenen und diskutierten Büchern, wir heiraten jetzt! Feiern Sie mit uns gemeinsam unseren großen Tag!',
+      texts: [
+        'Wir trafen uns an der Uni in Großbritannien. Zaira, eine gemeinsame Freundin, erzählte Giorgio von Lauras Vorschlag, sich zu treffen. Sie dachte, sie würden perfekt zueinander passen. Als Laura also in der Campus-Bibliothek an Giorgio vorbeilief, nutzte er den Moment und kam im richtigen Stalker-Modus auf sie zu: „Hi, du bist Laura, nicht wahr?“. Fast forward 8 Jahre, 1 (wunderbares) kleines Mädchen, 2 Länder, unzählige Yoga-Sitzungen, gelegentliche Streitereien und Hunderte von gelesenen und diskutierten Büchern, wir heiraten jetzt! Feiern Sie mit uns gemeinsam unseren großen Tag!',
+      ],
     },
   },
   {
@@ -147,7 +151,9 @@ export const homeTile: Array<TileProps> = [
     tile: {
       title: 'La nostra storia',
       subtitle: 'Per chi non lo sapesse',
-      text: `Ci siamo incontrati all'università di Cranfield, in Inghilterra. Zaira, un'amica in comune, consigliò a Giorgio di chiedere a Laura di uscire con lui, era convinta che sarebbero stati perfetti l'uno per l'altra. Così, quando Laura è passata accanto a Giorgio nella biblioteca del campus, lui colse l'attimo e le si avvicinò, con atteggiamento da stalker, dicendo: "Ciao, tu sei Laura, vero?". Adesso, dopo 8 anni, 1 (meravigliosa) bambina, 2 paesi, innumerevoli sessioni di yoga, qualche litigata e centinaia di libri letti e discussi, ci sposiamo! Unisciti a noi per festeggiare insieme!`,
+      texts: [
+        `Ci siamo incontrati all'università di Cranfield, in Inghilterra. Zaira, un'amica in comune, consigliò a Giorgio di chiedere a Laura di uscire con lui, era convinta che sarebbero stati perfetti l'uno per l'altra. Così, quando Laura è passata accanto a Giorgio nella biblioteca del campus, lui colse l'attimo e le si avvicinò, con atteggiamento da stalker, dicendo: "Ciao, tu sei Laura, vero?". Adesso, dopo 8 anni, 1 (meravigliosa) bambina, 2 paesi, innumerevoli sessioni di yoga, qualche litigata e centinaia di libri letti e discussi, ci sposiamo! Unisciti a noi per festeggiare insieme!`,
+      ],
     },
   },
 ];
@@ -159,7 +165,10 @@ export const transportationTile: Array<TileProps> = [
     tile: {
       title: 'Transportation',
       subtitle: "Don't worry about anything",
-      text: 'We have arranged transportation for guests from the hotel to the church and later to the reception venue. To reserve a seat, please let us know how many of you are coming with your RSVP.',
+      texts: [
+        'We have arranged transportation for guests from the hotel to the church and later to the reception venue. To reserve a seat, please let us know how many of you are coming with your RSVP.',
+        'How to get to Wolfsberg? Nearest airports are Graz and Klagenfurt (limited flight options). There are direct trains and buses to Wolfsberg in day time. To book please visit oebb.at. Alternatively, you can fly to Vienna. We reccommend to book a car from there (ca. 3hrs drive).',
+      ],
     },
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
@@ -169,7 +178,10 @@ export const transportationTile: Array<TileProps> = [
     tile: {
       title: 'Transport',
       subtitle: 'Mach dir keine Sorgen',
-      text: 'Wir haben den Transport für die Gäste vom Hotel zur Kirche und später zum Veranstaltungsort arrangiert. Um einen Sitzplatz zu reservieren, lassen Sie uns bitte wissen, dass Sie mit Ihrer RSVP kommen.',
+      texts: [
+        'Wir haben den Transport für die Gäste vom Hotel zur Kirche und später zum Veranstaltungsort arrangiert. Um einen Sitzplatz zu reservieren, lassen Sie uns bitte wissen, dass Sie mit Ihrer RSVP kommen.',
+        'Wie komme ich nach Wolfsberg? Nächste Flughäfen sind Graz und Klagenfurt (eingeschränkte Flugmöglichkeiten). Tagsüber gibt es direkte Zug- und Busverbindungen nach Wolfsberg. Zur Buchung besuchen Sie bitte oebb.at. Alternativ können Sie nach Wien fliegen. Wir empfehlen, von dort aus ein Auto zu buchen (ca. 3 Stunden Fahrt).',
+      ],
     },
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
@@ -179,7 +191,10 @@ export const transportationTile: Array<TileProps> = [
     tile: {
       title: 'Trasporto',
       subtitle: 'Non preoccuparti di niente',
-      text: `Organizzeremo il trasporto degli ospiti dall'hotel alla chiesa e successivamente al luogo del ricevimento, tramite pullman. Per prenotare il vostro posto, completa l'RSVP al più presto e facci sapere quanti sarete.`,
+      texts: [
+        `Organizzeremo il trasporto degli ospiti dall'hotel alla chiesa e successivamente al luogo del ricevimento, tramite pullman. Per prenotare il vostro posto, completa l'RSVP al più presto e facci sapere quanti sarete.`,
+        `Come arrivare a Wolfsberg? Gli aeroporti più vicini sono Graz e Klagenfurt (opzioni di volo limitate). Ci sono treni e autobus diretti per Wolfsberg durante il giorno. Per prenotare si prega di visitare oebb.at. In alternativa, puoi volare su Vienna. Consigliamo di prenotare un'auto da lì (3 ore di auto circa).`,
+      ],
     },
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
@@ -192,7 +207,9 @@ export const accomodationTile: Array<TileProps> = [
     tile: {
       title: 'Accommodation',
       subtitle: 'Cozy rooms for your stay',
-      text: 'Wolfsberg offers various accommodation options. However, for our guests, we have identified two options that we consider to be appropriate, Hotel Hecher and Pension Ölberger. We also discussed and agreed on a special price with Hotel Hecher.',
+      texts: [
+        'Wolfsberg offers various accommodation options. However, for our guests, we have identified two options that we consider to be appropriate, Hotel Hecher and Pension Ölberger. We also discussed and agreed on a special price with Hotel Hecher.',
+      ],
     },
     link: { slug: '/accomodation', text: 'BOOK' },
   },
@@ -202,7 +219,9 @@ export const accomodationTile: Array<TileProps> = [
     tile: {
       title: 'Unterkunft',
       subtitle: 'Gemütliche Zimmer für Ihren Aufenthalt',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio.',
+      texts: [
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio.',
+      ],
     },
     link: { slug: '/accomodation', text: 'BOOK' },
   },
@@ -212,7 +231,9 @@ export const accomodationTile: Array<TileProps> = [
     tile: {
       title: 'Alloggio',
       subtitle: 'Camere accoglienti per il vostro soggiorno',
-      text: `Wolfsberg offre varie possibilità di pernottamento. Tuttavia, per i nostri ospiti, abbiamo individuato due opzioni che riteniamo essere opportune, l'hotel Hecher e la pensione Ölberger. Con l'hotel Hecher abbiamo anche discusso e concordato un prezzo speciale.`,
+      texts: [
+        `Wolfsberg offre varie possibilità di pernottamento. Tuttavia, per i nostri ospiti, abbiamo individuato due opzioni che riteniamo essere opportune, l'hotel Hecher e la pensione Ölberger. Con l'hotel Hecher abbiamo anche discusso e concordato un prezzo speciale.`,
+      ],
     },
     link: { slug: '/accomodation', text: 'BOOK' },
   },
@@ -327,7 +348,9 @@ export const hotelTile: Array<TileProps> = [
     tile: {
       title: 'Hotel Hecher',
       subtitle: 'Reccomended for those staying 2 nights',
-      text: 'Centrally located with comfortable rooms. 10 min walk or 4 min drive from the reception venue. Within walking distance from the central station in Wolfsberg. Special price has been agreed for our guests. Please book via email and quote “Hochzeit Purnell” in your booking. Please book as soon as possible.',
+      texts: [
+        'Centrally located with comfortable rooms. 10 min walk or 4 min drive from the reception venue. Within walking distance from the central station in Wolfsberg. Special price has been agreed for our guests (applicable to 2-nights stay only). €58 per person (double room), €75 (single room). Breakfast included. Additional bed €35 per night. Baby bed at €15 per room. Free parking. Please book via email and quote “Hochzeit Purnell” in your booking. Please book as soon as possible.',
+      ],
     },
     externalLink: {
       href: 'https://www.hecher.at/',
@@ -340,7 +363,9 @@ export const hotelTile: Array<TileProps> = [
     tile: {
       title: 'Hotel Hecher',
       subtitle: 'Empfohlen für diejenigen, die 2 Nächte bleiben',
-      text: 'Zentral gelegen mit komfortablen Zimmern. 10 Minuten zu Fuß oder 4 Minuten Fahrt von der Rezeption entfernt. Nur wenige Gehminuten vom Hauptbahnhof in Wolfsberg entfernt. Für unsere Gäste wurde ein Sonderpreis vereinbart. Bitte buchen Sie per E-Mail und geben Sie bei Ihrer Buchung „Hochzeit Purnell“ an. Bitte buchen Sie so bald wie möglich.',
+      texts: [
+        'Zentral gelegen mit komfortablen Zimmern. 10 Minuten zu Fuß oder 4 Minuten Fahrt von der Rezeption entfernt. Nur wenige Gehminuten vom Hauptbahnhof in Wolfsberg entfernt. Für unsere Gäste wurde ein Sonderpreis vereinbart (gilt nur für 2 Übernachtungen). 58€ pro Person (Doppelzimmer), 75€ (Einzelzimmer). Frühstück inkludiert. Zusatzbett 35€ pro Nacht. Babybett für 15€ pro Zimmer. Gratis Parkplätze. Bitte buchen Sie per E-Mail und geben Sie bei Ihrer Buchung „Hochzeit Purnell“ an. Bitte buchen Sie so bald wie möglich.',
+      ],
     },
     externalLink: {
       href: 'https://www.hecher.at/',
@@ -353,7 +378,9 @@ export const hotelTile: Array<TileProps> = [
     tile: {
       title: 'Hotel Hecher',
       subtitle: 'Consigliato per chi soggiorna 2 notti',
-      text: 'Situato in posizione centrale con camere confortevoli. 10 minuti a piedi o 4 minuti in auto dal luogo del ricevimento. A pochi passi dalla stazione centrale di Wolfsberg. Per i nostri ospiti è stato concordato un prezzo speciale. Si prega di prenotare via e-mail e citare "Hochzeit Purnell" nella prenotazione. Si prega di prenotare il prima possibile.',
+      texts: [
+        'Situato in posizione centrale con camere confortevoli. 10 minuti a piedi o 4 minuti in auto dal luogo del ricevimento. A pochi passi dalla stazione centrale di Wolfsberg. Per i nostri ospiti è stato concordato un prezzo speciale (applicabile solo a soggiorni di 2 notti). 58€ a persona (camera doppia), 75€ (camera singola). Colazione inclusa. Letto aggiuntivo 35€ a notte. Culla 15€ a camera. Parcheggio gratuito. Si prega di prenotare via e-mail e citare "Hochzeit Purnell" nella prenotazione. Si prega di prenotare il prima possibile.',
+      ],
     },
     externalLink: {
       href: 'https://www.hecher.at/',
@@ -369,7 +396,9 @@ export const pensionTile: Array<TileProps> = [
     tile: {
       title: 'Pension Ölberger',
       subtitle: 'Reccomended for those staying 1 night only',
-      text: 'Simple, inexpensive rooms. Recommended for those staying one night. Car needed to reach.',
+      texts: [
+        'Simple, inexpensive rooms. Recommended for those staying only one night. Car needed to reach from Wolfsberg city center. The price is €45 per person. Breakfast included. Further discount applies to triple rooms. Please book via email.',
+      ],
     },
     externalLink: {
       href: 'https://www.gasthof-oelberger.at/',
@@ -382,7 +411,9 @@ export const pensionTile: Array<TileProps> = [
     tile: {
       title: 'Pension Ölberger',
       subtitle: 'Reccomended for those staying 1 night only',
-      text: 'Einfache, preiswerte Zimmer. Empfohlen für diejenigen, die eine Nacht bleiben. Auto benötigt, um zu erreichen.',
+      texts: [
+        'Einfache und günstige Zimmer. Empfohlen für diejenigen, die nur eine Nacht bleiben. Anfahrt ab Wolfsberg Zentrum mit PKW erforderlich. Der Preis beträgt 45€ pro Person. Frühstück inkludiert. Weitere Rabatte gelten für Dreibettzimmer. Bitte buchen Sie per E-Mail.',
+      ],
     },
     externalLink: {
       href: 'https://www.gasthof-oelberger.at/',
@@ -395,7 +426,9 @@ export const pensionTile: Array<TileProps> = [
     tile: {
       title: 'Pension Ölberger',
       subtitle: 'Reccomended for those staying 1 night only',
-      text: `Camere semplici ed economiche. Consigliato per chi soggiorna una notte soltanto. L'automobile è necessaria per raggiungere la pensione.`,
+      texts: [
+        `Camere semplici ed economiche. Consigliato per chi soggiorna solo una notte. Auto necessaria per raggiungere la pensione dal centro di Wolfsberg. Il prezzo è di €45 a persona. Colazione inclusa. Ulteriori sconti si applicano alle camere triple. Si prega di prenotare tramite e-mail.`,
+      ],
     },
     externalLink: {
       href: 'https://www.gasthof-oelberger.at/',
@@ -440,7 +473,7 @@ export const contactBanner: Array<BannerProps> = [
   {
     headline: `Non vediamo l'ora di festeggiare con te!`,
     icon: false,
-    paragraph: `Per favore, clicca su RSVP e segui i passaggi. Facci sapere quanti sarete. Tu avessi esigenze particolari o ulteriori commenti, potrai aggiungerli alla fine dell'RSVP. Grazie!`,
+    paragraph: `Facci sapere quanti sarete. Per favore, clicca su RSVP e segui i passaggi. Tu avessi esigenze particolari o ulteriori commenti, potrai aggiungerli alla fine dell'RSVP. Grazie!`,
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];
