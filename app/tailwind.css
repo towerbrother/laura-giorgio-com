@@ -592,12 +592,12 @@ video {
   z-index: 30;
 }
 
-.z-10 {
-  z-index: 10;
-}
-
 .z-40 {
   z-index: 40;
+}
+
+.z-10 {
+  z-index: 10;
 }
 
 .m-2 {

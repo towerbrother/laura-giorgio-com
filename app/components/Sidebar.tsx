@@ -18,7 +18,7 @@ const Sidebar = ({ links, isOpen, toggle }: SidebarProps) => {
   return (
     <aside
       onClick={toggle}
-      className={`flex justify-center items-center fixed left-0 w-full h-full transition-all duration-300 ease-in-out z-10 bg-neutral-800 ${
+      className={`flex justify-center items-center fixed left-0 w-full h-full transition-all duration-300 ease-in-out z-50 bg-neutral-800 ${
         isOpen ? 'top-0 opacity-100' : '-top-full opacity-0'
       }`}
     >
