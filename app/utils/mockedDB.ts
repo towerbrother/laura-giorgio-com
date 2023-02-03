@@ -7,6 +7,9 @@ import type { TileProps } from '~/components/Tile';
 import type { LanguageProps } from '~/components/Language';
 import type { BannerProps } from '~/components/Banner';
 import type { PhotosProps } from '~/components/Photos';
+import type { RsvpContactDetailsProps } from '~/routes/rsvp/contactdetails';
+import type { RsvpGuestsDetailsProps } from '~/routes/rsvp/guestsdetails';
+import type { RsvpOtherDetailsProps } from '~/routes/rsvp/otherdetails';
 
 // helper function
 export const getIndex = (language: string): number => {
@@ -472,7 +475,7 @@ export const contactBanner: Array<BannerProps> = [
   },
 ];
 
-export const rsvpContactDetails: Array<any> = [
+export const rsvpContactDetails: Array<RsvpContactDetailsProps> = [
   {
     title: 'Contact Details',
     headerText: 'of',
@@ -526,7 +529,7 @@ export const rsvpContactDetails: Array<any> = [
   },
 ];
 
-export const rsvpGuestsDetails: Array<any> = [
+export const rsvpGuestsDetails: Array<RsvpGuestsDetailsProps> = [
   {
     title: 'Guests Details',
     headerText: 'of',
@@ -649,11 +652,11 @@ export const rsvpGuestsDetails: Array<any> = [
   },
 ];
 
-export const rsvpOtherDetails: Array<any> = [
+export const rsvpOtherDetails: Array<RsvpOtherDetailsProps> = [
   {
-    headerText: 'of',
     title: 'Last step... hurra! 🙌',
     thanks: 'Thanks for doing that!',
+    headerText: 'of',
     texts: [
       'Did we forget something you feel is important? Or, do you just want to say "Hi"?',
       'Use the textarea below. We will read it, promised!',
@@ -661,9 +664,9 @@ export const rsvpOtherDetails: Array<any> = [
     button: { text: 'SUBMIT', pending: 'PROCESSING...' },
   },
   {
-    headerText: 'von',
     title: 'Letzter Schritt ... hurra! 🙌',
     thanks: 'Danke dafür!',
+    headerText: 'von',
     texts: [
       'Haben wir etwas vergessen, das du für wichtig haltest? Oder möchtest du einfach nur „Hallo“ sagen?',
       'Verwenden Sie das Textfeld unten. Wir werden es lesen, versprochen!',
@@ -671,9 +674,9 @@ export const rsvpOtherDetails: Array<any> = [
     button: { text: 'EINREICHEN', pending: 'WIRD BEARBEITET...' },
   },
   {
-    headerText: 'di',
     title: 'Ultimo step... evviva! 🙌',
     thanks: "Grazie per aver completato l'RSVP!",
+    headerText: 'di',
     texts: [
       'Abbiamo dimenticato qualcosa che ritieni importante? Oppure vuoi solo mandarci un saluto?',
       "Usa l'area di testo qui sotto. La leggeremo, promesso!",

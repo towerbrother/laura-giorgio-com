@@ -23,6 +23,47 @@ import {
 } from '~/utils/validation';
 import { rsvpGuestsDetails, getIndex } from '~/utils/mockedDB';
 
+export type RsvpGuestsDetailsProps = {
+  title: string;
+  headerText: string;
+  guestType: {
+    adult: string;
+    kid: string;
+    baby: string;
+  };
+  form: {
+    name: string;
+    date: {
+      label: string;
+      options: {
+        base: string;
+        friday: string;
+        saturday: string;
+      };
+    };
+    food: {
+      label: string;
+      options: {
+        base: string;
+        meat: string;
+        fish: string;
+        vegan: string;
+      };
+    };
+    allergy: {
+      label: string;
+      options: {
+        gluten: string;
+        eggs: string;
+        shellfish: string;
+        nuts: string;
+        milk: string;
+      };
+    };
+  };
+  button: { text: string };
+};
+
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const cookie = (await userCookie.parse(cookieHeader)) || {};

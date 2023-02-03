@@ -20,6 +20,24 @@ import {
 } from '~/utils/validation';
 import { rsvpContactDetails, getIndex } from '~/utils/mockedDB';
 
+export type RsvpContactDetailsProps = {
+  title: string;
+  headerText: string;
+  form: {
+    name: string;
+    surname: string;
+    email: { label: string; placeholder: string };
+    peopleNumber: {
+      text: string;
+      subtext: string;
+      labelAdults: string;
+      labelKids: string;
+      labelBabies: string;
+    };
+  };
+  button: { text: 'NEXT' };
+};
+
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const cookie = (await userCookie.parse(cookieHeader)) || {};

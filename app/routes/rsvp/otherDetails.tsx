@@ -13,6 +13,14 @@ import { getIndex, rsvpOtherDetails } from '~/utils/mockedDB';
 import type { ChangeEvent } from 'react';
 import { useEffect, useState } from 'react';
 
+export type RsvpOtherDetailsProps = {
+  title: string;
+  thanks: string;
+  headerText: string;
+  texts: Array<string>;
+  button: { text: string; pending: string };
+};
+
 export async function loader({ request }: LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const cookie = (await userCookie.parse(cookieHeader)) || {};
