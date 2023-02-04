@@ -1,4 +1,3 @@
-import type { ContributionProps } from '~/components/Contribution';
 import type { FooterProps } from '~/components/Footer';
 import type { HeaderProps } from '~/components/Header';
 import type { InfoProps } from '~/components/Info';
@@ -6,7 +5,6 @@ import type { StageProps } from '~/components/Stage';
 import type { TileProps } from '~/components/Tile';
 import type { LanguageProps } from '~/components/Language';
 import type { BannerProps } from '~/components/Banner';
-import type { PhotosProps } from '~/components/Photos';
 import type { RsvpContactDetailsProps } from '~/routes/rsvp/contactdetails';
 import type { RsvpGuestsDetailsProps } from '~/routes/rsvp/guestsdetails';
 import type { RsvpOtherDetailsProps } from '~/routes/rsvp/otherdetails';
@@ -45,28 +43,16 @@ export const footer: Array<FooterProps> = [
   },
 ];
 
-export const photos: PhotosProps = {
-  photos: [
-    { src: 'photo-1.JPG' },
-    { src: 'photo-2.JPG' },
-    { src: 'photo-3.JPG' },
-    { src: 'photo-4.JPG' },
-    { src: 'photo-5.JPG' },
-    { src: 'photo-6.JPG' },
-  ],
-};
-
 export const header: Array<HeaderProps> = [
   {
     name: 'Laura & Giorgio',
     languageOptions: languageOptions.options,
     links: [
-      { text: 'Info', slug: '/info', type: 'link' },
-      { text: 'Reservation', slug: '/reservation', type: 'link' },
-      { text: 'Contact', slug: '/contact', type: 'link' },
-      { text: 'Good to know', slug: '/goodtoknow', type: 'link' },
-      { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
-      { text: 'CONTRIBUTE', slug: '/contribute', type: 'button' },
+      { text: 'Info', slug: 'info', type: 'link' },
+      { text: 'Reservation', slug: 'accomodation', type: 'link' },
+      { text: 'Contact', slug: 'contact', type: 'link' },
+      { text: 'RSVP', slug: 'rsvp/contactdetails', type: 'button' },
+      { text: 'CONTRIBUTE', slug: 'contribute', type: 'button' },
     ],
   },
   {
@@ -74,9 +60,8 @@ export const header: Array<HeaderProps> = [
     languageOptions: languageOptions.options,
     links: [
       { text: 'Info', slug: 'info', type: 'link' },
-      { text: 'Reservierung', slug: 'reservation', type: 'link' },
+      { text: 'Reservierung', slug: 'accomodation', type: 'link' },
       { text: 'Kontact', slug: 'contact', type: 'link' },
-      { text: 'Gut zu wissen', slug: 'goodtoknow', type: 'link' },
       { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
       { text: 'DAZU BEITRAGEN', slug: 'contribute', type: 'button' },
     ],
@@ -86,10 +71,9 @@ export const header: Array<HeaderProps> = [
     languageOptions: languageOptions.options,
     links: [
       { text: 'Info', slug: 'info', type: 'link' },
-      { text: 'Prenota', slug: 'reservation', type: 'link' },
+      { text: 'Prenota', slug: 'accomodation', type: 'link' },
       { text: 'Contattaci', slug: 'contact', type: 'link' },
-      { text: 'Buono a sapersi', slug: 'goodtoknow', type: 'link' },
-      { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
+      { text: 'RSVP', slug: 'rsvp/contactdetails', type: 'button' },
       { text: 'CONTRIBUISCI', slug: 'contribute', type: 'button' },
     ],
   },
@@ -97,21 +81,18 @@ export const header: Array<HeaderProps> = [
 
 export const stage: Array<StageProps> = [
   {
-    image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'are getting married',
     date: ceremonyDate,
     link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
-    image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'werden heiraten',
     date: ceremonyDate,
     link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
-    image: { src: 'main.JPG', alt: 'Laura & Giorgio' },
     title: 'Laura & Giorgio',
     subtitle: 'si sposano',
     date: ceremonyDate,
@@ -122,7 +103,7 @@ export const stage: Array<StageProps> = [
 export const homeTile: Array<TileProps> = [
   {
     direction: 'front',
-    image: { src: 'main-tile.JPG', alt: 'Hands' },
+    image: { src: 'glj.JPG', alt: 'Giorgio, Laura and Juni' },
     tile: {
       title: 'Our story',
       subtitle: 'For those who did not know',
@@ -133,7 +114,7 @@ export const homeTile: Array<TileProps> = [
   },
   {
     direction: 'front',
-    image: { src: 'main-tile.JPG', alt: 'Hands' },
+    image: { src: 'glj.JPG', alt: 'Giorgio, Laura und Juni' },
     tile: {
       title: 'Unsere Geschichte',
       subtitle: 'Für diejenigen, die es nicht wussten',
@@ -144,7 +125,7 @@ export const homeTile: Array<TileProps> = [
   },
   {
     direction: 'front',
-    image: { src: 'main-tile.JPG', alt: 'Hands' },
+    image: { src: 'glj.JPG', alt: 'Giorgio, Laura e Juni' },
     tile: {
       title: 'La nostra storia',
       subtitle: 'Per chi non lo sapesse',
@@ -155,51 +136,117 @@ export const homeTile: Array<TileProps> = [
   },
 ];
 
-export const transportationTile: Array<TileProps> = [
+export const travelTile: Array<TileProps> = [
   {
     direction: 'front',
+    image: { src: 'travel.jpg', alt: 'Airport' },
+    tile: {
+      title: 'Travel',
+      subtitle: 'How to get to Wolfsberg?',
+      texts: [
+        'Nearest airports are Graz and Klagenfurt (limited flight options). There are direct trains and buses to Wolfsberg in day time. To book please visit oebb.at. Alternatively, you can fly to Vienna. We reccommend to book a car from there (ca. 3hrs drive).',
+        'We reccommend all guests travelling from abroad to arrive the day before. Should you require any assistance, feel free to contact directly Giorgio or Laura.',
+      ],
+    },
+    externalLinks: [
+      {
+        href: 'https://www.oebb.at/',
+        text: 'TRAIN',
+      },
+      {
+        href: 'https://www.skyscanner.net/',
+        text: 'FLIGHT',
+      },
+    ],
+  },
+  {
+    direction: 'front',
+    image: { src: 'travel.jpg', alt: 'Airport' },
+    tile: {
+      title: 'Reisen',
+      subtitle: 'Wie komme ich nach Wolfsberg?',
+      texts: [
+        'Nächste Flughäfen sind Graz und Klagenfurt (eingeschränkte Flugmöglichkeiten). Tagsüber gibt es direkte Zug- und Busverbindungen nach Wolfsberg. Zur Buchung besuchen Sie bitte oebb.at. Alternativ können Sie nach Wien fliegen. Wir empfehlen, von dort aus ein Auto zu buchen (ca. 3 Stunden Fahrt).',
+        'Wir empfehlen allen Gästen, die aus dem Ausland anreisen, am Vortag anzureisen. Sollten Sie Hilfe benötigen, wenden Sie sich bitte direkt an Giorgio oder Laura.',
+      ],
+    },
+    externalLinks: [
+      {
+        href: 'https://www.oebb.at/',
+        text: 'ZUG',
+      },
+      {
+        href: 'https://www.skyscanner.net/',
+        text: 'FLUG',
+      },
+    ],
+  },
+  {
+    direction: 'front',
+    image: { src: 'travel.jpg', alt: 'Airport' },
+    tile: {
+      title: 'Viaggio',
+      subtitle: 'Come arrivare a Wolfsberg?',
+      texts: [
+        `Gli aeroporti più vicini sono Graz e Klagenfurt (opzioni di volo limitate). Ci sono treni e autobus diretti per Wolfsberg durante il giorno. Per prenotare si prega di visitare oebb.at. In alternativa, puoi volare su Vienna. Consigliamo di prenotare un'auto da lì (3 ore di auto circa).`,
+        "Consigliamo a tutti gli ospiti che viaggiano dall'estero di arrivare il giorno prima. In caso di bisogno, non esitare a contattare direttamente Giorgio o Laura.",
+      ],
+    },
+    externalLinks: [
+      {
+        href: 'https://www.oebb.at/',
+        text: 'TRENO',
+      },
+      {
+        href: 'https://www.skyscanner.net/',
+        text: 'AEREO',
+      },
+    ],
+  },
+];
+
+export const transportationTile: Array<TileProps> = [
+  {
+    direction: 'back',
     image: { src: 'transportation.jpg', alt: 'Toy car' },
     tile: {
       title: 'Transportation',
       subtitle: "Don't worry about anything",
       texts: [
         'We have arranged transportation for guests from the hotel to the church and later to the reception venue. To reserve a seat, please let us know how many of you are coming with your RSVP.',
-        'How to get to Wolfsberg? Nearest airports are Graz and Klagenfurt (limited flight options). There are direct trains and buses to Wolfsberg in day time. To book please visit oebb.at. Alternatively, you can fly to Vienna. We reccommend to book a car from there (ca. 3hrs drive).',
       ],
     },
-    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
+    links: [{ slug: '/rsvp/contactdetails', text: 'RSVP' }],
   },
   {
-    direction: 'front',
+    direction: 'back',
     image: { src: 'transportation.jpg', alt: 'Toy car' },
     tile: {
       title: 'Transport',
       subtitle: 'Mach dir keine Sorgen',
       texts: [
         'Wir haben den Transport für die Gäste vom Hotel zur Kirche und später zum Veranstaltungsort arrangiert. Um einen Sitzplatz zu reservieren, lassen Sie uns bitte wissen, dass Sie mit Ihrer RSVP kommen.',
-        'Wie komme ich nach Wolfsberg? Nächste Flughäfen sind Graz und Klagenfurt (eingeschränkte Flugmöglichkeiten). Tagsüber gibt es direkte Zug- und Busverbindungen nach Wolfsberg. Zur Buchung besuchen Sie bitte oebb.at. Alternativ können Sie nach Wien fliegen. Wir empfehlen, von dort aus ein Auto zu buchen (ca. 3 Stunden Fahrt).',
       ],
     },
-    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
+    links: [{ slug: '/rsvp/contactdetails', text: 'RSVP' }],
   },
   {
-    direction: 'front',
+    direction: 'back',
     image: { src: 'transportation.jpg', alt: 'Toy car' },
     tile: {
       title: 'Trasporto',
       subtitle: 'Non preoccuparti di niente',
       texts: [
         `Organizzeremo il trasporto degli ospiti dall'hotel alla chiesa e successivamente al luogo del ricevimento, tramite pullman. Per prenotare il vostro posto, completa l'RSVP al più presto e facci sapere quanti sarete.`,
-        `Come arrivare a Wolfsberg? Gli aeroporti più vicini sono Graz e Klagenfurt (opzioni di volo limitate). Ci sono treni e autobus diretti per Wolfsberg durante il giorno. Per prenotare si prega di visitare oebb.at. In alternativa, puoi volare su Vienna. Consigliamo di prenotare un'auto da lì (3 ore di auto circa).`,
       ],
     },
-    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
+    links: [{ slug: '/rsvp/contactdetails', text: 'RSVP' }],
   },
 ];
 
 export const accomodationTile: Array<TileProps> = [
   {
-    direction: 'back',
+    direction: 'front',
     image: { src: 'hotel.jpg', alt: 'Hotel Room' },
     tile: {
       title: 'Accommodation',
@@ -208,10 +255,10 @@ export const accomodationTile: Array<TileProps> = [
         'Wolfsberg offers various accommodation options. However, for our guests, we have identified two options that we consider to be appropriate, Hotel Hecher and Pension Ölberger. We also discussed and agreed on a special price with Hotel Hecher.',
       ],
     },
-    link: { slug: '/accomodation', text: 'BOOK' },
+    links: [{ slug: '/accomodation', text: 'BOOK' }],
   },
   {
-    direction: 'back',
+    direction: 'front',
     image: { src: 'hotel.jpg', alt: 'Hotel Room' },
     tile: {
       title: 'Unterkunft',
@@ -220,10 +267,10 @@ export const accomodationTile: Array<TileProps> = [
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio.',
       ],
     },
-    link: { slug: '/accomodation', text: 'BOOK' },
+    links: [{ slug: '/accomodation', text: 'BOOK' }],
   },
   {
-    direction: 'back',
+    direction: 'front',
     image: { src: 'hotel.jpg', alt: 'Hotel Room' },
     tile: {
       title: 'Alloggio',
@@ -232,7 +279,7 @@ export const accomodationTile: Array<TileProps> = [
         `Wolfsberg offre varie possibilità di pernottamento. Tuttavia, per i nostri ospiti, abbiamo individuato due opzioni che riteniamo essere opportune, l'hotel Hecher e la pensione Ölberger. Con l'hotel Hecher abbiamo anche discusso e concordato un prezzo speciale.`,
       ],
     },
-    link: { slug: '/accomodation', text: 'BOOK' },
+    links: [{ slug: '/accomodation', text: 'BOOK' }],
   },
 ];
 
@@ -245,18 +292,27 @@ export const info: Array<InfoProps> = [
         title: 'Our wedding day',
         dateTime: ceremonyDate,
         text: 'It would be absolutely great to have you there! Join us!',
+        link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
       },
       {
         icon: 'church',
         title: 'Ceremony',
         dateTime: ceremonyDate,
         text: 'St. Wolfgang church - Kienberg, 8742 St. Wolfgang, Austria',
+        externalLink: {
+          href: 'https://www.google.com/maps/place/Pfarrkirche+St.+Wolfgang+bei+Obdach/@47.0972732,14.6321913,17z/data=!3m1!4b1!4m5!3m4!1s0x4770354d865f9c6d:0xaf4ae788399bc111!8m2!3d47.0972779!4d14.6343669',
+          text: 'CHURCH',
+        },
       },
       {
         icon: 'party',
         title: 'Reception',
         dateTime: partyDate,
         text: 'Wolfsberg Castle - Schloßstraße, 9400 Wolfsberg, Austria',
+        externalLink: {
+          href: 'https://www.google.com/maps/place/Schloss+Wolfsberg/@46.84121,14.8450501,17z/data=!3m1!4b1!4m5!3m4!1s0x477020f0c6fdd3b7:0xa6cd89a4e612df31!8m2!3d46.8412064!4d14.8472388',
+          text: 'CASTLE',
+        },
       },
     ],
   },
@@ -268,18 +324,27 @@ export const info: Array<InfoProps> = [
         title: 'Unser Hochzeitstag',
         dateTime: ceremonyDate,
         text: 'Es wäre absolut toll, dich dabei zu haben! Begleiten Sie uns!',
+        link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
       },
       {
         icon: 'church',
         title: 'Zeremonie',
         dateTime: ceremonyDate,
         text: 'St. Wolfgang Kirche - Kienberg, 8742 St. Wolfgang, Österreich',
+        externalLink: {
+          href: 'https://www.google.com/maps/place/Pfarrkirche+St.+Wolfgang+bei+Obdach/@47.0972732,14.6321913,17z/data=!3m1!4b1!4m5!3m4!1s0x4770354d865f9c6d:0xaf4ae788399bc111!8m2!3d47.0972779!4d14.6343669',
+          text: 'KIRCHE',
+        },
       },
       {
         icon: 'party',
         title: 'Rezeption',
         dateTime: partyDate,
         text: 'Schloß Wolfsberg - Schloßstraße, 9400 Wolfsberg, Österreich',
+        externalLink: {
+          href: 'https://www.google.com/maps/place/Schloss+Wolfsberg/@46.84121,14.8450501,17z/data=!3m1!4b1!4m5!3m4!1s0x477020f0c6fdd3b7:0xa6cd89a4e612df31!8m2!3d46.8412064!4d14.8472388',
+          text: 'SCHLOß',
+        },
       },
     ],
   },
@@ -291,24 +356,33 @@ export const info: Array<InfoProps> = [
         title: 'Il giorno del nostro matrimonio',
         dateTime: ceremonyDate,
         text: 'Sarebbe assolutamente fantastico averti lì! Unisciti a noi!',
+        link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
       },
       {
         icon: 'church',
         title: 'Cerimonia',
         dateTime: ceremonyDate,
         text: 'Chiesa di St. Wolfgang - Kienberg, 8742 St. Wolfgang, Austria',
+        externalLink: {
+          href: 'https://www.google.com/maps/place/Pfarrkirche+St.+Wolfgang+bei+Obdach/@47.0972732,14.6321913,17z/data=!3m1!4b1!4m5!3m4!1s0x4770354d865f9c6d:0xaf4ae788399bc111!8m2!3d47.0972779!4d14.6343669',
+          text: 'CHIESA',
+        },
       },
       {
         icon: 'party',
         title: 'Ricevimento',
         dateTime: partyDate,
         text: 'Castello Wolfsberg - Schloßstraße, 9400 Wolfsberg, Austria',
+        externalLink: {
+          href: 'https://www.google.com/maps/place/Schloss+Wolfsberg/@46.84121,14.8450501,17z/data=!3m1!4b1!4m5!3m4!1s0x477020f0c6fdd3b7:0xa6cd89a4e612df31!8m2!3d46.8412064!4d14.8472388',
+          text: 'CASTELLO',
+        },
       },
     ],
   },
 ];
 
-export const contribution: Array<ContributionProps> = [
+export const contribution: Array<BannerProps> = [
   {
     headline: 'To those considering a gift!',
     paragraphs: [
@@ -332,7 +406,7 @@ export const contribution: Array<ContributionProps> = [
     paragraphs: [
       'La tua presenza è già un dono!',
       'Tuttavia, se desideri onorarci con un regalo, ti saremmo molto grati per un contributo finanziario.',
-      'Puoi trovare le nostre coordinate bancarie nel tuo invito di nozze. Qualsiasi importo è apprezzato.',
+      'Puoi trovare le nostre coordinate bancarie sul tuo invito. Qualsiasi importo è apprezzato.',
       'GRAZIE! 🥰',
     ],
   },
@@ -349,10 +423,12 @@ export const hotelTile: Array<TileProps> = [
         'Centrally located with comfortable rooms. 10 min walk or 4 min drive from the reception venue. Within walking distance from the central station in Wolfsberg. Special price has been agreed for our guests (applicable to 2-nights stay only). €58 per person (double room), €75 (single room). Breakfast included. Additional bed €35 per night. Baby bed at €15 per room. Free parking. Please book via email and quote “Hochzeit Purnell” in your booking. Please book as soon as possible.',
       ],
     },
-    externalLink: {
-      href: 'https://www.hecher.at/',
-      text: 'VISIT SITE',
-    },
+    externalLinks: [
+      {
+        href: 'https://www.hecher.at/',
+        text: 'VISIT SITE',
+      },
+    ],
   },
   {
     direction: 'front',
@@ -364,10 +440,12 @@ export const hotelTile: Array<TileProps> = [
         'Zentral gelegen mit komfortablen Zimmern. 10 Minuten zu Fuß oder 4 Minuten Fahrt von der Rezeption entfernt. Nur wenige Gehminuten vom Hauptbahnhof in Wolfsberg entfernt. Für unsere Gäste wurde ein Sonderpreis vereinbart (gilt nur für 2 Übernachtungen). 58€ pro Person (Doppelzimmer), 75€ (Einzelzimmer). Frühstück inkludiert. Zusatzbett 35€ pro Nacht. Babybett für 15€ pro Zimmer. Gratis Parkplätze. Bitte buchen Sie per E-Mail und geben Sie bei Ihrer Buchung „Hochzeit Purnell“ an. Bitte buchen Sie so bald wie möglich.',
       ],
     },
-    externalLink: {
-      href: 'https://www.hecher.at/',
-      text: 'BESUCHEN SIE DIE WEBSITE',
-    },
+    externalLinks: [
+      {
+        href: 'https://www.hecher.at/',
+        text: 'BESUCHEN SIE DIE WEBSITE',
+      },
+    ],
   },
   {
     direction: 'front',
@@ -379,10 +457,12 @@ export const hotelTile: Array<TileProps> = [
         'Situato in posizione centrale con camere confortevoli. 10 minuti a piedi o 4 minuti in auto dal luogo del ricevimento. A pochi passi dalla stazione centrale di Wolfsberg. Per i nostri ospiti è stato concordato un prezzo speciale (applicabile solo a soggiorni di 2 notti). 58€ a persona (camera doppia), 75€ (camera singola). Colazione inclusa. Letto aggiuntivo 35€ a notte. Culla 15€ a camera. Parcheggio gratuito. Si prega di prenotare via e-mail e citare "Hochzeit Purnell" nella prenotazione. Si prega di prenotare il prima possibile.',
       ],
     },
-    externalLink: {
-      href: 'https://www.hecher.at/',
-      text: 'VAI AL SITO',
-    },
+    externalLinks: [
+      {
+        href: 'https://www.hecher.at/',
+        text: 'VAI AL SITO',
+      },
+    ],
   },
 ];
 
@@ -397,10 +477,12 @@ export const pensionTile: Array<TileProps> = [
         'Simple, inexpensive rooms. Recommended for those staying only one night. Car needed to reach from Wolfsberg city center. The price is €45 per person. Breakfast included. Further discount applies to triple rooms. Please book via email.',
       ],
     },
-    externalLink: {
-      href: 'https://www.gasthof-oelberger.at/',
-      text: 'VISIT SITE',
-    },
+    externalLinks: [
+      {
+        href: 'https://www.gasthof-oelberger.at/',
+        text: 'VISIT SITE',
+      },
+    ],
   },
   {
     direction: 'back',
@@ -412,10 +494,12 @@ export const pensionTile: Array<TileProps> = [
         'Einfache und günstige Zimmer. Empfohlen für diejenigen, die nur eine Nacht bleiben. Anfahrt ab Wolfsberg Zentrum mit PKW erforderlich. Der Preis beträgt 45€ pro Person. Frühstück inkludiert. Weitere Rabatte gelten für Dreibettzimmer. Bitte buchen Sie per E-Mail.',
       ],
     },
-    externalLink: {
-      href: 'https://www.gasthof-oelberger.at/',
-      text: 'BESUCHEN SIE DIE WEBSITE',
-    },
+    externalLinks: [
+      {
+        href: 'https://www.gasthof-oelberger.at/',
+        text: 'BESUCHEN SIE DIE WEBSITE',
+      },
+    ],
   },
   {
     direction: 'back',
@@ -427,27 +511,35 @@ export const pensionTile: Array<TileProps> = [
         `Camere semplici ed economiche. Consigliato per chi soggiorna solo una notte. Auto necessaria per raggiungere la pensione dal centro di Wolfsberg. Il prezzo è di €45 a persona. Colazione inclusa. Ulteriori sconti si applicano alle camere triple. Si prega di prenotare tramite e-mail.`,
       ],
     },
-    externalLink: {
-      href: 'https://www.gasthof-oelberger.at/',
-      text: 'VAI AL SITO',
-    },
+    externalLinks: [
+      {
+        href: 'https://www.gasthof-oelberger.at/',
+        text: 'VAI AL SITO',
+      },
+    ],
   },
 ];
 
 export const contributionBanner: Array<BannerProps> = [
   {
-    paragraph:
-      'Your presence is present enough! However, if you wish to honour us with a gift, we would be very grateful for a financial contribution.',
+    paragraphs: [
+      'Your presence is present enough!',
+      'However, if you wish to honour us with a gift, we would be very grateful for a financial contribution.',
+    ],
     link: { slug: '/contribute', text: 'CONTRIBUTE' },
   },
   {
-    paragraph:
-      'Ihre Präsenz ist präsent genug! Wenn Sie uns jedoch mit einem Geschenk beehren möchten, würden wir uns über einen finanziellen Beitrag sehr freuen.',
+    paragraphs: [
+      'Ihre Präsenz ist präsent genug!',
+      'Wenn Sie uns jedoch mit einem Geschenk beehren möchten, würden wir uns über einen finanziellen Beitrag sehr freuen.',
+    ],
     link: { slug: '/contribute', text: 'BEITRAGEN' },
   },
   {
-    paragraph:
-      'La tua presenza è già un dono! Tuttavia, se desideri onorarci con un regalo, ti saremmo molto grati per un contributo finanziario. GRAZIE!',
+    paragraphs: [
+      'La tua presenza è già un dono!',
+      'Tuttavia, se desideri onorarci con un regalo, ti saremmo molto grati per un contributo finanziario. GRAZIE!',
+    ],
     link: { slug: '/contribute', text: 'CONTRIBUISCI' },
   },
 ];
@@ -456,21 +548,28 @@ export const contactBanner: Array<BannerProps> = [
   {
     headline: 'We look forward to celebrating with you!',
     icon: false,
-    paragraph:
-      'Please, click on RSVP and follow the steps. Let us know how many of you are going to join us. Should you have any special requirements or further comments, you will be able to add them at the end of the form. Thank you!',
+    paragraphs: [
+      'Please, click on RSVP and follow the steps. Let us know how many of you are going to join us.',
+      'Should you have any special requirements or further comments, you will be able to add them at the end of the form. Thank you!',
+    ],
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     headline: 'Wir freuen uns darauf, mit Ihnen zu feiern!',
     icon: false,
-    paragraph:
-      'Bitte klicken Sie auf RSVP und folgen Sie den Schritten. Teilen Sie uns mit, wie viele von Ihnen sich uns anschließen werden. Sollten Sie besondere Anforderungen oder weitere Anmerkungen haben, können Sie diese am Ende des Formulars hinzufügen. Danke dir!',
+    paragraphs: [
+      'Bitte klicken Sie auf RSVP und folgen Sie den Schritten. Teilen Sie uns mit, wie viele von Ihnen sich uns anschließen werden.',
+      'Sollten Sie besondere Anforderungen oder weitere Anmerkungen haben, können Sie diese am Ende des Formulars hinzufügen. Danke dir!',
+    ],
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     headline: `Non vediamo l'ora di festeggiare con te!`,
     icon: false,
-    paragraph: `Facci sapere quanti sarete. Per favore, clicca su RSVP e segui i passaggi. Tu avessi esigenze particolari o ulteriori commenti, potrai aggiungerli alla fine dell'RSVP. Grazie!`,
+    paragraphs: [
+      `Facci sapere quanti sarete. Per favore, clicca su RSVP e segui i passaggi.`,
+      `Tu avessi esigenze particolari o ulteriori commenti, potrai aggiungerli alla fine dell'RSVP. Grazie!`,
+    ],
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];

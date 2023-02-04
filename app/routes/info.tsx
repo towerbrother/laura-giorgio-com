@@ -1,6 +1,14 @@
-import { info, getIndex, photos } from '~/utils/mockedDB';
+import {
+  info,
+  getIndex,
+  travelTile,
+  contributionBanner,
+  transportationTile,
+  accomodationTile,
+} from '~/utils/mockedDB';
 import Info from '~/components/Info';
-import Photos from '~/components/Photos';
+import Tile from '~/components/Tile';
+import Banner from '~/components/Banner';
 
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
@@ -19,12 +27,24 @@ export async function loader({ request }: LoaderArgs) {
 
   return json({
     info: info[getIndex(condition ? cookie.language : 'en')],
-    photos: photos,
+    travelTile: travelTile[getIndex(condition ? cookie.language : 'en')],
+    transportationTile:
+      transportationTile[getIndex(condition ? cookie.language : 'en')],
+    accomodationTile:
+      accomodationTile[getIndex(condition ? cookie.language : 'en')],
+    contributionBanner:
+      contributionBanner[getIndex(condition ? cookie.language : 'en')],
   });
 }
 
 export default function Index() {
-  const { info, photos } = useLoaderData<typeof loader>();
+  const {
+    info,
+    travelTile,
+    transportationTile,
+    accomodationTile,
+    contributionBanner,
+  } = useLoaderData<typeof loader>();
   const mappedInfo = {
     ...info,
     items: info.items.map((item) => ({
@@ -36,7 +56,10 @@ export default function Index() {
   return (
     <>
       <Info {...mappedInfo} />
-      <Photos {...photos} />
+      <Tile {...travelTile} />
+      <Tile {...transportationTile} />
+      <Tile {...accomodationTile} />
+      <Banner {...contributionBanner} />
     </>
   );
 }

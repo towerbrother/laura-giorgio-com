@@ -2,43 +2,28 @@ import { NavLink } from '@remix-run/react';
 import { format } from 'date-fns';
 
 export type StageProps = {
-  image: {
-    src: string;
-    alt: string;
-  };
   title: string;
   subtitle: string;
   date: Date;
   link: { slug: string; text: string };
 };
 
-const Stage = ({
-  image: { src, alt },
-  title,
-  subtitle,
-  date,
-  link: { slug, text },
-}: StageProps) => (
-  <div className="relative">
-    <img className="w-full" src={src} alt={alt} />
-    <div className="flex flex-col justify-center items-center text-center text-neutral-800 font-bold w-full h-full absolute top-2 -left-[55px] sm:-left-[100px] md:-left-[150px] lg:-left-[180px] xl:-left-[240px] xl:-top-10 2xl:-left-[300px] 2xl:-top-16">
-      <h2 className="italic text-md sm:text-2xl md:text-3xl lg:text-5xl xl:text-7xl">
-        {title}
-      </h2>
-      <h4 className="uppercase text-[8px] sm:text-sm md:text-base lg:text-xl xl:text-2xl">
-        {subtitle}
-      </h4>
-      <span className="my-2 mx-0 text-sm tracking-tight sm:text-base md:text-xl lg:text-2xl xl:text-3xl md:my-5">
-        {format(date, 'do LLLL yyyy ｜ p')}
-      </span>
-      <NavLink
-        className="animate-pulse xl:animate-none rounded-md bg-neutral-800 text-md text-neutral-100 font-bold my-1 mx-0 py-1 px-3 md:text-lg md:py-2 md:px-4 hover:opacity-80 lg:text-2xl lg:py-2 lg:px-4"
-        to={slug}
-        prefetch="intent"
-      >
-        {text}
-      </NavLink>
-    </div>
+const Stage = ({ title, subtitle, date, link: { slug, text } }: StageProps) => (
+  <div className="flex flex-col justify-center items-center text-center text-neutral-800 font-bold w-full h-[75vh] bg-gradient-to-br from-cyan-600 to-neutral-100">
+    <h2 className="italic text-3xl md:text-5xl lg:text-7xl">{title}</h2>
+    <h4 className="uppercase mt-2 text-base md:text-lg lg:text-2xl">
+      {subtitle}
+    </h4>
+    <span className="my-1 md:my-4 lg:my-5 mx-0 text-base md:text-2xl lg:text-3xl tracking-tight sm:text-base">
+      {format(date, 'do LLLL yyyy ｜ p')}
+    </span>
+    <NavLink
+      className="text-lg md:text-2xl lg:text-4xl py-2 lg:py-3 px-6 lg:px-8 mt-6 animate-pulse xl:animate-none transition-all duration-200 ease-in-out font-bold rounded-md bg-neutral-800 text-neutral-100 w-max hover:opacity-80"
+      to={slug}
+      prefetch="intent"
+    >
+      {text}
+    </NavLink>
   </div>
 );
 

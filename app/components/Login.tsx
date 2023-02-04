@@ -24,7 +24,7 @@ const Login = ({ fieldErrors }: { fieldErrors?: any }) => {
   }, [isLogging, state]);
 
   return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-800 to-cyan-100">
+    <div className="w-screen h-screen flex flex-col justify-center items-center bg-gradient-to-br from-cyan-600 to-neutral-100">
       <div className="flex flex-col justify-center items-center bg-neutral-100 rounded-md py-8 px-2 sm:px-6">
         <h1 className="text-4xl font-bold text-center text-neutral-800 mb-2">
           Welcome!

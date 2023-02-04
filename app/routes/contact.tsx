@@ -1,16 +1,10 @@
 import Banner from '~/components/Banner';
-import Photos from '~/components/Photos';
 
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { userCookie } from '~/utils/cookie.server';
-import {
-  contactBanner,
-  getIndex,
-  contributionBanner,
-  photos,
-} from '~/utils/mockedDB';
+import { contactBanner, getIndex } from '~/utils/mockedDB';
 
 export const meta: MetaFunction = () => ({
   title: 'Contact 👌',
@@ -24,21 +18,15 @@ export async function loader({ request }: LoaderArgs) {
 
   return json({
     contactBanner: contactBanner[getIndex(condition ? cookie.language : 'en')],
-    contributionBanner:
-      contributionBanner[getIndex(condition ? cookie.language : 'en')],
-    photos: photos,
   });
 }
 
 export default function Index() {
-  const { contactBanner, contributionBanner, photos } =
-    useLoaderData<typeof loader>();
+  const { contactBanner } = useLoaderData<typeof loader>();
 
   return (
     <>
-      <Banner {...contactBanner} />
-      <Photos {...photos} />
-      <Banner {...contributionBanner} />
+      <Banner {...contactBanner} height="h-[80vh]" />
     </>
   );
 }

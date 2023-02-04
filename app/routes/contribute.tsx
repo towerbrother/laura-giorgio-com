@@ -1,6 +1,5 @@
-import { contribution, getIndex, photos } from '~/utils/mockedDB';
-import Contribution from '~/components/Contribution';
-import Photos from '~/components/Photos';
+import { contribution, getIndex } from '~/utils/mockedDB';
+import Banner from '~/components/Banner';
 
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
@@ -19,17 +18,15 @@ export async function loader({ request }: LoaderArgs) {
 
   return json({
     contribution: contribution[getIndex(condition ? cookie.language : 'en')],
-    photos: photos,
   });
 }
 
 export default function Index() {
-  const { contribution, photos } = useLoaderData<typeof loader>();
+  const { contribution } = useLoaderData<typeof loader>();
 
   return (
     <>
-      <Contribution {...contribution} />
-      <Photos {...photos} />
+      <Banner {...contribution} height="h-[80vh]" />
     </>
   );
 }

@@ -16,7 +16,7 @@ const Header = (props: HeaderProps) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <header className="relative flex justify-center items-center bg-neutral-100 shadow-lg h-20 lg:h-28">
+    <header className="relative flex justify-center items-center bg-neutral-100 shadow-lg h-[10vh]">
       <Navbar {...props} toggle={toggle} />
       <Sidebar {...props} isOpen={isOpen} toggle={toggle} />
     </header>
