@@ -5,7 +5,7 @@ export type FooterProps = {
 };
 
 const Footer = ({ name }: FooterProps) => (
-  <footer className="flex justify-center py-6 px-0 bg-neutral-100 mt-auto md:py-10">
+  <footer className="flex justify-center items-center bg-neutral-100 mt-auto h-[10vh]">
     <Name text={name} />
   </footer>
 );

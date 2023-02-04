@@ -13,7 +13,7 @@ const Sidebar = ({ links, isOpen, toggle }: SidebarProps) => {
   const linkClassName =
     'flex justify-center items-center my-1 mx-0 py-4 px-0 text-xl text-neutral-300 font-bold';
   const buttonLinkClassName =
-    'transition-all duration-300 ease-in-out rounded-xl bg-neutral-300 text-neutral-800 my-4 mx-0 py-3 px-6 font-bold hover:opacity-80';
+    'transition-all duration-300 ease-in-out rounded-xl bg-cyan-600 text-neutral-100 my-4 mx-0 py-3 px-6 font-bold hover:opacity-80';
 
   return (
     <aside
