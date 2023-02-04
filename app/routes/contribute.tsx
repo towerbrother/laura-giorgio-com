@@ -26,7 +26,7 @@ export default function Index() {
 
   return (
     <>
-      <Banner {...contribution} height="h-[80vh]" />
+      <Banner {...contribution} height="h-[88vh]" />
     </>
   );
 }

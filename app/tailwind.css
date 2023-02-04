@@ -761,6 +761,14 @@ video {
   height: 10rem;
 }
 
+.h-\[90vh\] {
+  height: 90vh;
+}
+
+.h-\[88vh\] {
+  height: 88vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
