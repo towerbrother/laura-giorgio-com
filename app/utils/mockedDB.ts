@@ -426,7 +426,7 @@ export const hotelTile: Array<TileProps> = [
     externalLinks: [
       {
         href: 'https://www.hecher.at/',
-        text: 'VISIT SITE',
+        text: 'HECHER',
       },
     ],
   },
@@ -443,7 +443,7 @@ export const hotelTile: Array<TileProps> = [
     externalLinks: [
       {
         href: 'https://www.hecher.at/',
-        text: 'BESUCHEN SIE DIE WEBSITE',
+        text: 'HECHER',
       },
     ],
   },
@@ -460,7 +460,7 @@ export const hotelTile: Array<TileProps> = [
     externalLinks: [
       {
         href: 'https://www.hecher.at/',
-        text: 'VAI AL SITO',
+        text: 'HECHER',
       },
     ],
   },
@@ -480,7 +480,7 @@ export const pensionTile: Array<TileProps> = [
     externalLinks: [
       {
         href: 'https://www.gasthof-oelberger.at/',
-        text: 'VISIT SITE',
+        text: 'ÖLBERGER',
       },
     ],
   },
@@ -497,7 +497,7 @@ export const pensionTile: Array<TileProps> = [
     externalLinks: [
       {
         href: 'https://www.gasthof-oelberger.at/',
-        text: 'BESUCHEN SIE DIE WEBSITE',
+        text: 'ÖLBERGER',
       },
     ],
   },
@@ -514,7 +514,7 @@ export const pensionTile: Array<TileProps> = [
     externalLinks: [
       {
         href: 'https://www.gasthof-oelberger.at/',
-        text: 'VAI AL SITO',
+        text: 'ÖLBERGER',
       },
     ],
   },
@@ -583,12 +583,21 @@ export const rsvpContactDetails: Array<RsvpContactDetailsProps> = [
       surname: 'Surname',
       email: { label: 'Email', placeholder: 'james@gmail.com' },
       peopleNumber: {
-        text: 'How many people are you completing the RSVP for?',
+        text: 'How many of you will attend?',
         subtext: 'Attention: that should also include yourself',
-        labelAdults: '12+ years old',
-        labelKids: '4-to-12 years old',
-        labelBabies: '0-to-3 years old',
       },
+      date: {
+        label: 'Date of arrival',
+        options: {
+          base: 'Choose an option',
+          friday: 'Friday, 28th July',
+          saturday: 'Saturday, 29th July',
+        },
+      },
+    },
+    attendance: {
+      attending: 'Will attend!',
+      notAttending: 'Will not attend!',
     },
     button: { text: 'NEXT' },
   },
@@ -600,12 +609,21 @@ export const rsvpContactDetails: Array<RsvpContactDetailsProps> = [
       surname: 'Nachname',
       email: { label: 'Email', placeholder: 'james@gmail.com' },
       peopleNumber: {
-        text: 'Für wie viele Personen füllst du die RSVP aus?',
+        text: 'Wie viele von Ihnen werden teilnehmen?',
         subtext: 'Achtung: das sollte auch du selbst einschließen',
-        labelAdults: '12+ Jahre alt',
-        labelKids: '4-to-12 Jahre alt',
-        labelBabies: '0-to-3 Jahre alt',
       },
+      date: {
+        label: 'Datum der Ankunft',
+        options: {
+          base: 'Wähle eine Option',
+          friday: 'Freitag, 28. Juli',
+          saturday: 'Samstag, 29. Juli',
+        },
+      },
+    },
+    attendance: {
+      attending: 'Wird teilnehmen',
+      notAttending: 'Wird nicht teilnehmen',
     },
     button: { text: 'NEXT' },
   },
@@ -617,12 +635,21 @@ export const rsvpContactDetails: Array<RsvpContactDetailsProps> = [
       surname: 'Cognome',
       email: { label: 'Email', placeholder: 'james@gmail.com' },
       peopleNumber: {
-        text: "Per quante persone stai completando l'RSVP?",
+        text: 'Quanti di voi parteciperanno?',
         subtext: 'Attenzione: includi anche te stesso',
-        labelAdults: '12+ anni',
-        labelKids: '4-to-12 anni',
-        labelBabies: '0-to-3 anni',
       },
+      date: {
+        label: 'Data di arrivo',
+        options: {
+          base: 'Scegli un opzione',
+          friday: 'Venerdì, 28 Luglio',
+          saturday: 'Sabato, 29 Luglio',
+        },
+      },
+    },
+    attendance: {
+      attending: 'Parteciperò',
+      notAttending: 'Non parteciperò',
     },
     button: { text: 'NEXT' },
   },
@@ -632,21 +659,9 @@ export const rsvpGuestsDetails: Array<RsvpGuestsDetailsProps> = [
   {
     title: 'Guests Details',
     headerText: 'of',
-    guestType: {
-      adult: 'Adult',
-      kid: 'Kid',
-      baby: 'Baby',
-    },
+    guest: 'Guest',
     form: {
       name: 'Full Name',
-      date: {
-        label: 'Date of arrival',
-        options: {
-          base: 'Choose an option',
-          friday: 'Friday, 28th July',
-          saturday: 'Saturday, 29th July',
-        },
-      },
       food: {
         label: 'I would like to eat...',
         options: {
@@ -672,21 +687,9 @@ export const rsvpGuestsDetails: Array<RsvpGuestsDetailsProps> = [
   {
     title: 'Gästedetails',
     headerText: 'von',
-    guestType: {
-      adult: 'Erwachsene',
-      kid: 'Kind',
-      baby: 'Baby',
-    },
+    guest: 'Gast',
     form: {
       name: 'Vollständiger Name',
-      date: {
-        label: 'Datum der Ankunft',
-        options: {
-          base: 'Wähle eine Option',
-          friday: 'Freitag, 28. Juli',
-          saturday: 'Samstag, 29. Juli',
-        },
-      },
       food: {
         label: 'Ich würde gerne essen...',
         options: {
@@ -712,21 +715,9 @@ export const rsvpGuestsDetails: Array<RsvpGuestsDetailsProps> = [
   {
     title: 'Dettagli ospiti',
     headerText: 'di',
-    guestType: {
-      adult: 'Adulto',
-      kid: 'Ragazzo/a',
-      baby: 'Bambino/a',
-    },
+    guest: 'Ospite',
     form: {
       name: 'Nome completo',
-      date: {
-        label: 'Data di arrivo',
-        options: {
-          base: 'Scegli un opzione',
-          friday: 'Venerdì, 28 Luglio',
-          saturday: 'Sabato, 29 Luglio',
-        },
-      },
       food: {
         label: 'Vorrei mangiare...',
         options: {

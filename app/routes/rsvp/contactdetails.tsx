@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { ActionArgs, LoaderArgs } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import {
@@ -8,6 +9,9 @@ import {
 } from '@remix-run/react';
 import { FaSpinner } from 'react-icons/fa';
 
+import { rsvpContactDetails, getIndex } from '~/utils/mockedDB';
+
+import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
 import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
 
@@ -17,8 +21,9 @@ import {
   validateName,
   validateSurname,
   validateEmail,
+  validateDate,
+  validateGuestsCount,
 } from '~/utils/validation';
-import { rsvpContactDetails, getIndex } from '~/utils/mockedDB';
 
 export type RsvpContactDetailsProps = {
   title: string;
@@ -30,12 +35,21 @@ export type RsvpContactDetailsProps = {
     peopleNumber: {
       text: string;
       subtext: string;
-      labelAdults: string;
-      labelKids: string;
-      labelBabies: string;
+    };
+    date: {
+      label: string;
+      options: {
+        base: string;
+        friday: string;
+        saturday: string;
+      };
     };
   };
-  button: { text: 'NEXT' };
+  attendance: {
+    attending: string;
+    notAttending: string;
+  };
+  button: { text: string };
 };
 
 export async function loader({ request }: LoaderArgs) {
@@ -44,7 +58,8 @@ export async function loader({ request }: LoaderArgs) {
 
   const stepsInfo = {
     currentStep: 1,
-    totalSteps: 3,
+    totalSteps:
+      cookie && cookie.rsvp && cookie.rsvp.isAttending === 'attending' ? 3 : 2,
   };
 
   if (cookie) {
@@ -76,9 +91,14 @@ export async function action({ request }: ActionArgs) {
   }
 
   const fieldErrors = {
-    mainGuestName: validateName(fields?.mainGuestName.toString()),
-    mainGuestSurname: validateSurname(fields?.mainGuestSurname.toString()),
-    mainGuestEmail: validateEmail(fields?.mainGuestEmail.toString()),
+    mainGuestName: validateName(fields?.mainGuestName?.toString()),
+    mainGuestSurname: validateSurname(fields?.mainGuestSurname?.toString()),
+    mainGuestEmail: validateEmail(fields?.mainGuestEmail?.toString()),
+    arrivalDate: validateDate(fields?.arrivalDate?.toString()),
+    guestsCount: validateGuestsCount(
+      Number(fields?.guestsCount),
+      fields?.isAttending?.toString()
+    ),
   };
 
   if (Object.values(fieldErrors).some(Boolean)) {
@@ -89,14 +109,21 @@ export async function action({ request }: ActionArgs) {
     });
   }
 
-  return redirect('/rsvp/guestsdetails', {
-    headers: {
-      'Set-Cookie': await userCookie.serialize({
-        ...cookie,
-        rsvp: cookie.rsvp ? { ...cookie.rsvp, ...fields } : { ...fields },
-      }),
-    },
-  });
+  return redirect(
+    `${
+      fields?.isAttending === 'attending'
+        ? '/rsvp/guestsdetails'
+        : '/rsvp/otherdetails'
+    }`,
+    {
+      headers: {
+        'Set-Cookie': await userCookie.serialize({
+          ...cookie,
+          rsvp: cookie.rsvp ? { ...cookie.rsvp, ...fields } : { ...fields },
+        }),
+      },
+    }
+  );
 }
 
 export default function Index() {
@@ -109,12 +136,20 @@ export default function Index() {
     state === 'submitting' &&
     submission.formData.get('_action') === 'contact-details';
 
+  const initialIsAttending =
+    rsvp === undefined || rsvp?.isAttending === 'attending' ? true : false;
+  const [isAttending, setIsAttending] = useState(initialIsAttending);
+
+  const initialGuestsCount =
+    rsvp === undefined || !isAttending ? 0 : Number(rsvp?.guestsCount);
+  const [guestsCount, setGuestsCount] = useState(initialGuestsCount);
+
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
       <FormHeader
         headerText={rsvpContactDetails?.headerText}
         currentStep={currentStep}
-        totalSteps={totalSteps}
+        totalSteps={isAttending ? totalSteps : '2'}
       />
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         {rsvpContactDetails?.title}
@@ -201,68 +236,104 @@ export default function Index() {
           )}
         </p>
       </div>
-      <legend className="text-neutral-800 font-bold mt-5 lg:text-lg">
-        {rsvpContactDetails?.form?.peopleNumber?.text}
-      </legend>
-      <p className="text-sm text-neutral-600 mb-2">
-        {rsvpContactDetails?.form?.peopleNumber?.subtext}
-      </p>
-      <label
-        htmlFor="guestsNumberAdult"
-        className="text-neutral-800 font-bold lg:text-lg"
-      >
-        {rsvpContactDetails?.form?.peopleNumber?.labelAdults}
-      </label>
-      <select
-        id="guestsNumberAdult"
-        name="guestsNumberAdult"
-        defaultValue={rsvp?.guestsNumberAdult ? rsvp?.guestsNumberAdult : '1'}
-        className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
-      >
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <label
-        htmlFor="guestsNumberKid"
-        className="text-neutral-800 font-bold lg:text-lg"
-      >
-        {rsvpContactDetails?.form?.peopleNumber?.labelKids}
-      </label>
-      <select
-        id="guestsNumberKid"
-        name="guestsNumberKid"
-        defaultValue={rsvp?.guestsNumberKid ? rsvp?.guestsNumberKid : '0'}
-        className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
-      >
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <label
-        htmlFor="guestsNumberBaby"
-        className="text-neutral-800 font-bold lg:text-lg"
-      >
-        {rsvpContactDetails?.form?.peopleNumber?.labelBabies}
-      </label>
-      <select
-        id="guestsNumberBaby"
-        name="guestsNumberBaby"
-        defaultValue={rsvp?.guestsNumberBaby ? rsvp?.guestsNumberBaby : '0'}
-        className="border border-neutral-300 rounded-md p-3 mb-5 cursor-pointer"
-      >
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+      <div className="flex justify-center items-center py-2 px-1 my-2 border border-neutral-300 w-max rounded-2xl">
+        <div
+          className={`flex items-center justify-center rounded-2xl w-max mx-1 py-3 px-6 cursor-pointer border border-white transition-all duration-200 ease-in-out ${
+            isAttending ? 'border-neutral-300 bg-neutral-200' : ''
+          }`}
+          onClick={() => setIsAttending(true)}
+        >
+          <span className="text-lg text-neutral-800">
+            {rsvpContactDetails?.attendance?.attending}
+          </span>
+        </div>
+        <div
+          className={`flex items-center justify-center rounded-2xl w-max mx-1 py-3 px-6 cursor-pointer border border-white transition-all duration-200 ease-in-out ${
+            !isAttending ? 'border-neutral-300 bg-neutral-200' : ''
+          }`}
+          onClick={() => setIsAttending(false)}
+        >
+          <span className="text-lg text-neutral-800">
+            {rsvpContactDetails?.attendance?.notAttending}
+          </span>
+        </div>
+      </div>
+      <input
+        type="hidden"
+        name="isAttending"
+        value={isAttending ? 'attending' : 'notAttending'}
+      />
+      <ConditionalWrapper condition={isAttending}>
+        <legend className="text-neutral-800 font-bold mt-5 lg:text-lg">
+          {rsvpContactDetails?.form?.peopleNumber?.text}
+        </legend>
+        <p className="text-sm text-neutral-600 mb-1">
+          {rsvpContactDetails?.form?.peopleNumber?.subtext}
+        </p>
+        <div className="flex justify-start items-center mt-1 mb-2">
+          <Button
+            type="button"
+            className={`cursor-pointer text-neutral-800 text-3xl mx-1 py-1 px-4 my-1 border border-neutral-300 w-max rounded-[50%]`}
+            onClick={() => setGuestsCount((prev) => prev - 1)}
+            disabled={guestsCount <= 0}
+          >
+            -
+          </Button>
+          <div className="text-neutral-800 text-2xl mx-1 p-2">
+            {guestsCount}
+          </div>
+          <Button
+            type="button"
+            className={`cursor-pointer text-neutral-800 text-3xl mx-1 py-1 px-[14px] my-1 border border-neutral-300 w-max rounded-[50%]`}
+            onClick={() => setGuestsCount((prev) => prev + 1)}
+          >
+            +
+          </Button>
+          <p className="text-sm text-red-600 ml-2">
+            {actionData?.fieldErrors?.guestsCount ? (
+              actionData?.fieldErrors?.guestsCount
+            ) : (
+              <>&nbsp;</>
+            )}
+          </p>
+        </div>
+        <div className="flex justify-start items-center mt-2">
+          <label
+            htmlFor="arrivalDate"
+            className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
+          >
+            {rsvpContactDetails?.form?.date?.label}
+          </label>
+          <p className="text-xs text-red-600 ml-4">
+            {actionData?.fieldErrors?.arrivalDate ? (
+              actionData?.fieldErrors?.arrivalDate
+            ) : (
+              <>&nbsp;</>
+            )}
+          </p>
+        </div>
+        <select
+          id="arrivalDate"
+          name="arrivalDate"
+          defaultValue={rsvp?.arrivalDate ? rsvp?.arrivalDate : ''}
+          className={`border ${
+            actionData?.fieldErrors?.arrivalDate
+              ? 'border-red-600'
+              : 'border-neutral-300'
+          } rounded-md p-3 mb-4 mt-1 cursor-pointer`}
+        >
+          <option value="">
+            {rsvpContactDetails?.form?.date?.options?.base}
+          </option>
+          <option value="friday">
+            {rsvpContactDetails?.form?.date?.options?.friday}
+          </option>
+          <option value="saturday">
+            {rsvpContactDetails?.form?.date?.options?.saturday}
+          </option>
+        </select>
+      </ConditionalWrapper>
+      <input type="hidden" name="guestsCount" value={guestsCount} />
       <Button
         type="submit"
         name="_action"

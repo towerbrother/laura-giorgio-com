@@ -26,8 +26,10 @@ export async function loader({ request }: LoaderArgs) {
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
   const stepsInfo = {
-    currentStep: 3,
-    totalSteps: 3,
+    currentStep:
+      cookie && cookie.rsvp && cookie.rsvp.isAttending === 'attending' ? 3 : 2,
+    totalSteps:
+      cookie && cookie.rsvp && cookie.rsvp.isAttending === 'attending' ? 3 : 2,
   };
 
   if (cookie) {
@@ -59,7 +61,11 @@ export async function action({ request }: ActionArgs) {
   }
 
   if (_action === 'go-back') {
-    return redirect('/rsvp/guestsdetails');
+    return redirect(
+      cookie && cookie.rsvp && cookie.rsvp.isAttending === 'attending'
+        ? '/rsvp/guestsdetails'
+        : '/rsvp/contactdetails'
+    );
   }
 
   return redirect('/rsvp/thanks', {
@@ -99,21 +105,23 @@ export default function Index() {
       textarea,
     };
 
-    emailjs
-      .send(
-        'service_6ugz6tc',
-        'template_n8c1c6n',
-        templateParams,
-        'dlz34_-Y-x2AkkQ7f'
-      )
-      .then(
-        function (response) {
-          console.log('SUCCESS!', response.status, response.text);
-        },
-        function (error) {
-          console.log('FAILED...', error);
-        }
-      );
+    console.log({ templateParams });
+
+    // emailjs
+    //   .send(
+    //     'service_6ugz6tc',
+    //     'template_n8c1c6n',
+    //     templateParams,
+    //     'dlz34_-Y-x2AkkQ7f'
+    //   )
+    //   .then(
+    //     function (response) {
+    //       console.log('SUCCESS!', response.status, response.text);
+    //     },
+    //     function (error) {
+    //       console.log('FAILED...', error);
+    //     }
+    //   );
   };
 
   return (

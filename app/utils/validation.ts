@@ -33,7 +33,7 @@ export function validateEmail(input: string) {
 }
 
 export function validateDate(input: string) {
-  if (input.length === 0) {
+  if (input && input.length === 0) {
     return 'The date field cannot be empty!';
   }
 }
@@ -41,5 +41,11 @@ export function validateDate(input: string) {
 export function validateFoodPreference(input: string) {
   if (input.length === 0) {
     return 'The food preference field cannot be empty!';
+  }
+}
+
+export function validateGuestsCount(count: number, attendance: string) {
+  if (attendance === 'attending' && count === 0) {
+    return 'Guests count cannot be 0!';
   }
 }
