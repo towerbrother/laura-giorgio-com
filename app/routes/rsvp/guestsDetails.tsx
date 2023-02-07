@@ -15,7 +15,7 @@ import GuestDetails from '~/components/rsvpForm/GuestDetails';
 
 import { userCookie } from '~/utils/cookie.server';
 import { badRequest } from '~/utils/request.server';
-import { validateFoodPreference, validateName } from '~/utils/validation';
+import { validateFood, validateName } from '~/utils/validation';
 import { rsvpGuestsDetails, getIndex } from '~/utils/mockedDB';
 
 export type RsvpGuestsDetailsProps = {
@@ -93,8 +93,8 @@ export async function action({ request }: ActionArgs) {
       return [k, validateName(v.toString())];
     }
 
-    if (k.includes('foodPreference')) {
-      return [k, validateFoodPreference(v.toString())];
+    if (k.includes('food')) {
+      return [k, validateFood(v.toString())];
     }
 
     return [k, undefined];
@@ -114,16 +114,7 @@ export async function action({ request }: ActionArgs) {
     headers: {
       'Set-Cookie': await userCookie.serialize({
         ...cookie,
-        rsvp: cookie.rsvp
-          ? {
-              ...Object.fromEntries(
-                Object.entries(cookie.rsvp).filter(
-                  ([k, v]) => !k.includes('allergy')
-                )
-              ),
-              ...fields,
-            }
-          : { ...fields },
+        rsvp: { ...cookie.rsvp, guestsDetails: { ...fields } },
       }),
     },
   });
@@ -139,12 +130,10 @@ export default function Index() {
     state === 'submitting' &&
     submission.formData.get('_action') === 'guests-details';
 
-  const guests: Array<string> =
-    Number(rsvp?.guestsCount) === 0
-      ? []
-      : Array.from(Array(Number(rsvp?.guestsCount)).keys()).map((x) =>
-          (x + 1).toString()
-        );
+  const guests: Array<string> = Array.from(
+    { length: Number(rsvp?.contactDetails?.guestsCount) },
+    (_, i) => (i + 1).toString()
+  );
 
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">

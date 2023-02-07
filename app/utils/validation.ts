@@ -38,7 +38,7 @@ export function validateDate(input: string) {
   }
 }
 
-export function validateFoodPreference(input: string) {
+export function validateFood(input: string) {
   if (input.length === 0) {
     return 'The food preference field cannot be empty!';
   }

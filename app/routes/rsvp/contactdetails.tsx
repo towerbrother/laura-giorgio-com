@@ -59,7 +59,7 @@ export async function loader({ request }: LoaderArgs) {
   const stepsInfo = {
     currentStep: 1,
     totalSteps:
-      cookie && cookie.rsvp && cookie.rsvp.isAttending === 'attending' ? 3 : 2,
+      cookie?.rsvp?.contactDetails?.isAttending === 'attending' ? 3 : 2,
   };
 
   if (cookie) {
@@ -119,7 +119,9 @@ export async function action({ request }: ActionArgs) {
       headers: {
         'Set-Cookie': await userCookie.serialize({
           ...cookie,
-          rsvp: cookie.rsvp ? { ...cookie.rsvp, ...fields } : { ...fields },
+          rsvp: cookie.rsvp
+            ? { ...cookie.rsvp, contactDetails: { ...fields } }
+            : { contactDetails: { ...fields } },
         }),
       },
     }
@@ -137,11 +139,15 @@ export default function Index() {
     submission.formData.get('_action') === 'contact-details';
 
   const initialIsAttending =
-    rsvp === undefined || rsvp?.isAttending === 'attending' ? true : false;
+    rsvp === undefined || rsvp?.contactDetails?.isAttending === 'attending'
+      ? true
+      : false;
   const [isAttending, setIsAttending] = useState(initialIsAttending);
 
   const initialGuestsCount =
-    rsvp === undefined || !isAttending ? 0 : Number(rsvp?.guestsCount);
+    rsvp === undefined || !isAttending
+      ? 0
+      : Number(rsvp?.contactDetails?.guestsCount);
   const [guestsCount, setGuestsCount] = useState(initialGuestsCount);
 
   return (
@@ -165,7 +171,11 @@ export default function Index() {
           id="name"
           type="text"
           name="mainGuestName"
-          defaultValue={rsvp?.mainGuestName ? rsvp?.mainGuestName : ''}
+          defaultValue={
+            rsvp?.contactDetails?.mainGuestName
+              ? rsvp?.contactDetails?.mainGuestName
+              : ''
+          }
           autoComplete="off"
           className={`border ${
             actionData?.fieldErrors?.mainGuestName
@@ -192,7 +202,11 @@ export default function Index() {
           id="surname"
           type="text"
           name="mainGuestSurname"
-          defaultValue={rsvp?.mainGuestSurname ? rsvp?.mainGuestSurname : ''}
+          defaultValue={
+            rsvp?.contactDetails?.mainGuestSurname
+              ? rsvp?.contactDetails?.mainGuestSurname
+              : ''
+          }
           autoComplete="off"
           className={`border ${
             actionData?.fieldErrors?.mainGuestName
@@ -219,7 +233,11 @@ export default function Index() {
           id="email"
           type="email"
           name="mainGuestEmail"
-          defaultValue={rsvp?.mainGuestEmail ? rsvp?.mainGuestEmail : ''}
+          defaultValue={
+            rsvp?.contactDetails?.mainGuestEmail
+              ? rsvp?.contactDetails?.mainGuestEmail
+              : ''
+          }
           placeholder={rsvpContactDetails?.form?.email?.placeholder}
           autoComplete="off"
           className={`border ${
@@ -296,6 +314,7 @@ export default function Index() {
               <>&nbsp;</>
             )}
           </p>
+          <input type="hidden" name="guestsCount" value={guestsCount} />
         </div>
         <div className="flex justify-start items-center mt-2">
           <label
@@ -315,7 +334,11 @@ export default function Index() {
         <select
           id="arrivalDate"
           name="arrivalDate"
-          defaultValue={rsvp?.arrivalDate ? rsvp?.arrivalDate : ''}
+          defaultValue={
+            rsvp?.contactDetails?.arrivalDate
+              ? rsvp?.contactDetails?.arrivalDate
+              : ''
+          }
           className={`border ${
             actionData?.fieldErrors?.arrivalDate
               ? 'border-red-600'
@@ -333,7 +356,6 @@ export default function Index() {
           </option>
         </select>
       </ConditionalWrapper>
-      <input type="hidden" name="guestsCount" value={guestsCount} />
       <Button
         type="submit"
         name="_action"

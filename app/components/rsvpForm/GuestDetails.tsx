@@ -22,13 +22,23 @@ const GuestDetails = ({
   const fieldErrorName = fieldErrors !== undefined ? fieldErrors[name] : null;
   const fieldErrorFood = fieldErrors !== undefined ? fieldErrors[food] : null;
 
-  const rsvpNameValue = rsvp ? rsvp[name] : '';
-  const rsvpFoodValue = rsvp ? rsvp[food] : '';
-  const rsvpAllergyGlutenValue = rsvp ? rsvp[allergyGluten] : '';
-  const rsvpAllergyEggsValue = rsvp ? rsvp[allergyEggs] : '';
-  const rsvpAllergyShellfishValue = rsvp ? rsvp[allergyShellfish] : '';
-  const rsvpAllergyNutsValue = rsvp ? rsvp[allergyNuts] : '';
-  const rsvpAllergyMilkValue = rsvp ? rsvp[allergyMilk] : '';
+  const rsvpNameValue = rsvp?.guestsDetails ? rsvp?.guestsDetails[name] : '';
+  const rsvpFoodValue = rsvp?.guestsDetails ? rsvp?.guestsDetails[food] : '';
+  const rsvpAllergyGlutenValue = rsvp?.guestsDetails
+    ? rsvp?.guestsDetails[allergyGluten]
+    : '';
+  const rsvpAllergyEggsValue = rsvp?.guestsDetails
+    ? rsvp?.guestsDetails[allergyEggs]
+    : '';
+  const rsvpAllergyShellfishValue = rsvp?.guestsDetails
+    ? rsvp?.guestsDetails[allergyShellfish]
+    : '';
+  const rsvpAllergyNutsValue = rsvp?.guestsDetails
+    ? rsvp?.guestsDetails[allergyNuts]
+    : '';
+  const rsvpAllergyMilkValue = rsvp?.guestsDetails
+    ? rsvp?.guestsDetails[allergyMilk]
+    : '';
 
   return (
     <div className="border border-neutral-300 rounded-md p-4 flex flex-col mb-3">
