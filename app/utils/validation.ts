@@ -1,5 +1,5 @@
 export function validatePassword(input: string) {
-  if (input.length === 0) {
+  if (input?.length === 0) {
     return 'The password field cannot be empty!';
   }
 
@@ -9,13 +9,13 @@ export function validatePassword(input: string) {
 }
 
 export function validateName(input: string) {
-  if (input.length === 0) {
+  if (input?.length === 0) {
     return 'The name field cannot be empty!';
   }
 }
 
 export function validateSurname(input: string) {
-  if (input.length === 0) {
+  if (input?.length === 0) {
     return 'The surname field cannot be empty!';
   }
 }
@@ -23,7 +23,7 @@ export function validateSurname(input: string) {
 export function validateEmail(input: string) {
   const validRegex = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/;
 
-  if (input.length === 0) {
+  if (input?.length === 0) {
     return 'The email field cannot be empty!';
   }
 
@@ -33,13 +33,19 @@ export function validateEmail(input: string) {
 }
 
 export function validateDate(input: string) {
-  if (input.length === 0) {
+  if (input?.length === 0) {
     return 'The date field cannot be empty!';
   }
 }
 
-export function validateFoodPreference(input: string) {
-  if (input.length === 0) {
+export function validateFood(input: string) {
+  if (input?.length === 0) {
     return 'The food preference field cannot be empty!';
+  }
+}
+
+export function validateGuestsCount(count: number, attendance: string) {
+  if (attendance === 'attending' && count === 0) {
+    return 'Guests count cannot be 0!';
   }
 }

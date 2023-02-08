@@ -12,6 +12,7 @@ import { userCookie } from '~/utils/cookie.server';
 import { getIndex, rsvpOtherDetails } from '~/utils/mockedDB';
 import type { ChangeEvent } from 'react';
 import { useEffect, useState } from 'react';
+import { mapTemplateParams } from '~/utils/email';
 
 export type RsvpOtherDetailsProps = {
   title: string;
@@ -26,8 +27,10 @@ export async function loader({ request }: LoaderArgs) {
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
   const stepsInfo = {
-    currentStep: 3,
-    totalSteps: 3,
+    currentStep:
+      cookie?.rsvp?.contactDetails?.isAttending === 'attending' ? 3 : 2,
+    totalSteps:
+      cookie?.rsvp?.contactDetails?.isAttending === 'attending' ? 3 : 2,
   };
 
   if (cookie) {
@@ -59,14 +62,25 @@ export async function action({ request }: ActionArgs) {
   }
 
   if (_action === 'go-back') {
-    return redirect('/rsvp/guestsdetails');
+    return redirect(
+      cookie?.rsvp?.contactDetails?.isAttending === 'attending'
+        ? '/rsvp/guestsdetails'
+        : '/rsvp/contactdetails'
+    );
   }
 
   return redirect('/rsvp/thanks', {
     headers: {
       'Set-Cookie': await userCookie.serialize({
         ...cookie,
-        rsvp: cookie.rsvp ? { ...cookie.rsvp, ...fields } : { ...fields },
+        rsvp: {
+          ...cookie.rsvp,
+          guestsDetails:
+            cookie.rsvp?.contactDetails?.isAttending === 'attending'
+              ? { ...cookie.rsvp.guestsDetails }
+              : {},
+          otherDetails: { ...fields },
+        },
       }),
     },
   });
@@ -77,7 +91,7 @@ export default function Index() {
   const { currentStep, totalSteps, rsvp, rsvpOtherDetails } =
     useLoaderData<typeof loader>();
 
-  const [textarea, setTextarea] = useState('');
+  const [textarea, setTextarea] = useState(rsvp?.otherDetails?.textarea || '');
 
   useEffect(() => {
     if (rsvp?.textarea) {
@@ -94,26 +108,41 @@ export default function Index() {
   };
 
   const handleClick = async () => {
-    const templateParams = {
-      ...rsvp,
-      textarea,
-    };
+    const templateParams = { ...mapTemplateParams(rsvp), textarea };
 
-    emailjs
-      .send(
-        'service_6ugz6tc',
-        'template_n8c1c6n',
-        templateParams,
-        'dlz34_-Y-x2AkkQ7f'
-      )
-      .then(
-        function (response) {
-          console.log('SUCCESS!', response.status, response.text);
-        },
-        function (error) {
-          console.log('FAILED...', error);
-        }
-      );
+    if (rsvp?.contactDetails?.isAttending === 'attending') {
+      emailjs
+        .send(
+          'service_6ugz6tc',
+          'template_n8c1c6n',
+          templateParams,
+          'dlz34_-Y-x2AkkQ7f'
+        )
+        .then(
+          function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+          },
+          function (error) {
+            console.log('FAILED...', error);
+          }
+        );
+    } else {
+      emailjs
+        .send(
+          'service_6ugz6tc',
+          'template_9kwks55',
+          templateParams,
+          'dlz34_-Y-x2AkkQ7f'
+        )
+        .then(
+          function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+          },
+          function (error) {
+            console.log('FAILED...', error);
+          }
+        );
+    }
   };
 
   return (

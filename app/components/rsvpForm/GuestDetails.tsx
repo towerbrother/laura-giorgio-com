@@ -1,7 +1,5 @@
 type GuestDetailsProps = {
   num: string;
-  type: string;
-  guestType?: string;
   fieldErrors?: any;
   rsvp?: any;
   rsvpGuestsDetails?: any;
@@ -9,33 +7,20 @@ type GuestDetailsProps = {
 
 const GuestDetails = ({
   num,
-  type,
-  guestType,
   fieldErrors,
   rsvp,
   rsvpGuestsDetails,
 }: GuestDetailsProps) => {
-  const name = `name${type}${num}`;
-  const date = `date${type}${num}`;
-  const food = `food${type}${num}`;
-  const allergyGluten = `allergy${type}${num}Gluten`;
-  const allergyEggs = `allergy${type}${num}Eggs`;
-  const allergyShellfish = `allergy${type}${num}Shellfish`;
-  const allergyNuts = `allergy${type}${num}Nuts`;
-  const allergyMilk = `allergy${type}${num}Milk`;
+  const name = `name${num}`;
+  const food = `food${num}`;
+  const allergyGluten = `allergy${num}Gluten`;
+  const allergyEggs = `allergy${num}Eggs`;
+  const allergyShellfish = `allergy${num}Shellfish`;
+  const allergyNuts = `allergy${num}Nuts`;
+  const allergyMilk = `allergy${num}Milk`;
 
   const fieldErrorName = fieldErrors !== undefined ? fieldErrors[name] : null;
-  const fieldErrorDate = fieldErrors !== undefined ? fieldErrors[date] : null;
   const fieldErrorFood = fieldErrors !== undefined ? fieldErrors[food] : null;
-
-  const rsvpNameValue = rsvp ? rsvp[name] : '';
-  const rsvpDateValue = rsvp ? rsvp[date] : '';
-  const rsvpFoodValue = rsvp ? rsvp[food] : '';
-  const rsvpAllergyGlutenValue = rsvp ? rsvp[allergyGluten] : '';
-  const rsvpAllergyEggsValue = rsvp ? rsvp[allergyEggs] : '';
-  const rsvpAllergyShellfishValue = rsvp ? rsvp[allergyShellfish] : '';
-  const rsvpAllergyNutsValue = rsvp ? rsvp[allergyNuts] : '';
-  const rsvpAllergyMilkValue = rsvp ? rsvp[allergyMilk] : '';
 
   return (
     <div className="border border-neutral-300 rounded-md p-4 flex flex-col mb-3">
@@ -44,7 +29,7 @@ const GuestDetails = ({
           htmlFor="name"
           className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
         >
-          {`${guestType} #${num} - ${rsvpGuestsDetails?.form?.name}`}{' '}
+          {`${rsvpGuestsDetails?.guest} #${num} - ${rsvpGuestsDetails?.form?.name}`}{' '}
         </label>
         <p className="text-xs text-red-600 ml-4">
           {fieldErrorName ? fieldErrorName : <>&nbsp;</>}
@@ -55,39 +40,12 @@ const GuestDetails = ({
         type="text"
         name={name}
         autoComplete="off"
-        placeholder={`${guestType} #${num} ${rsvpGuestsDetails?.form?.name} ...`}
-        defaultValue={rsvpNameValue}
+        placeholder={`${rsvpGuestsDetails?.guest} #${num} ${rsvpGuestsDetails?.form?.name} ...`}
+        defaultValue={rsvp?.guestsDetails ? rsvp?.guestsDetails[name] : ''}
         className={`border ${
           fieldErrorName ? 'border-red-600' : 'border-neutral-300'
         } rounded-md p-2 mb-4 mt-1`}
       />
-      <div className="flex justify-start items-center">
-        <label
-          htmlFor="date"
-          className="text-neutral-800 font-bold lg:text-lg after:content-['*'] after:ml-px after:text-red-500"
-        >
-          {rsvpGuestsDetails?.form?.date?.label}
-        </label>
-        <p className="text-xs text-red-600 ml-4">
-          {fieldErrorDate ? fieldErrorDate : <>&nbsp;</>}
-        </p>
-      </div>
-      <select
-        id="date"
-        name={date}
-        defaultValue={rsvpDateValue}
-        className={`border ${
-          fieldErrorDate ? 'border-red-600' : 'border-neutral-300'
-        } rounded-md p-3 mb-4 mt-1 cursor-pointer`}
-      >
-        <option value="">{rsvpGuestsDetails?.form?.date?.options?.base}</option>
-        <option value="friday">
-          {rsvpGuestsDetails?.form?.date?.options?.friday}
-        </option>
-        <option value="saturday">
-          {rsvpGuestsDetails?.form?.date?.options?.saturday}
-        </option>
-      </select>
       <div className="flex justify-start items-center">
         <label
           htmlFor="food"
@@ -102,7 +60,7 @@ const GuestDetails = ({
       <select
         id="food"
         name={food}
-        defaultValue={rsvpFoodValue}
+        defaultValue={rsvp?.guestsDetails ? rsvp?.guestsDetails[food] : ''}
         className={`border ${
           fieldErrorFood ? 'border-red-600' : 'border-neutral-300'
         } rounded-md p-3 mb-4 mt-1 cursor-pointer`}
@@ -125,7 +83,9 @@ const GuestDetails = ({
         <input
           type="checkbox"
           name={allergyGluten}
-          defaultChecked={rsvpAllergyGlutenValue}
+          defaultChecked={
+            rsvp?.guestsDetails ? rsvp?.guestsDetails[allergyGluten] : ''
+          }
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         {rsvpGuestsDetails?.form?.allergy?.options?.gluten}
@@ -134,7 +94,9 @@ const GuestDetails = ({
         <input
           type="checkbox"
           name={allergyEggs}
-          defaultChecked={rsvpAllergyEggsValue}
+          defaultChecked={
+            rsvp?.guestsDetails ? rsvp?.guestsDetails[allergyEggs] : ''
+          }
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         {rsvpGuestsDetails?.form?.allergy?.options?.eggs}
@@ -143,7 +105,9 @@ const GuestDetails = ({
         <input
           type="checkbox"
           name={allergyShellfish}
-          defaultChecked={rsvpAllergyShellfishValue}
+          defaultChecked={
+            rsvp?.guestsDetails ? rsvp?.guestsDetails[allergyShellfish] : ''
+          }
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         {rsvpGuestsDetails?.form?.allergy?.options?.shellfish}
@@ -152,7 +116,9 @@ const GuestDetails = ({
         <input
           type="checkbox"
           name={allergyNuts}
-          defaultChecked={rsvpAllergyNutsValue}
+          defaultChecked={
+            rsvp?.guestsDetails ? rsvp?.guestsDetails[allergyNuts] : ''
+          }
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         {rsvpGuestsDetails?.form?.allergy?.options?.nuts}
@@ -161,7 +127,9 @@ const GuestDetails = ({
         <input
           type="checkbox"
           name={allergyMilk}
-          defaultChecked={rsvpAllergyMilkValue}
+          defaultChecked={
+            rsvp?.guestsDetails ? rsvp?.guestsDetails[allergyMilk] : ''
+          }
           className="accent-cyan-600 mr-2 cursor-pointer"
         />
         {rsvpGuestsDetails?.form?.allergy?.options?.milk}

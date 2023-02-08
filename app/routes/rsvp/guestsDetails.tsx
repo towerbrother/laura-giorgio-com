@@ -12,35 +12,18 @@ import { FaSpinner } from 'react-icons/fa';
 import FormHeader from '~/components/rsvpForm/FormHeader';
 import Button from '~/components/reusable/Button';
 import GuestDetails from '~/components/rsvpForm/GuestDetails';
-import ConditionalWrapper from '~/components/reusable/ConditionalWrapper';
 
 import { userCookie } from '~/utils/cookie.server';
 import { badRequest } from '~/utils/request.server';
-import {
-  validateDate,
-  validateFoodPreference,
-  validateName,
-} from '~/utils/validation';
+import { validateFood, validateName } from '~/utils/validation';
 import { rsvpGuestsDetails, getIndex } from '~/utils/mockedDB';
 
 export type RsvpGuestsDetailsProps = {
   title: string;
   headerText: string;
-  guestType: {
-    adult: string;
-    kid: string;
-    baby: string;
-  };
+  guest: string;
   form: {
     name: string;
-    date: {
-      label: string;
-      options: {
-        base: string;
-        friday: string;
-        saturday: string;
-      };
-    };
     food: {
       label: string;
       options: {
@@ -110,12 +93,8 @@ export async function action({ request }: ActionArgs) {
       return [k, validateName(v.toString())];
     }
 
-    if (k.includes('date')) {
-      return [k, validateDate(v.toString())];
-    }
-
-    if (k.includes('foodPreference')) {
-      return [k, validateFoodPreference(v.toString())];
+    if (k.includes('food')) {
+      return [k, validateFood(v.toString())];
     }
 
     return [k, undefined];
@@ -135,16 +114,7 @@ export async function action({ request }: ActionArgs) {
     headers: {
       'Set-Cookie': await userCookie.serialize({
         ...cookie,
-        rsvp: cookie.rsvp
-          ? {
-              ...Object.fromEntries(
-                Object.entries(cookie.rsvp).filter(
-                  ([k, v]) => !k.includes('allergy')
-                )
-              ),
-              ...fields,
-            }
-          : { ...fields },
+        rsvp: { ...cookie.rsvp, guestsDetails: { ...fields } },
       }),
     },
   });
@@ -160,18 +130,10 @@ export default function Index() {
     state === 'submitting' &&
     submission.formData.get('_action') === 'guests-details';
 
-  const adults: Array<string> =
-    Number(rsvp?.guestsNumberAdult) === 0
-      ? []
-      : Array.from(Array(Number(rsvp?.guestsNumberAdult)).keys()).map((x) =>
-          (x + 1).toString()
-        );
-  const kids: Array<string> =
-    Number(rsvp?.guestsNumberKid) === 0
-      ? []
-      : Array.from(Array(Number(rsvp?.guestsNumberKid)).keys()).map((x) =>
-          (x + 1).toString()
-        );
+  const guests: Array<string> = Array.from(
+    { length: Number(rsvp?.contactDetails?.guestsCount) },
+    (_, i) => (i + 1).toString()
+  );
 
   return (
     <Form method="post" className="flex flex-col py-4 md:py-6">
@@ -183,32 +145,15 @@ export default function Index() {
       <h1 className="text-neutral-800 text-2xl font-bold mb-3">
         {rsvpGuestsDetails?.title}
       </h1>
-      <ConditionalWrapper condition={adults.length > 0}>
-        {adults.map((x) => (
-          <GuestDetails
-            key={uuidv4()}
-            num={x}
-            type="Adult"
-            guestType={rsvpGuestsDetails?.guestType?.adult}
-            fieldErrors={actionData?.fieldErrors}
-            rsvp={rsvp}
-            rsvpGuestsDetails={rsvpGuestsDetails}
-          />
-        ))}
-      </ConditionalWrapper>
-      <ConditionalWrapper condition={kids.length > 0}>
-        {kids.map((x) => (
-          <GuestDetails
-            key={uuidv4()}
-            num={x}
-            type="Kid"
-            guestType={rsvpGuestsDetails?.guestType?.kid}
-            fieldErrors={actionData?.fieldErrors}
-            rsvp={rsvp}
-            rsvpGuestsDetails={rsvpGuestsDetails}
-          />
-        ))}
-      </ConditionalWrapper>
+      {guests.map((guest: string) => (
+        <GuestDetails
+          key={uuidv4()}
+          num={guest}
+          rsvp={rsvp}
+          rsvpGuestsDetails={rsvpGuestsDetails}
+          fieldErrors={actionData?.fieldErrors}
+        />
+      ))}
       <Button
         type="submit"
         name="_action"
