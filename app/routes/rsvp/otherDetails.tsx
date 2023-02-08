@@ -110,41 +110,38 @@ export default function Index() {
   const handleClick = async () => {
     const templateParams = { ...mapTemplateParams(rsvp), textarea };
 
-    console.log({ templateParams });
-    console.log(templateParams.details);
-
     if (rsvp?.contactDetails?.isAttending === 'attending') {
-      // emailjs
-      //   .send(
-      //     'service_6ugz6tc',
-      //     'template_n8c1c6n',
-      //     templateParams,
-      //     'dlz34_-Y-x2AkkQ7f'
-      //   )
-      //   .then(
-      //     function (response) {
-      //       console.log('SUCCESS!', response.status, response.text);
-      //     },
-      //     function (error) {
-      //       console.log('FAILED...', error);
-      //     }
-      //   );
+      emailjs
+        .send(
+          'service_6ugz6tc',
+          'template_n8c1c6n',
+          templateParams,
+          'dlz34_-Y-x2AkkQ7f'
+        )
+        .then(
+          function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+          },
+          function (error) {
+            console.log('FAILED...', error);
+          }
+        );
     } else {
-      // emailjs
-      //   .send(
-      //     'service_6ugz6tc',
-      //     'template_9kwks55',
-      //     templateParams,
-      //     'dlz34_-Y-x2AkkQ7f'
-      //   )
-      //   .then(
-      //     function (response) {
-      //       console.log('SUCCESS!', response.status, response.text);
-      //     },
-      //     function (error) {
-      //       console.log('FAILED...', error);
-      //     }
-      //   );
+      emailjs
+        .send(
+          'service_6ugz6tc',
+          'template_9kwks55',
+          templateParams,
+          'dlz34_-Y-x2AkkQ7f'
+        )
+        .then(
+          function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+          },
+          function (error) {
+            console.log('FAILED...', error);
+          }
+        );
     }
   };
 

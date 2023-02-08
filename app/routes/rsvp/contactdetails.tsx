@@ -59,7 +59,9 @@ export async function loader({ request }: LoaderArgs) {
   const stepsInfo = {
     currentStep: 1,
     totalSteps:
-      cookie?.rsvp?.contactDetails?.isAttending === 'attending' ? 3 : 2,
+      !cookie?.rsvp || cookie?.rsvp?.contactDetails?.isAttending === 'attending'
+        ? 3
+        : 2,
   };
 
   if (cookie) {
