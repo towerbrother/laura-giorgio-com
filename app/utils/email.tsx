@@ -1,6 +1,17 @@
-export function craftEmail(input: {
+export function mapTemplateParams(input: {
   [key: string]: { [key: string]: string };
 }) {
+  return {
+    mainGuestName: input.contactDetails.mainGuestName,
+    mainGuestEmail: input.contactDetails.mainGuestEmail,
+    details:
+      input.contactDetails.isAttending === 'attending'
+        ? craftEmail(input)
+        : null,
+  };
+}
+
+function craftEmail(input: { [key: string]: { [key: string]: string } }) {
   return `${input.contactDetails.mainGuestName} ${
     input.contactDetails.mainGuestSurname
   } (${input.contactDetails.mainGuestEmail}) submitted the RSVP on behalf of ${
@@ -24,6 +35,7 @@ interface Person {
 }
 
 function getGuestsDetails(input: { [key: string]: string }) {
+  console.log({ input });
   const result: Person[] = [];
 
   for (const key in input) {

@@ -12,7 +12,7 @@ import { userCookie } from '~/utils/cookie.server';
 import { getIndex, rsvpOtherDetails } from '~/utils/mockedDB';
 import type { ChangeEvent } from 'react';
 import { useEffect, useState } from 'react';
-import { craftEmail } from '~/utils/craftEmailText';
+import { mapTemplateParams } from '~/utils/email';
 
 export type RsvpOtherDetailsProps = {
   title: string;
@@ -28,9 +28,9 @@ export async function loader({ request }: LoaderArgs) {
 
   const stepsInfo = {
     currentStep:
-      cookie && cookie.rsvp && cookie.rsvp.isAttending === 'attending' ? 3 : 2,
+      cookie?.rsvp?.contactDetails?.isAttending === 'attending' ? 3 : 2,
     totalSteps:
-      cookie && cookie.rsvp && cookie.rsvp.isAttending === 'attending' ? 3 : 2,
+      cookie?.rsvp?.contactDetails?.isAttending === 'attending' ? 3 : 2,
   };
 
   if (cookie) {
@@ -108,10 +108,10 @@ export default function Index() {
   };
 
   const handleClick = async () => {
-    const templateParams = { ...rsvp, details: craftEmail(rsvp) };
+    const templateParams = { ...mapTemplateParams(rsvp), textarea };
 
     console.log({ templateParams });
-    console.log(craftEmail(rsvp));
+    console.log(templateParams.details);
 
     if (rsvp?.contactDetails?.isAttending === 'attending') {
       // emailjs
