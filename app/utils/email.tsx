@@ -16,16 +16,13 @@ function craftEmail(input: { [key: string]: { [key: string]: string } }) {
     input.contactDetails.mainGuestSurname
   } (${input.contactDetails.mainGuestEmail}) submitted the RSVP on behalf of ${
     input.contactDetails.guestsCount
-  } ${Number(input.contactDetails.guestsCount) > 1 ? 'people' : 'person'}\n${
+  } ${Number(input.contactDetails.guestsCount) > 1 ? 'people' : 'person'}.\n${
     Number(input.contactDetails.guestsCount) > 1 ? 'His/Her group' : 'He/She'
-  } will arrive on ${
-    input.contactDetails.arrivalDate?.slice(0, 1).toUpperCase() +
-    input.contactDetails.arrivalDate?.slice(1)
-  } ${
+  } will arrive on ${input.contactDetails.arrivalDate.toUpperCase()} ${
     input.contactDetails.arrivalDate === 'friday'
       ? 'the 28th July'
       : 'the 29th July'
-  }\nAttendee(s):\n${getGuestsDetails(input.guestsDetails)}`;
+  }.\nAttendee(s):\n${getGuestsDetails(input.guestsDetails)}`;
 }
 
 interface Person {
@@ -35,7 +32,6 @@ interface Person {
 }
 
 function getGuestsDetails(input: { [key: string]: string }) {
-  console.log({ input });
   const result: Person[] = [];
 
   for (const key in input) {
@@ -70,14 +66,14 @@ function getGuestsDetails(input: { [key: string]: string }) {
   let generatedStrings = '';
 
   result.forEach((person) => {
-    let generatedString = `- ${person.name} wants to eat ${person.food}`;
+    let generatedString = `- ${person.name.toUpperCase()} wants to eat ${person.food.toUpperCase()}`;
 
-    if (person.allergies) {
-      generatedString += ` and is allergic/intolerant to ${person.allergies.join(
-        ', '
-      )}\n`;
+    if (person.allergies && person.allergies.length > 0) {
+      generatedString += ` and is allergic/intolerant to ${person.allergies
+        .map((allergy) => allergy.toUpperCase())
+        .join(', ')}.\n`;
     } else {
-      generatedString += ' and has no allergies/intolerances\n';
+      generatedString += ' and has no allergies/intolerances.\n';
     }
 
     generatedStrings += generatedString;

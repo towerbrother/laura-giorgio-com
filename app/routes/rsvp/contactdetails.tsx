@@ -209,7 +209,7 @@ export default function Index() {
           }
           autoComplete="off"
           className={`border ${
-            actionData?.fieldErrors?.mainGuestName
+            actionData?.fieldErrors?.mainGuestSurname
               ? 'border-red-600'
               : 'border-neutral-300'
           } rounded-md p-2`}
@@ -241,7 +241,7 @@ export default function Index() {
           placeholder={rsvpContactDetails?.form?.email?.placeholder}
           autoComplete="off"
           className={`border ${
-            actionData?.fieldErrors?.mainGuestName
+            actionData?.fieldErrors?.mainGuestEmail
               ? 'border-red-600'
               : 'border-neutral-300'
           } rounded-md p-2`}
@@ -323,7 +323,7 @@ export default function Index() {
           >
             {rsvpContactDetails?.form?.date?.label}
           </label>
-          <p className="text-xs text-red-600 ml-4">
+          <p className="text-sm text-red-600 ml-2">
             {actionData?.fieldErrors?.arrivalDate ? (
               actionData?.fieldErrors?.arrivalDate
             ) : (
