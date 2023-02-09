@@ -48,33 +48,33 @@ export const header: Array<HeaderProps> = [
     name: 'Laura & Giorgio',
     languageOptions: languageOptions.options,
     links: [
-      { text: 'Info', slug: 'info', type: 'link' },
-      { text: 'Reservation', slug: 'accomodation', type: 'link' },
-      { text: 'Contact', slug: 'contact', type: 'link' },
-      { text: 'RSVP', slug: 'rsvp/contactdetails', type: 'button' },
-      { text: 'CONTRIBUTE', slug: 'contribute', type: 'button' },
-    ],
-  },
-  {
-    name: 'Laura & Giorgio',
-    languageOptions: languageOptions.options,
-    links: [
-      { text: 'Info', slug: 'info', type: 'link' },
-      { text: 'Reservierung', slug: 'accomodation', type: 'link' },
-      { text: 'Kontact', slug: 'contact', type: 'link' },
+      { text: 'Info', slug: '/info', type: 'link' },
+      { text: 'Reservation', slug: '/accomodation', type: 'link' },
+      { text: 'Contact', slug: '/contact', type: 'link' },
+      { text: 'Contribute', slug: '/contribute', type: 'link' },
       { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
-      { text: 'DAZU BEITRAGEN', slug: 'contribute', type: 'button' },
     ],
   },
   {
     name: 'Laura & Giorgio',
     languageOptions: languageOptions.options,
     links: [
-      { text: 'Info', slug: 'info', type: 'link' },
-      { text: 'Prenota', slug: 'accomodation', type: 'link' },
-      { text: 'Contattaci', slug: 'contact', type: 'link' },
-      { text: 'RSVP', slug: 'rsvp/contactdetails', type: 'button' },
-      { text: 'CONTRIBUISCI', slug: 'contribute', type: 'button' },
+      { text: 'Info', slug: '/info', type: 'link' },
+      { text: 'Reservierung', slug: '/accomodation', type: 'link' },
+      { text: 'Kontakt', slug: '/contact', type: 'link' },
+      { text: 'Geschenk', slug: '/contribute', type: 'link' },
+      { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
+    ],
+  },
+  {
+    name: 'Laura & Giorgio',
+    languageOptions: languageOptions.options,
+    links: [
+      { text: 'Info', slug: '/info', type: 'link' },
+      { text: 'Prenota', slug: '/accomodation', type: 'link' },
+      { text: 'Contattaci', slug: '/contact', type: 'link' },
+      { text: 'Contribuisci', slug: '/contribute', type: 'link' },
+      { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
     ],
   },
 ];
@@ -88,7 +88,7 @@ export const stage: Array<StageProps> = [
   },
   {
     title: 'Laura & Giorgio',
-    subtitle: 'werden heiraten',
+    subtitle: 'heiraten',
     date: ceremonyDate,
     link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
@@ -117,9 +117,9 @@ export const homeTile: Array<TileProps> = [
     image: { src: 'glj.JPG', alt: 'Giorgio, Laura und Juni' },
     tile: {
       title: 'Unsere Geschichte',
-      subtitle: 'Für diejenigen, die es nicht wussten',
+      subtitle: 'Für alle, die die Geschichte noch nicht kennen',
       texts: [
-        'Wir trafen uns an der Uni in Großbritannien. Zaira, eine gemeinsame Freundin, erzählte Giorgio von Lauras Vorschlag, sich zu treffen. Sie dachte, sie würden perfekt zueinander passen. Als Laura also in der Campus-Bibliothek an Giorgio vorbeilief, nutzte er den Moment und kam im richtigen Stalker-Modus auf sie zu: „Hi, du bist Laura, nicht wahr?“. Fast forward 8 Jahre, 1 (wunderbares) kleines Mädchen, 2 Länder, unzählige Yoga-Sitzungen, gelegentliche Streitereien und Hunderte von gelesenen und diskutierten Büchern, wir heiraten jetzt! Feiern Sie mit uns gemeinsam unseren großen Tag!',
+        'Wir haben uns an der Uni im Cranfield, UK, kennengelernt. Zaira, eine gemeinsame Freundin, meinte zu Giorgio, dass er unbedingt Laura kennenlernen soll. Sie dachte, sie würden perfekt zueinander passen. Als Laura also in der Campus-Bibliothek an Giorgio vorbeilief, nutzte er die Gunst der Stunde, setzt sein Stalker- Modus ein und sagte: „Hi, du bist Laura, oder?“ Vorgespult zu 8 Jahre, 1 (wunderbares) kleines Mädchen, 2 Länder, unzählige Yogastunden, gelegentliche Streitereien und Hunderte von gelesenen und diskutierten Büchern, heiraten wir! Seid dabei und feiert mit uns unseren großen Tag!',
       ],
     },
   },
@@ -264,7 +264,7 @@ export const accomodationTile: Array<TileProps> = [
       title: 'Unterkunft',
       subtitle: 'Gemütliche Zimmer für Ihren Aufenthalt',
       texts: [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget venenatis orci, eleifend tincidunt odio. Fusce consequat turpis nec aliquam lacinia. Aliquam enim lorem, pretium at dapibus ut, ultrices sed enim. Nunc dignissim, libero vel ultrices pretium, leo felis feugiat neque, ac lobortis justo arcu et odio.',
+        'Wolfsberg bietet verschiedene Übernachtungsmöglichkeiten. Für unsere Gäste haben wir jedoch zwei Optionen identifiziert, die wir für angemessen halten, das Hotel Hecher und die Pension Ölberger. Wir haben auch mit dem Hotel Hecher einen Sonderpreis besprochen und vereinbart.',
       ],
     },
     links: [{ slug: '/accomodation', text: 'BOOK' }],
@@ -393,11 +393,11 @@ export const contribution: Array<BannerProps> = [
     ],
   },
   {
-    headline: 'An diejenigen, die ein Geschenk in Betracht ziehen!',
+    headline: 'An alle, die etwas schenken wollen!',
     paragraphs: [
-      'Ihre Anwesenheit ist präsent genug!',
-      'Sollten Sie uns jedoch mit einem Geschenk beehren wollen, wären wir für einen finanziellen Beitrag sehr dankbar.',
-      'Unsere Bankverbindung finden Sie in Ihrer Hochzeitseinladung. Jeder Betrag ist willkommen.',
+      'Eure Anwesenheit ist genug! ',
+      'Wenn ihr uns etwas schenken wollt, dann wären wir über einen Geldbeitrag sehr dankbar.',
+      'Unsere Bankverbindung steht auf der Einladung. Jeder Betrag ist willkommen.',
       'DANKE SCHÖN! 🥰',
     ],
   },
@@ -437,7 +437,7 @@ export const hotelTile: Array<TileProps> = [
       title: 'Hotel Hecher',
       subtitle: 'Empfohlen für diejenigen, die 2 Nächte bleiben',
       texts: [
-        'Zentral gelegen mit komfortablen Zimmern. 10 Minuten zu Fuß oder 4 Minuten Fahrt von der Rezeption entfernt. Nur wenige Gehminuten vom Hauptbahnhof in Wolfsberg entfernt. Für unsere Gäste wurde ein Sonderpreis vereinbart (gilt nur für 2 Übernachtungen). 58€ pro Person (Doppelzimmer), 75€ (Einzelzimmer). Frühstück inkludiert. Zusatzbett 35€ pro Nacht. Babybett für 15€ pro Zimmer. Gratis Parkplätze. Bitte buchen Sie per E-Mail und geben Sie bei Ihrer Buchung „Hochzeit Purnell“ an. Bitte buchen Sie so bald wie möglich.',
+        'Zentral gelegen mit komfortablen Zimmern. 10 Minuten zu Fuß oder 4 Minuten Autofahrt von der Feierlocation entfernt. Nur wenige Gehminuten vom Hauptbahnhof in Wolfsberg entfernt. Für unsere Gäste wurde ein Sonderpreis vereinbart (gilt nur ab 2 Übernachtungen). 58€ pro Person (Doppelzimmer), 75€ (Einzelzimmer). Frühstück inklusive. Zusatzbett 35€ pro Nacht. Babybett für 15€ pro Zimmer. Gratis Parkplätze. Bitte bucht per E-Mail und gebt bei der Buchung „Hochzeit Purnell“ an. Bitte bucht so bald wie möglich.',
       ],
     },
     externalLinks: [
@@ -491,7 +491,7 @@ export const pensionTile: Array<TileProps> = [
       title: 'Pension Ölberger',
       subtitle: 'Reccomended for those staying 1 night only',
       texts: [
-        'Einfache und günstige Zimmer. Empfohlen für diejenigen, die nur eine Nacht bleiben. Anfahrt ab Wolfsberg Zentrum mit PKW erforderlich. Der Preis beträgt 45€ pro Person. Frühstück inkludiert. Weitere Rabatte gelten für Dreibettzimmer. Bitte buchen Sie per E-Mail.',
+        'Einfache und günstige Zimmer. Empfohlen für diejenigen, die nur eine Nacht bleiben. Man braucht ein Auto, kann aber ggf. zur Feierlocation laufen. Der Preis beträgt 45€ pro Person pro Nacht. Frühstück inkludiert. Rabat erhältlich für Mehrbettzimmer. Bitte bucht per E-Mail.',
       ],
     },
     externalLinks: [
@@ -530,10 +530,10 @@ export const contributionBanner: Array<BannerProps> = [
   },
   {
     paragraphs: [
-      'Ihre Präsenz ist präsent genug!',
-      'Wenn Sie uns jedoch mit einem Geschenk beehren möchten, würden wir uns über einen finanziellen Beitrag sehr freuen.',
+      'Eure Anwesenheit ist genug! ',
+      'Wenn ihr uns etwas schenken wollt, dann wären wir über einen Geldbeitrag sehr dankbar.',
     ],
-    link: { slug: '/contribute', text: 'BEITRAGEN' },
+    link: { slug: '/contribute', text: 'GESCHENK' },
   },
   {
     paragraphs: [
