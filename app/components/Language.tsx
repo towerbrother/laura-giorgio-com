@@ -45,7 +45,7 @@ const Language = ({ currentLanguage, options }: LanguageProps) => {
           show
             ? "opacity-100 height-auto"
             : "opacity-0 height-0 overflow-hidden"
-        } absolute z-50 flex flex-col items-center p-2 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300 lg:right-[2px]`}
+        } absolute z-50 flex flex-col items-center p-2 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300`}
       >
         {options.map((option) => (
           <fetcher.Form

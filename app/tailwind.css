@@ -1406,10 +1406,6 @@ video {
     right: 0px;
   }
 
-  .lg\:right-\[2px\] {
-    right: 2px;
-  }
-
   .lg\:my-4 {
     margin-top: 1rem;
     margin-bottom: 1rem;
