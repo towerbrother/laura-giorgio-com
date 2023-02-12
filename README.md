@@ -1,6 +1,6 @@
 # Laura & Giorgio
 
-Simple website for our wedding to share information with our guests and manage RSVP.
+Simple multi-language website for our wedding. Main scope is sharing of information with our guests and manage RSVP.
 
 ## TODO
 
@@ -14,5 +14,4 @@ Simple website for our wedding to share information with our guests and manage R
 - set up a newsletter
 - set up a payment gateway
 - 100% test coverage
-- form pending state
 - ... TBC

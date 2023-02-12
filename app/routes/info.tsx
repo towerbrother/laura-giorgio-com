@@ -1,39 +1,40 @@
+import type { LoaderArgs, MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { json } from "@remix-run/node";
+
 import {
   info,
-  getIndex,
   travelTile,
   contributionBanner,
   transportationTile,
   accomodationTile,
-} from '~/utils/mockedDB';
-import Info from '~/components/Info';
-import Tile from '~/components/Tile';
-import Banner from '~/components/Banner';
+} from "~/utils/mockedDB";
+import { userCookie } from "~/utils/cookie.server";
+import { getIndex } from "~/utils/language";
 
-import type { LoaderArgs, MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
-import { userCookie } from '~/utils/cookie.server';
-import { useLoaderData } from '@remix-run/react';
+import Info from "~/components/Info";
+import Tile from "~/components/Tile";
+import Banner from "~/components/Banner";
 
 export const meta: MetaFunction = () => ({
-  title: 'Info 👀',
+  title: "Info 👀",
 });
 
 export async function loader({ request }: LoaderArgs) {
-  const cookieHeader = request.headers.get('Cookie');
+  const cookieHeader = request.headers.get("Cookie");
   const cookie = await userCookie.parse(cookieHeader);
 
-  const condition = cookie !== null && cookie.hasOwnProperty('language');
+  const condition = cookie !== null && cookie.hasOwnProperty("language");
 
   return json({
-    info: info[getIndex(condition ? cookie.language : 'en')],
-    travelTile: travelTile[getIndex(condition ? cookie.language : 'en')],
+    info: info[getIndex(condition ? cookie.language : "en")],
+    travelTile: travelTile[getIndex(condition ? cookie.language : "en")],
     transportationTile:
-      transportationTile[getIndex(condition ? cookie.language : 'en')],
+      transportationTile[getIndex(condition ? cookie.language : "en")],
     accomodationTile:
-      accomodationTile[getIndex(condition ? cookie.language : 'en')],
+      accomodationTile[getIndex(condition ? cookie.language : "en")],
     contributionBanner:
-      contributionBanner[getIndex(condition ? cookie.language : 'en')],
+      contributionBanner[getIndex(condition ? cookie.language : "en")],
   });
 }
 

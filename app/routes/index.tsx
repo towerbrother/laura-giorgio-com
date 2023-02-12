@@ -1,26 +1,27 @@
-import Stage from '~/components/Stage';
-import Tile from '~/components/Tile';
+import type { LoaderArgs, MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { json } from "@remix-run/node";
 
-import { stage, homeTile, getIndex } from '~/utils/mockedDB';
+import Stage from "~/components/Stage";
+import Tile from "~/components/Tile";
 
-import type { LoaderArgs, MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
-import { userCookie } from '~/utils/cookie.server';
-import { useLoaderData } from '@remix-run/react';
+import { stage, homeTile } from "~/utils/mockedDB";
+import { userCookie } from "~/utils/cookie.server";
+import { getIndex } from "~/utils/language";
 
 export const meta: MetaFunction = () => ({
-  title: 'Home',
+  title: "Home",
 });
 
 export async function loader({ request }: LoaderArgs) {
-  const cookieHeader = request.headers.get('Cookie');
+  const cookieHeader = request.headers.get("Cookie");
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
-  const condition = cookie !== null && cookie.hasOwnProperty('language');
+  const condition = cookie !== null && cookie.hasOwnProperty("language");
 
   return json({
-    stage: stage[getIndex(condition ? cookie.language : 'en')],
-    homeTile: homeTile[getIndex(condition ? cookie.language : 'en')],
+    stage: stage[getIndex(condition ? cookie.language : "en")],
+    homeTile: homeTile[getIndex(condition ? cookie.language : "en")],
   });
 }
 

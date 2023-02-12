@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import Navbar from '~/components/Navbar';
-import Sidebar from '~/components/Sidebar';
+import Navbar from "~/components/Navbar";
+import Sidebar from "~/components/Sidebar";
 
-type LinkType = { text: string; slug: string; type: 'link' | 'button' };
+type LinkType = { text: string; slug: string; type: "link" | "button" };
 
 export type HeaderProps = {
   name: string;
   links: Array<LinkType>;
   languageOptions: Array<string>;
+  currentLanguage: string;
 };
 
 const Header = (props: HeaderProps) => {

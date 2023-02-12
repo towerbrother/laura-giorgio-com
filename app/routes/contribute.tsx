@@ -1,23 +1,25 @@
-import { contribution, getIndex } from '~/utils/mockedDB';
-import Banner from '~/components/Banner';
+import type { LoaderArgs, MetaFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 
-import type { LoaderArgs, MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
-import { userCookie } from '~/utils/cookie.server';
-import { useLoaderData } from '@remix-run/react';
+import Banner from "~/components/Banner";
+
+import { contribution } from "~/utils/mockedDB";
+import { userCookie } from "~/utils/cookie.server";
+import { getIndex } from "~/utils/language";
 
 export const meta: MetaFunction = () => ({
-  title: 'Contribute 💖',
+  title: "Contribute 💖",
 });
 
 export async function loader({ request }: LoaderArgs) {
-  const cookieHeader = request.headers.get('Cookie');
+  const cookieHeader = request.headers.get("Cookie");
   const cookie = await userCookie.parse(cookieHeader);
 
-  const condition = cookie !== null && cookie.hasOwnProperty('language');
+  const condition = cookie !== null && cookie.hasOwnProperty("language");
 
   return json({
-    contribution: contribution[getIndex(condition ? cookie.language : 'en')],
+    contribution: contribution[getIndex(condition ? cookie.language : "en")],
   });
 }
 

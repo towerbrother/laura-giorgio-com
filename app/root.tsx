@@ -3,8 +3,8 @@ import type {
   LinksFunction,
   LoaderArgs,
   MetaFunction,
-} from '@remix-run/node';
-import { redirect, json } from '@remix-run/node';
+} from "@remix-run/node";
+import { redirect, json } from "@remix-run/node";
 import {
   Link,
   Links,
@@ -16,48 +16,49 @@ import {
   useActionData,
   useCatch,
   useLoaderData,
-} from '@remix-run/react';
+} from "@remix-run/react";
 
-import styles from './tailwind.css';
+import styles from "./tailwind.css";
 
-import Login from './components/Login';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import { footer, getIndex, header } from './utils/mockedDB';
+import Login from "./components/Login";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { footer, header } from "./utils/mockedDB";
 
-import { userCookie } from './utils/cookie.server';
-import { badRequest } from './utils/request.server';
-import { validatePassword } from './utils/validation';
+import { userCookie } from "./utils/cookie.server";
+import { badRequest } from "./utils/request.server";
+import { validatePassword } from "./utils/validation";
+import { getIndex } from "./utils/language";
 
 export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'Laura & Giorgio',
-  viewport: 'width=device-width,initial-scale=1',
+  charset: "utf-8",
+  title: "Laura & Giorgio",
+  viewport: "width=device-width,initial-scale=1",
 });
 
 export const links: LinksFunction = () => {
   return [
-    { rel: 'stylesheet', href: styles },
+    { rel: "stylesheet", href: styles },
     {
-      rel: 'preconnect',
-      href: 'https://fonts.gstatic.com',
+      rel: "preconnect",
+      href: "https://fonts.gstatic.com",
     },
     {
-      rel: 'preload',
-      as: 'style',
-      href: 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap',
-      crossOrigin: 'anonymous',
+      rel: "preload",
+      as: "style",
+      href: "https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap",
+      crossOrigin: "anonymous",
     },
     {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap',
-      crossOrigin: 'anonymous',
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap",
+      crossOrigin: "anonymous",
     },
   ];
 };
 
 export const loader = async ({ request }: LoaderArgs) => {
-  const cookieHeader = request.headers.get('Cookie');
+  const cookieHeader = request.headers.get("Cookie");
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
   if (cookie) {
@@ -70,15 +71,15 @@ export const loader = async ({ request }: LoaderArgs) => {
 
   return json(
     {
-      language: 'en',
+      language: "en",
       isAuth: false,
-      header: header[getIndex('en')],
-      footer: footer[getIndex('en')],
+      header: header[getIndex("en")],
+      footer: footer[getIndex("en")],
     },
     {
       headers: {
-        'Set-Cookie': await userCookie.serialize({
-          language: 'en',
+        "Set-Cookie": await userCookie.serialize({
+          language: "en",
           isAuth: false,
           rsvp: null,
         }),
@@ -90,17 +91,17 @@ export const loader = async ({ request }: LoaderArgs) => {
 export async function action({ request }: ActionArgs) {
   await new Promise((res) => setTimeout(res, 2000));
 
-  const cookieHeader = request.headers.get('Cookie');
+  const cookieHeader = request.headers.get("Cookie");
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
   const formData = await request.formData();
-  const password = formData.get('password');
+  const password = formData.get("password");
 
-  if (typeof password !== 'string') {
+  if (typeof password !== "string") {
     return badRequest({
       fieldErrors: null,
       fields: null,
-      formError: 'Oh no, incorrect submission.',
+      formError: "Oh no, incorrect submission.",
     });
   }
 
@@ -115,9 +116,9 @@ export async function action({ request }: ActionArgs) {
     });
   }
 
-  return redirect('/', {
+  return redirect("/", {
     headers: {
-      'Set-Cookie': await userCookie.serialize({
+      "Set-Cookie": await userCookie.serialize({
         ...cookie,
         isAuth: true,
       }),
@@ -130,7 +131,7 @@ export default function App() {
   const loaderData = useLoaderData<typeof loader>();
 
   return (
-    <html lang={loaderData?.language || 'en'}>
+    <html lang={loaderData?.language || "en"}>
       <head>
         <Meta />
         <Links />
@@ -140,7 +141,10 @@ export default function App() {
           <Login fieldErrors={actionData?.fieldErrors} />
         ) : (
           <>
-            <Header {...loaderData?.header} />
+            <Header
+              {...loaderData?.header}
+              currentLanguage={loaderData?.language || "en"}
+            />
             <main>
               <Outlet />
             </main>
@@ -149,7 +153,7 @@ export default function App() {
         )}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'development' && <LiveReload />}
+        {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
     </html>
   );

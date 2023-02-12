@@ -1,16 +1,18 @@
-import { useFetcher, useLocation } from '@remix-run/react';
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { FaLanguage } from 'react-icons/fa';
+import { useFetcher, useLocation } from "@remix-run/react";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { FaLanguage } from "react-icons/fa";
 
-import Overlay from '~/components/reusable/Overlay';
-import Button from '~/components/reusable/Button';
+import Overlay from "~/components/reusable/Overlay";
+import Button from "~/components/reusable/Button";
+import ConditionalWrapper from "./reusable/ConditionalWrapper";
 
 export type LanguageProps = {
+  currentLanguage: string;
   options: Array<string>;
 };
 
-const Language = ({ options }: LanguageProps) => {
+const Language = ({ currentLanguage, options }: LanguageProps) => {
   const fetcher = useFetcher();
   const { pathname, search } = useLocation();
 
@@ -28,14 +30,22 @@ const Language = ({ options }: LanguageProps) => {
         className="relative z-50"
         onClick={() => setShow((prev) => !prev)}
       >
-        <FaLanguage className="text-5xl text-neutral-800 hover:opacity-80 lg:text-6xl" />
+        <ConditionalWrapper condition={currentLanguage === "en"}>
+          <img src="uk.png" alt="English" className="w-12" />
+        </ConditionalWrapper>
+        <ConditionalWrapper condition={currentLanguage === "de"}>
+          <img src="de.png" alt="Deutsch" className="w-12" />
+        </ConditionalWrapper>
+        <ConditionalWrapper condition={currentLanguage === "it"}>
+          <img src="it.png" alt="Italiano" className="w-12" />
+        </ConditionalWrapper>
       </Button>
       <div
         className={`${
           show
-            ? 'opacity-100 height-auto'
-            : 'opacity-0 height-0 overflow-hidden'
-        } absolute z-50 -right-[4px] flex flex-col items-center py-2 px-3 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300 lg:right-[2px]`}
+            ? "opacity-100 height-auto"
+            : "opacity-0 height-0 overflow-hidden"
+        } absolute z-50 flex flex-col items-center p-2 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300 lg:right-[2px]`}
       >
         {options.map((option) => (
           <fetcher.Form
@@ -52,9 +62,15 @@ const Language = ({ options }: LanguageProps) => {
                   readOnly
                 />
                 <input type="hidden" name="language" value={option} readOnly />
-                <span className="text-2xl font-bold text-neutral-800 uppercase">
-                  {option}
-                </span>
+                <ConditionalWrapper condition={option === "en"}>
+                  <img src="uk.png" alt="English" />
+                </ConditionalWrapper>
+                <ConditionalWrapper condition={option === "de"}>
+                  <img src="de.png" alt="Deutsch" />
+                </ConditionalWrapper>
+                <ConditionalWrapper condition={option === "it"}>
+                  <img src="it.png" alt="Italiano" />
+                </ConditionalWrapper>
               </>
             </Button>
           </fetcher.Form>

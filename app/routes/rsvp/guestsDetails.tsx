@@ -1,22 +1,23 @@
-import { v4 as uuidv4 } from 'uuid';
-import type { ActionArgs, LoaderArgs } from '@remix-run/node';
-import { json, redirect } from '@remix-run/node';
+import { v4 as uuidv4 } from "uuid";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import {
   Form,
   useActionData,
   useLoaderData,
   useTransition,
-} from '@remix-run/react';
-import { FaSpinner } from 'react-icons/fa';
+} from "@remix-run/react";
+import { FaSpinner } from "react-icons/fa";
 
-import FormHeader from '~/components/rsvpForm/FormHeader';
-import Button from '~/components/reusable/Button';
-import GuestDetails from '~/components/rsvpForm/GuestDetails';
+import FormHeader from "~/components/rsvpForm/FormHeader";
+import Button from "~/components/reusable/Button";
+import GuestDetails from "~/components/rsvpForm/GuestDetails";
 
-import { userCookie } from '~/utils/cookie.server';
-import { badRequest } from '~/utils/request.server';
-import { validateFood, validateName } from '~/utils/validation';
-import { rsvpGuestsDetails, getIndex } from '~/utils/mockedDB';
+import { userCookie } from "~/utils/cookie.server";
+import { badRequest } from "~/utils/request.server";
+import { validateFood, validateName } from "~/utils/validation";
+import { rsvpGuestsDetails } from "~/utils/mockedDB";
+import { getIndex } from "~/utils/language";
 
 export type RsvpGuestsDetailsProps = {
   title: string;
@@ -48,7 +49,7 @@ export type RsvpGuestsDetailsProps = {
 };
 
 export async function loader({ request }: LoaderArgs) {
-  const cookieHeader = request.headers.get('Cookie');
+  const cookieHeader = request.headers.get("Cookie");
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
   const stepsInfo = {
@@ -67,33 +68,33 @@ export async function loader({ request }: LoaderArgs) {
   return json({
     rsvp: null,
     ...stepsInfo,
-    rsvpGuestsDetails: rsvpGuestsDetails[getIndex('en')],
+    rsvpGuestsDetails: rsvpGuestsDetails[getIndex("en")],
   });
 }
 
 export async function action({ request }: ActionArgs) {
   await new Promise((res) => setTimeout(res, 1000));
 
-  const cookieHeader = request.headers.get('Cookie');
+  const cookieHeader = request.headers.get("Cookie");
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
   let formData = await request.formData();
   let { _action, ...fields } = Object.fromEntries(formData);
 
-  if (_action === 'close-rsvp') {
-    return redirect('/');
+  if (_action === "close-rsvp") {
+    return redirect("/");
   }
 
-  if (_action === 'go-back') {
-    return redirect('/rsvp/contactdetails');
+  if (_action === "go-back") {
+    return redirect("/rsvp/contactdetails");
   }
 
   const mapped = Object.entries(fields).map(([k, v]) => {
-    if (k.includes('name')) {
+    if (k.includes("name")) {
       return [k, validateName(v.toString())];
     }
 
-    if (k.includes('food')) {
+    if (k.includes("food")) {
       return [k, validateFood(v.toString())];
     }
 
@@ -110,9 +111,9 @@ export async function action({ request }: ActionArgs) {
     });
   }
 
-  return redirect('/rsvp/otherdetails', {
+  return redirect("/rsvp/otherdetails", {
     headers: {
-      'Set-Cookie': await userCookie.serialize({
+      "Set-Cookie": await userCookie.serialize({
         ...cookie,
         rsvp: { ...cookie.rsvp, guestsDetails: { ...fields } },
       }),
@@ -127,8 +128,8 @@ export default function Index() {
     useLoaderData<typeof loader>();
 
   const isProcessing =
-    state === 'submitting' &&
-    submission.formData.get('_action') === 'guests-details';
+    state === "submitting" &&
+    submission.formData.get("_action") === "guests-details";
 
   const guests: Array<string> = Array.from(
     { length: Number(rsvp?.contactDetails?.guestsCount) },
