@@ -27,11 +27,10 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function Index() {
   const { stage, homeTile } = useLoaderData<typeof loader>();
-  const mappedStage = { ...stage, date: new Date(stage.date) };
 
   return (
     <>
-      <Stage {...mappedStage} />
+      <Stage {...stage} />
       <Tile {...homeTile} />
     </>
   );

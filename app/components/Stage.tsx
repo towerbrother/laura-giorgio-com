@@ -1,10 +1,9 @@
 import { NavLink } from '@remix-run/react';
-import { format } from 'date-fns';
 
 export type StageProps = {
   title: string;
   subtitle: string;
-  date: Date;
+  date: string;
   link: { slug: string; text: string };
 };
 
@@ -15,7 +14,7 @@ const Stage = ({ title, subtitle, date, link: { slug, text } }: StageProps) => (
       {subtitle}
     </h4>
     <span className="my-1 md:my-4 lg:my-5 mx-0 text-base md:text-2xl lg:text-3xl tracking-tight sm:text-base">
-      {format(date, 'do LLLL yyyy ｜ p')}
+      {date}
     </span>
     <NavLink
       className="text-lg md:text-2xl lg:text-4xl py-2 lg:py-3 px-6 lg:px-8 mt-6 animate-pulse xl:animate-none transition-all duration-200 ease-in-out font-bold rounded-md bg-neutral-800 text-neutral-100 w-max hover:opacity-80"

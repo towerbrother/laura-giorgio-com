@@ -1,11 +1,10 @@
-import { useFetcher, useLocation } from "@remix-run/react";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { FaLanguage } from "react-icons/fa";
+import { useFetcher, useLocation } from '@remix-run/react';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-import Overlay from "~/components/reusable/Overlay";
-import Button from "~/components/reusable/Button";
-import ConditionalWrapper from "./reusable/ConditionalWrapper";
+import Overlay from '~/components/reusable/Overlay';
+import Button from '~/components/reusable/Button';
+import ConditionalWrapper from './reusable/ConditionalWrapper';
 
 export type LanguageProps = {
   currentLanguage: string;
@@ -30,21 +29,21 @@ const Language = ({ currentLanguage, options }: LanguageProps) => {
         className="relative z-50"
         onClick={() => setShow((prev) => !prev)}
       >
-        <ConditionalWrapper condition={currentLanguage === "en"}>
+        <ConditionalWrapper condition={currentLanguage === 'en'}>
           <img src="uk.png" alt="English" className="w-12" />
         </ConditionalWrapper>
-        <ConditionalWrapper condition={currentLanguage === "de"}>
+        <ConditionalWrapper condition={currentLanguage === 'de'}>
           <img src="de.png" alt="Deutsch" className="w-12" />
         </ConditionalWrapper>
-        <ConditionalWrapper condition={currentLanguage === "it"}>
+        <ConditionalWrapper condition={currentLanguage === 'it'}>
           <img src="it.png" alt="Italiano" className="w-12" />
         </ConditionalWrapper>
       </Button>
       <div
         className={`${
           show
-            ? "opacity-100 height-auto"
-            : "opacity-0 height-0 overflow-hidden"
+            ? 'opacity-100 height-auto'
+            : 'opacity-0 height-0 overflow-hidden'
         } absolute z-50 flex flex-col items-center p-2 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300`}
       >
         {options.map((option) => (
@@ -62,13 +61,13 @@ const Language = ({ currentLanguage, options }: LanguageProps) => {
                   readOnly
                 />
                 <input type="hidden" name="language" value={option} readOnly />
-                <ConditionalWrapper condition={option === "en"}>
+                <ConditionalWrapper condition={option === 'en'}>
                   <img src="uk.png" alt="English" />
                 </ConditionalWrapper>
-                <ConditionalWrapper condition={option === "de"}>
+                <ConditionalWrapper condition={option === 'de'}>
                   <img src="de.png" alt="Deutsch" />
                 </ConditionalWrapper>
-                <ConditionalWrapper condition={option === "it"}>
+                <ConditionalWrapper condition={option === 'it'}>
                   <img src="it.png" alt="Italiano" />
                 </ConditionalWrapper>
               </>
