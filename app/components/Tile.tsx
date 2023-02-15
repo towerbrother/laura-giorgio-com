@@ -41,7 +41,7 @@ const Tile = ({
     <div
       className={`flex flex-col-reverse justify-center items-center px-5 py-12 bg-neutral-100 lg:py-20 lg:px-35 ${directionOrderClassName}`}
     >
-      <img className="h-96 w-96" src={src} alt={alt} />
+      <img className="h-auto w-96" src={src} alt={alt} />
       <div
         className={`flex flex-col justify-around pb-5 px-0 text-neutral-800 lg:py-7 ${directionPaddingClassName}`}
       >
