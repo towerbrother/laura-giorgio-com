@@ -8,6 +8,7 @@ import type { BannerProps } from '~/components/Banner';
 import type { RsvpContactDetailsProps } from '~/routes/rsvp/contactdetails';
 import type { RsvpGuestsDetailsProps } from '~/routes/rsvp/guestsdetails';
 import type { RsvpOtherDetailsProps } from '~/routes/rsvp/otherdetails';
+import type { RsvpThankYouProps } from '~/routes/rsvp/thanks';
 
 // static
 const ceremonyDate: Date = new Date(Date.UTC(2023, 6, 29, 11, 0));
@@ -771,5 +772,29 @@ export const rsvpOtherDetails: Array<RsvpOtherDetailsProps> = [
       "Usa l'area di testo qui sotto. La leggeremo, promesso!",
     ],
     button: { text: 'INVIA', pending: 'IN LAVORAZIONE...' },
+  },
+];
+
+export const rsvpThankYou: Array<RsvpThankYouProps> = [
+  {
+    title: 'Thank you!',
+    texts: [
+      'Do you have any further questions or concerns?',
+      'Drop us an email at laura.giorgio.wedding@gmail.com',
+    ],
+  },
+  {
+    title: 'Vielen Dank!',
+    texts: [
+      'Hast du weitere Fragen oder Anmerkungen?',
+      'Schreib uns eine E-Mail an laura.giorgio.wedding@gmail.com',
+    ],
+  },
+  {
+    title: 'Grazie mille!',
+    texts: [
+      'Hai altre domande o dubbi?',
+      'Mandaci una mail a laura.giorgio.wedding@gmail.com',
+    ],
   },
 ];

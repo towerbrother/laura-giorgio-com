@@ -72,7 +72,7 @@ const GuestDetails = ({
         <option value="fish">
           {rsvpGuestsDetails?.form?.food?.options?.fish}
         </option>
-        <option value="vegetarian">
+        <option value="vegan">
           {rsvpGuestsDetails?.form?.food?.options?.vegan}
         </option>
       </select>
