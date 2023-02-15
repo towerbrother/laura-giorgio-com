@@ -30,13 +30,13 @@ const Language = ({ currentLanguage, options }: LanguageProps) => {
         onClick={() => setShow((prev) => !prev)}
       >
         <ConditionalWrapper condition={currentLanguage === 'en'}>
-          <img src="uk.png" alt="English" className="w-12" />
+          <img src="/uk.png" alt="English" className="w-12" />
         </ConditionalWrapper>
         <ConditionalWrapper condition={currentLanguage === 'de'}>
-          <img src="de.png" alt="Deutsch" className="w-12" />
+          <img src="/de.png" alt="Deutsch" className="w-12" />
         </ConditionalWrapper>
         <ConditionalWrapper condition={currentLanguage === 'it'}>
-          <img src="it.png" alt="Italiano" className="w-12" />
+          <img src="/it.png" alt="Italiano" className="w-12" />
         </ConditionalWrapper>
       </Button>
       <div
@@ -62,13 +62,13 @@ const Language = ({ currentLanguage, options }: LanguageProps) => {
                 />
                 <input type="hidden" name="language" value={option} readOnly />
                 <ConditionalWrapper condition={option === 'en'}>
-                  <img src="uk.png" alt="English" />
+                  <img src="/uk.png" alt="English" />
                 </ConditionalWrapper>
                 <ConditionalWrapper condition={option === 'de'}>
-                  <img src="de.png" alt="Deutsch" />
+                  <img src="/de.png" alt="Deutsch" />
                 </ConditionalWrapper>
                 <ConditionalWrapper condition={option === 'it'}>
-                  <img src="it.png" alt="Italiano" />
+                  <img src="/it.png" alt="Italiano" />
                 </ConditionalWrapper>
               </>
             </Button>
