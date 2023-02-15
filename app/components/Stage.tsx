@@ -9,10 +9,10 @@ export type StageProps = {
 
 const Stage = ({ title, subtitle, date, link: { slug, text } }: StageProps) => (
   <div className="flex flex-col justify-center items-center text-center text-neutral-800 font-bold w-full h-[75vh] bg-gradient-to-br from-cyan-600 to-neutral-100">
-    <h2 className="italic text-3xl md:text-5xl lg:text-7xl">{title}</h2>
-    <h4 className="uppercase mt-2 text-base md:text-lg lg:text-2xl">
+    <span className="italic text-3xl md:text-5xl lg:text-7xl">{title}</span>
+    <span className="uppercase mt-2 text-base md:text-lg lg:text-2xl">
       {subtitle}
-    </h4>
+    </span>
     <span className="my-1 md:my-4 lg:my-5 mx-0 text-base md:text-2xl lg:text-3xl tracking-tight sm:text-base">
       {date}
     </span>

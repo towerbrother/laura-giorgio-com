@@ -3,6 +3,7 @@ import { Outlet } from '@remix-run/react';
 
 export const meta: MetaFunction = () => ({
   title: 'RSVP 🥳',
+  description: 'Page with RSVP form. To be used to confirm your presence.',
 });
 
 export default function Index() {

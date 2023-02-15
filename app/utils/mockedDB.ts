@@ -273,7 +273,7 @@ export const accomodationTile: Array<TileProps> = [
         `Inoltre, abbiamo discusso e concordato un prezzo speciale per i nostri ospiti presso l'hotel Hecher.`,
       ],
     },
-    links: [{ slug: '/accomodation', text: 'BOOK' }],
+    links: [{ slug: '/accomodation', text: 'PRENOTA' }],
   },
 ];
 
@@ -415,7 +415,7 @@ export const hotelTile: Array<TileProps> = [
       subtitle: 'Reccomended for those staying 2 nights',
       texts: [
         'Centrally located with comfortable rooms. 10 min walk or 4 min drive from the reception venue. Within walking distance from the central station in Wolfsberg. Special price has been agreed for our guests (applicable to 2-nights stay only). €58 per person (double room), €75 (single room). Breakfast included. Additional bed €35 per night. Baby bed at €15 per room. Free parking.',
-        'Please book via email and quote “Hochzeit Purnell” in your booking. Please book as soon as possible.',
+        'Please book via email (hotel@hecher.at) and quote “Hochzeit Purnell” in your booking. Please book as soon as possible.',
       ],
     },
     externalLinks: [
@@ -433,7 +433,7 @@ export const hotelTile: Array<TileProps> = [
       subtitle: 'Empfohlen für diejenigen, die 2 Nächte bleiben',
       texts: [
         'Zentral gelegen mit komfortablen Zimmern. 10 Minuten zu Fuß oder 4 Minuten Autofahrt von der Feierlocation entfernt. Nur wenige Gehminuten vom Hauptbahnhof in Wolfsberg entfernt. Für unsere Gäste wurde ein Sonderpreis vereinbart (gilt nur ab 2 Übernachtungen). 58€ pro Person (Doppelzimmer), 75€ (Einzelzimmer). Frühstück inklusive. Zusatzbett 35€ pro Nacht. Babybett für 15€ pro Zimmer. Gratis Parkplätze.',
-        'Bitte bucht per E-Mail und gebt bei der Buchung „Hochzeit Purnell“ an. Bitte bucht so bald wie möglich.',
+        'Bitte bucht per E-Mail (hotel@hecher.at) und gebt bei der Buchung „Hochzeit Purnell“ an. Bitte bucht so bald wie möglich.',
       ],
     },
     externalLinks: [
@@ -451,7 +451,7 @@ export const hotelTile: Array<TileProps> = [
       subtitle: 'Consigliato per chi soggiorna 2 notti',
       texts: [
         'Situato in posizione centrale con camere confortevoli, a soli 10 minuti a piedi o 4 minuti in auto dal luogo del ricevimento. A pochi passi dalla stazione centrale di Wolfsberg. Abbiamo concordato un prezzo speciale per i nostri ospiti, applicabile solo per soggiorni di 2 notti: 58€ a persona per una camera doppia e 75€ per una camera singola, con colazione inclusa. Il costo per un letto supplementare è di 35€ a notte, mentre per una culla il costo è di 15€ a camera. Il parcheggio è gratuito.',
-        'Ti preghiamo di prenotare via e-mail e citare "Hochzeit Purnell" nella tua prenotazione. Ti preghiamo di prenotare il prima possibile.',
+        'Ti preghiamo di prenotare via e-mail (hotel@hecher.at) e citare "Hochzeit Purnell" nella tua prenotazione. Ti preghiamo di prenotare il prima possibile.',
       ],
     },
     externalLinks: [
@@ -472,7 +472,7 @@ export const pensionTile: Array<TileProps> = [
       subtitle: 'Reccomended for those staying 1 night only',
       texts: [
         'Simple, inexpensive rooms. Recommended for those staying only one night. Car needed to reach from Wolfsberg city center. The price is €45 per person. Breakfast included. Further discount applies to triple rooms.',
-        'Please book via email.',
+        'Please book via email (office@gasthof-oelberger.at).',
       ],
     },
     externalLinks: [
@@ -490,7 +490,7 @@ export const pensionTile: Array<TileProps> = [
       subtitle: 'Empfohlen für diejenigen, die nur 1 Nacht bleiben',
       texts: [
         'Einfache und günstige Zimmer. Empfohlen für diejenigen, die nur eine Nacht bleiben. Man braucht ein Auto, kann aber ggf. zur Feierlocation laufen. Der Preis beträgt 45€ pro Person pro Nacht. Frühstück inkludiert. Rabat erhältlich für Mehrbettzimmer.',
-        'Bitte bucht per E-Mail.',
+        'Bitte bucht per E-Mail (office@gasthof-oelberger.at).',
       ],
     },
     externalLinks: [
@@ -508,7 +508,7 @@ export const pensionTile: Array<TileProps> = [
       subtitle: 'Consigliato per chi soggiorna solo 1 notte',
       texts: [
         `Camere semplici ed economiche, perfette per chi soggiorna solo una notte. Tieni presente che sarà necessaria l'auto per raggiungere la pensione dal centro di Wolfsberg. Il prezzo è di €45 a persona, con la colazione inclusa. Per le camere triple verranno applicati ulteriori sconti.`,
-        'Ti preghiamo di prenotare tramite e-mail.',
+        'Ti preghiamo di prenotare tramite e-mail (office@gasthof-oelberger.at).',
       ],
     },
     externalLinks: [

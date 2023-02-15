@@ -27,23 +27,22 @@ const Language = ({ currentLanguage, options }: LanguageProps) => {
     <div className="relative top-1 lg:right-0">
       <Button
         className="relative z-50"
+        aria-label="toggle language menu"
         onClick={() => setShow((prev) => !prev)}
       >
         <ConditionalWrapper condition={currentLanguage === 'en'}>
-          <img src="/uk.png" alt="English" className="w-12" />
+          <img src="/uk.png" alt="English" className="w-12 h-9" />
         </ConditionalWrapper>
         <ConditionalWrapper condition={currentLanguage === 'de'}>
-          <img src="/de.png" alt="Deutsch" className="w-12" />
+          <img src="/de.png" alt="Deutsch" className="w-12 h-9" />
         </ConditionalWrapper>
         <ConditionalWrapper condition={currentLanguage === 'it'}>
-          <img src="/it.png" alt="Italiano" className="w-12" />
+          <img src="/it.png" alt="Italiano" className="w-12 h-9" />
         </ConditionalWrapper>
       </Button>
       <div
         className={`${
-          show
-            ? 'opacity-100 height-auto'
-            : 'opacity-0 height-0 overflow-hidden'
+          show ? 'opacity-100 h-auto' : 'opacity-0 h-0 overflow-hidden'
         } absolute z-50 flex flex-col items-center p-2 bg-neutral-100 shadow-lg transition-opacity ease-in-out duration-300`}
       >
         {options.map((option) => (
@@ -52,7 +51,11 @@ const Language = ({ currentLanguage, options }: LanguageProps) => {
             method="post"
             action="/utils/set-user-language"
           >
-            <Button type="submit" onClick={handleDelayedCloseFormWrapper}>
+            <Button
+              type="submit"
+              aria-label="toggle language"
+              onClick={handleDelayedCloseFormWrapper}
+            >
               <>
                 <input
                   type="hidden"
@@ -62,13 +65,13 @@ const Language = ({ currentLanguage, options }: LanguageProps) => {
                 />
                 <input type="hidden" name="language" value={option} readOnly />
                 <ConditionalWrapper condition={option === 'en'}>
-                  <img src="/uk.png" alt="English" />
+                  <img className="w-8 h-6" src="/uk.png" alt="English" />
                 </ConditionalWrapper>
                 <ConditionalWrapper condition={option === 'de'}>
-                  <img src="/de.png" alt="Deutsch" />
+                  <img className="w-8 h-6" src="/de.png" alt="Deutsch" />
                 </ConditionalWrapper>
                 <ConditionalWrapper condition={option === 'it'}>
-                  <img src="/it.png" alt="Italiano" />
+                  <img className="w-8 h-6" src="/it.png" alt="Italiano" />
                 </ConditionalWrapper>
               </>
             </Button>
