@@ -158,10 +158,10 @@ function getGuestsDetails(input: { [key: string]: string }) {
     if (person.allergies && person.allergies.length > 0) {
       generatedString += ` - ${person.allergies
         .map((allergy) => allergy)
-        .join('-')}.\n`;
+        .join('-')}.`;
     }
 
-    generatedStrings += generatedString;
+    generatedStrings += `${generatedString}\n`;
   });
 
   return generatedStrings;
