@@ -72,20 +72,32 @@ export const header: Array<HeaderProps> = [
 
 export const stage: Array<StageProps> = [
   {
-    title: 'Laura & Giorgio',
-    subtitle: 'are getting married',
+    wedding: {
+      title: 'Laura & Giorgio',
+      subtitle: 'are getting married',
+      icons: ['female', 'male'],
+    },
+    baptism: { title: 'Juni', subtitle: 'gets baptised', icons: ['baby'] },
     date: '29th July 2023',
     link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
-    title: 'Laura & Giorgio',
-    subtitle: 'heiraten',
+    wedding: {
+      title: 'Laura & Giorgio',
+      subtitle: 'heiraten',
+      icons: ['female', 'male'],
+    },
+    baptism: { title: 'Juni', subtitle: 'wird getauft', icons: ['baby'] },
     date: '29. Juli 2023',
     link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
-    title: 'Laura & Giorgio',
-    subtitle: 'si sposano',
+    wedding: {
+      title: 'Laura & Giorgio',
+      subtitle: 'si sposano',
+      icons: ['female', 'male'],
+    },
+    baptism: { title: 'Juni', subtitle: 'si battezza', icons: ['baby'] },
     date: '29 Luglio 2023',
     link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
@@ -283,7 +295,7 @@ export const info: Array<InfoProps> = [
     items: [
       {
         icon: 'calendar',
-        title: 'Our wedding day',
+        title: 'Wedding / Baptism',
         dateTime: ceremonyDate,
         text: 'It would be absolutely great to have you there! Join us!',
         link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
@@ -315,7 +327,7 @@ export const info: Array<InfoProps> = [
     items: [
       {
         icon: 'calendar',
-        title: 'Unser Hochzeitstag',
+        title: 'Hochzeit / Taufe',
         dateTime: ceremonyDate,
         text: 'Wir freuen uns, wenn du dabei bist.',
         link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
@@ -347,7 +359,7 @@ export const info: Array<InfoProps> = [
     items: [
       {
         icon: 'calendar',
-        title: 'Il giorno del nostro matrimonio',
+        title: 'Matrimonio / Battesimo',
         dateTime: ceremonyDate,
         text: 'Sarebbe assolutamente fantastico averti lì! Unisciti a noi!',
         link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
