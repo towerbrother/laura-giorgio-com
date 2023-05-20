@@ -11,8 +11,8 @@ import type { RsvpOtherDetailsProps } from '~/routes/rsvp/otherdetails';
 import type { RsvpThankYouProps } from '~/routes/rsvp/thanks';
 
 // static
-const ceremonyDate: Date = new Date(Date.UTC(2023, 6, 29, 11, 0));
-const partyDate: Date = new Date(Date.UTC(2023, 6, 29, 14, 0));
+const ceremonyDate: Date = new Date(Date.UTC(2023, 6, 29, 12, 0));
+const partyDate: Date = new Date(Date.UTC(2023, 6, 29, 15, 30));
 const languageOptions: LanguageProps = {
   currentLanguage: 'en',
   options: ['en', 'de', 'it'],
