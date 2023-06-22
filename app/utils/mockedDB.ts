@@ -39,6 +39,9 @@ export const header: Array<HeaderProps> = [
     currentLanguage: 'en',
     links: [
       { text: 'Info', slug: '/info', type: 'link' },
+      { text: 'Menu', slug: '/menu', type: 'link' },
+      { text: 'Timeline', slug: '/timeline', type: 'link' },
+      { text: 'Holiday', slug: '/holiday', type: 'link' },
       { text: 'Reservation', slug: '/accomodation', type: 'link' },
       { text: 'Contact', slug: '/contact', type: 'link' },
       { text: 'Gift', slug: '/contribute', type: 'link' },
@@ -50,6 +53,9 @@ export const header: Array<HeaderProps> = [
     currentLanguage: 'de',
     links: [
       { text: 'Info', slug: '/info', type: 'link' },
+      { text: 'Menu', slug: '/menu', type: 'link' },
+      { text: 'Tagesablauf ', slug: '/timeline', type: 'link' },
+      { text: 'Urlaub', slug: '/holiday', type: 'link' },
       { text: 'Reservierung', slug: '/accomodation', type: 'link' },
       { text: 'Kontakt', slug: '/contact', type: 'link' },
       { text: 'Geschenk', slug: '/contribute', type: 'link' },
@@ -61,6 +67,9 @@ export const header: Array<HeaderProps> = [
     currentLanguage: 'it',
     links: [
       { text: 'Info', slug: '/info', type: 'link' },
+      { text: 'Menu', slug: '/menu', type: 'link' },
+      { text: 'Cronologia', slug: '/timeline', type: 'link' },
+      { text: 'Vacanze', slug: '/holiday', type: 'link' },
       { text: 'Prenota', slug: '/accomodation', type: 'link' },
       { text: 'Contattaci', slug: '/contact', type: 'link' },
       { text: 'Regalo', slug: '/contribute', type: 'link' },
@@ -827,5 +836,202 @@ export const rsvpThankYou: Array<RsvpThankYouProps> = [
       'Hai altre domande o dubbi?',
       'Mandaci una mail a laura.giorgio.wedding@gmail.com',
     ],
+  },
+];
+
+export const meatTile: Array<TileProps> = [
+  {
+    direction: 'front',
+    image: { src: 'meat2.jpg', alt: 'Meat menu' },
+    tile: {
+      title: 'Meat',
+      texts: [
+        'Braised shoulder clod of Carinthian beef with colourful vegetable medley and dumplings',
+      ],
+    },
+  },
+  {
+    direction: 'front',
+    image: { src: 'meat2.jpg', alt: 'Meat menu' },
+    tile: {
+      title: 'Fleisch',
+      texts: [
+        'Geschmortes Schulterscherzel vom Kärntner Rind mit buntem Gemüseallerlei und Serviettenknödel',
+      ],
+    },
+  },
+  {
+    direction: 'front',
+    image: { src: 'meat2.jpg', alt: 'Meat menu' },
+    tile: {
+      title: 'Carne',
+      texts: [
+        'Spezzatino di spalla di manzo della Carinzia in varietà di verdure e knödel',
+      ],
+    },
+  },
+];
+
+export const veganTile: Array<TileProps> = [
+  {
+    direction: 'front',
+    image: { src: 'vegan.jpg', alt: 'Vegan menu' },
+    tile: {
+      title: 'Vegan',
+      texts: ['Vegan cheese ravioli (gluten-free!) with chives and leaf salad'],
+    },
+  },
+  {
+    direction: 'front',
+    image: { src: 'vegan.jpg', alt: 'Vegan menu' },
+    tile: {
+      title: 'Vegan',
+      texts: [
+        'Kärntner Kasnudeln (und auch glutenfrei!) mit Schnittlauch und Blattsalat',
+      ],
+    },
+  },
+  {
+    direction: 'front',
+    image: { src: 'vegan.jpg', alt: 'Vegan menu' },
+    tile: {
+      title: 'Vegan',
+      texts: [
+        'Ravioli al formaggio vegano (senza glutine!) con erba cipollina e insalata a foglie',
+      ],
+    },
+  },
+];
+
+export const fishTile: Array<TileProps> = [
+  {
+    direction: 'back',
+    image: { src: 'fish.jpg', alt: 'Fish menu' },
+    tile: {
+      title: 'Fish',
+      texts: [
+        'Locally produced trout fillet from Lavanttal on truffle mashed potatoes with a colourful medley of vegetables',
+      ],
+    },
+  },
+  {
+    direction: 'back',
+    image: { src: 'fish.jpg', alt: 'Fish menu' },
+    tile: {
+      title: 'Fisch',
+      texts: [
+        'Lavanttaler Lachsforellenfilet auf getrüffeltem Kartoffelpüree mit buntem Gemüse-Allerlei',
+      ],
+    },
+  },
+  {
+    direction: 'back',
+    image: { src: 'fish.jpg', alt: 'Fish menu' },
+    tile: {
+      title: 'Pesce',
+      texts: [
+        'Filetto di trota del Lavantall su purè di patate al tartufo in varietà di verdure',
+      ],
+    },
+  },
+];
+
+export const timeline = {
+  src: 'timeline.JPG',
+};
+
+export const obdachTile: Array<TileProps> = [
+  {
+    direction: 'front',
+    image: { src: 'obdach.jpg', alt: 'Obdach region' },
+    tile: {
+      title: 'Obdach / St. Wolfgang',
+      texts: [
+        'We are staying in the region for a few days and would be happy to do some hiking with you and show you the area we have been going to for years.',
+      ],
+    },
+  },
+  {
+    direction: 'front',
+    image: { src: 'obdach.jpg', alt: 'Obdach region' },
+    tile: {
+      title: 'Obdach / St. Wolfgang',
+      texts: [
+        'Wir bleiben einige Tage noch in der Region und würden uns freuen, einige Wanderungen mit Euch zu unternehmen und euch die Gegend zu zeigen, in die wir seit Jahren fahren.',
+      ],
+    },
+  },
+  {
+    direction: 'front',
+    image: { src: 'obdach.jpg', alt: 'Obdach region' },
+    tile: {
+      title: 'Obdach / St. Wolfgang',
+      texts: [
+        'Ci fermeremo nella regione per qualche giorno e saremo felici di fare qualche escursione con voi e mostrarvi la zona che frequentiamo da anni.',
+      ],
+    },
+  },
+];
+
+export const styriaTile: Array<TileProps> = [
+  {
+    direction: 'front',
+    image: { src: 'styria.jpg', alt: 'Styria' },
+    tile: {
+      title: 'Styria',
+      subtitle: 'The green heart of Austria',
+      texts: [
+        'As the name suggests, the region stuns those who travel through for its breath-taking natural landscapes.',
+      ],
+    },
+  },
+  {
+    direction: 'front',
+    image: { src: 'styria.jpg', alt: 'Styria' },
+    tile: {
+      title: 'Steiermark',
+      texts: [
+        'Wie der Name schon sagt, beeindruckt die Region ihre Reisenden durch ihre atemberaubenden Naturlandschaften.',
+      ],
+    },
+  },
+  {
+    direction: 'front',
+    image: { src: 'styria.jpg', alt: 'Styria' },
+    tile: {
+      title: 'Stiria',
+      texts: [
+        'Come suggerisce il nome, la regione stupisce chi la attraversa per i suoi paesaggi naturali mozzafiato. ',
+      ],
+    },
+  },
+];
+
+export const wolfsbergTile: Array<TileProps> = [
+  {
+    direction: 'back',
+    image: { src: 'wolfsberg.jpg', alt: 'Carinthia region' },
+    tile: {
+      title: 'Carinthia',
+      texts: ['The region is known for its lakes, mountains, and vineyards.'],
+    },
+  },
+  {
+    direction: 'back',
+    image: { src: 'wolfsberg.jpg', alt: 'Carinthia region' },
+    tile: {
+      title: 'Kärntenh',
+      texts: ['Die Region ist bekannt für ihre Seen, Berge und Weinberge.'],
+    },
+  },
+  {
+    direction: 'back',
+    image: { src: 'wolfsberg.jpg', alt: 'Carinthia region' },
+    tile: {
+      title: 'Carinzia',
+      texts: [
+        'La regione è nota per i suoi laghi, le sue montagne e i suoi vigneti.',
+      ],
+    },
   },
 ];

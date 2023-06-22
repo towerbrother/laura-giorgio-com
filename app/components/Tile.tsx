@@ -15,7 +15,7 @@ export type TileProps = {
   };
   tile: {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     texts: Array<string>;
   };
   links?: Array<Link>;
@@ -41,25 +41,25 @@ const Tile = ({
     <div
       className={`flex flex-col-reverse justify-center items-center px-5 py-12 bg-neutral-100 lg:py-20 lg:px-35 ${directionOrderClassName}`}
     >
-      <img className="h-auto w-96" src={src} alt={alt} />
+      <img className='h-auto w-96' src={src} alt={alt} />
       <div
         className={`flex flex-col justify-around pb-5 px-0 text-neutral-800 lg:py-7 ${directionPaddingClassName}`}
       >
-        <h4 className="italic">{subtitle}</h4>
-        <h2 className="text-2xl my-4 mx-0 font-bold lg:text-3xl">{title}</h2>
+        {subtitle && <h4 className='italic'>{subtitle}</h4>}
+        <h2 className='text-2xl my-4 mx-0 font-bold lg:text-3xl'>{title}</h2>
         {texts.map((text) => (
-          <p key={uuidv4()} className="max-w-sm mb-2">
+          <p key={uuidv4()} className='max-w-sm mb-2'>
             {text}
           </p>
         ))}
-        <div className="flex justify-start">
+        <div className='flex justify-start'>
           <ConditionalWrapper condition={links && links?.length > 0}>
             {links?.map((link) => (
               <NavLink
                 key={uuidv4()}
                 className={linkClassName}
                 to={link?.slug ?? ''}
-                prefetch="intent"
+                prefetch='intent'
               >
                 {link?.text}
               </NavLink>
@@ -73,8 +73,8 @@ const Tile = ({
                 key={uuidv4()}
                 className={linkClassName}
                 href={externalLink?.href ?? ''}
-                target="_blank"
-                rel="noreferrer"
+                target='_blank'
+                rel='noreferrer'
               >
                 {externalLink?.text}
               </a>
