@@ -1020,7 +1020,7 @@ export const wolfsbergTile: Array<TileProps> = [
     direction: 'back',
     image: { src: 'wolfsberg.jpg', alt: 'Carinthia region' },
     tile: {
-      title: 'Kärntenh',
+      title: 'Kärnten',
       texts: ['Die Region ist bekannt für ihre Seen, Berge und Weinberge.'],
     },
   },
