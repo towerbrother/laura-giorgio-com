@@ -13,6 +13,7 @@ import type { RsvpThankYouProps } from '~/routes/rsvp/thanks';
 // static
 const ceremonyDate: Date = new Date(Date.UTC(2023, 6, 29, 12, 0));
 const partyDate: Date = new Date(Date.UTC(2023, 6, 29, 15, 30));
+const fridayDate: Date = new Date(Date.UTC(2023, 6, 28, 12, 0));
 const languageOptions: LanguageProps = {
   currentLanguage: 'en',
   options: ['en', 'de', 'it'],
@@ -41,7 +42,6 @@ export const header: Array<HeaderProps> = [
       { text: 'Reservation', slug: '/accomodation', type: 'link' },
       { text: 'Contact', slug: '/contact', type: 'link' },
       { text: 'Gift', slug: '/contribute', type: 'link' },
-      { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
     ],
   },
   {
@@ -53,7 +53,6 @@ export const header: Array<HeaderProps> = [
       { text: 'Reservierung', slug: '/accomodation', type: 'link' },
       { text: 'Kontakt', slug: '/contact', type: 'link' },
       { text: 'Geschenk', slug: '/contribute', type: 'link' },
-      { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
     ],
   },
   {
@@ -65,7 +64,6 @@ export const header: Array<HeaderProps> = [
       { text: 'Prenota', slug: '/accomodation', type: 'link' },
       { text: 'Contattaci', slug: '/contact', type: 'link' },
       { text: 'Regalo', slug: '/contribute', type: 'link' },
-      { text: 'RSVP', slug: '/rsvp/contactdetails', type: 'button' },
     ],
   },
 ];
@@ -79,7 +77,6 @@ export const stage: Array<StageProps> = [
     },
     baptism: { title: 'Juni', subtitle: 'gets baptised', icons: ['baby'] },
     date: '29th July 2023',
-    link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
     wedding: {
@@ -89,7 +86,6 @@ export const stage: Array<StageProps> = [
     },
     baptism: { title: 'Juni', subtitle: 'wird getauft', icons: ['baby'] },
     date: '29. Juli 2023',
-    link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
   {
     wedding: {
@@ -99,7 +95,6 @@ export const stage: Array<StageProps> = [
     },
     baptism: { title: 'Juni', subtitle: 'si battezza', icons: ['baby'] },
     date: '29 Luglio 2023',
-    link: { text: 'RSVP', slug: '/rsvp/contactdetails' },
   },
 ];
 
@@ -219,7 +214,6 @@ export const transportationTile: Array<TileProps> = [
         'We have arranged a bus transport for the guests from the hotel to the church and later to the celebration.',
       ],
     },
-    links: [{ slug: '/rsvp/contactdetails', text: 'RSVP' }],
   },
   {
     direction: 'back',
@@ -231,7 +225,6 @@ export const transportationTile: Array<TileProps> = [
         'Wir haben einen Bustransport für die Gäste vom Hotel zur Kirche und später zur Feier organisiert.',
       ],
     },
-    links: [{ slug: '/rsvp/contactdetails', text: 'RSVP' }],
   },
   {
     direction: 'back',
@@ -243,7 +236,6 @@ export const transportationTile: Array<TileProps> = [
         `Abbiamo organizzato un autobus per il trasporto degli ospiti dall'hotel alla chiesa e successivamente al ricevimento.`,
       ],
     },
-    links: [{ slug: '/rsvp/contactdetails', text: 'RSVP' }],
   },
 ];
 
@@ -294,6 +286,16 @@ export const info: Array<InfoProps> = [
     headline: 'Ceremony & Celebration',
     items: [
       {
+        icon: 'mountain',
+        title: 'Friday evening',
+        dateTime: fridayDate,
+        text: 'Offnerhütte - Aichberg 73 9411 St. Michael, Lavanttal, Austria',
+        externalLink: {
+          href: 'https://www.offnerhuette.at/',
+          text: 'HUT',
+        },
+      },
+      {
         icon: 'calendar',
         title: 'Wedding / Baptism',
         dateTime: ceremonyDate,
@@ -326,6 +328,16 @@ export const info: Array<InfoProps> = [
     headline: 'Trauung & Feier',
     items: [
       {
+        icon: 'mountain',
+        title: 'Freitagabend',
+        dateTime: fridayDate,
+        text: 'Offnerhütte - Aichberg 73 9411 St. Michael, Lavanttal, Austria',
+        externalLink: {
+          href: 'https://www.offnerhuette.at/',
+          text: 'HÜTTE',
+        },
+      },
+      {
         icon: 'calendar',
         title: 'Hochzeit / Taufe',
         dateTime: ceremonyDate,
@@ -357,6 +369,16 @@ export const info: Array<InfoProps> = [
   {
     headline: 'Cerimonia & Ricevimento',
     items: [
+      {
+        icon: 'mountain',
+        title: 'Venerdì sera',
+        dateTime: fridayDate,
+        text: 'Offnerhütte - Aichberg 73 9411 St. Michael, Lavanttal, Austria',
+        externalLink: {
+          href: 'https://www.offnerhuette.at/',
+          text: 'BAITA',
+        },
+      },
       {
         icon: 'calendar',
         title: 'Matrimonio / Battesimo',
@@ -561,28 +583,25 @@ export const contactBanner: Array<BannerProps> = [
     headline: 'We look forward to celebrating with you!',
     icon: false,
     paragraphs: [
-      'Please click RSVP and let us know if you are coming.',
-      'If you have any special requests or additional comments, you can add them to the end of the form. Than you very much!',
+      'If you have any special requests, additional comments or unanswered questions, please contact us at laura.giorgio.wedding@gmail.com or send us a message on WhatsApp.',
+      'Thanks! ❤',
     ],
-    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     headline: 'Wir freuen uns darauf, mit Euch zu feiern!',
     icon: false,
     paragraphs: [
-      'Bitte klickt auf RSVP und sagt Bescheid, ob Ihr kommt.',
-      'Sollten Ihr besondere Wünsche oder weitere Anmerkungen haben, könnt Ihr das am Ende des Formulars hinzufügen. Vielen Dank!',
+      'Sollten Ihr besondere Wünsche, weitere Anmerkungen oder unbeantwortete Fragen haben, könnt Ihr eifach ein E-Mail unter laura.giorgio.wedding@gmail.com schicken oder eine Nachricht auf WhatsApp senden.',
+      'Vielen Dank! ❤',
     ],
-    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
     headline: `Non vediamo l'ora di festeggiare con te!`,
     icon: false,
     paragraphs: [
-      `Fai clic su RSVP e facci sapere se ti unirai a noi.`,
-      `Se hai richieste speciali o commenti aggiuntivi, puoi aggiungerli alla fine del modulo. Grazie mille!`,
+      `Se hai richieste speciali, commenti aggiuntivi o domande senza risposta, mandateci una e-mail a laura.giorgio.wedding@gmail.com o un messaggio su WhatsApp.`,
+      'Grazie mille! ❤',
     ],
-    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];
 
