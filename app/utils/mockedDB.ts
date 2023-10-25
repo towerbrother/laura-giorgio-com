@@ -79,18 +79,42 @@ export const header: Array<HeaderProps> = [
 
 export const stage: Array<StageProps> = [
   {
-    headline: 'Welcome!!',
-    text: 'If you are here is because you got my CV, thank you for checking this out! I built this website a few months before our wedding. I used mornings and evenings due to work constraints and family life with a 6-9 months old beautiful baby. I used the opportunity to explore a new stack, in particular using Remix.run as Web Framework of choice paired up with Tailwind CSS. I (obviously :D) used Typescript. Is it perfect!? Well no, the design is very poor, I did not write tests, I did not hook up a database, I did not use a proper CMS for content management,  Tailwind classes are not reusable and optimised, and probably something else... there is no end to perfection! It did the',
+    heading: 'Welcome!!',
+    subHeading: 'Thanks for having my CV in hand.',
+    texts: [
+      'I built this website a few months before my wedding to avoid the chaos of managing RSVPs via text.',
+      'I dove into a new stack, Remix.run, Tailwind CSS, and, of course, Typescript.',
+      "Was the end result perfect? Nah, the design's meh, no tests, no database, no Headless CMS, and my Tailwind classes are like a messy closet. But it worked, and guests loved its simplicity.",
+      "Let's chat about it in detail – hit me up below.",
+    ],
+    email: 'giorgio.torre8@gmail.com',
+    phone: '+49 177 477 8501',
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
-    headline: 'Wilkommen!!',
-    text: '29th July 2023',
+    heading: 'Wilkommen!!',
+    subHeading: 'Danke, dass du meine CV in der Hand hast.',
+    texts: [
+      'Ich habe diese Website ein paar Monate vor meiner Hochzeit erstellt, um das Chaos bei der Verwaltung der RSVPs per SMS zu vermeiden.',
+      'Ich habe mich in einen neuen Technologie-Stack gestürzt, mit Remix.run, Tailwind CSS und natürlich TypeScript.',
+      'War das Endergebnis perfekt? Nein, das Design ist mittelmäßig, keine Tests, keine Datenbank, kein Headless CMS, und meine Tailwind-Klassen sind wie ein unaufgeräumter Kleiderschrank. Aber es hat funktioniert, und die Gäste waren von seiner Einfachheit begeistert.',
+      'Lass uns im Detail darüber sprechen - kontaktiere mich unten.',
+    ],
+    email: 'giorgio.torre8@gmail.com',
+    phone: '+49 177 477 8501',
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
-    headline: 'Benvenuti!!',
-    text: '29th July 2023',
+    heading: 'Benvenuti!!',
+    subHeading: 'Grazie per avere il mio CV tra le mani.',
+    texts: [
+      'Ho creato questo sito qualche mese prima del mio matrimonio per evitare il caos nella gestione delle conferme tramite messaggi.',
+      'Mi sono tuffato in una nuova tecnologia, Remix.run, Tailwind CSS e, ovviamente, TypeScript.',
+      'Il risultato finale è stato perfetto? Nah, il design è così così, niente test, niente database, niente Headless CMS, e le mie classi in Tailwind sono come un armadio disordinato. Ma ha funzionato, ed è piaciuto agli ospiti per la sua semplicità. ',
+      'Parliamone nei dettagli - contattami qui sotto. ',
+    ],
+    email: 'giorgio.torre8@gmail.com',
+    phone: '+49 177 477 8501',
     link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];

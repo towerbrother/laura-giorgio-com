@@ -1,21 +1,49 @@
 import { NavLink } from '@remix-run/react';
+import { v4 as uuidv4 } from 'uuid';
 
 export type StageProps = {
-  headline: string;
-  text: string;
-  link?: { slug: string; text: string };
+  heading: string;
+  subHeading: string;
+  texts: Array<string>;
+  email: string;
+  phone: string;
+  link: { slug: string; text: string };
 };
 
-const Stage = ({ headline, text, link }: StageProps) => (
-  <div className='flex flex-col justify-center items-center text-center text-neutral-800 font-bold w-full h-[75vh] md:h-[70vh] bg-gradient-to-br from-cyan-600 to-neutral-100'>
-    <div className='flex flex-col md:flex-row justify-center items-center mt-4 mb-4 md:mb-12'>
-      <div className='flex flex-col justify-center items-center mx-6 my-3 md:my-0'></div>
+const Stage = ({
+  heading,
+  subHeading,
+  texts,
+  email,
+  phone,
+  link,
+}: StageProps) => (
+  <div className='flex flex-col justify-center items-center text-center text-neutral-800 font-bold w-full bg-gradient-to-br from-cyan-600 to-neutral-100 py-8'>
+    <div className='flex flex-col lg:flex-row justify-center items-center mx-8 xl:mx-56'>
+      <div className='flex flex-col'>
+        <h1 className='my-1 md:my-4 lg:my-5 mx-0 text-5xl md:text-8xl lg:text-12xl tracking-tight'>
+          {heading}
+        </h1>
+        <h3 className='my-1 md:my-4 lg:my-5 mx-0 text-3xl md:text-5xl tracking-tight'>
+          {subHeading}
+        </h3>
+      </div>
+      <div className='my-3 mx-8 lg:mx-12'>
+        {texts.map((text) => (
+          <p
+            key={uuidv4()}
+            className='my-1 md:my-4 lg:my-5 text-l md:text-xl lg:text-2xl tracking-tight text-center lg:text-left'
+          >
+            {text}
+          </p>
+        ))}
+      </div>
     </div>
-    <h1 className='my-1 md:my-4 lg:my-5 mx-0 text-5xl md:text-8xl lg:text-12xl tracking-tight sm:text-base'>
-      {headline}
-    </h1>
-    <span className='my-1 md:my-4 lg:my-5 mx-0 text-2xl md:text-4xl lg:text-5xl tracking-tight sm:text-base'>
-      {text}
+    <span className='my-1 md:my-4 lg:my-5 mx-0 text-l md:text-xl lg:text-2xl tracking-tight'>
+      <strong>Email:</strong> {email}
+    </span>
+    <span className='my-1 md:my-4 lg:my-5 mx-0 text-l md:text-xl lg:text-2xl tracking-tight'>
+      <strong>Phone:</strong> {phone}
     </span>
     {link && (
       <NavLink
