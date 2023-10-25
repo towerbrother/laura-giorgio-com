@@ -1,23 +1,23 @@
-import { v4 as uuidv4 } from "uuid";
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
-import { json, redirect } from "@remix-run/node";
+import { v4 as uuidv4 } from 'uuid';
+import type { ActionArgs, LoaderArgs } from '@remix-run/node';
+import { json, redirect } from '@remix-run/node';
 import {
   Form,
   useActionData,
   useLoaderData,
   useTransition,
-} from "@remix-run/react";
-import { FaSpinner } from "react-icons/fa";
+} from '@remix-run/react';
+import { FaSpinner } from 'react-icons/fa';
 
-import FormHeader from "~/components/rsvpForm/FormHeader";
-import Button from "~/components/reusable/Button";
-import GuestDetails from "~/components/rsvpForm/GuestDetails";
+import FormHeader from '~/components/rsvpForm/FormHeader';
+import Button from '~/components/reusable/Button';
+import GuestDetails from '~/components/rsvpForm/GuestDetails';
 
-import { userCookie } from "~/utils/cookie.server";
-import { badRequest } from "~/utils/request.server";
-import { validateFood, validateName } from "~/utils/validation";
-import { rsvpGuestsDetails } from "~/utils/mockedDB";
-import { getIndex } from "~/utils/language";
+import { userCookie } from '~/utils/cookie.server';
+import { badRequest } from '~/utils/request.server';
+import { validateFood, validateName } from '~/utils/validation';
+import { rsvpGuestsDetails } from '~/utils/mockedDB';
+import { getIndex } from '~/utils/language';
 
 export type RsvpGuestsDetailsProps = {
   title: string;
@@ -49,7 +49,7 @@ export type RsvpGuestsDetailsProps = {
 };
 
 export async function loader({ request }: LoaderArgs) {
-  const cookieHeader = request.headers.get("Cookie");
+  const cookieHeader = request.headers.get('Cookie');
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
   const stepsInfo = {
@@ -68,33 +68,33 @@ export async function loader({ request }: LoaderArgs) {
   return json({
     rsvp: null,
     ...stepsInfo,
-    rsvpGuestsDetails: rsvpGuestsDetails[getIndex("en")],
+    rsvpGuestsDetails: rsvpGuestsDetails[getIndex('en')],
   });
 }
 
 export async function action({ request }: ActionArgs) {
   await new Promise((res) => setTimeout(res, 1000));
 
-  const cookieHeader = request.headers.get("Cookie");
+  const cookieHeader = request.headers.get('Cookie');
   const cookie = (await userCookie.parse(cookieHeader)) || {};
 
   let formData = await request.formData();
   let { _action, ...fields } = Object.fromEntries(formData);
 
-  if (_action === "close-rsvp") {
-    return redirect("/");
+  if (_action === 'close-rsvp') {
+    return redirect('/');
   }
 
-  if (_action === "go-back") {
-    return redirect("/rsvp/contactdetails");
+  if (_action === 'go-back') {
+    return redirect('/rsvp/contactdetails');
   }
 
   const mapped = Object.entries(fields).map(([k, v]) => {
-    if (k.includes("name")) {
+    if (k.includes('name')) {
       return [k, validateName(v.toString())];
     }
 
-    if (k.includes("food")) {
+    if (k.includes('food')) {
       return [k, validateFood(v.toString())];
     }
 
@@ -111,9 +111,9 @@ export async function action({ request }: ActionArgs) {
     });
   }
 
-  return redirect("/rsvp/otherdetails", {
+  return redirect('/rsvp/otherdetails', {
     headers: {
-      "Set-Cookie": await userCookie.serialize({
+      'Set-Cookie': await userCookie.serialize({
         ...cookie,
         rsvp: { ...cookie.rsvp, guestsDetails: { ...fields } },
       }),
@@ -128,8 +128,8 @@ export default function Index() {
     useLoaderData<typeof loader>();
 
   const isProcessing =
-    state === "submitting" &&
-    submission.formData.get("_action") === "guests-details";
+    state === 'submitting' &&
+    submission.formData.get('_action') === 'guests-details';
 
   const guests: Array<string> = Array.from(
     { length: Number(rsvp?.contactDetails?.guestsCount) },
@@ -137,13 +137,13 @@ export default function Index() {
   );
 
   return (
-    <Form method="post" className="flex flex-col py-4 md:py-6">
+    <Form method='post' className='flex flex-col px-6 py-4 md:py-6 md:px-96'>
       <FormHeader
         headerText={rsvpGuestsDetails?.headerText}
         currentStep={currentStep}
         totalSteps={totalSteps}
       />
-      <h1 className="text-neutral-800 text-2xl font-bold mb-3">
+      <h1 className='text-neutral-800 text-2xl font-bold mb-3'>
         {rsvpGuestsDetails?.title}
       </h1>
       {guests.map((guest: string) => (
@@ -156,14 +156,14 @@ export default function Index() {
         />
       ))}
       <Button
-        type="submit"
-        name="_action"
-        value="guests-details"
-        className="border-none bg-cyan-600 text-neutral-100 font-bold rounded-md p-2 mt-5 w-full md:w-max md:px-5 md:text-lg lg:text-xl"
+        type='submit'
+        name='_action'
+        value='guests-details'
+        className='border-none bg-cyan-600 text-neutral-100 font-bold rounded-md p-2 mt-5 w-full md:w-max md:px-5 md:text-lg lg:text-xl'
       >
         {isProcessing ? (
-          <div className="flex items-center justify-center">
-            <FaSpinner className="animate-spin my-1 mx-4" />
+          <div className='flex items-center justify-center'>
+            <FaSpinner className='animate-spin my-1 mx-4' />
           </div>
         ) : (
           <>{rsvpGuestsDetails?.button?.text}</>

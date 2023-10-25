@@ -79,31 +79,19 @@ export const header: Array<HeaderProps> = [
 
 export const stage: Array<StageProps> = [
   {
-    wedding: {
-      title: 'Laura & Giorgio',
-      subtitle: 'are getting married',
-      icons: ['female', 'male'],
-    },
-    baptism: { title: 'Juni', subtitle: 'gets baptised', icons: ['baby'] },
-    date: '29th July 2023',
+    headline: 'Welcome!!',
+    text: 'If you are here is because you got my CV, thank you for checking this out! I built this website a few months before our wedding. I used mornings and evenings due to work constraints and family life with a 6-9 months old beautiful baby. I used the opportunity to explore a new stack, in particular using Remix.run as Web Framework of choice paired up with Tailwind CSS. I (obviously :D) used Typescript. Is it perfect!? Well no, the design is very poor, I did not write tests, I did not hook up a database, I did not use a proper CMS for content management,  Tailwind classes are not reusable and optimised, and probably something else... there is no end to perfection! It did the',
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
-    wedding: {
-      title: 'Laura & Giorgio',
-      subtitle: 'heiraten',
-      icons: ['female', 'male'],
-    },
-    baptism: { title: 'Juni', subtitle: 'wird getauft', icons: ['baby'] },
-    date: '29. Juli 2023',
+    headline: 'Wilkommen!!',
+    text: '29th July 2023',
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
   {
-    wedding: {
-      title: 'Laura & Giorgio',
-      subtitle: 'si sposano',
-      icons: ['female', 'male'],
-    },
-    baptism: { title: 'Juni', subtitle: 'si battezza', icons: ['baby'] },
-    date: '29 Luglio 2023',
+    headline: 'Benvenuti!!',
+    text: '29th July 2023',
+    link: { slug: '/rsvp/contactdetails', text: 'RSVP' },
   },
 ];
 
@@ -592,7 +580,7 @@ export const contactBanner: Array<BannerProps> = [
     headline: 'We look forward to celebrating with you!',
     icon: false,
     paragraphs: [
-      'If you have any special requests, additional comments or unanswered questions, please contact us at laura.giorgio.wedding@gmail.com or send us a message on WhatsApp.',
+      'If you have any special requests, additional comments or unanswered questions, please contact us at dummy-email@gmail.com or send us a message on WhatsApp.',
       'Thanks! ❤',
     ],
   },
@@ -600,7 +588,7 @@ export const contactBanner: Array<BannerProps> = [
     headline: 'Wir freuen uns darauf, mit Euch zu feiern!',
     icon: false,
     paragraphs: [
-      'Sollten Ihr besondere Wünsche, weitere Anmerkungen oder unbeantwortete Fragen haben, könnt Ihr eifach ein E-Mail unter laura.giorgio.wedding@gmail.com schicken oder eine Nachricht auf WhatsApp senden.',
+      'Sollten Ihr besondere Wünsche, weitere Anmerkungen oder unbeantwortete Fragen haben, könnt Ihr eifach ein E-Mail unter dummy-email@gmail.com schicken oder eine Nachricht auf WhatsApp senden.',
       'Vielen Dank! ❤',
     ],
   },
@@ -608,7 +596,7 @@ export const contactBanner: Array<BannerProps> = [
     headline: `Non vediamo l'ora di festeggiare con te!`,
     icon: false,
     paragraphs: [
-      `Se hai richieste speciali, commenti aggiuntivi o domande senza risposta, mandateci una e-mail a laura.giorgio.wedding@gmail.com o un messaggio su WhatsApp.`,
+      `Se hai richieste speciali, commenti aggiuntivi o domande senza risposta, mandateci una e-mail a dummy-email@gmail.com o un messaggio su WhatsApp.`,
       'Grazie mille! ❤',
     ],
   },
@@ -820,21 +808,21 @@ export const rsvpThankYou: Array<RsvpThankYouProps> = [
     title: 'Thank you!',
     texts: [
       'Do you have any further questions or concerns?',
-      'Drop us an email at laura.giorgio.wedding@gmail.com',
+      'Drop us an email at dummy-email@gmail.com',
     ],
   },
   {
     title: 'Vielen Dank!',
     texts: [
       'Hast du weitere Fragen oder Anmerkungen?',
-      'Schreib uns eine E-Mail an laura.giorgio.wedding@gmail.com',
+      'Schreib uns eine E-Mail an dummy-email@gmail.com',
     ],
   },
   {
     title: 'Grazie mille!',
     texts: [
       'Hai altre domande o dubbi?',
-      'Mandaci una mail a laura.giorgio.wedding@gmail.com',
+      'Mandaci una mail a dummy-email@gmail.com',
     ],
   },
 ];
