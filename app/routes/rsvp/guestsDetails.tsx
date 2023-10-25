@@ -137,7 +137,7 @@ export default function Index() {
   );
 
   return (
-    <Form method='post' className='flex flex-col px-6 py-4 md:py-6 md:px-96'>
+    <Form method='post' className='flex flex-col px-6 py-4 md:py-6'>
       <FormHeader
         headerText={rsvpGuestsDetails?.headerText}
         currentStep={currentStep}
