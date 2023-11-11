@@ -32,15 +32,15 @@ export default function Index() {
   const { rsvpThankYou } = useLoaderData<typeof loader>();
 
   return (
-    <div className="flex flex-col justify-center items-center mt-8 lg:mt-12">
-      <div className="flex flex-col justify-center items-center p-6 lg:py-8 lg:px-12 w-max">
-        <h1 className="text-4xl md:text-6xl font-bold text-center text-neutral-800 mb-4">
+    <div className='flex flex-col justify-center items-center mt-8 lg:mt-12'>
+      <div className='flex flex-col justify-center items-center p-6 lg:py-8 lg:px-12 w-max'>
+        <h1 className='text-4xl md:text-6xl font-bold text-center text-neutral-800 mb-4'>
           {rsvpThankYou.title}
         </h1>
         {rsvpThankYou.texts.map((text) => (
           <p
             key={uuidv4()}
-            className="text-neutral-800 my-2 text-xs sm:text-base md:text-md lg:text-xl"
+            className='text-neutral-800 my-2 text-xs sm:text-base md:text-md lg:text-xl'
           >
             {text}
           </p>
